@@ -1,0 +1,167 @@
+<?php
+
+module_load_include('inc', 'paragraph_statistics', 'includes/db');
+module_load_include('inc', 'paragraph_statistics', 'includes/charts');
+
+/**
+ * Implements hook_menu().
+ */
+function paragraph_statistics_menu() {
+    $items = array();
+
+    $items['admin/config/system/parastats'] = array(
+        'title' => t('Paragraph Statistics Settings'),
+        'description' => t('Configuration page for the paragraph statistics module.'),
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('paragraph_statistics_admin_form'),
+        'access arguments' => array('administer parastats settings'),
+        'type' => MENU_NORMAL_ITEM,
+        'file' => 'paragraph_statistics_admin.inc',
+        'file path' => drupal_get_path('module', 'paragraph_statistics') . '/includes',
+    );
+
+    $items['admin/reports/paragraph-statistics'] = array(
+        'title' => t('Paragraph Statistics'),
+        'description' => t('Paragraph usage statistics.'),
+        'page callback' => 'paragraph_statistics_page',
+        'page arguments' => array(3),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+
+    return $items;
+}
+
+/**
+ * Data type switch form.
+ */
+function paragraph_statistics_data_type_switch_form($form, &$form_state) {
+    $form = array();
+
+    $form['data_type'] = array(
+        '#attributes' => array('onchange' => 'this.form.submit();'),
+        '#type' => 'select',
+        '#title' => 'Data Type',
+        '#default_value' => arg(3),
+        '#options' => array(
+            'charts' => 'Charts',
+            'table' => 'Table'
+        ),
+    );
+
+    $form['submit'] = array(
+        '#attributes' => array('class' => array('element-invisible')),
+        '#type' => 'submit',
+        '#value' => 'Submit'
+    );
+
+    return $form;
+}
+
+/**
+ * Data type switch form submit.
+ */
+function paragraph_statistics_data_type_switch_form_submit($form, &$form_state) {
+    $data_type = $form_state['values']['data_type'];
+
+    drupal_goto('/admin/reports/paragraph-statistics/' . $data_type);
+}
+
+/**
+ * Page callback().
+ */
+function paragraph_statistics_page($data_type) {
+    if(empty($data_type)) {
+        $data_type = 'charts';
+    }
+
+    $bundles = variable_get('bundles');
+    $bundles_per_graph = variable_get('bundles_per_graph', 5);
+    $db = new db();
+
+    if($data_type == 'charts') {
+
+        $charts = new charts();
+        $elements = array();
+        $pages = array();
+        $times = array();
+        $data1 = array();
+        $data1 = array();
+        $labels = array();
+
+        $x = 1;
+        foreach($bundles as $bundle) {
+            $pages[] = $db->queryPages($bundle)['count'];
+            $times[] = $db->queryCountTimes($bundle);
+            $labels[] = $bundle;
+
+            $data1['title'] = 'Pages';
+            $data1['data'] = $pages;
+            $data1['suffix'] = '';
+
+            $data2['title'] = 'Times';
+            $data2['data'] = $times;
+            $data2['suffix'] = '';
+
+            if($x % $bundles_per_graph == 0) {
+                $elements[] = $charts->paragraph_statistics_column_simple('Paragraph Usage', $data1, $data2, $labels);
+
+                $pages = array();
+                $times = array();
+                $data1 = array();
+                $data1 = array();
+                $labels = array();
+            }
+
+            $x++;
+        }
+
+        if(!empty($data1)) {
+            $elements[] = $charts->paragraph_statistics_column_simple('Paragraph Usage', $data1, $data2, $labels);
+        }
+
+    } elseif($data_type == 'table') {
+        $header_table = array('Paragraph', '# of Pages', 'Times Used', 'Pages');
+        $rows = array();
+
+        foreach($bundles as $bundle) {
+            $pages = $db->queryPages($bundle);
+            $num_pages = $pages['count'];
+            $num_times = $db->queryCountTimes($bundle);
+            $entities = $pages['entity_ids'];
+            $entities = array_filter($entities);
+            $titles = 'NA';
+            foreach($entities as $entity) {
+                $first = TRUE;
+                foreach($entity as $page_names) {
+                    $nid = $page_names->entity_id;
+                    $title = $db->getTitleURLFromNID($nid);
+                    if($first == TRUE) {
+                        $titles = '<a href="' . base_path() . 'node/' . $nid . '" target="_blank">' .  $title . '</a>';
+                    }else {
+                        $titles .= ', <a href="' . base_path() . 'node/' . $nid . '" target="_blank">' .  $title . '</a>';
+                    }
+
+                    $first = FALSE;
+                }
+            }
+            $rows[] = array('bundle' => $bundle, 'num_pages' => $num_pages, 'num_times' => $num_times, 'titles' => $titles);
+        }
+
+        $col_num_pages = array_column($rows, 'num_pages');
+
+        $elements = array(
+            '#theme' => 'table', 
+            '#header' => $header_table,
+            '#rows' => $rows, //array_multisort($col_num_pages, SORT_DESC, SORT_NUMERIC, $rows),
+            '#caption' => 'Paragraph Usage',
+        );
+    }
+
+    $page = array(
+        'form' => drupal_get_form('paragraph_statistics_data_type_switch_form'),
+        'elements' => $elements,
+    );
+
+    return $page;
+}

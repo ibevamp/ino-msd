@@ -1,0 +1,18 @@
+***************
+*** 290,295 ****
+          'parent' => 'views_handler_filter_boolean_operator',
+          'file' => 'webform_handler_filter_webform_status.inc',
+        ),
+      ),
+    );
+- }--- 363,372 ----
+          'parent' => 'views_handler_filter_boolean_operator',
+          'file' => 'webform_handler_filter_webform_status.inc',
+        ),
++       'webform_handler_relationship_submission_data' => array(
++         'parent' => 'views_handler_relationship',
++         'file' => 'webform_handler_relationship_submission_data.inc',
++       ),
+      ),
+    );
++ }

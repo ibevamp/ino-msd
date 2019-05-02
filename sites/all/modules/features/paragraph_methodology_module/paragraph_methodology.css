@@ -1,0 +1,126 @@
+/* 2up media */
+.two-up-small#twoup-media {
+	 display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+	margin-top: 0!important;
+	width: 100%;
+	margin: 0
+}
+   
+	
+#twoup-media .item 
+{
+	-webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    display: block;
+    float: unset;
+    margin: 0;
+    clear: none!important;
+}
+
+#twoup-media .item .text-wrapper 
+{
+    margin-right: 12%;
+    width: 80%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-left: 8%;
+	text-align: left;
+}
+
+
+#twoup-media .item header 
+{
+	text-align: left;
+}
+
+#twoup-media.right-align-img .item .text-wrapper 
+{
+    margin-left: 12%;
+    margin-right: 0;
+    width: 80%;
+}
+
+
+
+
+#twoup-media .item .bg
+{
+	width: 100%;
+	height: 100%;
+	background-color:#fff;
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: block
+}
+
+
+#twoup-media .item .bg::after{
+	padding-top:56.25%;
+	content: '';
+	display: block;
+}
+
+
+
+#twoup-media .item .caption-bg{
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 62px;
+	height: 12px;
+	display: block;
+	margin: 0 0 10px;
+}
+
+
+#twoup-media .item .eyebrow{
+	font-size: 16px;
+	text-transform: uppercase;
+	padding-bottom: 10px;
+}
+
+#twoup-media .item .weeks.description{
+	font-weight: 500;
+	color: #000
+}
+
+#twoup-media .item .description{
+	max-width: unset;
+	margin-bottom: 10px;
+}
+
+#twoup-media .item .description h4{
+	color: #1F40E6;
+	text-transform: uppercase;
+	font-family: 'McKinsey Theinhardt', 'Helvetica Neue', Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif!important
+}
+
+#twoup-media .item .description p{
+	margin-left: 0;
+	margin-top: 5px;
+}
+
+@media (max-width: 767px) {
+	#twoup-media .item{
+		-webkit-box-flex: 0;
+		-webkit-flex: 0 0 100%;
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+	
+	#twoup-media.right-align-img .item .text-wrapper{
+		width: 100%;
+		margin: 0 
+	}
+}

@@ -1,0 +1,8 @@
+name = Flexi Access Options
+description = Additional options for the Flex Access module.
+package = Access control
+core = 7.x
+
+dependencies[] = acl
+dependencies[] = flexiaccess
+configure = admin/config/people/flexiaccess-options

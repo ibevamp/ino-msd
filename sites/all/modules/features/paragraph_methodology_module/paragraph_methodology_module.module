@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the paragraph_methodology_module feature.
+ */
+
+include_once 'paragraph_methodology_module.features.inc';

@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * Implements hook_schema_alter().
+ */
+function mckinsey_node_lock_schema_alter(&$schema) {
+  $schema['node']['fields']['edit_lock_status'] = array(
+    'description' => 'A boolean indicating whether this node is locked to prevent editing.',
+    'type' => 'int',
+    'size' => 'tiny',
+    'not null' => TRUE,
+		'default' => 0,
+  );
+}
+
+/**
+ * Implements hook_install().
+ */
+function mckinsey_node_lock_install() {
+  $schema = array();
+  // It's OK to reference the schema in a hook_install not a hook_update.
+  mckinsey_node_lock_schema_alter($schema);
+  $definition = $schema['node']['fields']['edit_lock_status'];
+  // Add the duration field to the db.
+  db_add_field('node', 'edit_lock_status', $definition);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function mckinsey_node_lock_uninstall() {
+  // Remove the duration field from the db.
+  db_drop_field('node', 'edit_lock_status');
+}

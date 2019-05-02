@@ -1,0 +1,6 @@
+name = Mckinsey Node Lock
+description = 'Lock a node to prevent editing'
+package = Mckinsey & Company
+core = 7.x
+
+dependencies[] = entity

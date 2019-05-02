@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the knowledge member content type feature.
+ */
+
+include_once 'knowledge_member_content_type.features.inc';

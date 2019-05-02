@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the syd_proposal_paragraphs feature.
+ */
+
+include_once 'syd_proposal_paragraphs.features.inc';
