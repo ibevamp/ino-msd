@@ -1,0 +1,249 @@
+
+/* Carousel */
+
+.carousel-module header{
+    margin-bottom: 30px;
+}
+
+.carousel-module header h2{font-size:42px;}
+.carousel-module .carousel-content h3,
+.carousel-module .carousel-content .card-text .description p{
+    color: #fff!important;
+    font-size:18px;
+}
+
+
+.carousel-module .carousel-controls {
+    overflow: hidden;
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.carousel-module .carousel-indicators {
+    position: static;
+    margin: 10px 0;
+    height: 80px; 
+    justify-content: flex-start;
+    transition: all .5s;
+    margin-left: 80px;
+    margin-right: -80px;
+	display: flex;
+}
+
+.carousel-module .top-nav{
+    margin-top: 60px;
+}
+
+.carousel-module .top-nav .carousel-indicators li{
+  height: 55%;
+}
+
+.carousel-module .carousel-indicators li {
+    height: 80%;
+    width: 120px;
+    display: inline-block;
+    max-width: unset;
+    opacity: .3;
+    text-indent: 0;
+    padding: 15px;
+    cursor: pointer;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    transition: all .8s;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: none;
+    color: #999;
+    margin-right: 20px;
+    border-top: solid 2px #999;
+    position: relative;
+}
+
+.carousel-module .carousel-indicators li.active {
+    opacity: 1;
+  background: #002DBE;
+  color: #fff;
+}
+
+.carousel-module .carousel-indicators li.active .nav-caption,
+.carousel-module .carousel-indicators li.active .nav-title
+ {
+    color: #fff;
+}
+
+.carousel-module .carousel-indicators li .nav-caption{
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+
+.carousel-module .carousel-indicators li.active{
+    border-top: 2px solid #002DBE;
+    border-bottom: 0;
+}
+
+
+.carousel-module .carousel-indicators li.active:after,
+.carousel-module .carousel-indicators li.active:before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    top:inherit;
+}
+
+
+
+.carousel-module .top-nav .carousel-indicators li.active:after,
+.carousel-module .top-nav .carousel-indicators li.active:before {
+    transform: rotate(180deg);
+    bottom: unset;
+    top: 100%;
+}
+
+
+
+.carousel-module .carousel-indicators li.active:after {
+    border-color: rgba(136, 183, 213, 0)!important;
+    border-bottom-color: #002DBE!important;
+    border-width: 12px;
+    margin-left: -12px;
+}
+
+
+.carousel-module .carousel-indicators li:hover {
+    opacity: 1;
+}
+
+.carousel-module .top-right {
+    top: 2%;
+    right: 0;
+    left: 35%;
+}
+
+.carousel-module .top-right h5 {
+    font-size: 2.5rem;
+}
+
+.carousel-module .gradient {
+    position: absolute;
+    height: 200px;
+    width: 80px;
+    top: 0;
+    pointer-events: none;
+}
+
+.carousel-module  .fade-in {
+    right: auto;
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, #fff 100%)
+}
+
+.carousel-module .fade-out {
+    right: 0;
+    left: auto;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 100%);
+}
+
+.carousel-module .carousel-indicators li h3 {
+    font-size: 1rem;
+}
+
+.carousel-module .carousel-indicators li p {
+    font-size: .7rem;
+}
+
+.carousel-module .carousel-item{
+  background-color: #00306E;
+  display: none;
+}
+
+.carousel-module .image{
+    width: 40%;
+    float: left;
+}
+
+.carousel-module .carousel-wrapper{
+	padding: 0 20px;
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.carousel-module .carousel-wrapper .carousel-slide-wrapper{
+	width: 100%
+}
+
+.carousel-module .carousel{
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+	padding: 0;
+}
+
+.carousel-module .carousel-item .text-wrapper{
+    width: 56%;
+    float: left;
+    color: #fff;
+    padding: 40px 2%;
+}
+
+
+
+.carousel-module .carousel-item.active{
+    display: block;
+}
+
+.carousel-module .carousel-item .thumbnail{
+  display: block;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+@media (min-width: 768px) {
+    .carousel-module .carousel-indicators li h3 {
+        font-size: 1.75rem;
+    }
+    .carousel-module .carousel-indicators li p {
+        font-size: 1rem;
+    }
+    .carousel-module .carousel-indicators {
+        margin-left: 180px;
+        margin-right: -180px;
+    }
+    .carousel-module .carousel-indicators li {
+        width: 140px;
+        height: 100%;
+    }
+    .carousel-module .gradient {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .carousel-module .item .image{
+        width: 100%;
+    }
+
+    .carousel-module .item .text-wrapper{
+        width: 96%;
+    }
+	
+	.carousel-module .carousel-indicators li{
+		width: 80px;
+	}
+}

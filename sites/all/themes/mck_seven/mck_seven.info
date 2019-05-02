@@ -1,0 +1,4 @@
+name = MCK Seven 
+description = A Mckinsey Seven Subtheme to hide messages.
+version = 7.x 
+base theme = seven

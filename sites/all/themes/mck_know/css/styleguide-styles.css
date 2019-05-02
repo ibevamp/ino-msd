@@ -1,0 +1,2473 @@
+@charset "UTF-8";
+/* ==========================================================================
+   INUITCSS
+   ========================================================================== */
+/**
+ * inuitcss, by @csswizardry
+ *
+ * github.com/inuitcss | inuitcss.com
+ */
+/**
+ * This is an example inuitcss manifest file. DO NOT MODIFY THIS FILE DIRECTLY.
+ * Instead, copy and paste it into your own CSS directory and make additions,
+ * extensions, and modifications there.
+ */
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Config...............Project-level configuration and feature switches.
+ * Core.................inuitcss’ core and setup settings.
+ * Global...............Project-wide variables and settings.
+ *
+ * TOOLS
+ * Rem..................Tools for converting pixel inputs into their rem
+ *                      equivalents.
+ * Font-size............A mixin which guarantees baseline-friendly line-heights.
+ * Clearfix.............Micro clearfix mixin.
+ * Hidden...............Mixin for hiding elements.
+ * Sass MQ..............inuitcss’ default media query manager.
+ *
+ * GENERIC
+ * Box-sizing...........Better default `box-sizing`.
+ * Normalize.css........A level playing field using @necolas’ Normalize.css.
+ * Reset................A tiny reset to complement Normalize.css.
+ * Shared...............Sensibly and tersely share some global commonalities
+ *                      (particularly useful when managing vertical rhythm).
+ *
+ * ELEMENTS
+ * Page.................Set up our document’s default `font-size` and
+ *                      `line-height`.
+ * Headings.............Very minimal (i.e. only font-size information) for
+ *                      headings 1 through 6.
+ * Images...............Base image styles.
+ * Tables...............Simple table styles.
+ *
+ * OBJECTS
+ * Wrapper..............Page constraint object.
+ * Layout...............Generic layout module.
+ * Media................Image- and text-like content side by side. The
+ *                      poster-child of OOCSS.
+ * Flag.................Table-layout-based advancement on the Media object.
+ * List-bare............Lists with no bullets or indents.
+ * List-inline..........A list whose items all site in a line.
+ * Box..................Simple boxing abstraction.
+ * Block................Image-on-top-of-text object.
+ * Ratio................A container for maintaining aspect ratio of content.
+ * Crop.................Provide a cropping context for media (images, etc.).
+ * Tables...............Classes for manipulating `table`s.
+ * Pack.................Pack items into available horizontal space.
+ *
+ * COMPONENTS
+ * Buttons..............An example button component, and how it fits into the
+ *                      inuitcss framework.
+ *
+ * UTILITIES
+ * Clearfix.............Bind our clearfix onto a utility class.
+ * Widths...............Simple width helper classes.
+ * Headings.............Reassigning our heading styles to helper classes.
+ * Spacing..............Nudge bits of the DOM around with these spacing
+ *                      classes.
+ * Print................Reset-like styles taken from the HTML5 Boilerplate.
+ * Hide.................Helper classes to hide content
+ */
+/* ==========================================================================
+   #PAGE
+   ========================================================================== */
+/* [1] The background color is simply to create contrast within the style guide. 
+   However, since the styleguide stylesheet is loaded first, the background 
+   color is overwritten by the mck stylesheet which follows. It's for this 
+   reason that we use !important. 
+
+   [2] Style guide specific override for background color of page. */
+html,
+body {
+  background-color: #F8F8F8; }
+
+body.e-sg-views {
+  background-color: #FFF !important; }
+
+code {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.8461538462;
+  overflow: auto;
+  overflow-wrap: normal;
+  white-space: pre; }
+
+/* ==========================================================================
+   #HEADINGS
+   ========================================================================== */
+/**
+ * Simple default styles for headings 1 through 6. Anything more opinionated
+ * than simple font-size changes should likely be applied via classes (see:
+ * http://csswizardry.com/2016/02/managing-typography-on-large-apps/).
+ */
+/* ==========================================================================
+   #WRAPPERS
+   ========================================================================== */
+/**
+ * Page-level constraining and wrapping elements.
+ */
+/* stylelint-disable */
+/* stylelint-enable */
+.o-wrapper {
+  padding-right: 24px;
+  padding-left: 24px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1440px; }
+  .o-wrapper:after {
+    content: "" !important;
+    display: block !important;
+    clear: both !important; }
+
+/* Size variants.
+   ========================================================================== */
+.o-wrapper--tiny {
+  padding-right: 6px;
+  padding-left: 6px; }
+
+.o-wrapper--small {
+  padding-right: 12px;
+  padding-left: 12px; }
+
+.o-wrapper--large {
+  padding-right: 48px;
+  padding-left: 48px; }
+
+.o-wrapper--huge {
+  padding-right: 96px;
+  padding-left: 96px; }
+
+/* ==========================================================================
+   #LAYOUT
+   ========================================================================== */
+/**
+ * Grid-like layout system.
+ *
+ * The layout object provides us with a column-style layout system. This file
+ * contains the basic structural elements, but classes should be complemented
+ * with width utilities, for example:
+ *
+ *   <div class="o-layout">
+ *     <div class="o-layout__item  u-1/2">
+ *     </div>
+ *     <div class="o-layout__item  u-1/2">
+ *     </div>
+ *   </div>
+ *
+ * The above will create a two-column structure in which each column will
+ * fluidly fill half of the width of the parent. We can have more complex
+ * systems:
+ *
+ *   <div class="o-layout">
+ *     <div class="o-layout__item  u-1/1  u-1/3@medium">
+ *     </div>
+ *     <div class="o-layout__item  u-1/2  u-1/3@medium">
+ *     </div>
+ *     <div class="o-layout__item  u-1/2  u-1/3@medium">
+ *     </div>
+ *   </div>
+ *
+ * The above will create a system in which the first item will be 100% width
+ * until we enter our medium breakpoint, when it will become 33.333% width. The
+ * second and third items will be 50% of their parent, until they also become
+ * 33.333% width at the medium breakpoint.
+ *
+ * We can also manipulate entire layout systems by adding a series of modifiers
+ * to the `.o-layout` block. For example:
+ *
+ *   <div class="o-layout  o-layout--reverse">
+ *
+ * This will reverse the displayed order of the system so that it runs in the
+ * opposite order to our source, effectively flipping the system over.
+ *
+ *   <div class="o-layout  o-layout--[right|center]">
+ *
+ * This will cause the system to fill up from either the centre or the right
+ * hand side. Default behaviour is to fill up the layout system from the left.
+ *
+ * There are plenty more options available to us: explore them below.
+ */
+/* Default/mandatory classes.
+   ========================================================================== */
+/**
+ * 1. Allows us to use the layout object on any type of element.
+ * 2. We need to defensively reset any box-model properties.
+ * 3. Use the negative margin trick for multi-row grids:
+ *    http://csswizardry.com/2011/08/building-better-grid-systems/
+ */
+.o-layout {
+  display: block;
+  /* [1] */
+  margin: 0;
+  /* [2] */
+  padding: 0;
+  /* [2] */
+  list-style: none;
+  /* [1] */
+  margin-left: -24px;
+  /* [3] */
+  font-size: 0; }
+
+/**
+   * 1. Required in order to combine fluid widths with fixed gutters.
+   * 2. Allows us to manipulate grids vertically, with text-level properties,
+   *    etc.
+   * 3. Default item alignment is with the tops of each other, like most
+   *    traditional grid/layout systems.
+   * 4. By default, all layout items are full-width (mobile first).
+   * 5. Gutters provided by left padding:
+   *    http://csswizardry.com/2011/08/building-better-grid-systems/
+   * 6. Fallback for old IEs not supporting `rem` values.
+   */
+.o-layout__item {
+  box-sizing: border-box;
+  /* [1] */
+  display: inline-block;
+  /* [2] */
+  vertical-align: top;
+  /* [3] */
+  width: 100%;
+  /* [4] */
+  padding-left: 24px;
+  /* [5] */
+  font-size: 16px;
+  /* [6] */
+  font-size: 1rem; }
+
+/* Gutter size modifiers.
+   ========================================================================== */
+.o-layout--tiny {
+  margin-left: -6px; }
+  .o-layout--tiny > .o-layout__item {
+    padding-left: 6px; }
+
+.o-layout--small {
+  margin-left: -12px; }
+  .o-layout--small > .o-layout__item {
+    padding-left: 12px; }
+
+.o-layout--large {
+  margin-left: -48px; }
+  .o-layout--large > .o-layout__item {
+    padding-left: 48px; }
+
+.o-layout--huge {
+  margin-left: -96px; }
+  .o-layout--huge > .o-layout__item {
+    padding-left: 96px; }
+
+.o-layout--flush {
+  margin-left: 0; }
+  .o-layout--flush > .o-layout__item {
+    padding-left: 0; }
+
+/* Vertical alignment modifiers.
+   ========================================================================== */
+/**
+ * Align all grid items to the middles of each other.
+ */
+.o-layout--middle > .o-layout__item {
+  vertical-align: middle; }
+
+/**
+ * Align all grid items to the bottoms of each other.
+ */
+.o-layout--bottom > .o-layout__item {
+  vertical-align: bottom; }
+
+/* Fill order modifiers.
+   ========================================================================== */
+/**
+ * Fill up the layout system from the centre.
+ */
+.o-layout--center {
+  text-align: center; }
+  .o-layout--center > .o-layout__item {
+    text-align: left; }
+
+/**
+ * Fill up the layout system from the right-hand side.
+ */
+.o-layout--right {
+  text-align: right; }
+  .o-layout--right > .o-layout__item {
+    text-align: left; }
+
+/**
+ * Reverse the rendered order of the grid system.
+ */
+.o-layout--reverse {
+  direction: rtl; }
+  .o-layout--reverse > .o-layout__item {
+    direction: ltr;
+    text-align: left; }
+
+/* ==========================================================================
+   #FLAG
+   ========================================================================== */
+/**
+ * The flag object is a design pattern similar to the media object, however it
+ * utilises `display: table[-cell];` to give us control over the vertical
+ * alignments of the text and image.
+ *
+ * http://csswizardry.com/2013/05/the-flag-object/
+ *
+ * 1. Allows us to control vertical alignments.
+ * 2. Force the object to be the full width of its parent. Combined with [1],
+ *    this makes the object behave in a quasi-`display: block;` manner.
+ */
+.o-flag {
+  display: table;
+  /* [1] */
+  width: 100%;
+  /* [2] */ }
+
+/**
+   * Items within a flag object. There should only ever be one of each.
+   *
+   * 1. Default to aligning content to their middles.
+   */
+.o-flag__img,
+.o-flag__body {
+  display: table-cell;
+  vertical-align: middle;
+  /* [1] */ }
+
+/**
+   * Flag images have a space between them and the body of the object.
+   *
+   * 1. Force `.flag__img` to take up as little space as possible:
+   *    https://pixelsvsbytes.com/2012/02/this-css-layout-grid-is-no-holy-grail/
+   */
+.o-flag__img {
+  width: 1px;
+  /* [1] */
+  padding-right: 24px;
+  /**
+     * 1. Fixes problem with images disappearing.
+     */ }
+  .o-flag__img > img {
+    max-width: none;
+    /* [1] */ }
+
+/**
+   * The container for the main content of the flag object.
+   *
+   * 1. Forces the `.flag__body` to take up all remaining space.
+   */
+.o-flag__body {
+  width: auto;
+  /* [1] */ }
+  .o-flag__body,
+  .o-flag__body > :last-child {
+    margin-bottom: 0; }
+
+/* Size variants.
+   ========================================================================== */
+.o-flag--tiny > .o-flag__img {
+  padding-right: 6px; }
+
+.o-flag--tiny.o-flag--reverse > .o-flag__img {
+  padding-right: 0;
+  padding-left: 6px; }
+
+.o-flag--small > .o-flag__img {
+  padding-right: 12px; }
+
+.o-flag--small.o-flag--reverse > .o-flag__img {
+  padding-right: 0;
+  padding-left: 12px; }
+
+.o-flag--large > .o-flag__img {
+  padding-right: 48px; }
+
+.o-flag--large.o-flag--reverse > .o-flag__img {
+  padding-right: 0;
+  padding-left: 48px; }
+
+.o-flag--huge > .o-flag__img {
+  padding-right: 96px; }
+
+.o-flag--huge.o-flag--reverse > .o-flag__img {
+  padding-right: 0;
+  padding-left: 96px; }
+
+.o-flag--flush > .o-flag__img {
+  padding-right: 0;
+  padding-left: 0; }
+
+/* Reversed flag.
+   ========================================================================== */
+/**
+ * 1. Swap the rendered direction of the object…
+ * 2. …and reset it.
+ * 3. Reassign margins to the correct sides.
+ */
+.o-flag--reverse {
+  direction: rtl;
+  /* [1] */ }
+  .o-flag--reverse > .o-flag__img,
+  .o-flag--reverse > .o-flag__body {
+    direction: ltr;
+    /* [2] */ }
+  .o-flag--reverse > .o-flag__img {
+    padding-right: 0;
+    /* [3] */
+    padding-left: 24px;
+    /* [3] */ }
+
+/* Alignment variants.
+   ========================================================================== */
+/**
+ * Vertically align the image- and body-content differently. Defaults to middle.
+ */
+.o-flag--top > .o-flag__img,
+.o-flag--top > .o-flag__body {
+  vertical-align: top; }
+
+.o-flag--bottom > .o-flag__img,
+.o-flag--bottom > .o-flag__body {
+  vertical-align: bottom; }
+
+/* ==========================================================================
+   #LIST-BARE
+   ========================================================================== */
+/**
+ * Strip list-like appearance from lists by removing their bullets, and any
+ * indentation.
+ */
+.o-list-bare {
+  list-style: none;
+  margin-left: 0; }
+
+/* ==========================================================================
+   #LIST-INLINE
+   ========================================================================== */
+/**
+ * The list-inline object simply displays a list of items in one line.
+ */
+.o-list-inline {
+  margin-left: 0;
+  list-style: none; }
+
+.o-list-inline__item {
+  display: inline-block; }
+
+/* Delimited list.
+   ========================================================================== */
+/**
+ * By default, applying this class will comma separate your list items. You can
+ * change the delimiter by predefining the following variable:
+ */
+/**
+ * 1. Fallback for old IEs not supporting `rem` values.
+ */
+.o-list-inline--delimited {
+  font-size: 0; }
+  .o-list-inline--delimited > .o-list-inline__item {
+    font-size: 16px;
+    /* [1] */
+    font-size: 1rem; }
+  .o-list-inline--delimited > .o-list-inline__item + .o-list-inline__item:before {
+    content: ", "; }
+
+/* ==========================================================================
+   #BOX
+   ========================================================================== */
+/**
+ * The box object simply boxes off content. Extend with cosmetic styles in the
+ * Components layer.
+ *
+ * 1. So we can apply the `.o-box` class to naturally-inline elements.
+ */
+.o-box {
+  display: block;
+  /* [1] */
+  padding: 24px; }
+  .o-box:after {
+    content: "" !important;
+    display: block !important;
+    clear: both !important; }
+  .o-box > :last-child {
+    margin-bottom: 0; }
+
+/* Size variants
+   ========================================================================== */
+.o-box--flush {
+  padding: 0; }
+
+.o-box--tiny {
+  padding: 6px; }
+
+.o-box--small {
+  padding: 12px; }
+
+.o-box--large {
+  padding: 48px; }
+
+.o-box--huge {
+  padding: 96px; }
+
+/* ==========================================================================
+   #RATIO
+   ========================================================================== */
+/**
+ * Create ratio-bound content blocks, to keep media (e.g. images, videos) in
+ * their correct aspect ratios.
+ *
+ * http://alistapart.com/article/creating-intrinsic-ratios-for-video
+ *
+ * 1. Default cropping is a 1:1 ratio (i.e. a perfect square).
+ */
+.o-ratio {
+  position: relative;
+  display: block;
+  overflow: hidden; }
+  .o-ratio:before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+    /* [1] */ }
+
+.o-ratio__content,
+.o-ratio > iframe,
+.o-ratio > embed,
+.o-ratio > object {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; }
+
+/* stylelint-disable */
+/* Ratio variants.
+   ========================================================================== */
+/**
+ * Generate a series of ratio classes to be used like so:
+ *
+ *   <div class="o-ratio  o-ratio--16:9">
+ *
+ */
+.o-ratio--2\:1:before {
+  padding-bottom: 50%; }
+
+.o-ratio--4\:3:before {
+  padding-bottom: 75%; }
+
+.o-ratio--16\:9:before {
+  padding-bottom: 56.25%; }
+
+/* stylelint-enable */
+/* ==========================================================================
+   #TABLES
+   ========================================================================== */
+/**
+ * A simple object for manipulating the structure of HTML `table`s.
+ */
+.o-table {
+  width: 100%; }
+
+/* Equal-width table cells.
+   ========================================================================== */
+/**
+ * `table-layout: fixed` forces all cells within a table to occupy the same
+ * width as each other. This also has performance benefits: because the browser
+ * does not need to (re)calculate cell dimensions based on content it discovers,
+ * the table can be rendered very quickly. Further reading:
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout#Values
+ */
+.o-table--fixed {
+  table-layout: fixed; }
+
+/* Size variants.
+   ========================================================================== */
+.o-table--tiny th,
+.o-table--tiny td {
+  padding: 6px; }
+
+.o-table--small th,
+.o-table--small td {
+  padding: 12px; }
+
+.o-table--large th,
+.o-table--large td {
+  padding: 48px; }
+
+.o-table--huge th,
+.o-table--huge td {
+  padding: 96px; }
+
+/* ==========================================================================
+   #PACK
+   ========================================================================== */
+/**
+ * The pack object simply causes any number of elements pack up horizontally to
+ * automatically fill an equal, fluid width of their parent.
+ *
+ * 1. Fill all available space.
+ * 2. Remove any leftover styling from lists.
+ * 3. Cause children to be automatically equally sized.
+ */
+.o-pack {
+  width: 100%;
+  /* [1] */
+  margin-left: 0;
+  /* [2] */
+  display: table;
+  table-layout: fixed;
+  /* [3] */ }
+
+/**
+   * 1. Cause children to adopt table-like structure.
+   */
+.o-pack__item {
+  display: table-cell;
+  /* [1] */
+  /* Vertical alignment variants.
+       ====================================================================== */ }
+  .o-pack--middle > .o-pack__item {
+    vertical-align: middle; }
+  .o-pack--bottom > .o-pack__item {
+    vertical-align: bottom; }
+
+/* Unequal-width items.
+   ========================================================================== */
+.o-pack--auto {
+  table-layout: auto; }
+
+/* Size variants.
+   ========================================================================== */
+.o-pack--tiny {
+  border-spacing: 6px; }
+
+.o-pack--small {
+  border-spacing: 12px; }
+
+.o-pack--large {
+  border-spacing: 48px; }
+
+.o-pack--huge {
+  border-spacing: 96px; }
+
+/* Reversed order packs
+   ========================================================================== */
+.o-pack--rev {
+  direction: rtl; }
+  .o-pack--rev > .o-pack__item {
+    direction: ltr; }
+
+/* ==========================================================================
+   #BORDERS
+   ========================================================================== */
+.o-border-primary {
+  border: 1px solid #ebebeb; }
+
+.o-border-primary-right {
+  border-right: 1px solid #ebebeb; }
+
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+.o-color-blue {
+  color: #002960; }
+
+.o-color-cyan {
+  color: #00adef; }
+
+.o-color-yellow {
+  color: #fecf2f; }
+
+.o-color-bluegray {
+  color: #7d9aaa; }
+
+.o-color-darkgray {
+  color: #666666; }
+
+.o-color-mediumgray {
+  color: #9c9d9d; }
+
+.o-color-middlegray {
+  color: #c5c5c5; }
+
+.o-color-lightgray {
+  color: #ebebeb; }
+
+.o-color-lightbluegray {
+  color: #eff3f7; }
+
+.o-bg-color-white {
+  background-color: #FFFFFF; }
+
+.o-bg-color-blue {
+  background-color: #002960; }
+
+.o-bg-color-cyan {
+  background-color: #00adef; }
+
+.o-bg-color-yellow {
+  background-color: #fecf2f; }
+
+.o-bg-color-bluegray {
+  background-color: #7d9aaa; }
+
+.o-bg-color-darkgray {
+  background-color: #666666; }
+
+.o-bg-color-mediumgray {
+  background-color: #9c9d9d; }
+
+.o-bg-color-middlegray {
+  background-color: #c5c5c5; }
+
+.o-bg-color-lightgray {
+  background-color: #ebebeb; }
+
+.o-bg-color-lightbluegray {
+  background-color: #eff3f7; }
+
+.o-bg-color-linkedin {
+  background-color: #007AB6; }
+
+.o-bg-color-twitter {
+  background-color: #57ADEE; }
+
+.o-bg-color-facebook {
+  background-color: #3B5A9A; }
+
+.o-bg-color-limegreen {
+  background-color: #B4BF25; }
+
+.o-bg-color-cyanblue {
+  background-color: #33BDF1; }
+
+.o-bg-color-dullorange {
+  background-color: #E98D4D; }
+
+.o-bg-color-orange {
+  background-color: #ff8500; }
+
+.o-bg-color-teal {
+  background-color: #009aa6; }
+
+.o-bg-color-electric-blue {
+  background-color: #1F40E6; }
+
+.o-bg-color-super-blue {
+  background-color: #37DEE7; }
+
+.o-bg-color-blue01 {
+  background-color: #213752; }
+
+.o-bg-color-blue02 {
+  background-color: #2f4b6c; }
+
+.o-bg-color-blue03 {
+  background-color: #1c2f46; }
+
+.o-bg-color-blue04 {
+  background-color: #2cc6ff; }
+
+.o-bg-color-blue05 {
+  background-color: #02A3E1; }
+
+.o-bg-color-active1 {
+  background-color: #2bafe9; }
+
+.o-bg-color-active2 {
+  background-color: #00adef; }
+
+.o-bg-color-hover1 {
+  background-color: #008cc9; }
+
+.o-bg-color-hover2 {
+  background-color: #2f71a8; }
+
+.o-bg-color01 {
+  background-color: #00306E; }
+
+.o-bg-color02 {
+  background-color: #008CC9; }
+
+.o-bg-color03 {
+  background-color: #003355; }
+
+.o-bg-color04 {
+  background-color: #054087; }
+
+.o-bg-color05 {
+  background-color: #062C5C; }
+
+.o-bg-color06 {
+  background-color: #0D4FA1; }
+
+.o-bg-color07 {
+  background-color: #002961; }
+
+.o-bg-color08 {
+  background-color: #163051; }
+
+.o-bg-color09 {
+  background-color: #1B86BC; }
+
+.o-bg-color10 {
+  background-color: #1D90C3; }
+
+.o-bg-color11 {
+  background-color: #207AA2; }
+
+.o-bg-color12 {
+  background-color: #2AAFE8; }
+
+.o-bg-color13 {
+  background-color: #2BBDF7; }
+
+.o-bg-color14 {
+  background-color: #333333; }
+
+.o-bg-color15 {
+  background-color: #3E5B97; }
+
+.o-bg-color16 {
+  background-color: #00abf2; }
+
+.o-bg-color17 {
+  background-color: #4A4A4A; }
+
+.o-bg-color18 {
+  background-color: #59779D; }
+
+.o-bg-color19 {
+  background-color: #5A5A5A; }
+
+.o-bg-color20 {
+  background-color: #DCE4EA; }
+
+.o-bg-color21 {
+  background-color: #70B51E; }
+
+.o-bg-color22 {
+  background-color: #777777; }
+
+.o-bg-color23 {
+  background-color: #848484; }
+
+.o-bg-color24 {
+  background-color: #949494; }
+
+.o-bg-color25 {
+  background-color: #959696; }
+
+.o-bg-color26 {
+  background-color: #999999; }
+
+.o-bg-color27 {
+  background-color: #B7BDC5; }
+
+.o-bg-color28 {
+  background-color: #bbbbbb; }
+
+.o-bg-color29 {
+  background-color: #BEE1EE; }
+
+.o-bg-color30 {
+  background-color: #c2c2c2; }
+
+.o-bg-color31 {
+  background-color: #C4302B; }
+
+.o-bg-color32 {
+  background-color: #c7c7c7; }
+
+.o-bg-color33 {
+  background-color: #CA2027; }
+
+.o-bg-color34 {
+  background-color: #CE222B; }
+
+.o-bg-color35 {
+  background-color: #cfcfcf; }
+
+.o-bg-color36 {
+  background-color: #d4d4d4; }
+
+.o-bg-color37 {
+  background-color: #E2E2E2; }
+
+.o-bg-color38 {
+  background-color: #EAEAEA; }
+
+.o-bg-color39 {
+  background-color: #ED1C24; }
+
+.o-bg-color40 {
+  background-color: #EDC026; }
+
+.o-bg-color41 {
+  background-color: #EFEFEF; }
+
+.o-bg-color42 {
+  background-color: #F2F5FA; }
+
+.o-bg-color43 {
+  background-color: #F4F4F4; }
+
+.o-bg-color44 {
+  background-color: #F6F6F6; }
+
+.o-bg-color45 {
+  background-color: #F8FAFB; }
+
+.o-bg-color46 {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.o-bg-color47 {
+  background-color: rgba(0, 0, 0, 0.45); }
+
+.o-bg-color48 {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.o-bg-color49 {
+  background-color: rgba(199, 199, 199, 0.45); }
+
+.o-bg-color50 {
+  background-color: rgba(255, 255, 255, 0.5); }
+
+.o-bg-color51 {
+  background-color: rgba(255, 255, 255, 0.7); }
+
+.o-bg-color52 {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+.o-bg-color-gradient-warm {
+  background: -webkit-linear-gradient(left, #ce222b, #ff8500);
+  background: -moz-linear-gradient(left, #ce222b, #ff8500);
+  background: -o-linear-gradient(left, #ce222b, #ff8500);
+  background: -ms-linear-gradient(left, #ce222b, #ff8500);
+  background: linear-gradient(left, #ce222b, #ff8500); }
+
+.o-bg-color-gradient-cool {
+  background: -webkit-linear-gradient(left, #63337d, #009aa6);
+  background: -moz-linear-gradient(left, #63337d, #009aa6);
+  background: -o-linear-gradient(left, #63337d, #009aa6);
+  background: -ms-linear-gradient(left, #63337d, #009aa6);
+  background: linear-gradient(left, #63337d, #009aa6); }
+
+.o-bg-color-sg-pink {
+  background-color: pink; }
+
+.o-bg-color-sg-lighgray {
+  background-color: #F8F8F8; }
+
+.o-bg-color-sg-darkgray {
+  background-color: #393939; }
+
+.o-bg-color-sg-Lightorange {
+  background-color: #ffecda; }
+
+.o-bg-color-sg-Lightpurple {
+  background-color: #e2d3f7; }
+
+.o-bg-color-sg-Lightgreen {
+  background-color: #e2f9d5; }
+
+/* ==========================================================================
+   #FONTS
+   ========================================================================== */
+.o-font-primary {
+  font-family: "Whitney SSm", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; }
+
+.o-font-secondary {
+  font-family: "Chronicle Deck", Georgia, Times, "Times New Roman", serif; }
+
+.o-font-tertiary {
+  font-family: "Chronicle SSm", Georgia, Times, "Times New Roman", serif; }
+
+.o-font-quaternary {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+.o-font-weight-400 {
+  font-weight: 400; }
+
+.o-font-weight-500 {
+  font-weight: 500; }
+
+.o-font-weight-600 {
+  font-weight: 600; }
+
+.o-font-weight-700 {
+  font-weight: 700; }
+
+/* ==========================================================================
+   #HEADINGS
+   ========================================================================== */
+.o-h1,
+.o-h2,
+.o-h3,
+.o-h4,
+.o-h5,
+.o-h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400; }
+
+.o-h1 {
+  font-size: 36px !important;
+  font-size: 2.25rem !important;
+  line-height: 1.3333333333 !important; }
+
+.o-h2 {
+  font-size: 28px !important;
+  font-size: 1.75rem !important;
+  line-height: 1.7142857143 !important; }
+
+.o-h3 {
+  font-size: 24px !important;
+  font-size: 1.5rem !important;
+  line-height: 1 !important;
+  margin-bottom: 12px; }
+
+.o-h4 {
+  font-size: 20px !important;
+  font-size: 1.25rem !important;
+  line-height: 1.2 !important;
+  margin-bottom: 12px; }
+
+.o-h5 {
+  font-size: 18px !important;
+  font-size: 1.125rem !important;
+  line-height: 1.3333333333 !important; }
+
+.o-h6 {
+  font-size: 16px !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important; }
+
+.o-smallprint {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.8461538462; }
+
+.o-milli {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  line-height: 2.1818181818; }
+
+.o-micro {
+  font-size: 9px;
+  font-size: 0.5625rem;
+  line-height: 2.6666666667; }
+
+/* ==========================================================================
+   #ICONS
+   ========================================================================== */
+.mck-arrow-left-thin::before {
+  content: ""; }
+
+.mck-arrow-left::before {
+  content: ""; }
+
+.mck-arrow-right-thin::before {
+  content: ""; }
+
+.mck-arrow-right::before {
+  content: ""; }
+
+.mck-check::before {
+  content: ""; }
+
+.mck-checkmark-thin::before {
+  content: ""; }
+
+.mck-close::before {
+  content: ""; }
+
+.mck-cross::before {
+  content: ""; }
+
+.mck-download::before {
+  content: ""; }
+
+.mck-email::before {
+  content: ""; }
+
+.mck-external::before {
+  content: ""; }
+
+.mck-facebook::before {
+  content: ""; }
+
+.mck-link-arrow-left::before {
+  content: ""; }
+
+.mck-link-arrow::before {
+  content: ""; }
+
+.mck-linkedin::before {
+  content: ""; }
+
+.mck-logo::before {
+  content: ""; }
+
+.mck-menu::before {
+  content: ""; }
+
+.mck-print::before {
+  content: ""; }
+
+.mck-radial-download::before {
+  content: ""; }
+
+.mck-radial-left::before {
+  content: ""; }
+
+.mck-radial-minus::before {
+  content: ""; }
+
+.mck-radial-plus::before {
+  content: ""; }
+
+.mck-radial-right::before {
+  content: ""; }
+
+.mck-radial-share::before {
+  content: ""; }
+
+.mck-radial-x::before {
+  content: ""; }
+
+.mck-rss::before {
+  content: ""; }
+
+.mck-search-thick::before {
+  content: ""; }
+
+.mck-search::before {
+  content: ""; }
+
+.mck-share::before {
+  content: ""; }
+
+.mck-twitter::before {
+  content: ""; }
+
+.mck-youtube::before {
+  content: ""; }
+
+.mck-youtube2::before {
+  content: ""; }
+
+.mck-checkmark::before {
+  content: ""; }
+
+.mck-info::before {
+  content: ""; }
+
+.mck-alert::before {
+  content: ""; }
+
+.mck-instagram::before {
+  content: ""; }
+
+.mck-careers-logo-mobile::before {
+  content: ""; }
+
+.mck-careers-logo::before {
+  content: ""; }
+
+.mck-digital-logo::before {
+  content: ""; }
+
+.r2-arrow-down::before {
+  content: ""; }
+
+.r2-arrow-right::before {
+  content: ""; }
+
+.r2-arrow-up-thin::before {
+  content: ""; }
+
+.r2-arrow-up::before {
+  content: ""; }
+
+.r2-arrow-left-thin::before {
+  content: ""; }
+
+.r2-arrow-left::before {
+  content: ""; }
+
+.r2-arrow-down-thin::before {
+  content: ""; }
+
+.r2-arrow-right-thin::before {
+  content: ""; }
+
+.r2-checkbox-checked::before {
+  content: ""; }
+
+.r2-checkbox-unchecked::before {
+  content: ""; }
+
+.r2-download-in-circle::before {
+  content: ""; }
+
+.r2-download::before {
+  content: ""; }
+
+.r2-error::before {
+  content: ""; }
+
+.r2-external-link::before {
+  content: ""; }
+
+.r2-close::before {
+  content: ""; }
+
+.r2-hamburger::before {
+  content: ""; }
+
+.r2-left-arrow-in-circle::before {
+  content: ""; }
+
+.r2-link-arrow::before {
+  content: ""; }
+
+.r2-mail::before {
+  content: ""; }
+
+.r2-minus-in-circle::before {
+  content: ""; }
+
+.r2-plus-in-circle::before {
+  content: ""; }
+
+.r2-plus-no-circle::before {
+  content: ""; }
+
+.r2-print::before {
+  content: ""; }
+
+.r2-radio-btn-selected::before {
+  content: ""; }
+
+.r2-radio-btn-unselected::before {
+  content: ""; }
+
+.r2-right-arrow-in-circle::before {
+  content: ""; }
+
+.r2-function::before {
+  content: ""; }
+
+.r2-industry::before {
+  content: ""; }
+
+.r2-interest::before {
+  content: ""; }
+
+.r2-location::before {
+  content: ""; }
+
+.r2-search-thick::before {
+  content: ""; }
+
+.r2-search::before {
+  content: ""; }
+
+.r2-share-in-circle::before {
+  content: ""; }
+
+.r2-share::before {
+  content: ""; }
+
+.r2-tool-tip-i::before {
+  content: ""; }
+
+.r2-x-in-circle::before {
+  content: ""; }
+
+.r2-28::before {
+  content: ""; }
+
+.r2-29::before {
+  content: ""; }
+
+.r2-caret-down::before {
+  content: ""; }
+
+/* ==========================================================================
+   #POSITION
+   ========================================================================== */
+.o-sg-position-absolute {
+  position: absolute; }
+
+.o-sg-position-fixed {
+  position: fixed; }
+
+.o-sg-position-top-left {
+  left: 0;
+  top: 0; }
+
+.o-sg-position-bottom-left {
+  left: 0;
+  bottom: 0; }
+
+/* ==========================================================================
+   #STYLEGUIDE SPECIFIC
+   ========================================================================== */
+.sticky-search-bar,
+.o-sg-sticky-share-container,
+.o-sg-refine-bar-search {
+  z-index: 2000; }
+
+/* Hide by default */
+.sticky-search-bar {
+  display: none;
+  visibility: hidden; }
+
+.o-sg-sticky-share-container {
+  display: none;
+  visibility: hidden; }
+
+.o-sg-refine-bar-search {
+  display: none;
+  visibility: hidden; }
+
+/* Show */
+.o-sg-sticky-bar-share-show {
+  display: block;
+  visibility: visible; }
+  .o-sg-sticky-bar-share-show .sticky-share-tools._show {
+    z-index: 2000; }
+
+.o-sg-sticky-bar-search-show {
+  display: block;
+  visibility: visible; }
+
+.o-sg-refine-bar-search-show {
+  display: block;
+  visibility: visible; }
+
+/* ==========================================================================
+   #COLORS BLOCK
+   ========================================================================== */
+.c-colors-block {
+  border: 1px solid #ebebeb; }
+  .c-colors-block .o-box {
+    padding: 12px; }
+    .c-colors-block .o-box p:nth-of-type(2) {
+      color: #c5c5c5;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      margin-bottom: 0;
+      padding-bottom: 0; }
+    .c-colors-block .o-box p:nth-of-type(3) {
+      margin-top: 0;
+      padding-top: 0;
+      text-transform: uppercase; }
+
+/* ==========================================================================
+   #EXAMPLE BLOCK
+   ========================================================================== */
+.c-example-block {
+  background-color: #FFFFFF;
+  border: 1px solid #ebebeb;
+  display: block;
+  margin-bottom: 48px;
+  padding: 48px; }
+  .c-example-block:after {
+    content: "" !important;
+    display: block !important;
+    clear: both !important; }
+
+/* ==========================================================================
+   #FONTS BLOCK
+   ========================================================================== */
+.c-fonts-block li {
+  margin-bottom: 6px; }
+  .c-fonts-block li:last-of-type {
+    margin-bottom: 0; }
+
+.c-fonts-block div:nth-of-type(2) {
+  font-size: 24px; }
+
+.c-fonts-block div:last-of-type {
+  color: #666666;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+/* ==========================================================================
+   #HEADINGS BLOCK
+   ========================================================================== */
+.c-headings-block .o-layout {
+  margin-bottom: 48px; }
+  .c-headings-block .o-layout:last-of-type {
+    margin-bottom: 0; }
+
+.c-headings-block span {
+  font-family: "Chronicle Deck", Georgia, Times, "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 16px !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important; }
+
+/* ==========================================================================
+   #STYLE GUIDE NAVIGATION
+   ========================================================================== */
+/* Box */
+.c-sg-top-nav-bar {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1001; }
+  .c-sg-top-nav-bar .mck-logo {
+    color: #FFFFFF;
+    font-size: 20px; }
+  .c-sg-top-nav-bar ul {
+    padding-left: 0; }
+
+.c-sg-subtitle {
+  color: #00adef;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px; }
+
+/* Main */
+.c-sg-top-nav-main {
+  font-size: 16px; }
+
+/* [1] The height should match the u-margin-top-huge which is an offset applied to some views-*.html pages (e.g. office view) to mimic what happens with the dotcom navigation bar. */
+.c-sg-top-nav-main li {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 96px;
+  /* [1] */ }
+
+.c-sg-top-nav-main li:hover {
+  background-color: #00adef; }
+
+.c-sg-top-nav-main li:hover > section {
+  display: block; }
+
+.c-sg-top-nav-main > li a {
+  color: #FFFFFF;
+  display: block;
+  padding: 0px 24px;
+  text-decoration: none; }
+
+/* Sub */
+.c-sg-top-nav-main section {
+  display: none;
+  background: #00adef;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 48px 96px 24px 48px;
+  position: absolute;
+  top: 100%;
+  white-space: nowrap; }
+
+.c-sg-top-nav-main ul li {
+  line-height: 1;
+  font-size: 16px; }
+  .c-sg-top-nav-main ul li:hover {
+    background: none; }
+
+.c-sg-top-nav-main ul li a {
+  color: #FFFFFF;
+  padding: 12px 12px 12px 0; }
+
+.c-sg-top-nav-main ul li a:hover {
+  color: #2f71a8; }
+
+/* ==========================================================================
+   #RULES BLOCK
+   ========================================================================== */
+.c-rules-block {
+  background-color: #ffecda;
+  border: 1px solid #ffdfc1;
+  margin-top: 12px;
+  margin-bottom: 96px; }
+  .c-rules-block p {
+    color: #333; }
+
+/* ==========================================================================
+   #SETTINGS BLOCK
+   ========================================================================== */
+.c-settings-block {
+  background-color: #FFFFFF;
+  border: 1px solid #ebebeb;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-top: 12px;
+  margin-bottom: 24px; }
+  .c-settings-block h6 {
+    color: #c5c5c5; }
+  .c-settings-block input {
+    margin-right: 24px; }
+    .c-settings-block input:last-of-type {
+      margin-right: 0; }
+
+/* ==========================================================================
+   #USAGE BLOCK
+   ========================================================================== */
+.c-usage-block {
+  background-color: #e2d3f7;
+  border: 1px solid #ceb7f2;
+  color: #666666;
+  margin-top: 12px;
+  margin-bottom: 96px;
+  overflow: auto; }
+
+/* ==========================================================================
+   #CLEARFIX
+   ========================================================================== */
+/**
+ * Attach our clearfix mixin to a utility class.
+ */
+.u-clearfix:after {
+  content: "" !important;
+  display: block !important;
+  clear: both !important; }
+
+/* ==========================================================================
+   #WIDTHS
+   ========================================================================== */
+/**
+ * inuitcss generates a series of utility classes that give a fluid width to
+ * whichever element they’re applied, e.g.:
+ *
+ *   <img src="" alt="" class="u-1/2" />
+ *
+ * These classes are most commonly used in conjunction with our layout system,
+ * e.g.:
+ *
+ *   <div class="o-layout__item  u-1/2">
+ *
+ * By default, inuitcss will also generate responsive variants of each of these
+ * classes by using your Sass MQ configuration, e.g.:
+ *
+ *   <div class="o-layout__item  u-1/1  u-1/2@tablet  u-1/3@desktop">
+ *
+ * Optionally, inuitcss can generate offset classes which can push and pull
+ * elements left and right by a specified amount, e.g.:
+ *
+ *   <div class="o-layout__item  u-2/3  u-pull-1/3">
+ *
+ * This is useful for making very granular changes to the rendered order of
+ * items in a layout.
+ *
+ * N.B. This option is turned off by default.
+ */
+/**
+ * A series of width helper classes that you can use to size things like grid
+ * systems. Classes take a fraction-like format (e.g. `.u-2/3`). Use these in
+ * your markup:
+ *
+ * <div class="u-7/12">
+ *
+ * The following will generate widths helper classes based on the fractions
+ * defined in the `$inuit-fractions` list.
+ */
+.u-1\/1 {
+  width: 100% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-1\/1 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 100% !important; }
+
+.u-pull-1\/1 {
+  position: relative !important;
+  right: 100% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-1\/2 {
+  width: 50% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-1\/2 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 50% !important; }
+
+.u-pull-1\/2 {
+  position: relative !important;
+  right: 50% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-2\/2 {
+  width: 100% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-2\/2 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 100% !important; }
+
+.u-pull-2\/2 {
+  position: relative !important;
+  right: 100% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-1\/3 {
+  width: 33.3333333333% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-1\/3 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 33.3333333333% !important; }
+
+.u-pull-1\/3 {
+  position: relative !important;
+  right: 33.3333333333% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-2\/3 {
+  width: 66.6666666667% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-2\/3 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 66.6666666667% !important; }
+
+.u-pull-2\/3 {
+  position: relative !important;
+  right: 66.6666666667% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-3\/3 {
+  width: 100% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-3\/3 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 100% !important; }
+
+.u-pull-3\/3 {
+  position: relative !important;
+  right: 100% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-1\/4 {
+  width: 25% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-1\/4 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 25% !important; }
+
+.u-pull-1\/4 {
+  position: relative !important;
+  right: 25% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-2\/4 {
+  width: 50% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-2\/4 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 50% !important; }
+
+.u-pull-2\/4 {
+  position: relative !important;
+  right: 50% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-3\/4 {
+  width: 75% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-3\/4 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 75% !important; }
+
+.u-pull-3\/4 {
+  position: relative !important;
+  right: 75% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-4\/4 {
+  width: 100% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-4\/4 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 100% !important; }
+
+.u-pull-4\/4 {
+  position: relative !important;
+  right: 100% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-1\/5 {
+  width: 20% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-1\/5 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 20% !important; }
+
+.u-pull-1\/5 {
+  position: relative !important;
+  right: 20% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-2\/5 {
+  width: 40% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-2\/5 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 40% !important; }
+
+.u-pull-2\/5 {
+  position: relative !important;
+  right: 40% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-3\/5 {
+  width: 60% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-3\/5 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 60% !important; }
+
+.u-pull-3\/5 {
+  position: relative !important;
+  right: 60% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-4\/5 {
+  width: 80% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-4\/5 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 80% !important; }
+
+.u-pull-4\/5 {
+  position: relative !important;
+  right: 80% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-5\/5 {
+  width: 100% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-5\/5 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 100% !important; }
+
+.u-pull-5\/5 {
+  position: relative !important;
+  right: 100% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-1\/8 {
+  width: 12.5% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-1\/8 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 12.5% !important; }
+
+.u-pull-1\/8 {
+  position: relative !important;
+  right: 12.5% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-2\/8 {
+  width: 25% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-2\/8 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 25% !important; }
+
+.u-pull-2\/8 {
+  position: relative !important;
+  right: 25% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-3\/8 {
+  width: 37.5% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-3\/8 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 37.5% !important; }
+
+.u-pull-3\/8 {
+  position: relative !important;
+  right: 37.5% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-4\/8 {
+  width: 50% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-4\/8 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 50% !important; }
+
+.u-pull-4\/8 {
+  position: relative !important;
+  right: 50% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-5\/8 {
+  width: 62.5% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-5\/8 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 62.5% !important; }
+
+.u-pull-5\/8 {
+  position: relative !important;
+  right: 62.5% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-6\/8 {
+  width: 75% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-6\/8 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 75% !important; }
+
+.u-pull-6\/8 {
+  position: relative !important;
+  right: 75% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-7\/8 {
+  width: 87.5% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-7\/8 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 87.5% !important; }
+
+.u-pull-7\/8 {
+  position: relative !important;
+  right: 87.5% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-8\/8 {
+  width: 100% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-8\/8 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 100% !important; }
+
+.u-pull-8\/8 {
+  position: relative !important;
+  right: 100% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-1\/12 {
+  width: 8.3333333333% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-1\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 8.3333333333% !important; }
+
+.u-pull-1\/12 {
+  position: relative !important;
+  right: 8.3333333333% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-2\/12 {
+  width: 16.6666666667% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-2\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 16.6666666667% !important; }
+
+.u-pull-2\/12 {
+  position: relative !important;
+  right: 16.6666666667% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-3\/12 {
+  width: 25% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-3\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 25% !important; }
+
+.u-pull-3\/12 {
+  position: relative !important;
+  right: 25% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-4\/12 {
+  width: 33.3333333333% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-4\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 33.3333333333% !important; }
+
+.u-pull-4\/12 {
+  position: relative !important;
+  right: 33.3333333333% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-5\/12 {
+  width: 41.6666666667% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-5\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 41.6666666667% !important; }
+
+.u-pull-5\/12 {
+  position: relative !important;
+  right: 41.6666666667% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-6\/12 {
+  width: 50% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-6\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 50% !important; }
+
+.u-pull-6\/12 {
+  position: relative !important;
+  right: 50% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-7\/12 {
+  width: 58.3333333333% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-7\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 58.3333333333% !important; }
+
+.u-pull-7\/12 {
+  position: relative !important;
+  right: 58.3333333333% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-8\/12 {
+  width: 66.6666666667% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-8\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 66.6666666667% !important; }
+
+.u-pull-8\/12 {
+  position: relative !important;
+  right: 66.6666666667% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-9\/12 {
+  width: 75% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-9\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 75% !important; }
+
+.u-pull-9\/12 {
+  position: relative !important;
+  right: 75% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-10\/12 {
+  width: 83.3333333333% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-10\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 83.3333333333% !important; }
+
+.u-pull-10\/12 {
+  position: relative !important;
+  right: 83.3333333333% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-11\/12 {
+  width: 91.6666666667% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-11\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 91.6666666667% !important; }
+
+.u-pull-11\/12 {
+  position: relative !important;
+  right: 91.6666666667% !important;
+  left: auto !important;
+  /* [1] */ }
+
+.u-12\/12 {
+  width: 100% !important; }
+
+/**
+        * 1. Reset any leftover or conflicting `left`/`right` values.
+        */
+.u-push-12\/12 {
+  position: relative !important;
+  right: auto !important;
+  /* [1] */
+  left: 100% !important; }
+
+.u-pull-12\/12 {
+  position: relative !important;
+  right: 100% !important;
+  left: auto !important;
+  /* [1] */ }
+
+/**
+ * If we’re using Sass-MQ, automatically generate grid system(s) for each of our
+ * defined breakpoints, and give them a Responsive Suffix, e.g.:
+ *
+ * <div class="u-3/12@mobile">
+ */
+/* ==========================================================================
+   #HEADINGS
+   ========================================================================== */
+/**
+ * Redefine all of our basic heading styles against utility classes so as to
+ * allow for double stranded heading hierarchy, e.g. we semantically need an H2,
+ * but we want it to be sized like an H1:
+ *
+ *   <h2 class="u-h1"></h2>
+ *
+ */
+.u-h1 {
+  font-size: 36px !important;
+  font-size: 2.25rem !important;
+  line-height: 1.3333333333 !important; }
+
+.u-h2 {
+  font-size: 28px !important;
+  font-size: 1.75rem !important;
+  line-height: 1.7142857143 !important; }
+
+.u-h3 {
+  font-size: 24px !important;
+  font-size: 1.5rem !important;
+  line-height: 1 !important; }
+
+.u-h4 {
+  font-size: 20px !important;
+  font-size: 1.25rem !important;
+  line-height: 1.2 !important; }
+
+.u-h5 {
+  font-size: 18px !important;
+  font-size: 1.125rem !important;
+  line-height: 1.3333333333 !important; }
+
+.u-h6 {
+  font-size: 16px !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important; }
+
+/* ==========================================================================
+   #SPACING
+   ========================================================================== */
+/**
+ * Utility classes to put specific spacing values onto elements. The below loop
+ * will generate us a suite of classes like:
+ *
+ *   .u-margin-top {}
+ *   .u-padding-left-large {}
+ *   .u-margin-right-small {}
+ *   .u-padding {}
+ *   .u-padding-right-none {}
+ */
+/* stylelint-disable string-quotes */
+.u-padding {
+  padding: 24px !important; }
+
+.u-padding-tiny {
+  padding: 6px !important; }
+
+.u-padding-small {
+  padding: 12px !important; }
+
+.u-padding-large {
+  padding: 48px !important; }
+
+.u-padding-huge {
+  padding: 96px !important; }
+
+.u-padding-none {
+  padding: 0 !important; }
+
+.u-padding-top {
+  padding-top: 24px !important; }
+
+.u-padding-top-tiny {
+  padding-top: 6px !important; }
+
+.u-padding-top-small {
+  padding-top: 12px !important; }
+
+.u-padding-top-large {
+  padding-top: 48px !important; }
+
+.u-padding-top-huge {
+  padding-top: 96px !important; }
+
+.u-padding-top-none {
+  padding-top: 0 !important; }
+
+.u-padding-right {
+  padding-right: 24px !important; }
+
+.u-padding-right-tiny {
+  padding-right: 6px !important; }
+
+.u-padding-right-small {
+  padding-right: 12px !important; }
+
+.u-padding-right-large {
+  padding-right: 48px !important; }
+
+.u-padding-right-huge {
+  padding-right: 96px !important; }
+
+.u-padding-right-none {
+  padding-right: 0 !important; }
+
+.u-padding-bottom {
+  padding-bottom: 24px !important; }
+
+.u-padding-bottom-tiny {
+  padding-bottom: 6px !important; }
+
+.u-padding-bottom-small {
+  padding-bottom: 12px !important; }
+
+.u-padding-bottom-large {
+  padding-bottom: 48px !important; }
+
+.u-padding-bottom-huge {
+  padding-bottom: 96px !important; }
+
+.u-padding-bottom-none {
+  padding-bottom: 0 !important; }
+
+.u-padding-left {
+  padding-left: 24px !important; }
+
+.u-padding-left-tiny {
+  padding-left: 6px !important; }
+
+.u-padding-left-small {
+  padding-left: 12px !important; }
+
+.u-padding-left-large {
+  padding-left: 48px !important; }
+
+.u-padding-left-huge {
+  padding-left: 96px !important; }
+
+.u-padding-left-none {
+  padding-left: 0 !important; }
+
+.u-margin {
+  margin: 24px !important; }
+
+.u-margin-tiny {
+  margin: 6px !important; }
+
+.u-margin-small {
+  margin: 12px !important; }
+
+.u-margin-large {
+  margin: 48px !important; }
+
+.u-margin-huge {
+  margin: 96px !important; }
+
+.u-margin-none {
+  margin: 0 !important; }
+
+.u-margin-top {
+  margin-top: 24px !important; }
+
+.u-margin-top-tiny {
+  margin-top: 6px !important; }
+
+.u-margin-top-small {
+  margin-top: 12px !important; }
+
+.u-margin-top-large {
+  margin-top: 48px !important; }
+
+.u-margin-top-huge {
+  margin-top: 96px !important; }
+
+.u-margin-top-none {
+  margin-top: 0 !important; }
+
+.u-margin-right {
+  margin-right: 24px !important; }
+
+.u-margin-right-tiny {
+  margin-right: 6px !important; }
+
+.u-margin-right-small {
+  margin-right: 12px !important; }
+
+.u-margin-right-large {
+  margin-right: 48px !important; }
+
+.u-margin-right-huge {
+  margin-right: 96px !important; }
+
+.u-margin-right-none {
+  margin-right: 0 !important; }
+
+.u-margin-bottom {
+  margin-bottom: 24px !important; }
+
+.u-margin-bottom-tiny {
+  margin-bottom: 6px !important; }
+
+.u-margin-bottom-small {
+  margin-bottom: 12px !important; }
+
+.u-margin-bottom-large {
+  margin-bottom: 48px !important; }
+
+.u-margin-bottom-huge {
+  margin-bottom: 96px !important; }
+
+.u-margin-bottom-none {
+  margin-bottom: 0 !important; }
+
+.u-margin-left {
+  margin-left: 24px !important; }
+
+.u-margin-left-tiny {
+  margin-left: 6px !important; }
+
+.u-margin-left-small {
+  margin-left: 12px !important; }
+
+.u-margin-left-large {
+  margin-left: 48px !important; }
+
+.u-margin-left-huge {
+  margin-left: 96px !important; }
+
+.u-margin-left-none {
+  margin-left: 0 !important; }
+
+/* stylelint-enable string-quotes */
+/* ==========================================================================
+   #HIDE
+   ========================================================================== */
+/**
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+.u-hidden-visually {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important; }
+
+/**
+ * Hide visually and from screen readers.
+ */
+.u-hidden {
+  display: none !important; }
+
+/* ==========================================================================
+   #OVERFLOW
+   ========================================================================== */
+.u-sg-overflow-hidden {
+  overflow: hidden; }
+
+.u-sg-overflow-x-hidden {
+  overflow-x: hidden; }

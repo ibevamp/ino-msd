@@ -1,0 +1,41 @@
+name = MCKKNOW
+description = MCK Knowledge theme
+core = 7.x
+
+stylesheets[all][] = css/video-js.css
+stylesheets[all][] = css/fonts.css
+stylesheets[all][] = css/styleguide-styles.css
+stylesheets[all][] = css/styles-6c131e.css
+stylesheets[all][] = css/magnific-popup.css
+stylesheets[all][] = css/animate.css
+stylesheets[all][] = css/custom.css
+stylesheets[all][] = css/custom-carousel.css
+stylesheets[all][] = css/mobile.css
+
+stylesheets[all][] = system.base.css
+stylesheets[all][] = system.menus.css
+stylesheets[all][] = system.messages.css
+stylesheets[all][] = system.theme.css
+stylesheets[all][] = field.css
+stylesheets[all][] = node.css
+stylesheets[all][] = user.css
+stylesheets[all][] = views.css
+stylesheets[all][] = user.css
+stylesheets[all][] = ctools.css
+
+scripts[] = javascript/modernizr.custom.331.js
+scripts[] = javascript/app-9599b9.js
+scripts[] = javascript/owl.carousel.js
+scripts[] = javascript/bootstrap.min.js
+scripts[] = javascript/slick.min.js
+scripts[] = javascript/jquery.waypoints.min.js
+scripts[] = javascript/scrollreveal.js
+scripts[] = javascript/jquery.magnific-popup.js
+scripts[] = javascript/main.js
+scripts[] = javascript/video.js
+
+regions[header] = Header
+regions[content] = Content
+regions[featured_video] = Featured video
+regions[navigation] = Navigation
+regions[footer] = Footer
