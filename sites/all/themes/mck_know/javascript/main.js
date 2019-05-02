@@ -199,6 +199,7 @@ $(".slick-link").each(function(){
 
 $(".accordion-module-wrapper .accordion-item-wrapper .acc-item-link").click(function(){
         var nid = $(this).data("nid");
+		$(".accordion-module-wrapper .accordion-item-wrapper .acc-item-link").addClass("active");
 		$(this).parent(".item").addClass("active");
         $(".accordion-module-wrapper .view-more").css("display","none");
         if(nid > 0)
@@ -444,9 +445,8 @@ function accCardModuleHeight(){
 
 
 function updateArrowPosition(){
-	var activeCard = document.getElementsByClassName(".accordion-module-wrapper .item.active");
-	var dest = activeCard.offsetLeft;
-	console.log(dest);
+	var activeCard = $(".accordion-module-wrapper .item.active");
+	var dest = activeCard.offset().left + 80;
 	$(".accordion-module-wrapper .view-more #acc-card-module-0::before").css("left",dest+"px");
 }
 
