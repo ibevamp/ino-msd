@@ -31,17 +31,26 @@ $headingAlign = $content['field_left_align_section_heading'][0]['#markup']?"head
 
 $paraID   = $variables['elements']['#entity']->item_id;
 $bgColor = isset($content['field_acc_bg_color'])? $content['field_acc_bg_color'][0]['#markup']: "";
+$cardHeadingColor = isset($content['field_card_heading_font_color'])? $content['field_card_heading_font_color'][0]['#markup']: "";
+$accordionLayoutClass         = isset($content['field_accordion_card_layout']) ? render($content['field_accordion_card_layout']) : '';
+$headingAlignClass         = isset($content['field_heading_subtitle_alignment']) ? render($content['field_heading_subtitle_alignment']) : '';
 
 $count = count($content['field_acc_card_item']['#items']);
+
 if($count == 2){
-		$column_item_class = "two-up two-up-small -imgs-large";
-	}else if($count == 3){
-		$column_item_class = "three-up";
-	}else if($count == 4){
-		$column_item_class = "four-up";
-	}else{
-		$column_item_class = "one-up";
-	}
+	$column_item_class = "two-up two-up-small -imgs-large";
+}else if($count == 3){
+	$column_item_class = "three-up";
+}else if($count == 4){
+	$column_item_class = "four-up";
+}else if($count == 5){
+	$column_item_class = "five-up";
+}else if($count == 6){
+	$column_item_class = "six-up";
+}else{
+	$column_item_class = "one-up";
+}
+
 	
 	
 ?>
@@ -57,11 +66,19 @@ if($count == 2){
 
     <?php } ?>
 
+	<?php if(isset($content['field_card_heading_font_color'])) { ?>
+            .para-<?php echo $paraID ?>.accordion-inner-wrapper.card-module .item .heading-link .headline,
+			.para-<?php echo $paraID ?>.accordion-inner-wrapper.card-module.subtitle-over-image .item .subtitle
+            {
+                color:<?php echo $cardHeadingColor ?>!important ;
+            }	
+			
+    <?php } ?>
   
 
 </style>
 <div class="accordion-module-wrapper ">
-  <div class="section-wrapper card-module <?php echo $wrapperBgColor; ?> para-<?php echo $paraID; ?> <?php echo $column_item_class; ?>">
+  <div class="section-wrapper accordion-inner-wrapper card-module <?php echo $headingAlignClass; ?> <?php echo $accordionLayoutClass; ?> <?php echo $wrapperBgColor; ?> para-<?php echo $paraID; ?> <?php echo $column_item_class; ?>">
   <a name="<?php echo ($content['field_anchor_name']['#items'][0]['value']) ?>" ></a>
   <section class=" section-inner-wrapper">
   <?php if(isset($content['field_acc_main_heading']) || isset($content['field_acc_main_description'])){ ?>

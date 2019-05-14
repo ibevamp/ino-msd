@@ -25,7 +25,7 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-ddl($content);
+//ddl($content);
 $bguri              = isset($content['field_acc_card_image']['#items'][0]['uri']) ? $content['field_acc_card_image']['#items'][0]['uri'] : NULL;
 $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
 $nid = $content['field_acc_more_content'][0]['#item']['target_id'];
@@ -38,7 +38,7 @@ $nid = $content['field_acc_more_content'][0]['#item']['target_id'];
    <?php } ?>
   
    <?php if(isset($content['field_acc_card_title'])){ ?>
-  <a href="javascript: void(0);" class="acc-item-link" data-nid="<?php echo $nid; ?>">
+  <a href="javascript: void(0);" class="acc-item-link heading-link" data-nid="<?php echo $nid; ?>">
     <h3 class="headline -centered">
 		<?php echo render($content['field_acc_card_title']) ?>
 	</h3>
@@ -46,7 +46,7 @@ $nid = $content['field_acc_more_content'][0]['#item']['target_id'];
   <?php } ?>
   
   <?php if(isset($content['field_acc_card_sub_title'])){ ?>
-    <h4>
+    <h4 class="subtitle">
 		<?php echo render($content['field_acc_card_sub_title']) ?>
 	</h4>
   <?php } ?>

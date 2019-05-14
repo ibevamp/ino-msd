@@ -29,12 +29,12 @@
 $headline   = isset($content['field_title']) ? render($content['field_title']) : '';
 $photos     = isset($content['field_paragraph']) ? render($content['field_paragraph']) : '';
 $headingAlignClass = $content['field_left_align_section_heading'][0]['#markup']? "-text-left" : "-text-center";
-
+$sliderActiveClass = $content['field_hide_slider_number'][0]['#markup']? "hide-active-slider" : "";
 
 ?>
 <div class="section-wrapper">
 <a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" ></a>
-<div class="wrapper slick-slideshow">
+<div class="wrapper slick-slideshow <?php echo $sliderActiveClass; ?>">
 	<section class="up careers backgroundColor-white " >
 			<header class="text-l space <?php echo $headingAlignClass; ?> ">
 			      <h3 class="headline"><?php echo $headline; ?></h3>

@@ -37,7 +37,6 @@ $cardLayoutClass         = isset($content['field_card_layout']) ? render($conten
 $gridClass         = isset($content['field_column_layout']) ? $content['field_column_layout']['#items'][0]['value'] : '';
 $textAlign = $content['field_left_align_text'][0]['#markup']? "-text-left" : "-text-center";
 $linksAlign = $content['field_align_link_bottom'][0]['#markup']? "align-links-bottom" : "";
-ddl($content);
 $count = count($content['field_paragraph']['#items']);
 $cardItemClass = "";
 $fontSize = $content['field_larger_desc_link_text'][0]['#markup']? "larger-font" : "";
@@ -45,6 +44,8 @@ $bgColor = isset($content['field_background_color'])? $content['field_background
 $cardTextColor = isset($content['field_card_text_color'])? $content['field_card_text_color'][0]['#markup']: "";
 $cardModuleColor = isset($content['field_card_module_font_color'])? $content['field_card_module_font_color'][0]['#markup']: "";
 $linkTextColor = isset($content['field_field_link_text_color'])? $content['field_field_link_text_color'][0]['#markup']: "";
+$cardHeadingColor = isset($content['field_card_heading_font_color'])? $content['field_card_heading_font_color'][0]['#markup']: "";
+
 
 if(isset($content['field_background_color']) || isset($content['field_image'])){
 	$bgClass ="bg-image";
@@ -86,7 +87,7 @@ $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
                 background-color:<?php echo $bgColor ?>!important ;
             }
 
-            .accordion-module-wrapper .view-more .para-<?php echo $paraID ?>#acc-card-module-0::before {
+            .accordion-module-wrapper .view-more .para-<?php echo $paraID ?>#acc-card-module-0 span {
 				border-bottom-color: <?php echo $bgColor ?>!important;
 			}			
 			
@@ -111,6 +112,15 @@ $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
             }	
 			
     <?php } ?>
+	
+	<?php if(isset($content['field_card_heading_font_color'])) { ?>
+            .para-<?php echo $paraID ?>.card-module .item .card-content .headline
+            {
+                color:<?php echo $cardHeadingColor ?>!important ;
+            }	
+			
+    <?php } ?>
+	
 	
 	   <?php if($content['field_grey_row'][0]['#markup']) { ?>
             .para-<?php echo $paraID ?>.card-module .headline
@@ -138,6 +148,7 @@ $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
 	<div class="para-<?php echo $paraID ?> card-module <?php echo $cardItemClass ?> <?php echo $linksAlign; ?> <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $cardBorderClass; ?> <?php echo $defaultBgColor; ?> <?php echo $bgClass; ?> section-wrapper">
 <?php } ?>
 <a name="<?php echo ($content['field_anchor_name']['#items'][0]['value']) ?>" ></a>
+<span class="arrow"></span>
 	<div class="section-inner-wrapper" >
 		<?php if(isset($content['field_title']) || isset($content['field_subtitle']) ){ ?>
 			<header class="module-header text-l <?php echo $fontSize; ?> <?php echo $textAlign; ?>">		

@@ -33,8 +33,13 @@
 $bguri              = isset($content['field_poster']['#items'][0]['uri']) ? $content['field_poster']['#items'][0]['uri'] : NULL;
 $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
 
-$videouri      = isset($content['field_file']['#items'][0]['uri']) ? $content['field_file']['#items'][0]['uri'] : '';
-$videourl      = isset($videouri) ? file_create_url($videouri) : NULL;
+
+if(isset($content['field_url'])){
+	 $videourl = isset($content['field_url'][0]['#markup']) ? $content['field_url'][0]['#markup'] : '';
+}else{
+	$videouri      = isset($content['field_file']['#items'][0]['uri']) ? $content['field_file']['#items'][0]['uri'] : '';
+	$videourl      = isset($videouri) ? file_create_url($videouri) : NULL;
+}
 
 $title              = isset($content['field_title']) ? render($content['field_title']) : '';
 $caption          = isset($content['field_subtitle']) ? render($content['field_subtitle']) : '';
@@ -66,7 +71,7 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 ?>
 
 						<div class=" <?php echo $textAlign; ?> <?php // echo $slideshowClass ?> item-wrapper ">
-						<?php if(isset($content['field_file'])){ ?>
+						<?php if( isset($content['field_file']) || isset($content['field_url']) ){ ?>
 						  <div  class="image">
 							<video class="video-js vjs-fluid" controls poster="<?php echo $bgurl ?>" data-setup="{}" src="<?php echo $videourl;  ?>"></video>
 						</div>

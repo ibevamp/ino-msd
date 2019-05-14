@@ -26,7 +26,7 @@ Options +FollowSymLinks
 
 # Make Drupal handle any 404 errors.
 ErrorDocument 404 /index.php
-php_value memory_limit 2056M
+php_value memory_limit 3056M
 
 # Set the default handler.
 DirectoryIndex index.php index.html index.htm
@@ -49,7 +49,7 @@ DirectoryIndex index.php index.html index.htm
 php_value upload_max_filesize 900M
 php_value post_max_size 900M
 php_value max_input_vars 20000
-
+php_value upload_tmp_dir "/mnt/tmp"
 
 # Requires mod_expires to be enabled.
 <IfModule mod_expires.c>

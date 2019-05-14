@@ -32,7 +32,7 @@
 
 if(isset($content['field_video_url'])){
 	 $videourl = isset($content['field_video_url'][0]['#markup']) ? $content['field_video_url'][0]['#markup'] : '';
-	}else{
+}else{
 	$videouri      = isset($content['field_file']['#items'][0]['uri']) ? $content['field_file']['#items'][0]['uri'] : '';
 	$videourl      = isset($videouri) ? file_create_url($videouri) : NULL;
 }
