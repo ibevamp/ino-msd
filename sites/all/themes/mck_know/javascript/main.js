@@ -76,7 +76,8 @@ $(".three-col-accordion").each(function (i) {
   
   // setting unique id for each three col accordion on the page
 $(".one-up .item .iframe-embed").each(function (i) {
-    var currentID = "iframe-embed-" + i;
+	i = i + 1;
+    var currentID = "oneup-media-iframe-" + i;
     $(this).attr("id", currentID);
   });
   
@@ -318,6 +319,11 @@ if($(".global-header").length>0){
     type:"image"
  });
 
+ $('.mfp-inline').magnificPopup({
+    type:"inline"
+ });
+
+ 
 
    /* Magnific Pop Up - Customized to show pop based on pop up type selected */
 
