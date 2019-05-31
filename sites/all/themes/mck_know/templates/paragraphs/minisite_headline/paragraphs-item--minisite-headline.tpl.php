@@ -25,14 +25,14 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-
+$alignText      = $content['field_left_align_text']['0']['#markup'] ? "-text-left" : '';
 ?>
-<div vlass="section-wrapper">
+<div class="section-wrapper">
 	<div class="minisite-headline section-inner-wrapper">
 	<a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" ></a>
 	<div class="wrapper universal-header-wrapper">	            
 	<header class="universal-header" data-module="UniversalHeader" >
-	<div class="text-wrapper text-l">
+	<div class="text-wrapper text-l <?php echo $alignText ?>">
             <h3 class="headline"><center><?php echo render($content['field_title']) ?></center></h3>
 	            <div class="description paragraph-light span-full-width"><?php echo render($content['field_description']) ?></div>
 	        </div>

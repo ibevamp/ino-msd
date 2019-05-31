@@ -39,12 +39,12 @@ $videourl           = isset($videouri) ? file_create_url($videouri) : NULL;
 $bguri              = isset($content['field_image']['#items'][0]['uri']) ? $content['field_image']['#items'][0]['uri'] : NULL;
 $bgurl              = isset($bguri) ? file_create_url($bguri) : NULL;
 
-
+$wrapperLinkUrl =  isset($content['field_wrapper_link']) ? $content['field_wrapper_link']['#items'][0]['url']:"";
 $alignment_media    = $content['field_align_right'][0]['#markup'] ? "media-right" : '';
 $results    = isset($content['field_case_study_results']) ? "" : 'no-results';
 $link_items         = isset($content['field_links']) ? $content['field_links'] : '';
 $view_more_content         = isset($content['field_view_more_content']) ? render($content['field_view_more_content']) : '';
-
+$videoPopupLink                = isset($content['field_video_popup_link']) ? $content['field_video_popup_link']: '';
 
 ?>
 <a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" id="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" class="anchored-link"></a>
@@ -55,14 +55,26 @@ $view_more_content         = isset($content['field_view_more_content']) ? render
 								<div class="image">
 									<video class="video-js vjs-fluid" controls poster="<?php echo $bgurl ?>" data-setup="{}" src="<?php echo $videourl; ?>"></video>
 							<?php }else{?>
-								<div class="image" style="background-image: url(<?php echo $bgurl; ?>)">
+							   <?php if(isset($content['field_wrapper_link'])){ ?>
+										<a href="<?php echo $wrapperLinkUrl;?>" class="mfp-iframe wrapper-link"><div class="image" style="background-image: url(<?php echo $bgurl; ?>)"></div></a>
+							   <?php }else{ ?>
+										<div class="image" style="background-image: url(<?php echo $bgurl; ?>)"></div>
+							   <?php }?>
 							<?php } ?>
-						</div>
+						
 						<div class="text-wrapper">
 							<div class="main-description <?php echo $results; ?>">
-								<h1 class="text-l headline "><?php echo $title ; ?></h1>
+								 <?php if(isset($content['field_wrapper_link'])){ ?>
+										<a href="<?php echo $wrapperLinkUrl;?>" class="mfp-iframe">
+											<h1 class="text-l headline "><?php echo $title ; ?></h1>
+										</a>
+							   <?php }else{ ?>
+										<h1 class="text-l headline "><?php echo $title ; ?></h1>
+							   <?php }?>
 								<div class="description"><?php echo $short_description; ?></div>
-								
+								 <?php if(isset($content['field_video_popup_link'])) { ?>
+									<a href="<?php echo $content['field_video_popup_link']['#items'][0]['url']?>" class="banner-video-link"><?php echo $content['field_video_popup_link']['#items'][0]['title']; ?> <span class="mck-arrow-right-icon"></span></a>
+								 <?php } ?>
 							<div class="results">
 								<?php echo render($content['field_case_study_results']); ?>
 							</div>

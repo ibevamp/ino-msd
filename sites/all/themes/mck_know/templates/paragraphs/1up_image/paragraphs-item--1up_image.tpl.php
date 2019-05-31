@@ -37,7 +37,7 @@ $mediumBg   = $content['field_small_image']['0']['#markup']?"medium-img":"";
 $alignImgRight        = $content['field_align_right']['0']['#markup'];
 $wrapperBgColor = $content['field_text_overlays_image'][0]['#markup']?"default-wrapper-bg":"";
 $link_items     = isset($content['field_links']) ? $content['field_links'] : '';
-$iframe_embed_code     = isset($content['field_iframe_embed_code']) ? render($content['field_iframe_embed_code']) : '';
+$iframe_embed_code     = isset($content['field_iframe_embed_code']) ? $content['field_iframe_embed_code'] : '';
 $videouri       = isset($content['field_file']['#items'][0]['uri']) ? $content['field_file']['#items'][0]['uri'] : NULL;
 //$videohref =  isset($content['field_video_url']['#items'][0]['value']) ? $content['field_video_url']['#items'][0]['value'] : '';
 //$videourl      = isset($videouri) ? file_create_url($videouri) : $videohref;
@@ -87,8 +87,15 @@ if(isset($content['field_video_url'])){
 							<div class="description"><?php  echo $description; ?></div>
 							<?php } ?>
 							<?php if(isset($content['field_iframe_embed_code'])){ ?>
-								<div class="iframe-embed mfp-hide"><?php  echo $iframe_embed_code; ?></div>
-							<?php } ?>
+							<?php foreach($iframe_embed_code as $key => $item) {
+										if(is_numeric($key)) {
+											$paraItem = $item['#markup'];
+										 ?>
+								<div class="iframe-embed mfp-hide"><?php  print render($paraItem); ?></div>
+							<?php }
+							}
+							}
+							?>
 <br/>
 							<div class="cta-wrapper">
 							<?php foreach($link_items as $key => $item) {

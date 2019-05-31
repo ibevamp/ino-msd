@@ -33,53 +33,35 @@ $bgurl         = isset($bguri) ? file_create_url($bguri) : NULL;
 
 $title         = isset($content['field_title']) ? render($content['field_title']) : '';
 $description   = isset($content['field_short_description']) ? render($content['field_short_description']) : '';
-$bg_video      = $content['field_background_video']['0']['#markup'] ? "background-video-wrapper" : 'media-player banner banner-video active';
+$bg_video      = $content['field_grey_row']['0']['#markup'] ? "background-video-wrapper" : 'media-player banner  active';
+$fixedWidth     = $content['field_fixed_width']['0']['#markup'] ? "fixed-width" : '';
+$videoLink = isset($content['field_video_link'])? $content['field_video_link']['#items'][0]['url']:NULL;
+$videoLinkTitle = isset($content['field_video_link'])? $content['field_video_link']['#items'][0]['title']:NULL;
 
 //echo "<pre>"; var_dump($content); echo "</pre>";
 ?>
-<!--<div class="homepage-videobanner theme-hfc">
-	<video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" poster="<?php //echo $bgurl ?>" data-setup="{}">
-		<source src="<?php // echo $videourl ?>" type='video/mp4' />
-	</video>
-	<div class="videojs-hero-overlay" style="background-image: url('<?php //echo $bgurl ?>');">
-		<div class="videojs-hero multimedia-hero">
-			<div class="text-render -text-left -light -vert-lowest">
-				<div class="text-xxl">
-					<h1 class="headline enhanced-headline"><?php //echo $title ?></h1>
-					<div class="description module-description"><?php //echo $description ?></div>
-					<div class="mck-play-icon"></div>
+<div class="banner-video-wrapper">
+	<div class="banner-video section-wrapper banner-video-default <?php echo $fixedWidth; ?>">
+	   <div class="bg-tint"></div>
+	   <div class="section-inner-wrapper">
+		<video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls data-setup="{}" poster="<?php echo $bgurl ?>">
+			<source src="<?php echo $videourl ?>" type='video/mp4' />
+		</video>
+
+		<div class="banner-video-overlay" >
+			<div class="videojs-hero multimedia-hero" >
+				<div class="text-render -light -vert-lowest">
+					<div class="text-xl">
+						<h1 class="headline enhanced-headline"><?php echo $title ?></h1>
+						<div class="description module-description"><?php echo $description ?></div>
+						<div class="mck-play-icon" style="display: none"></div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>-->
-
-
-
-<div class="row m-0 ">
-	<div class="col-lg-12 <?php echo $bg_video; ?>">
-		<div class="media-video">
-				<video id="example_video_1" class="video-js vjs-default-skin vjs-16-9"
-					controls preload="auto"
-					poster="<?php echo $bgurl ?>"
-					data-setup='{"example_option":true}' >
-					<source src="<?php echo $videourl ?>" type='video/mp4' />
-				</video>		
-			<div class="card">
-				<div class="card-block">
-				    <h5><?php  echo render($content['field_sub_title']); ?></h5>
-					<h1><?php echo $title ?></h1>
-					<div class="description"><?php echo $description ?></div>
-				</div>
-			</div>
 		</div>
 	</div>
+	<?php if(isset($content['field_video_link'])){ ?>
+		<a href="<?php echo $videoLink; ?>" class=" -arrow mfp-iframe watch-video"><?php echo $videoLinkTitle; ?></a>
+	<?php } ?>
 </div>
-
-
-
-
-
-
-
-

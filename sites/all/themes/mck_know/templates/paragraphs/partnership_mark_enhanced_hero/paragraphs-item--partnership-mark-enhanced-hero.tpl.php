@@ -87,25 +87,35 @@ $description           = isset($content['field_pm_description']) ? render($conte
 			</div>
 			<div class="photo-render" style="background-image: url(<?php echo $image_cutout?>);"></div>
     </div>
-	<article class="up body">
-      <header class="text-xl">
-	   <div class="client-details">
-		Our proposal for:
-		<div class="client-logo" style="background-image: url(<?php echo $logo?>);"></div>
-	   </div>        
-			<div class="description">
-					<p>Welcome</p>
-					<p>Dear <?php echo $client_name; ?></p>
-					<?php echo render($description) ?>
-                    <p>Kind Regards,</p>	
-                    <p><?php echo $partner_name; ?></p>
-					<?php if(isset($content['field_pm_signature_logo'])){ ?>
-						<div class="signature-logo" style="background-image: url(<?php echo $signature_logo; ?>);"></div>
-					<?php } ?>					
-            </div>
-			
-         
-      </header>
-    </article>
+	<?php if(isset($content['field_pm_logo']) || isset($content['field_pm_description']) ){ ?>
+		<article class="up body">
+		  <header class="text-xl">
+		       <?php if(isset($content['field_pm_logo'])){ ?>
+				   <div class="client-details">
+					Our proposal for:
+					<div class="client-logo" style="background-image: url(<?php echo $logo?>);"></div>
+				   </div> 
+			   <?php } ?>	
+				
+				<?php if(isset($content['field_pm_description'])){ ?>		   
+					<div class="description">
+							<p>Welcome</p>
+							<p>Dear <?php echo $client_name; ?></p>
+							<?php echo render($description) ?>
+							<?php if(isset($content['field_pm_partner_name'])){ ?>
+								<p>Kind Regards,</p>	
+								<p><?php echo $partner_name; ?></p>
+							<?php } ?>		
+							<?php if(isset($content['field_pm_signature_logo'])){ ?>
+								<div class="signature-logo" style="background-image: url(<?php echo $signature_logo; ?>);"></div>
+							<?php } ?>					
+					</div>
+				<?php } ?>	
+				
+				
+			 
+		  </header>
+		</article>
+	<?php } ?>
   </section>
 </div>
