@@ -38,6 +38,15 @@
 });
 
 
+var anchor_id = window.location.hash; 
+if(anchor_id!= ""){ 
+  anchor_id = anchor_id.substr(1);
+  console.log(anchor_id);
+  var new_position = $('a[name='+anchor_id+']').offset(); 
+   $('html, body').animate({ scrollTop: new_position.top }, 800);
+}
+
+
 	
 // Our People popup
     $('.inline-popup').on('click', function () {

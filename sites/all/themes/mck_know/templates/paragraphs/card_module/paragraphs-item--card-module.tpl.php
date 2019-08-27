@@ -164,7 +164,7 @@ $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
 										if(is_numeric($key)) {
 											$paraItem = $item['entity']['paragraphs_item'];
 											 ?>
-											<div class="item"><?php echo render($paraItem); ?></div>	 
+											<?php echo render($paraItem); ?>	 
 									    <?php } 
 								    } ?>
         </div>   

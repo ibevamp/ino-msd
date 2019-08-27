@@ -79,14 +79,17 @@ $mainHeadingColor = isset($content['field_main_heading_font_color'])? $content['
 <a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" id="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" class="anchored-link"></a>
 <section class="homepage-banner banner-video-autoplay theme-hfc  para-<?php echo $paraID ?>">
 	<video id="my-video" class="video-js vjs-16-9" preload="auto" autoplay loop data-setup="{}" >
-        <!-- <source src="<?//php echo $videourl ; ?>" type='video/mp4' >  -->
-        	<source src="https://solutions.mckinsey.com/msd/ino/sites/default/files/Mphasis_digtial_home_compress2.mp4" type='video/mp4' > 
+        <source src="<?php echo $videourl ; ?>" type='video/mp4' >  
+<!--        	<source src="https://solutions.mckinsey.com/msd/ino/sites/default/files/Mphasis_digtial_home_compress2.mp4" type='video/mp4' > -->
 	</video>					 
 	<div class="videojs-hero-overlay">
         <div class="videojs-hero">
 		    <span class="eyebrow body-copy"><?php echo $eyebrow; ?></span>
 		    <h1><?php echo $title ; ?></h1>
-		    <div class="description body-copy"><?php echo $description ; ?></div>
+		    <div class="description body-copy">
+		    	<?php echo $description ; ?>
+		    	<?php print isset($bgurl) ? "<img src='".$bgurl."'>" : ''; ?>
+		    </div>
 
 			<div class="banner-links">
 				<?php foreach($image_links as $key => $item) {

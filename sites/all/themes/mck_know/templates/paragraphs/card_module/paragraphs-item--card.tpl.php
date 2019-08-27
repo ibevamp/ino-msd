@@ -29,6 +29,7 @@
 //ddl($content);
 
 
+$paraID   = $variables['elements']['#entity']->item_id;
 
 $bguri              = isset($content['field_poster']['#items'][0]['uri']) ? $content['field_poster']['#items'][0]['uri'] : NULL;
 $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
@@ -62,6 +63,9 @@ if(isset($content['field_image_layout'])){
 	$imageClass = "thumbnail-bg";
 }
 
+$cardBgColor = isset($content['field_card_background_color'])? $content['field_card_background_color'][0]['#markup']: "";
+//$cardFontColor = isset($content['field_card_font_color'])? $content['field_card_font_color'][0]['#markup']: "";
+//$linksFontColor = isset($content['field_links_font_color'])? $content['field_links_font_color'][0]['#markup']: "";
 
 $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][0]['url']:NULL;
 
@@ -69,8 +73,29 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 
 
 ?>
+<div class="item para-<?php echo $paraID ?>">
+				<?php if(isset($content['field_card_background_color'])){  ?>
+				<style type="text/css">
 
-						<div class=" <?php echo $textAlign; ?> <?php // echo $slideshowClass ?> item-wrapper ">
+					<?php if(isset($content['field_card_background_color'])) { ?>
+							.card-module .item.para-<?php echo $paraID ?>
+							{
+								background-color:<?php echo $cardBgColor ?>!important ;
+							}	
+							
+							.card-module .item.para-<?php echo $paraID ?> .item-wrapper
+							{
+								margin: 10px;
+							}
+							
+					<?php } ?>
+					
+					
+					
+						
+				</style>
+				<?php } ?>                
+						<div class="  <?php echo $textAlign; ?> <?php // echo $slideshowClass ?> item-wrapper ">
 						<?php if( isset($content['field_file']) || isset($content['field_url']) ){ ?>
 						  <div  class="image">
 							<video class="video-js vjs-fluid" controls poster="<?php echo $bgurl ?>" data-setup="{}" src="<?php echo $videourl;  ?>"></video>
@@ -183,6 +208,7 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 
 						</div><!-- end of card -->
        		</div><!--end of col for card content -->
+			</div>
 
 
   

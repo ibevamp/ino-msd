@@ -4649,11 +4649,11 @@ body{
 .card-module.numeric-layout .item .headline,
 .card-module.numeric-layout .item .description
 {
-	width: 75%;
+	width: 75%!important;
     float: right;
     margin: 0;
     padding: 0;
-	text-align:left
+	text-align:left!important
 }
 
 .card-module.numeric-layout .item .headline{
@@ -4674,6 +4674,10 @@ body{
 
 .card-module.cardbgwhite .item .item-wrapper{
 	background-color: #fff;
+} 
+
+.card-module .item .item-wrapper{
+	height: 100%;
 } 
 
 
@@ -4805,9 +4809,13 @@ body{
 	margin-bottom: 10px;
 }
 
+.card-module.align-links-bottom .item{
+	padding-bottom: 20px!important;
+}
+
 .card-module.align-links-bottom .card-content .links{
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
 }
 
 
@@ -5187,6 +5195,10 @@ div#console.clearfix{
 
 .card-module .arrow{
 	display: none;
+}
+
+.card-module .number{
+	font-size: 48px;
 }
 
 .accordion-module-wrapper .accordion-inner-wrapper.card-module .item{
