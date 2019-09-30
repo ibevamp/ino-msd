@@ -42,7 +42,7 @@ $bgurl              = isset($bguri) ? file_create_url($bguri) : NULL;
 $wrapperLinkUrl =  isset($content['field_wrapper_link']) ? $content['field_wrapper_link']['#items'][0]['url']:"";
 $alignment_media    = $content['field_align_right'][0]['#markup'] ? "media-right" : '';
 $results    = isset($content['field_case_study_results']) ? "" : 'no-results';
-$link_items         = isset($content['field_links']) ? $content['field_links'] : '';
+$link_items         = isset($content['field_links']) ? $content['field_links'] : array();
 $view_more_content         = isset($content['field_view_more_content']) ? render($content['field_view_more_content']) : '';
 $videoPopupLink                = isset($content['field_video_popup_link']) ? $content['field_video_popup_link']: '';
 

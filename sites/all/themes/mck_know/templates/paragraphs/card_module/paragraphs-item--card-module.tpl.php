@@ -34,7 +34,7 @@ $legend = isset($content['field_card_module_legend']) ? render($content['field_c
 $legendColourBoxColor = isset($content['field_card_module_legend_cbc'])? $content['field_card_module_legend_cbc'][0]['#markup']: "#000000";
 $description = isset($content['field_description']) ? render($content['field_description']) : '';
 $subtitle = isset($content['field_subtitle']) ? render($content['field_subtitle']) : '';
-$column_items = isset($content['field_paragraph']) ? $content['field_paragraph'] : '';
+$column_items = isset($content['field_paragraph']) ? $content['field_paragraph'] : array();
 $textColorClass = isset($content['field_grey_row']) ? "darker-heading" : '';
 //$cardLayoutClass         = isset($content['field_card_layout']) ? $content['field_card_layout']['#items'][0]['value'] : '';
 $cardLayoutClass = '';
@@ -48,7 +48,7 @@ if (isset($content['field_card_layout'])) {
 $gridClass = isset($content['field_column_layout']) ? $content['field_column_layout']['#items'][0]['value'] : '';
 $textAlign = $content['field_left_align_text'][0]['#markup']? "-text-left" : "-text-center";
 $linksAlign = $content['field_align_link_bottom'][0]['#markup']? "align-links-bottom" : "";
-$count = count($content['field_paragraph']['#items']);
+$count = isset($content['field_paragraph']['#items']) ? count($content['field_paragraph']['#items']) : 0;
 $cardItemClass = "";
 $fontSize = $content['field_larger_desc_link_text'][0]['#markup']? "larger-font" : "";
 $bgColor = isset($content['field_background_color'])? $content['field_background_color'][0]['#markup']: "";
@@ -57,7 +57,7 @@ $cardModuleColor = isset($content['field_card_module_font_color'])? $content['fi
 $linkTextColor = isset($content['field_link_text_color'])? $content['field_link_text_color'][0]['#markup']: "";
 $cardHeadingColor = isset($content['field_card_heading_font_color'])? $content['field_card_heading_font_color'][0]['#markup']: "";
 
-isset($content['field_background_color']) || isset($content['field_image']) ? $bgClass ="bg-image" : '';
+$bgClass = isset($content['field_background_color']) || isset($content['field_image']) ? "bg-image" : '';
 
 if(isset($content['field_column_layout'])){	
 	if($gridClass == "two-up"){
@@ -83,6 +83,7 @@ if(isset($content['field_column_layout'])){
 
 $bguri = isset($content['field_image']['#items'][0]['uri']) ? $content['field_image']['#items'][0]['uri'] : NULL;
 $bgurl = isset($bguri) ? file_create_url($bguri) : NULL;
+$anchor_name = isset($content['field_anchor_name']['#items'][0]['value']) ? $content['field_anchor_name']['#items'][0]['value'] : '';
 ?>
 
 <style type="text/css">
@@ -124,7 +125,7 @@ $bgurl = isset($bguri) ? file_create_url($bguri) : NULL;
 		}	
 	<?php } ?>
 
-	<?php if($content['field_field_link_text_color'][0]['#markup']) { ?>
+	<?php if(isset($content['field_field_link_text_color'][0]['#markup'])) { ?>
 		.para-<?php echo $paraID ?>.card-module .item .links a {
 			color:<?php echo $linkTextColor; ?>!important ;
 		}	
@@ -132,13 +133,13 @@ $bgurl = isset($bguri) ? file_create_url($bguri) : NULL;
 </style>
 
 <div style="clear: both;">
-  <a name="<?php echo $content['field_anchor_name']['#items'][0]['value'] ?>" id="<?php echo $content['field_anchor_name']['#items'][0]['value'] ?>" class="anchored-link"></a>
+  <a name="<?php echo $anchor_name; ?>" id="<?php echo $anchor_name; ?>" class="anchored-link"></a>
 </div>
 
 <?php if(isset($content['field_image'])){ ?>
-	<div style="background-image: url('<?php echo $bgurl ?>');" class="para-<?php echo $paraID ?> <?php echo $linksAlign; ?> card-module bg-image <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $cardItemClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $bgClass; ?> <?php /*echo $cardBorderClass;*/ ?> <?php /*echo $defaultBgColor;*/ ?> section-wrapper <?php echo $paraClass; ?>">
+	<div style="background-image: url('<?php echo $bgurl ?>');" class="para-<?php echo $paraID ?> <?php echo $linksAlign; ?> card-module bg-image <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $cardItemClass ?> <?php echo $column_item_class; ?> <?php /*echo $arrowClass*/ ?> <?php echo $bgClass; ?> <?php /*echo $cardBorderClass;*/ ?> <?php /*echo $defaultBgColor;*/ ?> section-wrapper <?php echo $paraClass; ?>">
 <?php }else{ ?>
-	<div class="para-<?php echo $paraID ?> card-module <?php echo $cardItemClass ?> <?php echo $linksAlign; ?> <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php /*echo $cardBorderClass;*/ ?> <?php /*echo $defaultBgColor;*/ ?> <?php echo $bgClass; ?> section-wrapper <?php echo $paraClass; ?>">
+	<div class="para-<?php echo $paraID ?> card-module <?php echo $cardItemClass ?> <?php echo $linksAlign; ?> <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $column_item_class; ?> <?php /*echo $arrowClass*/ ?> <?php /*echo $cardBorderClass;*/ ?> <?php /*echo $defaultBgColor;*/ ?> <?php echo $bgClass; ?> section-wrapper <?php echo $paraClass; ?>">
 <?php } ?>
 <span class="arrow"></span>
 	<div class="section-inner-wrapper" >
@@ -158,9 +159,8 @@ $bgurl = isset($bguri) ? file_create_url($bguri) : NULL;
 			<?php foreach($column_items as $key => $item) {
 				if(is_numeric($key)) {
 					$paraItem = $item['entity']['paragraphs_item'];
-				?>
-					<?php echo render($paraItem); ?>	 
-				<?php } 
+					echo render($paraItem);
+				} 
 			} ?>
 		</div>   
             <div>
