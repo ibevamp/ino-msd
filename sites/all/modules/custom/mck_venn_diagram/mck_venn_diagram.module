@@ -1,0 +1,171 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function mck_venn_diagram_init() {
+
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mck_venn_diagram_theme() {
+  $module_path = drupal_get_path('module', 'mck_venn_diagram');
+  return [
+    'paragraphs_item__venn_diagram' => [
+      'template' => 'paragraphs-item--venn-diagram',
+      'path' => $module_path . '/templates',
+    ],
+    'paragraphs_item__venn_diagram__vertical' => [
+      'template' => 'paragraphs-item--venn-diagram--vertical',
+      'path' => $module_path . '/templates',
+    ],
+    'paragraphs_item__venn_diagram__horizontal' => [
+      'template' => 'paragraphs-item--venn-diagram--horizontal',
+      'path' => $module_path . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_THEME().
+ */
+function mck_venn_diagram_preprocess_entity(&$variables) {
+  $entity_type = mck_util_get_by_paths($variables, 'elements|#entity_type', '');
+  $bundle = mck_util_get_by_paths($variables, 'elements|#bundle', '');
+  if ($entity_type == 'paragraphs_item' && $bundle == 'venn_diagram') {
+    $entity = mck_util_get_by_paths($variables, 'elements|#entity', NULL);
+
+    $venn_diagram_id = $entity->item_id;
+    $venn_template = mck_util_get_by_paths($entity, 'field_vd_template|und|0|value', 'vertical');
+    $venn_anchor = mck_util_get_by_paths($entity, 'field_vd_anchor|und|0|value', '');
+    $venn_title = mck_util_get_by_paths($entity, 'field_vd_title|und|0|value', '');
+    $venn_subtitle = mck_util_get_by_paths($entity, 'field_vd_subtitle|und|0|value', '');
+    $venn_desc = mck_util_get_by_paths($entity, 'field_vd_desc|und|0|value', '');
+    $venn_num_of_diagrams = mck_util_get_by_paths($entity, 'field_vd_num_of_diagrams|und|0|value', '3');
+    $venn_active_circle_background_color = mck_util_get_by_paths($entity, 'field_vd_active_circle_bc|und|0|rgb', '#1F40E6');
+    $venn_active_circle_text_color = mck_util_get_by_paths($entity, 'field_vd_active_circle_tc|und|0|rgb', '#ffffff');
+    $venn_inactive_circle_background_color = mck_util_get_by_paths($entity, 'field_vd_inactive_circle_bc|und|0|rgb', '#E6E6E6');
+    $venn_inactive_circle_text_color = mck_util_get_by_paths($entity, 'field_vd_inactive_circle_tc|und|0|rgb', '#000000');
+
+    $ids = [];
+    foreach (mck_util_get_by_paths($entity, 'field_vd_item|und', []) as $item) {
+      $ids[] = $item['value'];
+    }
+    $venn_diagram_items = [];
+
+    // Calc the max num of diagrams.
+    if ($venn_template == 'vertical') {
+      if ($venn_num_of_diagrams > 4) {
+        $venn_num_of_diagrams =  4;
+      }
+    }
+    if ($venn_num_of_diagrams > count($ids)) {
+      $venn_num_of_diagrams = count($ids);
+    }
+
+    $count = 0;
+    foreach (paragraphs_item_load_multiple($ids) as $item) {
+      if ($count++ >= $venn_num_of_diagrams) {
+        break;
+      }
+
+      $icon_uri = mck_util_get_by_paths($item, 'field_vd_item_icon|und|0|uri', '');
+      $icon_url = !empty($icon_uri) ? file_create_url($icon_uri) : '';
+
+      $info_image_uri = mck_util_get_by_paths($item, 'field_vd_item_ii|und|0|uri', '');
+      $info_image_url = !empty($info_image_uri) ? file_create_url($info_image_uri) : '';
+
+      $info_image_pos = mck_util_get_by_paths($item, 'field_vd_item_ii_pos|und|0|value', 'top');
+      $info_background_color = mck_util_get_by_paths($item, 'field_vd_item_ibc|und|0|rgb', '#000000');
+      $info_text_color = mck_util_get_by_paths($item, 'field_vd_item_itc|und|0|rgb', '#ffffff');
+
+      $info_points_per_row = mck_util_get_by_paths($item, 'field_vd_item_points_per_row|und|0|value', '4');
+
+      $points = [];
+      $points_ids = [];
+      foreach (mck_util_get_by_paths(mck_util_get_by_paths($item, 'field_vd_item_points', []), 'und', []) as $k1 => $item1) {
+        $points_ids[] = $item1['value'];
+      }
+      foreach (paragraphs_item_load_multiple($points_ids) as $item_point) {
+        $point_icon_uri = mck_util_get_by_paths($item_point, 'field_vd_item_point_icon|und|0|uri', '');
+        $point_icon_url = !empty($point_icon_uri) ? file_create_url($point_icon_uri) : '';
+        $point_icon_width = mck_util_get_by_paths($item_point, 'field_vd_item_point_icon_width|und|0|value', '50px');
+        $point_icon_height = mck_util_get_by_paths($item_point, 'field_vd_item_point_icon_height|und|0|value', '50px');
+
+        $point_title = mck_util_get_by_paths($item_point, 'field_vd_item_point_title|und|0|value', '');
+        $point_desc = mck_util_get_by_paths($item_point, 'field_vd_item_point_desc|und|0|value', '');
+        $point_text_color = mck_util_get_by_paths($item_point, 'field_vd_item_point_text_color|und|0|rgb', '#ffffff');
+        $point_text_align = mck_util_get_by_paths($item_point, 'field_vd_item_point_text_align|und|0|value', 'center');
+        $point_text_size = mck_util_get_by_paths($item_point, 'field_vd_item_point_text_size|und|0|value', '16px');
+
+        $point_show_links = mck_util_get_by_paths($item_point, 'field_vd_item_point_show_links|und|0|value', 'no');
+        $point_links = mck_util_get_by_paths($item_point, 'field_vd_item_point_links|und', []);
+        $point_show_popup = mck_util_get_by_paths($item_point, 'field_vd_item_point_show_popup|und|0|value', 'no');
+        $point_popup_link_text = mck_util_get_by_paths($item_point, 'field_vd_item_point_popup_lt|und|0|value', 'Know more');
+        $point_popup_image_uri = mck_util_get_by_paths($item_point, 'field_vd_item_point_popup_image|und|0|uri', '');
+        $point_popup_image_url = !empty($point_popup_image_uri) ? file_create_url($point_popup_image_uri) : '';
+
+        $points[] = [
+          'title' => $point_title,
+          'desc' => $point_desc,
+          'icon_url' => $point_icon_url,
+          'icon_width' => $point_icon_width,
+          'icon_height' => $point_icon_height,
+          'text_color' => $point_text_color,
+          'text_align' => $point_text_align,
+          'text_size' => $point_text_size,
+          'show_links' => $point_show_links,
+          'links' => $point_links,
+          'show_popup' => $point_show_popup,
+          'popup_link_text' => $point_popup_link_text,
+          'popup_image_url' => $point_popup_image_url,
+        ];
+      }
+
+      $venn_diagram_item = [
+        'title' => mck_util_get_by_paths($item, 'field_vd_item_title|und|0|value', ''),
+        'subtitle' => mck_util_get_by_paths($item, 'field_vd_item_subtitle|und|0|value', ''),
+        'desc' => mck_util_get_by_paths($item, 'field_vd_item_desc|und|0|value', ''),
+        'icon_url' => $icon_url,
+        'info_image_url' => $info_image_url,
+        'info_image_pos' => $info_image_pos,
+        'info_background_color' => $info_background_color,
+        'info_text_color' => $info_text_color,
+        'info_points_per_row' => $info_points_per_row,
+        'points' => $points,
+        'links' => mck_util_get_by_paths($item, 'field_vd_item_links|und', []),
+      ];
+      $venn_diagram_items[] = $venn_diagram_item;
+    }
+
+    $variables['paragraphs']['id'] = $venn_diagram_id;
+    $variables['paragraphs']['anchor'] = $venn_anchor;
+    $variables['paragraphs']['template'] = $venn_template;
+    $variables['paragraphs']['title'] = $venn_title;
+    $variables['paragraphs']['subtitle'] = $venn_subtitle;
+    $variables['paragraphs']['desc'] = $venn_desc;
+    $variables['paragraphs']['num_of_diagrams'] = $venn_num_of_diagrams;
+    $variables['paragraphs']['active_circle_background_color'] = $venn_active_circle_background_color;
+    $variables['paragraphs']['active_circle_text_color'] = $venn_active_circle_text_color;
+    $variables['paragraphs']['inactive_circle_background_color'] = $venn_inactive_circle_background_color;
+    $variables['paragraphs']['inactive_circle_text_color'] = $venn_inactive_circle_text_color;
+    $variables['paragraphs']['items'] = $venn_diagram_items;
+    $variables['theme_hook_suggestions'][] = 'paragraphs_item__venn_diagram__' . $venn_template;
+
+    switch ($venn_template) {
+      case 'horizontal':
+        drupal_add_js(drupal_get_path('module', 'mck_venn_diagram') . '/js/mck_venn_diagram_horizontal.js');
+        drupal_add_css(drupal_get_path('module', 'mck_venn_diagram') . '/css/mck_venn_diagram_horizontal.css');
+        break;
+
+      case 'vertical':
+      default:
+        drupal_add_js(drupal_get_path('module', 'mck_venn_diagram') . '/js/mck_venn_diagram_vertical.js');
+        drupal_add_css(drupal_get_path('module', 'mck_venn_diagram') . '/css/mck_venn_diagram_vertical.css');
+        break;
+    }
+
+  }
+}

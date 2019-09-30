@@ -1,0 +1,138 @@
+/***** For Number *****/
+
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-number .ig-title {
+  font-family: "Chronicle Display" !important;
+  font-weight: normal;
+  font-size: 36px;
+  color: #000;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-number .ig-desc p {
+  font-family: "Chronicle Text G1" !important;
+  font-weight: normal;
+  font-size: 20px;
+  color: #666;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-number .ig-item .value {
+  font-family: "Chronicle Display" !important;
+  font-weight: normal;
+  font-size: 0;
+  color: #37DEE7;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-number .ig-item .value .num {
+  font-size: 80px;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-number .ig-item .value .unit {
+  font-size: 60px;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-number .ig-item .label {
+  font-family: "Helvetica Neue" !important;
+  font-weight: normal;
+  font-size: 14px;
+  color: #999;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-number .bottom {
+  background: #000;
+}
+
+@media (min-width: 992px) {
+  .qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-number .row-content .col:after {
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-number .row-content .col:last-child:after {
+    border-right: none;
+  }
+}
+
+/***** For Bar *****/
+
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar {
+  background: #EBEBEB;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .ig-title {
+  font-family: "Chronicle Display" !important;
+  font-weight: normal;
+  font-size: 36px;
+  color: #000;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .ig-desc p {
+  font-family: "Chronicle Text G1" !important;
+  font-weight: normal;
+  font-size: 20px;
+  color: #666;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .ig-item .value {
+  font-family: "Chronicle Text G1" !important;
+  font-weight: normal;
+  font-size: 0px;
+  color: #666;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .ig-item .value .num {
+  font-size: 30px;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .ig-item .value .unit {
+  font-size: 30px;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .ig-item .label {
+  font-family: "Helvetica Neue" !important;
+  font-weight: normal;
+  font-size: 20px;
+  color: #666;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .row-content .col:nth-child(1) .bar {
+  background: #000;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .row-content .col:nth-child(2) .bar {
+  background: #00ADEF;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .row-content .col:nth-child(3) .bar {
+  background: #37DEE7;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .row-content .col:nth-child(4) .bar {
+  background: #BEB5AF;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-bar .row-content .col:nth-child(5) .bar {
+  background: #D4D0CD;
+}
+
+/***** For Circle *****/
+
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-circle {
+  background: #000;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-circle .ig-title {
+  font-family: "Chronicle Display" !important;
+  font-weight: normal;
+  font-size: 36px;
+  color: #fff;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-circle .ig-desc p {
+  font-family: "Chronicle Text G1" !important;
+  font-weight: normal;
+  font-size: 20px;
+  color: #999;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-circle .chart-progress .value {
+  font-family: "Chronicle Deck" !important;
+  font-weight: normal;
+  font-size: 0px;
+  color: #fff;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-circle .chart-progress .value .num {
+  font-size: 50px;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-circle .chart-progress .value .unit {
+  font-size: 50px;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-circle .chart-progress .label {
+  font-family: "Helvetica Neue" !important;
+  font-weight: normal;
+  font-size: 20px;
+  color: #999;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-circle .chart-progress .progress-full {
+  stroke-opacity: 0.25;
+  stroke: #fff;
+}
+.qbtheme .mck-para-infographic-skin-dark.mck-para-infographic-type-circle .chart-progress .chart circle.progress-actual {
+  stroke: #37DEE7;
+}

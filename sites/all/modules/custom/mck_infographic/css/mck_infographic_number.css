@@ -1,0 +1,77 @@
+/***** For Number *****/
+
+.mck-para-infographic-type-number .top {
+  padding: 80px 0;
+  background: #fff;
+  color: #000;
+}
+.mck-para-infographic-type-number .bottom {
+  padding: 80px 0;
+  background: #051C2C;
+  color: #fff;
+}
+.mck-para-infographic-type-number .row-content .col {
+  justify-content: center;
+  padding: 0 !important;
+}
+.mck-para-infographic-type-number .row-content .col:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-right: none;
+  height: 100%;
+}
+.mck-para-infographic-type-number .row-content .col:last-child:after {
+  border-right: none;
+}
+
+.mck-para-infographic-type-number .ig-title {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 36px;
+  color: #333;
+  line-height: 1.15;
+}
+.mck-para-infographic-type-number .ig-desc {
+  margin-top: 20px;
+}
+.mck-para-infographic-type-number .ig-desc p {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 20px;
+  color: inherit;
+  line-height: 1.25;
+}
+.mck-para-infographic-type-number .ig-desc p:last-child {
+  margin-bottom: 0;
+}
+.mck-para-infographic-type-number .ig-item {
+  text-align: center;
+  padding: 10px 20px;
+}
+.mck-para-infographic-type-number .ig-item .value {
+  font-family: "Bower" !important;
+  font-weight: bold;
+  font-size: 0;
+}
+.mck-para-infographic-type-number .ig-item .value .num {
+  font-size: 80px;
+}
+.mck-para-infographic-type-number .ig-item .value .unit {
+  font-size: 60px;
+}
+.mck-para-infographic-type-number .ig-item .label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.25;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+  .mck-para-infographic-type-number .row-content .col:after {
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}

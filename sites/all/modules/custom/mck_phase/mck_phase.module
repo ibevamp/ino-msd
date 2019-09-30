@@ -1,0 +1,83 @@
+<?php
+
+if (!function_exists('drupal_get_by_paths')) {
+  function drupal_get_by_paths($array, $key, $default_value = '', $separator = '|') {
+    $return = $default_value;
+    $keys = explode($separator, $key);
+
+    if (count($keys) > 0) {
+      $array = (array)$array;
+      $v = $keys[0];
+      if (isset($array[$v])) {
+        $return = $array[$v];
+        array_shift($keys);
+        if (count($keys) > 0) {
+          return drupal_get_by_paths($return, implode($separator, $keys), $default_value, $separator);
+        }
+      }
+    }
+    return $return;
+  }
+}
+
+/**
+ * Implements hook_init().
+ */
+function mck_phase_init() {
+
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mck_phase_theme() {
+  $module_path = drupal_get_path('module', 'mck_phase');
+  return [
+    'paragraphs_item__phase' => [
+      'template' => 'paragraphs-item--phase',
+      'path' => $module_path . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_THEME().
+ */
+function mck_phase_preprocess_entity(&$variables) {
+  $entity_type = drupal_get_by_paths($variables, 'elements|#entity_type', '');
+  $bundle = drupal_get_by_paths($variables, 'elements|#bundle', '');
+  if ($entity_type == 'paragraphs_item' && $bundle == 'phase') {
+    $entity = drupal_get_by_paths($variables, 'elements|#entity', NULL);
+
+    $phase_id = $entity->item_id;
+    $phase_anchor = drupal_get_by_paths($entity, 'field_phase_anchor|und|0|value', '');
+
+    $ids = [];
+    foreach (drupal_get_by_paths($entity, 'field_phase_item|und', []) as $item) {
+      $ids[] = $item['value'];
+    }
+    $phase_items = [];
+    foreach (paragraphs_item_load_multiple($ids) as $item) {
+      $image_uri = drupal_get_by_paths($item, 'field_phase_item_image|und|0|uri', '');
+      $image_url = !empty($image_uri) ? file_create_url($image_uri) : '';
+      $learn_more = drupal_get_by_paths($item, 'field_phase_item_learn_more|und|0', []);
+
+      $phase_item = [
+        'title' => drupal_get_by_paths($item, 'field_phase_item_title|und|0|value', ''),
+        'subtitle' => drupal_get_by_paths($item, 'field_phase_item_subtitle|und|0|value', ''),
+        'learn_more' => $learn_more,
+        'image_url' => $image_url,
+      ];
+      $phase_items[] = $phase_item;
+    }
+
+    $variables['paragraphs']['id'] = $phase_id;
+    $variables['paragraphs']['anchor'] = $phase_anchor;
+    $variables['paragraphs']['items'] = $phase_items;
+
+    drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', 'external');
+    drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', 'external');
+    drupal_add_js(drupal_get_path('module', 'mck_phase') . '/js/mck_phase.js');
+    drupal_add_css(drupal_get_path('module', 'mck_phase') . '/css/mck_phase.css');
+  }
+}

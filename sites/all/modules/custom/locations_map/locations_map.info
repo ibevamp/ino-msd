@@ -1,0 +1,5 @@
+name = Locations Map
+description = 'Locations Map'
+core = 7.x
+package = Paragraphs
+version = 7.x-1.0

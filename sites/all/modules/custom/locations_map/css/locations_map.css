@@ -1,0 +1,117 @@
+.mck-para-locations-map .chart-title {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 38px;
+  color: #000;
+  font-family: 'Bower', 'Georgia', 'Times New Roman', serif!important;
+}
+.mck-para-locations-map .chart-map {
+  height: 760px;
+  background: #f0f0f0;
+  border: none;
+  box-shadow: none;
+}
+.mck-para-locations-map .chart-map circle,
+.mck-para-locations-map .chart-map image {
+  cursor: pointer;
+}
+.mck-para-locations-map .chart-map .ampopup-curtain {
+  opacity: 0;
+}
+.mck-para-locations-map .chart-map .ampopup-content {
+  background: #ffffffd4;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 30px;
+  width: auto;
+  height: auto !important;
+  max-width: 380px;
+  min-width: 380px;
+  border-bottom: 3px solid #1F40E6;
+}
+.mck-para-locations-map .chart-map .ampopup-content .ampopup-title {
+
+}
+.mck-para-locations-map .chart-map .ampopup-content .ampopup-close {
+  display: none;
+  border-radius: 20px;
+  padding: 0px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  background-size: 65%;
+  top: 7.5px;
+  right: 7.5px;
+  width: 25px;
+  height: 25px;
+  transition: all 0.3s ease;
+}
+.mck-para-locations-map .chart-map .ampopup-content .ampopup-close:hover {
+  background-color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.mck-para-locations-map .chart-map .locations-map--popup .titles {
+  margin-bottom: 10px;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .title {
+  font-family: "Bower" !important;
+  font-size: 36px;
+  font-weight: bold;
+  color: #051C2C;
+  margin-bottom: 0;
+  padding-right: 35px;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .subtitle {
+  font-family: "Theinhardt Pan" !important;
+  font-size: 16px;
+  font-weight: normal;
+  color: #051C2C;
+  margin-bottom: 0;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .desc {
+  margin-bottom: 20px;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .desc p {
+  font-family: "Theinhardt Pan" !important;
+  font-size: 16px;
+  font-weight: 300;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .desc p:last-child {
+  margin-bottom: 0;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .download a {
+  font-family: "Theinhardt Pan" !important;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: left;
+  display: inline-block;
+  text-transform: none;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .download a:hover {
+  color: #1F40E6;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .download a.-arrow:after {
+  color: #1F40E6;
+  font-weight: bold;
+  position: relative;
+  top: 2px;
+  padding-left: 20px;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .image {
+  width: 80px;
+  padding: 5px 30px 0 0;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .image img {
+  border-radius: 100px;
+}
+.mck-para-locations-map .chart-map .locations-map--popup table tr {
+  vertical-align: top;
+}

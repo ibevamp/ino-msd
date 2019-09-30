@@ -1,0 +1,8 @@
+name = McKinsey Infographic Paragraph
+description = 'McKinsey Infographic Paragraph'
+core = 7.x
+package = Paragraphs
+version = 7.x-1.2
+dependencies[] = mck_util
+dependencies[] = paragraphs
+dependencies[] = color_field

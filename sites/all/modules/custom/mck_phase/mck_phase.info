@@ -1,0 +1,6 @@
+name = McKinsey Phase Paragraph
+description = 'McKinsey Phase Paragraph'
+core = 7.x
+package = Paragraphs
+version = 7.x-1.0
+dependencies[] = paragraphs

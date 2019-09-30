@@ -58,13 +58,13 @@ $popuplink_items         = isset($content['field_pop_up_links']) ? $content['fie
 $textAlign = $content['field_left_align_text'][0]['#markup']? "-text-left" : "-text-center";
 
 if(isset($content['field_image_layout'])){
-	$imageClass = $content['field_image_layout']['#items'][0]['value'];
+	$imageClass = $content['field_image_layout']['#items'][0]['value'] . ' thumbnail-bg ';
 }else{
 	$imageClass = "thumbnail-bg";
 }
 
 $cardBgColor = isset($content['field_card_background_color'])? $content['field_card_background_color'][0]['#markup']: "";
-//$cardFontColor = isset($content['field_card_font_color'])? $content['field_card_font_color'][0]['#markup']: "";
+$cardFontColor = isset($content['field_card_font_color'])? $content['field_card_font_color'][0]['#markup']: "";
 //$linksFontColor = isset($content['field_links_font_color'])? $content['field_links_font_color'][0]['#markup']: "";
 
 $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][0]['url']:NULL;
@@ -81,7 +81,20 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 							.card-module .item.para-<?php echo $paraID ?>
 							{
 								background-color:<?php echo $cardBgColor ?>!important ;
-							}	
+							}
+
+          <?php if (!empty($cardFontColor)) { ?>
+            .card-module .item.para-<?php echo $paraID ?> .headline,
+            .card-module .item.para-<?php echo $paraID ?> .description,
+            .card-module .item.para-<?php echo $paraID ?> p,
+            .card-module .item.para-<?php echo $paraID ?> h1,
+            .card-module .item.para-<?php echo $paraID ?> h2,
+            .card-module .item.para-<?php echo $paraID ?> h3,
+            .card-module .item.para-<?php echo $paraID ?> h4,
+            .card-module .item.para-<?php echo $paraID ?> h5 {
+              color: <?php echo $cardFontColor; ?> !important;
+            }
+          <?php } ?>
 							
 							.card-module .item.para-<?php echo $paraID ?> .item-wrapper
 							{

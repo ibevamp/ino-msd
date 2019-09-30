@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the McKinsey Phase Paragraph Features feature.
+ */
+
+include_once 'mck_phase_features.features.inc';

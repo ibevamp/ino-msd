@@ -1,0 +1,203 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function mck_util_init() {
+  drupal_add_js(drupal_get_path('module', 'mck_util') . '/js/mck_util.js');
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Array util functions.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function mck_util_get_by_paths($array, $key, $default_value = '', $separator = '|') {
+  $return = $default_value;
+  $keys = explode($separator, $key);
+
+  if (count($keys) > 0) {
+    $array = (array)$array;
+    $v = $keys[0];
+    if (isset($array[$v])) {
+      $return = $array[$v];
+      array_shift($keys);
+      if (count($keys) > 0) {
+        return mck_util_get_by_paths($return, implode($separator, $keys), $default_value, $separator);
+      }
+    }
+  }
+  return $return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// CSV util functions.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function mck_util_csv_load_by_path($path = '') {
+  $return = array();
+  if (($handle = fopen($path, "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+      $return[] = $data;
+    }
+    fclose($handle);
+  }
+
+  foreach ($return as $key1 => $item1) {
+    if ($key1 == 0) {
+
+    } else {
+      $tmp = array();
+      foreach ($item1 as $key2 => $item2) {
+        $field_name = $return[0][$key2];
+        $tmp[$field_name] = $item2;
+      }
+      $return[$key1] = $tmp;
+    }
+  }
+
+  if (count($return) > 0) {
+    array_shift($return);
+  }
+  return $return;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// File util functions.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function mck_util_file_download($params = array() ) {
+  $url = isset($params['url']) ? $params['url'] : '';
+  $custom_extension = isset($params['custom_extension']) ? $params['custom_extension'] : '';
+  $directory = isset($params['directory']) ? $params['directory'] : '';
+  $filename = isset($params['filename']) ? $params['filename'] : '';
+  $save_mode = FILE_EXISTS_RENAME;
+  $manage_file = TRUE;
+
+  $url_info = parse_url($url);
+  $url_path_info = pathinfo($url_info['path']);
+  if (empty($custom_extension)) {
+    if (!empty($url_path_info['extension'])) {
+      $custom_extension = $url_path_info['extension'];
+    }
+  }
+  if (empty($filename)) {
+    if (!empty($url_path_info['filename'])) {
+      $filename = $url_path_info['filename'];
+    }
+  }
+
+  if(file_prepare_directory($directory, FILE_CREATE_DIRECTORY)) {
+    $uri = $directory . '/' . $filename . '.' . $custom_extension;
+    $drupal_result = drupal_http_request($url);
+    if(!empty($drupal_result->data)) {
+      $path = file_stream_wrapper_uri_normalize($uri);
+      if($manage_file) {
+        $new_file = file_save_data($drupal_result->data, $path, $save_mode);
+      }
+      else {
+        return file_unmanaged_save_data($drupal_result->data, $path, $save_mode);
+      }
+    }
+    else {
+      return array();
+    }
+    $new_file->display = 1;
+    return (array)$new_file;
+  }
+  else {
+    return array();
+  }
+}
+
+function mck_util_file_extract($file = NULL, $to_uri = '') {
+  if (empty($file)) {
+    return FALSE;
+  }
+
+  if(file_prepare_directory($to_uri, FILE_CREATE_DIRECTORY)) {
+    $realpath = drupal_realpath($file->uri);
+    $filename = $file->filename;
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if ($ext == 'zip') {
+      $zip = new ZipArchive();
+      $zip->open($realpath);
+      $result = @$zip->extractTo(drupal_realpath($to_uri));
+      if ($result === FALSE) {
+        watchdog('mck_util_file_extract', 'There is some problem related to extraction of the file. Please upload and try again.', array(), WATCHDOG_ERROR, NULL);
+      }
+      $zip->close();
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Taxonomy util functions.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * See more here: https://www.drupal.org/forum/support/module-development-and-code-questions/2008-10-22/a-function-to-convert-taxonomy-tree.
+ */
+function mck_util_taxonomy_tree_to_nested_array($tree) {
+  // Put all of the terms into a new array and map their each term's children
+  // in a temporary _children array
+  $terms = array();
+  foreach ($tree as $term) {
+    $terms[$term->tid] = array(
+      'tid' => $term->tid,
+      'name' => $term->name,
+      'parents' => $term->parents,
+      'children' => array(),
+      '_children' => array(),
+    );
+    foreach ($term->parents as $tid) {
+      // Check for empty parent
+      if (!empty($tid)) {
+        $terms[$tid]['_children'][$term->tid] = $term->tid;
+      }
+    }
+  }
+
+  while (TRUE) {
+    $break = TRUE;
+    foreach ($terms as $tid => &$term) {
+      // If this term has children, it can't be moved yet. If it has no
+      // parents it also can't be moved
+      if (!empty($term['_children']) || empty($term['parents'][0])) {
+        continue;
+      }
+      // Remove the temporary children array, it's now empty and of no use
+      unset($term['_children']);
+      // Move the term under it's parents.
+      foreach ($term['parents'] as $parent) {
+        // Check for empty parent
+        if (!empty($parent)) {
+          // Put term under parent, and update the parent's temporary children
+          // array so we know this child has been processed
+          $terms[$parent]['children'][] = $term;
+          unset($terms[$parent]['_children'][$tid]);
+          // As we have altered the array, we need to loop through it again
+          $break = FALSE;
+        }
+      }
+
+      // Remove this term from the base array
+      unset($terms[$tid]);
+
+      // If the temporary children array for this term is now empty, remove
+      // it. We do this check so that it's removed from the top level terms
+      if (empty($term['_children'])) {
+        unset($term['_children']);
+      }
+    }
+
+    if ($break) {
+      break;
+    }
+  }
+
+  // Re-key the array to remove the term ID based indexes from the top level
+  return array_values($terms);
+}

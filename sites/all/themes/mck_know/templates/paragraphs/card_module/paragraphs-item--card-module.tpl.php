@@ -28,12 +28,23 @@
 
 //ddl($content);
 $paraID   = $variables['elements']['#entity']->item_id;
+$paraClass = isset($content['field_para_classes']) ? $content['field_para_classes']['#items'][0]['value'] : '';
 $title               = isset($content['field_title']) ? render($content['field_title']) : '';
+$legend               = isset($content['field_card_module_legend']) ? render($content['field_card_module_legend']) : '';
+$legendColourBoxColor = isset($content['field_card_module_legend_cbc'])? $content['field_card_module_legend_cbc'][0]['#markup']: "#000000";
 $description            = isset($content['field_description']) ? render($content['field_description']) : '';
 $subtitle            = isset($content['field_subtitle']) ? render($content['field_subtitle']) : '';
 $column_items        = isset($content['field_paragraph']) ? $content['field_paragraph'] : '';
 $textColorClass         = isset($content['field_grey_row']) ? "darker-heading" : '';
-$cardLayoutClass         = isset($content['field_card_layout']) ? render($content['field_card_layout']) : '';
+
+//$cardLayoutClass         = isset($content['field_card_layout']) ? $content['field_card_layout']['#items'][0]['value'] : '';
+$cardLayoutClass = '';
+if (isset($content['field_card_layout'])) {
+  foreach ($content['field_card_layout']['#items'] as $item) {
+    $cardLayoutClass .= ' ' . $item['value'] . ' ';
+  }
+}
+
 $gridClass         = isset($content['field_column_layout']) ? $content['field_column_layout']['#items'][0]['value'] : '';
 $textAlign = $content['field_left_align_text'][0]['#markup']? "-text-left" : "-text-center";
 $linksAlign = $content['field_align_link_bottom'][0]['#markup']? "align-links-bottom" : "";
@@ -140,18 +151,22 @@ $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
     
 </style>
 
-<a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" id="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" class="anchored-link"></a>
+<div style="clear: both;">
+  <a name="<?php echo $content['field_anchor_name']['#items'][0]['value'] ?>" id="<?php echo $content['field_anchor_name']['#items'][0]['value'] ?>" class="anchored-link"></a>
+</div>
 
 <?php if(isset($content['field_image'])){ ?>
-	<div style="background-image: url('<?php echo $bgurl ?>');" class="para-<?php echo $paraID ?> <?php echo $linksAlign; ?> card-module bg-image <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $cardItemClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $bgClass; ?> <?php echo $cardBorderClass; ?> <?php echo $defaultBgColor; ?> section-wrapper">
+	<div style="background-image: url('<?php echo $bgurl ?>');" class="para-<?php echo $paraID ?> <?php echo $linksAlign; ?> card-module bg-image <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $cardItemClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $bgClass; ?> <?php echo $cardBorderClass; ?> <?php echo $defaultBgColor; ?> section-wrapper <?php echo $paraClass; ?>">
 <?php }else{ ?>
-	<div class="para-<?php echo $paraID ?> card-module <?php echo $cardItemClass ?> <?php echo $linksAlign; ?> <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $cardBorderClass; ?> <?php echo $defaultBgColor; ?> <?php echo $bgClass; ?> section-wrapper">
+	<div class="para-<?php echo $paraID ?> card-module <?php echo $cardItemClass ?> <?php echo $linksAlign; ?> <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $cardBorderClass; ?> <?php echo $defaultBgColor; ?> <?php echo $bgClass; ?> section-wrapper <?php echo $paraClass; ?>">
 <?php } ?>
-<a name="<?php echo ($content['field_anchor_name']['#items'][0]['value']) ?>" ></a>
 <span class="arrow"></span>
 	<div class="section-inner-wrapper" >
 		<?php if(isset($content['field_title']) || isset($content['field_subtitle']) ){ ?>
-			<header class="module-header text-l <?php echo $fontSize; ?> <?php echo $textAlign; ?>">		
+			<header class="module-header text-l <?php echo $fontSize; ?> <?php echo $textAlign; ?>">
+        <?php if (!empty($legend)) { ?>
+          <div class="legend"><span style="background: <?php echo $legendColourBoxColor; ?>"></span><?php echo $legend; ?></div>
+        <?php } ?>
 					<h3 class="headline ">
 						<?php echo $title ?>					
 					</h3>

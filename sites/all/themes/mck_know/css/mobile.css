@@ -591,6 +591,25 @@ color: #00306e;}
   .global-footer .footer-links ul{
   	padding: 0;
   }
+  
+  .three-up.three-up-split.three-up-list .item .text-wrapper{
+	width: 100%;
+	display: block;
+	float: none;
+}
+
+.three-up.three-up-split.three-up-list .item .thumbnail{
+	margin: 0 auto 20px;
+}
+
+.three-up-list .headline{
+	font-size: 32px;
+}
+
+
+.three-up-list h4{
+	font-size: 24px;
+}
 
 }
 @media (max-width: 480px) {

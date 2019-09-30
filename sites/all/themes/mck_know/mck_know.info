@@ -23,6 +23,8 @@ stylesheets[all][] = views.css
 stylesheets[all][] = user.css
 stylesheets[all][] = ctools.css
 
+stylesheets[all][] = css/common.css
+
 scripts[] = javascript/modernizr.custom.331.js
 scripts[] = javascript/app-9599b9.js
 scripts[] = javascript/owl.carousel.js

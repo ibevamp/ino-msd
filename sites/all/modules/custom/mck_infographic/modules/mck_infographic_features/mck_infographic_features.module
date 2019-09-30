@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Infographic Features feature.
+ */
+
+include_once 'mck_infographic_features.features.inc';

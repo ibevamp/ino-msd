@@ -1,0 +1,283 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function mck_content_search_init() {
+
+}
+
+/**
+ * Implements hook_menu().
+ */
+function mck_content_search_menu() {
+  $items['admin/structure/entity-type/expert/expert/import'] = [
+    'title' => 'Import',
+    'description' => '',
+    'page callback' => 'mck_content_search_batch_import_experts',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer nodes'),
+    'file' => 'import/expert/mck_content_search.batch_import_experts.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 100,
+  ];
+  $items['admin/structure/entity-type/opportunity/opportunity/import'] = [
+    'title' => 'Import',
+    'description' => '',
+    'page callback' => 'mck_content_search_batch_import_opportunities',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer nodes'),
+    'file' => 'import/opportunity/mck_content_search.batch_import_opportunities.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 100,
+  ];
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mck_content_search_theme() {
+  $module_path = drupal_get_path('module', 'mck_content_search');
+  return [
+    'paragraphs_item__content_search' => [
+      'template' => 'paragraphs-item--content-search',
+      'path' => $module_path . '/templates',
+    ],
+    'mck_content_search__filters' => [
+      'template' => 'mck-content-search--filters',
+      'path' => $module_path . '/templates',
+      'variables' => array(
+        'paragraphs' => [],
+      ),
+    ],
+    'mck_content_search__list_view' => [
+      'template' => 'mck-content-search--list-view',
+      'path' => $module_path . '/templates',
+      'variables' => array(
+        'paragraphs' => [],
+      ),
+    ],
+    'mck_content_search__list_view__expert' => [
+      'template' => 'mck-content-search--list-view--expert',
+      'path' => $module_path . '/templates',
+      'variables' => array(
+        'paragraphs' => [],
+      ),
+    ],
+    'mck_content_search__list_view__opportunity' => [
+      'template' => 'mck-content-search--list-view--opportunity',
+      'path' => $module_path . '/templates',
+      'variables' => array(
+        'paragraphs' => [],
+      ),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_THEME().
+ */
+function mck_content_search_preprocess_mck_content_search__list_view(&$variables) {
+  $variables['theme_hook_suggestions'][] = 'mck_content_search__list_view__' . $variables['paragraphs']['entity_type'];
+}
+
+/**
+ * Implements hook_preprocess_THEME().
+ */
+function mck_content_search_preprocess_entity(&$variables) {
+  $entity_type = mck_util_get_by_paths($variables, 'elements|#entity_type', '');
+  $bundle = mck_util_get_by_paths($variables, 'elements|#bundle', '');
+  if ($entity_type == 'paragraphs_item' && $bundle == 'content_search') {
+    $entity = mck_util_get_by_paths($variables, 'elements|#entity', NULL);
+    $content_search_id = $entity->item_id;
+    $content_search_entity_type = mck_util_get_by_paths($entity, 'field_cs_entity_type|und|0|value', '');
+    $content_search_display_all = mck_util_get_by_paths($entity, 'field_cs_display_all|und|0|value', 'no');
+
+    module_load_include('inc', 'mck_content_search', 'entities/' . $content_search_entity_type);
+
+    $content_search_contents = [];
+    if ($content_search_display_all == 'yes') {
+      $content_search_contents = entity_load_multiple_by_name($content_search_entity_type);
+    }
+    else {
+      if ($content_search_entity_type == 'expert') {
+        $entities = mck_util_get_by_paths($entity, 'field_cs_contents|und', []);
+      }
+      elseif ($content_search_entity_type == 'opportunity') {
+        $entities = mck_util_get_by_paths($entity, 'field_cs_contents_opportunity|und', []);
+      }
+
+      foreach ($entities as $entity) {
+        $content_search_contents[] = mck_util_get_by_paths($entity, 'entity');
+      }
+    }
+
+    // Selected columns.
+    $selected_columns = [];
+    if ($content_search_entity_type == 'expert') {
+      $content_search_columns = mck_util_get_by_paths($entity, 'field_cs_columns|und', []);
+      foreach ($content_search_columns as $item) {
+        $selected_columns[] = [
+          'name' => mck_util_get_by_paths($item, 'entity|name', ''),
+          'key' => mck_util_get_by_paths($item, 'entity|field_expert_columns_key|und|0|value', ''),
+          'label' => mck_util_get_by_paths($item, 'entity|field_expert_columns_label|und|0|value', ''),
+        ];
+      }
+    }
+    elseif ($content_search_entity_type == 'opportunity') {
+      $content_search_columns = mck_util_get_by_paths($entity, 'field_cs_columns_opportunity|und', []);
+      foreach ($content_search_columns as $item) {
+        $selected_columns[] = [
+          'name' => mck_util_get_by_paths($item, 'entity|name', ''),
+          'key' => mck_util_get_by_paths($item, 'entity|field_opp_columns_key|und|0|value', ''),
+          'label' => mck_util_get_by_paths($item, 'entity|field_opp_columns_label|und|0|value', ''),
+        ];
+      }
+    }
+
+    // Selected bio columns.
+    $selected_bio_columns = [];
+    if ($content_search_entity_type == 'expert') {
+      $tmp = mck_util_get_by_paths($entity, 'field_cs_biocolumns|und', []);
+      foreach ($tmp as $item) {
+        $selected_bio_columns[] = [
+          'name' => mck_util_get_by_paths($item, 'entity|name', ''),
+          'key' => mck_util_get_by_paths($item, 'entity|field_expert_columns_key|und|0|value', ''),
+          'label' => mck_util_get_by_paths($item, 'entity|field_expert_columns_label|und|0|value', ''),
+        ];
+      }
+    }
+    elseif ($content_search_entity_type == 'opportunity') {
+      $tmp = mck_util_get_by_paths($entity, 'field_cs_biocolumns_opportunity|und', []);
+      foreach ($tmp as $item) {
+        $selected_bio_columns[] = [
+          'name' => mck_util_get_by_paths($item, 'entity|name', ''),
+          'key' => mck_util_get_by_paths($item, 'entity|field_opp_columns_key|und|0|value', ''),
+          'label' => mck_util_get_by_paths($item, 'entity|field_opp_columns_label|und|0|value', ''),
+        ];
+      }
+    }
+
+    // Selected filters.
+    $selected_filters = [];
+    if ($content_search_entity_type == 'expert') {
+      $tmp = mck_util_get_by_paths($entity, 'field_cs_filters|und', []);
+      foreach ($tmp as $item) {
+        $selected_filters[] = [
+          'name' => mck_util_get_by_paths($item, 'entity|name', ''),
+          'key' => mck_util_get_by_paths($item, 'entity|field_expert_columns_key|und|0|value', ''),
+          'label' => mck_util_get_by_paths($item, 'entity|field_expert_columns_label|und|0|value', ''),
+        ];
+      }
+    }
+    elseif ($content_search_entity_type == 'opportunity') {
+      $tmp = mck_util_get_by_paths($entity, 'field_cs_filters_opportunity|und', []);
+      foreach ($tmp as $item) {
+        $selected_filters[] = [
+          'name' => mck_util_get_by_paths($item, 'entity|name', ''),
+          'key' => mck_util_get_by_paths($item, 'entity|field_opp_columns_key|und|0|value', ''),
+          'label' => mck_util_get_by_paths($item, 'entity|field_opp_columns_label|und|0|value', ''),
+        ];
+      }
+    }
+
+    $content_search_data = [];
+    $function_name = 'mck_content_search_get_content_search_data_by_entity_' . $content_search_entity_type;
+    if (function_exists($function_name)) {
+      $content_search_data = $function_name([
+        'entity_type' => $content_search_entity_type,
+        'contents' => $content_search_contents,
+        'columns' => $selected_columns,
+      ]);
+    }
+
+    $items = [];
+    $filters = [];
+    if (count($content_search_data) > 0) {
+      $items = mck_util_get_by_paths($content_search_data, 'items', []);
+      $filters = mck_util_get_by_paths($content_search_data, 'filters', []);
+    }
+
+
+    $ordered_selected_filters = [];
+    foreach ($selected_filters as $selected_filter) {
+      foreach ($filters as $filter_name => $filter_item) {
+        if ($selected_filter['key'] == $filter_name) {
+          $ordered_selected_filters[$filter_name] = $filter_item;
+          break;
+        }
+      }
+    }
+
+
+    $variables['paragraphs']['id'] = $content_search_id;
+    $variables['paragraphs']['entity_type'] = $content_search_entity_type;
+    $variables['paragraphs']['columns'] = $selected_columns;
+    $variables['paragraphs']['bio_columns'] = $selected_bio_columns;
+    $variables['paragraphs']['items'] = $items;
+    $variables['paragraphs']['filters'] = $ordered_selected_filters;
+
+    drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js', 'external');
+    drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.widgets.min.js', 'external');
+    drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.tablesorter.pager.min.js', 'external');
+    drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/widgets/widget-stickyHeaders.min.js', 'external');
+    drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/widgets/widget-pager.min.js', 'external');
+    drupal_add_js(drupal_get_path('module', 'mck_content_search') . '/js/mck_content_search.js');
+    drupal_add_css(drupal_get_path('module', 'mck_content_search') . '/css/mck_content_search.css');
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function mck_content_search_form_alter(&$form, &$form_state, $form_id) {
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+/// Helper functions
+///////////////////////////////////////////////////////////////////////////////////
+
+function mck_content_search_get_filters_by_vocabulary_name($name = '') {
+  $filters = [];
+  $vocabulary = taxonomy_vocabulary_machine_name_load($name);
+  $vid = mck_util_get_by_paths($vocabulary, 'vid', 0);
+  $tree = taxonomy_get_tree($vid);
+  $filters = mck_util_taxonomy_tree_to_nested_array($tree);
+  return $filters;
+}
+
+function mck_content_search_get_term_by_name($term_name, $vocabulary_name) {
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
+    $tree = taxonomy_get_tree($vocabulary->vid);
+    foreach ($tree as $term) {
+      if ($term->name == $term_name) {
+        return $term;
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+function mck_content_search_in_columns($name, $columns = []) {
+  $names = [];
+  if (is_array($name)) {
+    $names = $name;
+  }
+  elseif (!empty($name)) {
+    $names[] = $name;
+  }
+
+  $flag = FALSE;
+  foreach ($columns as $col) {
+    foreach ($names as $name) {
+      if ($name == $col['key']) {
+        $flag = TRUE;
+        break;
+      }
+    }
+  }
+  return $flag;
+}

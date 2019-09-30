@@ -1,0 +1,118 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function mck_infographic_init() {
+
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mck_infographic_theme() {
+  $module_path = drupal_get_path('module', 'mck_infographic');
+  return [
+    'paragraphs_item__infographic' => [
+      'template' => 'paragraphs-item--infographic',
+      'path' => $module_path . '/templates',
+    ],
+    'paragraphs_item__infographic__bar' => [
+      'template' => 'paragraphs-item--infographic--bar',
+      'path' => $module_path . '/templates',
+    ],
+    'paragraphs_item__infographic__circle' => [
+      'template' => 'paragraphs-item--infographic--circle',
+      'path' => $module_path . '/templates',
+    ],
+    'paragraphs_item__infographic__number' => [
+      'template' => 'paragraphs-item--infographic--number',
+      'path' => $module_path . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_THEME().
+ */
+function mck_infographic_preprocess_entity(&$variables) {
+  $entity_type = mck_util_get_by_paths($variables, 'elements|#entity_type', '');
+  $bundle = mck_util_get_by_paths($variables, 'elements|#bundle', '');
+  if ($entity_type == 'paragraphs_item' && $bundle == 'infographic') {
+    $entity = mck_util_get_by_paths($variables, 'elements|#entity', NULL);
+
+    $infographic_id = $entity->item_id;
+    $infographic_skin = mck_util_get_by_paths($entity, 'field_ig_skin|und|0|value', 'dark');
+    $infographic_anchor = mck_util_get_by_paths($entity, 'field_ig_anchor|und|0|value', '');
+    $infographic_chart_type = mck_util_get_by_paths($entity, 'field_ig_chart_type|und|0|value', '');
+    $infographic_title = mck_util_get_by_paths($entity, 'field_ig_title|und|0|value', '');
+    $infographic_desc = mck_util_get_by_paths($entity, 'field_ig_desc|und|0|value', '');
+
+    $ids = [];
+    foreach (mck_util_get_by_paths($entity, 'field_ig_item|und', []) as $item) {
+      $ids[] = $item['value'];
+    }
+    $infographic_items = [];
+    foreach (paragraphs_item_load_multiple($ids) as $item) {
+      $infographic_item = [
+        'label' => mck_util_get_by_paths($item, 'field_ig_item_label|und|0|value', ''),
+        'value' => mck_util_get_by_paths($item, 'field_ig_item_value|und|0|value', ''),
+      ];
+      $infographic_items[] = $infographic_item;
+    }
+
+    $col_classes = '';
+    switch (count($infographic_items)) {
+      case 1:
+        $col_classes = 'col';
+        break;
+      case 2:
+        $col_classes = 'col col-12 col-sm-6';
+        break;
+      case 3:
+        $col_classes = 'col col-12 col-sm-6 col-md-4';
+        break;
+      case 4:
+        $col_classes = 'col col-12 col-sm-6 col-md-4';
+        break;
+      case 5:
+      default:
+        $col_classes = 'col col-12 col-sm-6 col-md-4 col-lg-2dot4';
+        break;
+    }
+
+    $variables['paragraphs']['id'] = $infographic_id;
+    $variables['paragraphs']['skin'] = $infographic_skin;
+    $variables['paragraphs']['anchor'] = $infographic_anchor;
+    $variables['paragraphs']['chart_type'] = $infographic_chart_type;
+    $variables['paragraphs']['title'] = $infographic_title;
+    $variables['paragraphs']['desc'] = $infographic_desc;
+    $variables['paragraphs']['items'] = $infographic_items;
+    $variables['paragraphs']['col_classes'] = $col_classes;
+    $variables['theme_hook_suggestions'][] = 'paragraphs_item__infographic__' . $infographic_chart_type;
+
+    drupal_add_css('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', ['type' => 'external']);
+    drupal_add_js('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js', ['type' => 'external']);
+
+    drupal_add_css(drupal_get_path('module', 'mck_infographic') . '/css/mck_infographic.css');
+    switch ($infographic_chart_type) {
+      case 'number':
+        drupal_add_css(drupal_get_path('module', 'mck_infographic') . '/css/mck_infographic_number.css');
+        break;
+
+      case 'bar':
+        drupal_add_css(drupal_get_path('module', 'mck_infographic') . '/css/mck_infographic_bar.css');
+        break;
+
+      case 'circle':
+        drupal_add_css(drupal_get_path('module', 'mck_infographic') . '/css/mck_infographic_circle.css');
+        drupal_add_js(drupal_get_path('module', 'mck_infographic') . '/js/mck_infographic_circle.js');
+        break;
+    }
+
+    // For Digital McKinsey layout.
+    drupal_add_css(drupal_get_path('module', 'mck_infographic') . '/css/themes/default/default_' . $infographic_skin . '.css');
+    // For QB layout.
+    drupal_add_css(drupal_get_path('module', 'mck_infographic') . '/css/themes/qbtheme/qbtheme_' . $infographic_skin . '.css');
+  }
+}

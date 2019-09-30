@@ -62,6 +62,7 @@ function mck_know_preprocess_html(array &$vars) {
   $vars['theme_header_body_color'] = (isset($node->field_theme_header_font_color) && !empty($node->field_theme_header_font_color)) ? $node->field_theme_header_font_color['und'][1]['rgb'] : NULL;
   $vars['theme_font_color'] = (isset($node->field_theme_font_color) && !empty($node->field_theme_font_color)) ? $node->field_theme_font_color['und'][0]['rgb'] : NULL;
   $vars['theme_bg_color'] = (isset($node->field_theme_bg_color) && !empty($node->field_theme_bg_color)) ? $node->field_theme_bg_color['und'][0]['rgb'] : NULL;
+  $custom_page_title = (isset($node->field_theme_page_title) && !empty($node->field_theme_page_title)) ? $node->field_theme_page_title['und'][0]['value'] : NULL;
 
   
  /* Start of code related to branding assets - new branding font/logo updates */  
@@ -91,13 +92,29 @@ function mck_know_preprocess_html(array &$vars) {
 		'every_page' => TRUE,
         'weight' => CSS_THEME + 110,
 		'type' => 'external'
-      ));	  
-	  
+      ));
+
+  if(strpos($base_url,'localhost') !== false){
+    $url  =  'https://solutions.mckinsey.com/msd/';
+    drupal_add_css($url.'branding-assets/css/mck-fonts.css',  array(
+      'group' => CSS_THEME,
+      'every_page' => TRUE,
+      'weight' => CSS_THEME + 100,
+      'type' => 'external'
+    ));
+    drupal_add_css($url.'branding-assets/css/base.css',array(
+      'group' => CSS_THEME,
+      'every_page' => TRUE,
+      'weight' => CSS_THEME + 110,
+      'type' => 'external'
+    ));
+  }
   /* End of code related to branding assets - new branding font/logo updates */
   
-  
-  
+  if (!empty($custom_page_title)) {
+    $vars['head_title'] = $custom_page_title;
   }
+}
 
 function mck_know_preprocess_page(array &$vars) {
 

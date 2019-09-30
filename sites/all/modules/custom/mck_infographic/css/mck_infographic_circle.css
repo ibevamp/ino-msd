@@ -1,0 +1,86 @@
+/***** For Circle *****/
+
+.mck-para-infographic-type-circle {
+  padding: 80px 0;
+  background: #051C2C;
+  color: #fff;
+}
+
+.mck-para-infographic-type-circle .ig-title {
+  font-family: "Bower" !important;
+  font-weight: bold;
+  font-size: 52px;
+  color: inherit;
+  max-width: 800px;
+  line-height: 1.15;
+}
+.mck-para-infographic-type-circle .ig-desc {
+  margin-top: 40px;
+}
+.mck-para-infographic-type-circle .ig-desc p {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 20px;
+  color: inherit;
+  max-width: 800px;
+  line-height: 1.25;
+}
+
+.mck-para-infographic-type-circle .row-content .col {
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.mck-para-infographic-type-circle .ig-item {
+  text-align: center;
+  padding: 60px 20px;
+}
+.mck-para-infographic-type-circle .chart-progress .chart {
+  position: relative;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin: 0 auto;
+}
+.mck-para-infographic-type-circle .chart-progress .value {
+  font-family: "Bower" !important;
+  font-weight: bold;
+  font-size: 0;
+  position: absolute;
+  top: calc(50% - 40px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.mck-para-infographic-type-circle .chart-progress .value .num {
+  font-size: 50px;
+}
+.mck-para-infographic-type-circle .chart-progress .value .unit {
+  font-size: 50px;
+}
+.mck-para-infographic-type-circle .chart-progress .label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.25;
+  max-width: 80%;
+  margin: 20px auto 0 auto;
+}
+
+.mck-para-infographic-type-circle .chart-progress .progress-full,
+.mck-para-infographic-type-circle .chart-progress .progress-actual {
+
+}
+.mck-para-infographic-type-circle .chart-progress .progress-full {
+  stroke-opacity: 0.5;
+}
+.mck-para-infographic-type-circle .chart-progress .progress-actual {
+  transition: stroke-dashoffset 1s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+.mck-para-infographic-type-circle .chart-progress .chart circle.progress-actual {
+  stroke: #00A9F4;
+}

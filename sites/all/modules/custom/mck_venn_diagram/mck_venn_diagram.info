@@ -1,0 +1,7 @@
+name = McKinsey Venn Diagram Paragraph
+description = 'McKinsey Venn Diagram Paragraph'
+core = 7.x
+package = Paragraphs
+version = 7.x-1.1
+dependencies[] = paragraphs
+dependencies[] = mck_util

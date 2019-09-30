@@ -1,0 +1,609 @@
+.mck-para-content-search {
+  position: relative;
+}
+.mck-para-content-search * {
+  outline: none;
+}
+.mck-para-content-search .container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.mck-para-content-search .filters-wrapper {
+  background: #f0f0f0;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+.mck-para-content-search .result-wrapper {
+  background: linear-gradient(to bottom, #ccc 0%, #fff 60px, #fff 100%);
+  padding: 0 0 50px 0;
+  min-height: 760px;
+  position: relative;
+}
+
+/* Filters */
+
+.mck-para-content-search .row-all-filters {
+  width: 100%;
+  display: table;
+  z-index: 30;
+  position: relative;
+}
+.mck-para-content-search .row-all-filters .left {
+  display: block;
+  vertical-align: top;
+  width: 100%;
+}
+.mck-para-content-search .row-all-filters .left .label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 14px;
+  margin-left: 0px;
+  margin-bottom: 10px;
+}
+.mck-para-content-search .row-all-filters .right {
+  display: block;
+  vertical-align: top;
+  width: 100%;
+  text-align: left;
+}
+.mck-para-content-search .row-all-filters .right .label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.mck-para-content-search .row-all-filters .content-search-keywords {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 16px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ccc;
+  padding: 0 20px;
+  box-shadow: 0px 0px 5px 0 #ccc;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.mck-para-content-search .row-all-filters .content-search-keywords::placeholder {
+  font-weight: 300;
+  color: #7F7F7F;
+}
+
+.mck-para-content-search .row-all-filters .filter-by .filter {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 100%;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-name {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 16px;
+  font-weight: 500;
+  min-width: 150px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ccc;
+  padding: 0 80px 0 20px;
+  margin-right: 0;
+  box-shadow: 0px 0px 5px 0 #ccc;
+  width: auto;
+  margin-bottom: 10px;
+  background: #fff;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-name .add {
+  width: 40px;
+  height: 40px;
+  line-height: 45px;
+  background: #D0D0D0;
+  text-align: center;
+  color: #000;
+  font-size: 28px;
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 1px;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 40px;
+  z-index: 1;
+  right: 0;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items .inner {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background: #fff;
+  min-width: 330px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items ul.items {
+  margin-top: 0;
+  margin-bottom: 10px;
+  list-style: none;
+  list-style-position: inside;
+  padding: 0;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items ul.items ul {
+  margin-left: 30px;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items ul.items:last-child {
+  margin-bottom: 0;
+}
+
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items ul.items li.item {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items ul.items li.item:last-child {
+  margin-bottom: 0;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items ul.items li.item .box {
+  display: table;
+  margin: 2px 0;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items ul.items .group-item:last-child {
+  margin-bottom: 0;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items ul.items li.item .box input {
+  display: table-cell;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+.mck-para-content-search .row-all-filters .filter-by .filter .filter-items ul.items li.item .box label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 400;
+  font-size: 18px;
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0;
+  padding-left: 10px;
+  color: #000;
+  text-transform: none;
+}
+
+.mck-para-content-search .total-results-text {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 20px;
+  text-align: left;
+  margin-top: -10px;
+  margin-bottom: 0;
+  min-height: 30px;
+  margin-top: 5px;
+}
+
+.mck-para-content-search .row-selected-filters {
+
+}
+.mck-para-content-search .row-selected-filters .inner {
+  display: table;
+  width: auto;
+}
+.mck-para-content-search .row-selected-filters .inner .total-filters-text {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 20px;
+  display: table-cell;
+  vertical-align: bottom;
+  width: auto;
+  padding: 5px 10px 10px 0;
+}
+.mck-para-content-search .row-selected-filters .inner .items {
+  display: none;
+  vertical-align: top;
+  width: auto;
+}
+.mck-para-content-search .row-selected-filters .inner .reset {
+  display: table-cell;
+  vertical-align: bottom;
+  width: 100px;
+}
+.mck-para-content-search .row-selected-filters .items .item {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 14px;
+  display: inline-block;
+  background: blue;
+  border: 2px solid blue;
+  color: #fff !important;
+  padding: 8px 10px 5px 10px;
+  margin-top: 10px;
+  margin-right: 8px;
+}
+.mck-para-content-search .row-selected-filters .items .item a.remove {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 18px;
+  color: #fff !important;
+  cursor: pointer;
+  margin-left: 15px;
+  opacity: 0.75;
+  transition: all ease 0.3s;
+}
+.mck-para-content-search .row-selected-filters .items .item a.remove:hover {
+  opacity: 1;
+}
+.mck-para-content-search .row-selected-filters .reset a {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: bold;
+  font-size: 14px;
+  background: #fff;
+  border: 2px solid blue;
+  color: blue !important;
+  cursor: pointer;
+  margin-top: 10px;
+  display: inline-block;
+  text-align: center;
+  padding: 12px 10px 8px 10px;
+}
+
+/* Result */
+
+.mck-para-content-search .map-view {
+
+}
+.mck-para-content-search .list-view {
+  overflow: hidden;
+}
+
+/* Table sorter */
+
+.tablesorter {
+  width: 100%;
+  border-collapse: collapse;
+}
+.tablesorter tr th,
+.tablesorter tr td {
+  padding: 30px 20px 30px 20px;
+  vertical-align: top;
+  text-align: left;
+}
+.tablesorter tr td {
+  border-top: 1px solid #ccc;
+}
+.tablesorter tr:first-child td {
+  border-top: none;
+}
+.tablesorter tr th {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+}
+.tablesorter tr td {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.3;
+}
+
+.tablesorter tr th .tablesorter-header-inner:after {
+  content: '';
+  border: solid rgba(0, 0, 0, 0.2);
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 5px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  display: inline-block;
+  margin-left: 10px;
+  position: relative;
+  top: -2px;
+  transition: all ease 0.3s;
+}
+.tablesorter tr th.tablesorter-headerAsc {
+  color: #1F40E6;
+}
+.tablesorter tr th.tablesorter-headerAsc .tablesorter-header-inner:after {
+  border: solid rgba(0, 0, 0, 1);
+  border-width: 0 1px 1px 0;
+}
+.tablesorter tr th.tablesorter-headerDesc {
+  color: #1F40E6;
+}
+.tablesorter tr th.tablesorter-headerDesc .tablesorter-header-inner:after {
+  border: solid rgba(0, 0, 0, 1);
+  border-width: 0 1px 1px 0;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  top: 4px;
+}
+.tablesorter tr th.sorter-false {
+  font-weight: 300;
+  cursor: default;
+}
+.tablesorter tr th.sorter-false .tablesorter-header-inner:after {
+  display: none;
+}
+
+.tablesorter tr td.expander {
+  vertical-align: middle;
+}
+.tablesorter tr td.expander div:after {
+  content: '';
+  border: solid rgba(0, 0, 0, 0.5);
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 5px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  display: inline-block;
+  margin-left: 0px;
+  position: relative;
+  top: 0px;
+  transition: all ease 0.3s;
+}
+.tablesorter tr:hover td.expander div:after {
+  border: solid rgba(0, 0, 0, 1);
+  border-width: 0 1px 1px 0;
+}
+.tablesorter tr.expanded td.expander div:after {
+  border: solid rgba(0, 0, 0, 1);
+  border-width: 0 1px 1px 0;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  top: 4px;
+}
+
+.tablesorter-sticky-wrapper {
+  transition: all ease 0.15s;
+}
+.tablesorter-sticky-wrapper tr th {
+  padding: 10px 20px 10px 20px;
+  font-size: 14px;
+}
+.tablesorter-sticky-wrapper table {
+  position: relative;
+}
+.tablesorter-sticky-wrapper table:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f0f0f0;
+  background: linear-gradient(to bottom, #ccc 0%, #fff 60px, #fff 100%);
+  margin-left: -2000px;
+  margin-right: -2000px;
+}
+
+/* Expert entity */
+
+.cs-expert .col-field_expert_fullname {
+  width: 200px;
+  min-width: 110px;
+}
+.cs-expert .col-field_expert_affiliation {
+  width: 80px;
+}
+.cs-expert .col-field_expert_designation {
+  width: 80px;
+}
+.cs-expert .col-field_expert_study {
+  width: 80px;
+}
+.cs-expert .col-field_expert_joined_ideation {
+  width: 80px;
+}
+.cs-expert .col-field_expert_description {
+  width: auto;
+}
+.cs-expert .col-field_expert_contact_point {
+  width: 80px;
+}
+.cs-expert .col-field_expert_primary_at {
+  width: 80px;
+}
+
+.cs-expert strong {
+  font-weight: 500;
+}
+.cs-expert tr.content-search-list-item {
+  cursor: pointer;
+}
+.cs-expert tr.content-search-list-item td.col-name {
+  font-family: Bower !important;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  line-height: 1.25;
+}
+.cs-expert tr.content-search-list-item td.col-name .table-box {
+  display: table;
+}
+.cs-expert tr.content-search-list-item td.col-name .table-box .img {
+  display: table-cell;
+  vertical-align: top;
+  width: auto;
+  padding-right: 20px;
+}
+.cs-expert tr.content-search-list-item td.col-name .table-box .img img {
+  width: 110px;
+  min-width: 110px;
+  height: 110px;
+  border-radius: 100px;
+}
+.cs-expert tr.content-search-list-item td.col-name .table-box .name {
+  display: table-cell;
+  vertical-align: top;
+  width: auto;
+}
+.cs-expert tr.content-search-list-item td.col-desc p {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 16px;
+  font-weight: 300;
+  color: #000;
+  margin: 0 0 10px;
+}
+.cs-expert tr.content-search-list-item td.col-desc p:last-child {
+  margin-bottom: 0;
+}
+
+.cs-expert tr.content-search-list-item-bio {
+  display: none;
+  background: #f0f0f0;
+  transition: height ease 0.3s;
+}
+.cs-expert tr.content-search-list-item-bio td {
+  padding: 60px 20px !important;
+}
+.cs-expert tr.content-search-list-item-bio.opened {
+  display: table-row;
+}
+.cs-expert tr.content-search-list-item-bio.opened td {
+  position: relative;
+  z-index: 2;
+}
+.cs-expert tr.content-search-list-item-bio.opened td:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  margin: 0 -2000px;
+  background: #f0f0f0;
+  z-index: 1;
+}
+.cs-expert tr.content-search-list-item-bio.opened td div {
+  position: relative;
+  z-index: 2;
+}
+.cs-expert tr.content-search-list-item-bio .table-box {
+  display: table;
+}
+.cs-expert tr.content-search-list-item-bio .table-box .img {
+  display: table-cell;
+  vertical-align: top;
+  width: 300px;
+}
+.cs-expert tr.content-search-list-item-bio .table-box .img img {
+  width: 242px;
+  height: auto;
+  border-radius: 200px;
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio {
+  display: table-cell;
+  vertical-align: top;
+  width: auto;
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio > div {
+  font-family: 'McKinsey Theinhardt' !important;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_fullname {
+  font-family: 'Bower' !important;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_affiliation {
+
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_designation {
+
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_joined_ideation {
+
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_study {
+
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_primary_vt {
+
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_primary_at {
+
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_contact_point {
+
+}
+
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_description,
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_description p {
+  font-family: 'McKinsey Theinhardt' !important;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_description {
+
+}
+.cs-expert tr.content-search-list-item-bio .table-box .bio .bio-field_expert_description p {
+  margin-bottom: 0;
+}
+
+@media(min-width: 768px){
+  .mck-para-content-search .filters-wrapper {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100px, #f0f0f0 100px, #f0f0f0 100%);
+    padding: 40px 20px;
+  }
+  .mck-para-content-search .result-wrapper {
+    /*padding-left: 20px;*/
+    /*padding-right: 20px;*/
+  }
+  .mck-para-content-search .row-all-filters .left {
+    display: table-cell;
+    width: auto;
+  }
+  .mck-para-content-search .row-all-filters .right {
+    display: table-cell;
+    width: 245px;
+  }
+
+  .mck-para-content-search .row-all-filters .content-search-keywords {
+    height: 60px;
+    line-height: 60px;
+  }
+  .mck-para-content-search .row-all-filters .filter-by .filter {
+    width: auto;
+    margin-right: 20px;
+  }
+  .mck-para-content-search .row-all-filters .filter-by .filter .filter-name {
+    min-width: 0;
+  }
+  .mck-para-content-search .row-all-filters .filter-by .filter .filter-items .inner {
+    /*min-width: 400px;*/
+  }
+  .mck-para-content-search .row-all-filters .filter-by .filter .filter-name {
+    height: 60px;
+    line-height: 60px;
+    margin-bottom: 20px;
+  }
+  .mck-para-content-search .row-all-filters .filter-by .filter .filter-name .add {
+    width: 60px;
+    height: 60px;
+    line-height: 65px;
+  }
+  .mck-para-content-search .row-all-filters .filter-by .filter .filter-items {
+    top: 60px;
+  }
+
+  .mck-para-content-search .row-selected-filters .inner .total-filters-text {
+    display: none;
+  }
+  .mck-para-content-search .row-selected-filters .inner .items {
+    display: table-cell;
+  }
+  .mck-para-content-search .total-results-text {
+    text-align: right;
+    margin-top: 0;
+  }
+}

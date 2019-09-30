@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the McKinsey Content Search Paragraph Features feature.
+ */
+
+include_once 'mck_content_search_features.features.inc';

@@ -1,0 +1,253 @@
+.mck-para-phase {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.mck-para-phase .phase-wrapper {
+  margin-left: -2px;
+  margin-right: -2px;
+  margin-bottom: 10px;
+}
+.mck-para-phase .container {
+  max-width: 1090px;
+  margin: 0 auto;
+}
+
+.mck-para-phase .phases {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.mck-para-phase .phases .phase {
+  flex-grow: 1;
+  width: calc(33.33% - 30px - 4px);
+  padding: 15px 15px 60px 15px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background: #f0f0f0;
+  cursor: pointer;
+  position: relative;
+  clip-path: polygon(calc(100%) 0%, 100% calc(100% - 15px), calc(50%) 100%, 50% 100%, 0 calc(100% - 15px), 0% 0%);
+  color: #000;
+}
+.mck-para-phase .phases .phase:hover {
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mck-para-phase .phases .phase .title {
+  font-family: "Bower" !important;
+  font-size: 16px;
+  font-weight: bold;
+  color: #051C2C;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  min-height: 50px;
+}
+.mck-para-phase .phases .phase .subtitle {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+.mck-para-phase .phases .phase .learn-more {
+  position: absolute;
+  left: 15px;
+  bottom: 45px;
+}
+.mck-para-phase .phases .phase .learn-more a {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 12px;
+  font-weight: 500;
+  color: #051C2C;
+  padding-right: 25px;
+}
+.mck-para-phase .phases .phase .learn-more a:after {
+  color: #00adef;
+  font-weight: bold;
+}
+
+.mck-para-phase .phases .phase.active {
+  background: linear-gradient(135deg, #051C2C 0%, #051C2C 40%, #03339C 100%);
+  -webkit-background: linear-gradient(135deg, #051C2C 0%, #051C2C 40%, #03339C 100%);
+  -moz-background: linear-gradient(135deg, #051C2C 0%, #051C2C 40%, #03339C 100%);
+}
+.mck-para-phase .phases .phase.active .title {
+  color: #fff;
+}
+.mck-para-phase .phases .phase.active .subtitle {
+  color: #fff;
+}
+.mck-para-phase .phases .phase.active .learn-more a {
+  color: #fff;
+}
+
+.mck-para-phase .phases .arrow {
+  display: none;
+  position: absolute;
+  bottom: -40px;
+  transform: rotate(180deg);
+  transition: all ease 0.3s;
+}
+.mck-para-phase .phases .arrow:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-top-color: #fff;
+  border-width: 40px;
+  margin-left: -40px;
+}
+.mck-para-phase .phases .arrow:after {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: transparent;
+  border-top-color: #fff;
+  border-width: 39px;
+  margin-left: -39px;
+}
+.mck-para-phase .phases .arrow[data-phase-arrow-id=""] {
+  display: none;
+}
+.mck-para-phase .phases .arrow[data-phase-arrow-id="0"] {
+  left: calc(33.33% - 33% / 2);
+}
+.mck-para-phase .phases .arrow[data-phase-arrow-id="1"] {
+  left: calc(50%);
+}
+.mck-para-phase .phases .arrow[data-phase-arrow-id="2"] {
+  left: calc(66.66% + 33% / 2);
+}
+
+.mck-para-phase .phases .phase:first-child {
+
+}
+.mck-para-phase .phases .phase:first-child .learn-more {
+  left: 15px;
+}
+
+.mck-para-phase .contents .content {
+  position: relative;
+}
+.mck-para-phase .contents .content .close-btn {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  right: 0;
+  font-size: 16px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.mck-para-phase .contents .content .close-btn:before {
+  position: relative;
+  top: -1px;
+  left: 0;
+}
+.mck-para-phase .contents .content .close-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  .mck-para-phase {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .mck-para-phase .phase-wrapper {
+    background: #f0f0f0;
+    padding: 40px 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+  .mck-para-phase .phases .arrow {
+    display: block;
+  }
+
+  .mck-para-phase .phases .phase {
+    flex-grow: 1;
+    width: calc(33.33% + 10px - 100px);
+    margin-left: -10px;
+    padding: 40px;
+    padding-left: 60px;
+    margin-left: 0;
+    margin-right: 0;
+    background: #051C2C;
+    cursor: pointer;
+    position: relative;
+    clip-path: polygon(calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 0% 100%, 25px 50%, 0% 0%);
+    color: #fff;
+  }
+  .mck-para-phase .phases .phase .title {
+    font-size: 32px;
+    min-height: 104px;
+    color: #fff;
+  }
+  .mck-para-phase .phases .phase .subtitle {
+    font-size: 18px;
+    margin-bottom: 60px;
+    color: #fff;
+  }
+  .mck-para-phase .phases .phase .learn-more {
+    left: 60px;
+    bottom: 40px;
+  }
+  .mck-para-phase .phases .phase .learn-more a {
+    font-size: 18px;
+    padding-right: 48px;
+    color: #fff;
+  }
+  .mck-para-phase .phases .phase:first-child {
+    margin-left: 0;
+    padding-left: 40px;
+    margin-left: 0;
+    width: calc(33.33% + 20px - 80px);
+    clip-path: polygon(calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 0% 100%, 0 50%, 0% 0%);
+  }
+  .mck-para-phase .phases .phase:first-child .learn-more {
+    left: 40px;
+  }
+  .mck-para-phase .phases .phase.active {
+    color: #fff;
+  }
+
+  .mck-para-phase .contents .content .close-btn {
+    font-size: 18px;
+    top: 20px;
+    right: 0;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    border-radius: 30px;
+  }
+  .mck-para-phase .contents .content .close-btn:before {
+    osition: relative;
+    top: 0px;
+    left: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .mck-para-phase .phases .phase .title {
+    font-size: 48px;
+  }
+}

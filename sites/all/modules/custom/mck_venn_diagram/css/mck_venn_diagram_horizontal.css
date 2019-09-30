@@ -1,0 +1,316 @@
+.mck-para-venn-diagram--tpl-horizontal {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.mck-para-venn-diagram--tpl-horizontal .container {
+  max-width: 1090px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mck-para-venn-diagram--tpl-horizontal .outer-wrapper {
+  display: table;
+  width: 100%;
+}
+.mck-para-venn-diagram--tpl-horizontal .outer-wrapper .diagrams-wrapper {
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .outer-wrapper .content-wrapper {
+  display: block;
+  width: 100%;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mck-para-venn-diagram--tpl-horizontal .row-head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.mck-para-venn-diagram--tpl-horizontal .row-head .head-title {
+  font-family: "Bower" !important;
+  font-size: 32px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 20px;
+}
+.mck-para-venn-diagram--tpl-horizontal .row-head .head-subtitle {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 18px;
+  font-weight: 300;
+  color: #000;
+  margin-top: 20px;
+}
+.mck-para-venn-diagram--tpl-horizontal .row-head .head-desc {
+  line-height: 1.5;
+  margin-top: 20px;
+}
+.mck-para-venn-diagram--tpl-horizontal .row-head .head-desc p {
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .row-head .head-desc p:last-child {
+  margin-bottom: 0;
+}
+
+.mck-para-venn-diagram--tpl-horizontal .diagrams {
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-left: -30px;
+}
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram-wrapper:first-child {
+  margin-left: 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram {
+  position: relative;
+  background: #E6E6E6;
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4D4D4D;
+  text-align: center;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  mix-blend-mode: multiply;
+  width: 120px;
+  height: 120px;
+  border-radius: 120px;
+  display: table;
+  margin-left: -20px;
+}
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram:first-child {
+  margin-left: 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram .inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram:hover {
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram.active {
+  z-index: 10;
+  background: #1F40E6;
+  color: #fff;
+}
+
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram .img img {
+  width: 50px;
+  height: 50px;
+}
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram .title {
+  font-family: "Bower" !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+.mck-para-venn-diagram--tpl-horizontal .diagrams .diagram .subtitle {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 5px;
+}
+
+.mck-para-venn-diagram--tpl-horizontal .content {
+  position: relative;
+  margin-top: 40px;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .arrow {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: block;
+  top: -20px;
+  transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  left: 12.5px;
+  z-index: 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .title {
+  font-family: "Bower" !important;
+  font-size: 36px;
+  font-weight: bold;
+  color: #051C2C;
+  margin-bottom: 20px;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .subtitle {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 16px;
+  font-weight: 300;
+  color: #333;
+  margin-top: 10px;
+}
+
+.mck-para-venn-diagram--tpl-horizontal .content .desc {
+  padding: 20px;
+  border-bottom: 1px solid #fff;
+  position: relative;
+  z-index: 1;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .desc,
+.mck-para-venn-diagram--tpl-horizontal .content .desc p {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 16px;
+  font-weight: 300;
+  color: inherit;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .desc p {
+  margin: 0 0 10px 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .desc p:last-child {
+  margin-bottom: 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .desc ul {
+  padding: 0 0 0 20px;
+  margin: 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .desc ul li {
+  margin: 5px 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .img {
+  padding: 20px;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .img img {
+  width: 100%;
+  height: auto;
+}
+
+.mck-para-venn-diagram--tpl-horizontal .content .points {
+  padding: 20px 0;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .points .inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .points .point-item {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .points .point-icon {
+
+}
+.mck-para-venn-diagram--tpl-horizontal .content .points .point-title {
+  margin-top: 5px;
+  font-weight: bold;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .points .point-desc {
+  margin-top: 10px;
+}
+
+.mck-para-venn-diagram--tpl-horizontal .content .links-wrapper {
+  margin-top: 10px;
+}
+.mck-para-venn-diagram--tpl-horizontal .content .links-wrapper .open-popup-link {
+
+}
+
+/*.mck-mfp ul.links {*/
+  /*padding: 0;*/
+  /*margin: 0;*/
+  /*list-style-type: none;*/
+/*}*/
+/*.mck-mfp ul.links li {*/
+  /*font-family: "McKinsey Theinhardt" !important;*/
+  /*font-size: 20px;*/
+  /*font-weight: 300;*/
+  /*color: #000;*/
+  /*padding: 15px 0px 12px 0px;*/
+  /*border-bottom: 1px solid #ccc;*/
+/*}*/
+/*.mck-mfp ul.links li:last-child {*/
+  /*border-bottom: none;*/
+/*}*/
+
+/*.mck-mfp ul.links li .link-wrapper {*/
+  /*display: table;*/
+  /*width: 100%;*/
+/*}*/
+/*.mck-mfp ul.links li .link-title {*/
+  /*display: table-cell;*/
+  /*width: auto;*/
+  /*vertical-align: top;*/
+  /*padding: 0 20px 0 0;*/
+/*}*/
+/*.mck-mfp ul.links li .link-url {*/
+  /*display: table-cell;*/
+  /*width: 130px;*/
+  /*vertical-align: top;*/
+  /*padding-right: 0;*/
+/*}*/
+
+/*.mck-mfp ul.links li .link-url a {*/
+  /*font-family: "McKinsey Theinhardt" !important;*/
+  /*font-size: 18px;*/
+  /*font-weight: 300;*/
+  /*color: #000;*/
+  /*padding-right: 40px;*/
+/*}*/
+/*.mck-mfp ul.links li .link-url a:hover {*/
+  /*color: #1F40E6;*/
+/*}*/
+/*.mck-mfp ul.links li .link-url a:after {*/
+  /*color: #1F40E6;*/
+  /*font-weight: bold;*/
+/*}*/
+
+.mck-mfp-large .mfp-inline-holder .mfp-content {
+  height: auto;
+}
+.mck-mfp-large .mfp-inline-holder .mfp-content .white-popup {
+  max-width: 80%;
+  padding: 40px;
+}
+
+@media(min-width: 480px) {
+  .mck-para-venn-diagram--tpl-horizontal .diagrams .diagram {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    font-size: 18px;
+    margin-left: -40px;
+  }
+}
+
+@media(min-width: 768px) {
+  .mck-para-venn-diagram--tpl-horizontal .row-head .head-title {
+    font-size: 48px;
+  }
+  .mck-para-venn-diagram--tpl-horizontal .row-head .head-subtitle {
+    font-size: 24px;
+  }
+  .mck-para-venn-diagram--tpl-horizontal .diagrams .diagram {
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+  }
+  .mck-para-venn-diagram--tpl-horizontal .diagrams .diagram .title {
+    font-size: 24px;
+  }
+  .mck-para-venn-diagram--tpl-horizontal .diagrams .diagram .subtitle {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .mck-para-venn-diagram--tpl-horizontal .content .desc,
+  .mck-para-venn-diagram--tpl-horizontal .content .desc p {
+    font-size: 24px;
+  }
+
+}
+
+@media(min-width: 992px) {
+
+}

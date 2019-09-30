@@ -27,30 +27,48 @@
  */
 
 
-$link              = isset($content['field_link']) ? render($content['field_link']) : '';
-$anchor              = $content['field_grey_row'][0]['#markup'];
+$link = isset($content['field_link']) ? render($content['field_link']) : '';
+$anchor = $content['field_grey_row'][0]['#markup'];
 
 $curr_path = current_path();
-$curr_path = drupal_lookup_path('alias',$curr_path);
-$curr_path = "/media-services/ino/" . $curr_path;
+//$curr_path = drupal_lookup_path('alias',$curr_path);
+//$curr_path = "/media-services/ino/" . $curr_path;
 $frontpage = drupal_get_normal_path(variable_get('site_frontpage', 'node'));
 
-
+$subMenulinks = isset($content['field_sub_menu_links']) ? render($content['field_sub_menu_links']) : '';
 ?>
 
 
-<?php if($anchor){?>
-	<li role="menuitem" class="nav-item nav-link-item" aria-hidden="true">
-		<?php echo l($content['field_link']['#items'][0]['title'], '', array('fragment' => str_replace("#","",$content['field_link']['#items'][0]['url']), 'external' => TRUE));?>
-	</li>
-<?php }else{
-             if($curr_path == $content['field_link']['#items'][0]['url']) { ?>
-                <li class="nav-item active" aria-hidden="true" >
-               		 <a href="<?php echo $content['field_link']['#items'][0]['url']; ?>"><?php echo $content['field_link']['#items'][0]['title']; ?></a>
-                </li>
-            <?php } else { ?>
-                <li class="nav-item " aria-hidden="true" >
-                	<a href="<?php echo $content['field_link']['#items'][0]['url']; ?>"><?php echo $content['field_link']['#items'][0]['title']; ?></a>
-                </li>
-            <?php } ?>
+<?php if ($anchor) { ?>
+  <li role="menuitem" class="nav-item nav-link-item" aria-hidden="true">
+    <?php echo l($content['field_link']['#items'][0]['title'], '', array('fragment' => str_replace("#", "", $content['field_link']['#items'][0]['url']), 'external' => TRUE)); ?>
+    <?php if (isset($content['field_sub_menu_links'])) { ?>
+      <ul class="sub-nav">
+        <?php print $subMenulinks; ?>
+      </ul>
+    <?php } ?>
+  </li>
+<?php } else {
+  if (url($curr_path) == $content['field_link']['#items'][0]['url']) { ?>
+    <li class="nav-item active" aria-hidden="true">
+      <a
+        href="<?php echo $content['field_link']['#items'][0]['url']; ?>"><?php echo $content['field_link']['#items'][0]['title']; ?></a>
+      <?php if (isset($content['field_sub_menu_links'])) { ?>
+        <ul class="sub-nav">
+          <?php print $subMenulinks; ?>
+        </ul>
+      <?php } ?>
+    </li>
+  <?php } else { ?>
+    <li class="nav-item " aria-hidden="true" data-url="<?php echo url($curr_path) ?>">
+      <a
+        href="<?php echo $content['field_link']['#items'][0]['url']; ?>"><?php echo $content['field_link']['#items'][0]['title']; ?></a>
+      <?php if (isset($content['field_sub_menu_links'])) { ?>
+        <ul class="sub-nav">
+          <?php print $subMenulinks; ?>
+        </ul>
+      <?php } ?>
+    </li>
+
+  <?php } ?>
 <?php } ?>

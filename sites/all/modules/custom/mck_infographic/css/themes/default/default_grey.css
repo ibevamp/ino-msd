@@ -1,0 +1,138 @@
+/***** For Number *****/
+
+.mck-para-infographic-skin-grey.mck-para-infographic-type-number .ig-title {
+  font-family: "Bower" !important;
+  font-weight: bold;
+  font-size: 52px;
+  color: #051C2C;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-number .ig-desc p {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 24px;
+  color: #666;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-number .ig-item .value {
+  font-family: "Bower" !important;
+  font-weight: bold;
+  font-size: 0;
+  color: #1F40E6;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-number .ig-item .value .num {
+  font-size: 80px;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-number .ig-item .value .unit {
+  font-size: 60px;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-number .ig-item .label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 16px;
+  color: #333;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-number .bottom {
+  background: #F0F0F0;
+}
+
+@media (min-width: 992px) {
+  .mck-para-infographic-skin-grey.mck-para-infographic-type-number .row-content .col:after {
+    border-right: 1px solid rgba(190, 181, 175, 0.5);
+  }
+  .mck-para-infographic-skin-grey.mck-para-infographic-type-number .row-content .col:last-child:after {
+    border-right: none;
+  }
+}
+
+/***** For Bar *****/
+
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar {
+  background: #051C2C;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .ig-title {
+  font-family: "Bower" !important;
+  font-weight: bold;
+  font-size: 52px;
+  color: #fff;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .ig-desc p {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 20px;
+  color: #fff;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .ig-item .value {
+  font-family: "Bower" !important;
+  font-weight: bold;
+  font-size: 0px;
+  color: #fff;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .ig-item .value .num {
+  font-size: 30px;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .ig-item .value .unit {
+  font-size: 30px;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .ig-item .label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 20px;
+  color: #fff;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .row-content .col:nth-child(1) .bar {
+  background: #1F40E6;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .row-content .col:nth-child(2) .bar {
+  background: #00ADEF;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .row-content .col:nth-child(3) .bar {
+  background: #B3B3B3;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .row-content .col:nth-child(4) .bar {
+  background: #D0D0D0;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-bar .row-content .col:nth-child(5) .bar {
+  background: #F0F0F0;
+}
+
+/***** For Circle *****/
+
+.mck-para-infographic-skin-grey.mck-para-infographic-type-circle {
+  background: #F0F0F0;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-circle .ig-title {
+  font-family: "Bower" !important;
+  font-weight: bold;
+  font-size: 52px;
+  color: #051C2C;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-circle .ig-desc p {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: normal;
+  font-size: 20px;
+  color: #666;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-circle .chart-progress .value {
+  font-family: "Bower" !important;
+  font-weight: bold;
+  font-size: 0px;
+  color: #051C2C;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-circle .chart-progress .value .num {
+  font-size: 50px;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-circle .chart-progress .value .unit {
+  font-size: 50px;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-circle .chart-progress .label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-weight: 300;
+  font-size: 20px;
+  color: #333;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-circle .chart-progress .progress-full {
+  stroke-opacity: 1;
+  stroke: #D0D0D0;
+}
+.mck-para-infographic-skin-grey.mck-para-infographic-type-circle .chart-progress .chart circle.progress-actual {
+  stroke: #1F40E6;
+}

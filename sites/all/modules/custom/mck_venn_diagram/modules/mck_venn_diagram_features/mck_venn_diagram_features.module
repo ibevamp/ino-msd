@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the McKinsey Venn Diagram Paragraph Features feature.
+ */
+
+include_once 'mck_venn_diagram_features.features.inc';

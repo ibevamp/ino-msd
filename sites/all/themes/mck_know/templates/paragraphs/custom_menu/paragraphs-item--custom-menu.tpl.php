@@ -45,6 +45,7 @@ $linkColor = isset($content['field_link_font_color'])? $content['field_link_font
 $linkHoverBgColor = isset($content['field_main_heading_font_color'])? $content['field_main_heading_font_color'][0]['#markup']: "";
 
 $linkHoverColor = isset($content['field_content_font_color'])? $content['field_content_font_color'][0]['#markup']: "";
+$linkActiveColor = isset($content['field_active_link_font_color'])? $content['field_active_link_font_color'][0]['#markup']: "";
 
 $logOutClass = $content['field_hide_logout_link'][0]['#markup']? "hide-logout" : "";
 
@@ -105,11 +106,35 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
             }
 
 			 .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover:after,
-             .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a:hover:after
+             .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a:after
             {
                 background-color: <?php echo $linkHoverBgColor ?>;
             }	
     <?php } ?>
+
+
+
+     <?php if (!empty($linkColor)) { ?>
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item .sub-nav a.sub-menu-item {
+       color: <?php echo $linkColor; ?> !important;
+       border-bottom: 4px solid #fff;
+     }
+     <?php } ?>
+
+     <?php if (!empty($linkHoverColor)) { ?>
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item .sub-nav a.sub-menu-item:hover {
+       color: <?php echo $linkHoverColor; ?> !important;
+       border-bottom: 4px solid <?php echo $linkHoverColor; ?>;
+     }
+     <?php } ?>
+
+     <?php if (!empty($linkActiveColor)) { ?>
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item .sub-nav .nav-item.active a.sub-menu-item,
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item .sub-nav a.sub-menu-item.active {
+       color: <?php echo $linkActiveColor; ?> !important;
+       border-bottom: 4px solid <?php echo $linkActiveColor; ?>;
+     }
+     <?php } ?>
 </style>
 
 
