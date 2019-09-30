@@ -136,7 +136,7 @@ $bgurl = isset($bguri) ? file_create_url($bguri) : NULL;
 </div>
 
 <?php if(isset($content['field_image'])){ ?>
-	<div style="background-image: url('<?php echo $bgurl ?>');" class="para-<?php echo $paraID ?> <?php echo $linksAlign; ?> card-module bg-image <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $cardItemClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $bgClass; ?> <?php /*echo $cardBorderClass;/* ?> <?php /*echo $defaultBgColor;*/ ?> section-wrapper <?php echo $paraClass; ?>">
+	<div style="background-image: url('<?php echo $bgurl ?>');" class="para-<?php echo $paraID ?> <?php echo $linksAlign; ?> card-module bg-image <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $cardItemClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $bgClass; ?> <?php /*echo $cardBorderClass;*/ ?> <?php /*echo $defaultBgColor;*/ ?> section-wrapper <?php echo $paraClass; ?>">
 <?php }else{ ?>
 	<div class="para-<?php echo $paraID ?> card-module <?php echo $cardItemClass ?> <?php echo $linksAlign; ?> <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo /*$cardBorderClass;*/ ?> <?php /*echo $defaultBgColor;*/ ?> <?php echo $bgClass; ?> section-wrapper <?php echo $paraClass; ?>">
 <?php } ?>
