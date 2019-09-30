@@ -26,38 +26,35 @@
  * @see template_process()
  */
 
-$headline               = isset($content['field_text_headline']) ? render($content['field_text_headline']): '';
-$image               = isset($content['field_image']) ? render($content['field_image']): '';
-$title               = isset($content['field_title']) ? render($content['field_title']): '';
-$eyebrow               = isset($content['field_eyebrow']) ? render($content['field_eyebrow']): '';
-$description         = isset($content['field_body']) ? render($content['field_body']): '';
-$link                = isset($content['field_link']) ? render($content['field_link']): '';
-$downloadIcon        = $content['field_grey_row']['0']['#markup'] ? "mck-download-icon" : '';
-$mediumBg   = $content['field_small_image']['0']['#markup']?"medium-img":"";
-$alignImgRight        = $content['field_align_right']['0']['#markup'];
-$wrapperBgColor = $content['field_text_overlays_image'][0]['#markup']?"default-wrapper-bg":"";
-$link_items     = isset($content['field_links']) ? $content['field_links'] : '';
-$iframe_embed_code     = isset($content['field_iframe_embed_code']) ? $content['field_iframe_embed_code'] : '';
-$videouri       = isset($content['field_file']['#items'][0]['uri']) ? $content['field_file']['#items'][0]['uri'] : NULL;
+$headline = isset($content['field_text_headline']) ? render($content['field_text_headline']) : '';
+$image = isset($content['field_image']) ? render($content['field_image']) : '';
+$title = isset($content['field_title']) ? render($content['field_title']) : '';
+$eyebrow = isset($content['field_eyebrow']) ? render($content['field_eyebrow']) : '';
+$description = isset($content['field_body']) ? render($content['field_body']) : '';
+$link = isset($content['field_link']) ? render($content['field_link']) : '';
+$downloadIcon = isset($content['field_grey_row']['0']['#markup']) ? "mck-download-icon" : '';
+$mediumBg = isset($content['field_small_image']['0']['#markup']) ? "medium-img" : "";
+$alignImgRight = isset($content['field_align_right']['0']['#markup']) ? $content['field_align_right']['0']['#markup'] : NULL;
+$wrapperBgColor = isset($content['field_text_overlays_image'][0]['#markup']) ? "default-wrapper-bg" : "";
+$link_items = isset($content['field_links']) ? $content['field_links'] : '';
+$iframe_embed_code = isset($content['field_iframe_embed_code']) ? $content['field_iframe_embed_code'] : '';
+$videouri = isset($content['field_file']['#items'][0]['uri']) ? $content['field_file']['#items'][0]['uri'] : NULL;
 //$videohref =  isset($content['field_video_url']['#items'][0]['value']) ? $content['field_video_url']['#items'][0]['value'] : '';
 //$videourl      = isset($videouri) ? file_create_url($videouri) : $videohref;
 
-
-
 if(isset($content['field_video_url'])){
-		$videourl = isset($content['field_video_url'][0]['#markup']) ? $content['field_video_url'][0]['#markup'] : '';
-	}else{
-		$videouri       = isset($content['field_file']['#items'][0]['uri']) ? $content['field_file']['#items'][0]['uri'] : '';
-		$videourl      = isset($videouri) ? file_create_url($videouri) : NULL;
+	$videourl = isset($content['field_video_url'][0]['#markup']) ? $content['field_video_url'][0]['#markup'] : '';
+}else{
+	$videouri = isset($content['field_file']['#items'][0]['uri']) ? $content['field_file']['#items'][0]['uri'] : '';
+	$videourl = isset($videouri) ? file_create_url($videouri) : NULL;
 }
-
 
 ?>
 
 <div class="section-wrapper">
-<a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" ></a>
-<div class="wrapper oneup-image <?php echo $wrapperBgColor; ?> section-inner-wrapper">
-<div id="sg-c-1up-medium" class="c-example-block  u-padding">
+	<a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" ></a>
+	<div class="wrapper oneup-image <?php echo $wrapperBgColor; ?> section-inner-wrapper">
+		<div id="sg-c-1up-medium" class="c-example-block  u-padding">
 
 			<section class="up one-up up-left">
 				<?php if(isset($content['field_text_headline'])){ ?>
@@ -65,16 +62,16 @@ if(isset($content['field_video_url'])){
 				<?php }?>
 				<article class="text-xl -no-dek">
 					<div class="item">
-					  <?php if(!$alignImgRight){ ?>
-					      <div class="image <?php echo $mediumBg; ?>">
-                             <?php if(isset($content['field_video_url']) || isset($content['field_file'] )){ ?> 
-                             		<video class="video-js vjs-fluid" controls poster="<?php echo file_create_url($content['field_image'][0]['#item']['uri']) ?>" data-setup="{}" src="<?php print $videourl; ?>"></video>
-                             <?php } else{ ?>
-						    <?php if(isset($content['field_image'])){ ?>
-						      <div class="thumbnail" style="background-image: url(<?php echo file_create_url($content['field_image'][0]['#item']['uri']) ?>)"></div>
-						    <?php } 
-						    } ?>
-						</div>
+						<?php if(!$alignImgRight){ ?>
+							<div class="image <?php echo $mediumBg; ?>">
+								<?php if(isset($content['field_video_url']) || isset($content['field_file'] )){ ?> 
+									<video class="video-js vjs-fluid" controls poster="<?php echo file_create_url($content['field_image'][0]['#item']['uri']) ?>" data-setup="{}" src="<?php print $videourl; ?>"></video>
+								<?php } else{ ?>
+									<?php if(isset($content['field_image'])){ ?>
+										<div class="thumbnail" style="background-image: url(<?php echo file_create_url($content['field_image'][0]['#item']['uri']) ?>)"></div>
+									<?php } 
+						    	} ?>
+							</div>
 						<?php } ?>
 						<div class="text-wrapper">
 						    <?php if(isset($content['field_eyebrow'])){ ?>
@@ -84,48 +81,47 @@ if(isset($content['field_video_url'])){
 								<h3 class="headline"><?php  echo $title; ?></h3>
 							<?php } ?>
 							<?php if(isset($content['field_body'])){ ?>
-							<div class="description"><?php  echo $description; ?></div>
+								<div class="description"><?php  echo $description; ?></div>
 							<?php } ?>
 							<?php if(isset($content['field_iframe_embed_code'])){ ?>
-							<?php foreach($iframe_embed_code as $key => $item) {
-										if(is_numeric($key)) {
-											$paraItem = $item['#markup'];
-										 ?>
-								<div class="iframe-embed mfp-hide"><?php  print render($paraItem); ?></div>
-							<?php }
-							}
-							}
-							?>
-<br/>
+								<?php foreach($iframe_embed_code as $key => $item) {
+									if(is_numeric($key)) {
+										$paraItem = $item['#markup'];
+									?>
+										<div class="iframe-embed mfp-hide"><?php  print render($paraItem); ?></div>
+									<?php }
+								}
+							} ?>
+							<br/>
 							<div class="cta-wrapper">
-							<?php foreach($link_items as $key => $item) {
-		                    if(is_numeric($key)) {
-		                      $paraItem = $item['#element'];
-		                       ?>
-		                        <p> <a href="<?php echo $paraItem['url']; ?>" class="-arrow"><?php echo $paraItem['title']; ?></a></p>
-		                      <?php } 
-		                    } ?>
-							<?php if(isset($content['field_link'])){ ?>
-								     <a href="<?php echo render($content['field_link'][0]['#element']['url']) ?>" class="download-link">
-									<?php echo render($content['field_link'][0]['#element']['title']) ?><span class="<?php echo $downloadIcon;?>"></span>
+								<?php foreach($link_items as $key => $item) {
+									if(is_numeric($key)) {
+										$paraItem = $item['#element'];
+									?>
+										<p> <a href="<?php echo $paraItem['url']; ?>" class="-arrow"><?php echo $paraItem['title']; ?></a></p>
+									<?php } 
+								} ?>
+								<?php if(isset($content['field_link'])){ ?>
+									<a href="<?php echo render($content['field_link'][0]['#element']['url']) ?>" class="download-link">
+										<?php echo render($content['field_link'][0]['#element']['title']) ?><span class="<?php echo $downloadIcon;?>"></span>
 									</a>
-							<?php } ?>
+								<?php } ?>
 							</div>
 						</div>
 						<?php if($alignImgRight){ ?>
-						   <div class="image <?php echo $mediumBg; ?>"">
-						     <?php if(isset($content['field_video_url']) || isset($content['field_file'] )){ ?> 
-                             		<video class="video-js vjs-fluid" controls poster="<?php echo file_create_url($content['field_image'][0]['#item']['uri']) ?>" data-setup="{}" src="<?php echo $videourl;  ?>"></video>
-                             <?php } else{ ?>
-						     <?php if(isset($content['field_image'])){ ?>
-						 		   <div class="thumbnail" style="background-image: url(<?php echo file_create_url($content['field_image'][0]['#item']['uri']) ?>)"></div>
-						 	<?php } }?>
-						</div>
+							<div class="image <?php echo $mediumBg; ?>"">
+								<?php if(isset($content['field_video_url']) || isset($content['field_file'] )){ ?> 
+									<video class="video-js vjs-fluid" controls poster="<?php echo file_create_url($content['field_image'][0]['#item']['uri']) ?>" data-setup="{}" src="<?php echo $videourl;  ?>"></video>
+								<?php } else{ ?>
+									<?php if(isset($content['field_image'])){ ?>
+										<div class="thumbnail" style="background-image: url(<?php echo file_create_url($content['field_image'][0]['#item']['uri']) ?>)"></div>
+								<?php } }?>
+							</div>
 						<?php } ?>
 					</div>
 				</article>
 			</section>
 
 		</div>
-</div>
+	</div>
 </div>

@@ -27,25 +27,25 @@
  */
 
 //ddl($content);
-$paraID   = $variables['elements']['#entity']->item_id;
+$paraID = $variables['elements']['#entity']->item_id;
 $paraClass = isset($content['field_para_classes']) ? $content['field_para_classes']['#items'][0]['value'] : '';
-$title               = isset($content['field_title']) ? render($content['field_title']) : '';
-$legend               = isset($content['field_card_module_legend']) ? render($content['field_card_module_legend']) : '';
+$title = isset($content['field_title']) ? render($content['field_title']) : '';
+$legend = isset($content['field_card_module_legend']) ? render($content['field_card_module_legend']) : '';
 $legendColourBoxColor = isset($content['field_card_module_legend_cbc'])? $content['field_card_module_legend_cbc'][0]['#markup']: "#000000";
-$description            = isset($content['field_description']) ? render($content['field_description']) : '';
-$subtitle            = isset($content['field_subtitle']) ? render($content['field_subtitle']) : '';
-$column_items        = isset($content['field_paragraph']) ? $content['field_paragraph'] : '';
-$textColorClass         = isset($content['field_grey_row']) ? "darker-heading" : '';
-
+$description = isset($content['field_description']) ? render($content['field_description']) : '';
+$subtitle = isset($content['field_subtitle']) ? render($content['field_subtitle']) : '';
+$column_items = isset($content['field_paragraph']) ? $content['field_paragraph'] : '';
+$textColorClass = isset($content['field_grey_row']) ? "darker-heading" : '';
 //$cardLayoutClass         = isset($content['field_card_layout']) ? $content['field_card_layout']['#items'][0]['value'] : '';
 $cardLayoutClass = '';
+
 if (isset($content['field_card_layout'])) {
   foreach ($content['field_card_layout']['#items'] as $item) {
     $cardLayoutClass .= ' ' . $item['value'] . ' ';
   }
 }
 
-$gridClass         = isset($content['field_column_layout']) ? $content['field_column_layout']['#items'][0]['value'] : '';
+$gridClass = isset($content['field_column_layout']) ? $content['field_column_layout']['#items'][0]['value'] : '';
 $textAlign = $content['field_left_align_text'][0]['#markup']? "-text-left" : "-text-center";
 $linksAlign = $content['field_align_link_bottom'][0]['#markup']? "align-links-bottom" : "";
 $count = count($content['field_paragraph']['#items']);
@@ -54,13 +54,10 @@ $fontSize = $content['field_larger_desc_link_text'][0]['#markup']? "larger-font"
 $bgColor = isset($content['field_background_color'])? $content['field_background_color'][0]['#markup']: "";
 $cardTextColor = isset($content['field_card_text_color'])? $content['field_card_text_color'][0]['#markup']: "";
 $cardModuleColor = isset($content['field_card_module_font_color'])? $content['field_card_module_font_color'][0]['#markup']: "";
-$linkTextColor = isset($content['field_field_link_text_color'])? $content['field_field_link_text_color'][0]['#markup']: "";
+$linkTextColor = isset($content['field_link_text_color'])? $content['field_link_text_color'][0]['#markup']: "";
 $cardHeadingColor = isset($content['field_card_heading_font_color'])? $content['field_card_heading_font_color'][0]['#markup']: "";
 
-
-if(isset($content['field_background_color']) || isset($content['field_image'])){
-	$bgClass ="bg-image";
-}
+isset($content['field_background_color']) || isset($content['field_image']) ? $bgClass ="bg-image" : '';
 
 if(isset($content['field_column_layout'])){	
 	if($gridClass == "two-up"){
@@ -84,71 +81,54 @@ if(isset($content['field_column_layout'])){
 	}
 }
 
-
-
-$bguri              = isset($content['field_image']['#items'][0]['uri']) ? $content['field_image']['#items'][0]['uri'] : NULL;
-$bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
+$bguri = isset($content['field_image']['#items'][0]['uri']) ? $content['field_image']['#items'][0]['uri'] : NULL;
+$bgurl = isset($bguri) ? file_create_url($bguri) : NULL;
 ?>
 
 <style type="text/css">
+	<?php if(isset($content['field_background_color'])) { ?>
+		.para-<?php echo $paraID ?>.card-module {
+			background-color:<?php echo $bgColor ?>!important ;
+		}
+		.accordion-module-wrapper .view-more .para-<?php echo $paraID ?>#acc-card-module-0 span {
+			border-bottom-color: <?php echo $bgColor ?>!important;
+		}			
+	<?php } ?>
 
-    <?php if(isset($content['field_background_color'])) { ?>
-            .para-<?php echo $paraID ?>.card-module
-            {
-                background-color:<?php echo $bgColor ?>!important ;
-            }
+	<?php if(isset($content['field_card_module_font_color'])) { ?>
+        .para-<?php echo $paraID ?>.card-module header .headline,
+		.para-<?php echo $paraID ?>.card-module header h4,
+		.para-<?php echo $paraID ?>.card-module header .description{
+            color:<?php echo $cardModuleColor ?>!important ;
+        }	
+    <?php } ?>
+	
+	<?php if(isset($content['field_card_text_color'])) { ?>
+        .para-<?php echo $paraID ?>.card-module .headline,
+		.para-<?php echo $paraID ?>.card-module .description,
+		.para-<?php echo $paraID ?>.card-module .description p,
+		.para-<?php echo $paraID ?>.card-module h4 {
+            color:<?php echo $cardTextColor ?>!important ;
+        }
+    <?php } ?>
 
-            .accordion-module-wrapper .view-more .para-<?php echo $paraID ?>#acc-card-module-0 span {
-				border-bottom-color: <?php echo $bgColor ?>!important;
-			}			
-			
-    <?php } ?>
-	
-	 <?php if(isset($content['field_card_module_font_color'])) { ?>
-            .para-<?php echo $paraID ?>.card-module header .headline,
-			.para-<?php echo $paraID ?>.card-module header h4,
-			.para-<?php echo $paraID ?>.card-module header .description{
-                color:<?php echo $cardModuleColor ?>!important ;
-            }	
-			
-    <?php } ?>
-	
-	 <?php if(isset($content['field_card_text_color'])) { ?>
-            .para-<?php echo $paraID ?>.card-module .headline,
-			.para-<?php echo $paraID ?>.card-module .description,
-			.para-<?php echo $paraID ?>.card-module .description p,
-			.para-<?php echo $paraID ?>.card-module h4
-            {
-                color:<?php echo $cardTextColor ?>!important ;
-            }	
-			
-    <?php } ?>
-	
 	<?php if(isset($content['field_card_heading_font_color'])) { ?>
-            .para-<?php echo $paraID ?>.card-module .item .card-content .headline
-            {
-                color:<?php echo $cardHeadingColor ?>!important ;
-            }	
-			
+		.para-<?php echo $paraID ?>.card-module .item .card-content .headline {
+			color:<?php echo $cardHeadingColor ?>!important ;
+		}		
     <?php } ?>
-	
-	
-	   <?php if($content['field_grey_row'][0]['#markup']) { ?>
-            .para-<?php echo $paraID ?>.card-module .headline
-            {
-                color:#000!important ;
-            }	
-			
-    <?php } ?>
-	
-	 <?php if($content['field_field_link_text_color'][0]['#markup']) { ?>
-            .para-<?php echo $paraID ?>.card-module .item .links a
-            {
-                color:<?php echo $linkTextColor; ?>!important ;
-            }	
-			
-    <?php } ?>
-    
+
+	<?php if($content['field_grey_row'][0]['#markup']) { ?>
+		.para-<?php echo $paraID ?>.card-module .headline {
+			color:#000!important ;
+		}	
+	<?php } ?>
+
+	<?php if($content['field_field_link_text_color'][0]['#markup']) { ?>
+		.para-<?php echo $paraID ?>.card-module .item .links a {
+			color:<?php echo $linkTextColor; ?>!important ;
+		}	
+	<?php } ?>
 </style>
 
 <div style="clear: both;">
@@ -156,39 +136,40 @@ $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
 </div>
 
 <?php if(isset($content['field_image'])){ ?>
-	<div style="background-image: url('<?php echo $bgurl ?>');" class="para-<?php echo $paraID ?> <?php echo $linksAlign; ?> card-module bg-image <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $cardItemClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $bgClass; ?> <?php echo $cardBorderClass; ?> <?php echo $defaultBgColor; ?> section-wrapper <?php echo $paraClass; ?>">
+	<div style="background-image: url('<?php echo $bgurl ?>');" class="para-<?php echo $paraID ?> <?php echo $linksAlign; ?> card-module bg-image <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $cardItemClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $bgClass; ?> <?php /*echo $cardBorderClass;/* ?> <?php /*echo $defaultBgColor;*/ ?> section-wrapper <?php echo $paraClass; ?>">
 <?php }else{ ?>
-	<div class="para-<?php echo $paraID ?> card-module <?php echo $cardItemClass ?> <?php echo $linksAlign; ?> <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo $cardBorderClass; ?> <?php echo $defaultBgColor; ?> <?php echo $bgClass; ?> section-wrapper <?php echo $paraClass; ?>">
+	<div class="para-<?php echo $paraID ?> card-module <?php echo $cardItemClass ?> <?php echo $linksAlign; ?> <?php echo $cardLayoutClass ?> <?php echo $textColorClass ?> <?php echo $column_item_class; ?> <?php echo $arrowClass ?> <?php echo /*$cardBorderClass;*/ ?> <?php /*echo $defaultBgColor;*/ ?> <?php echo $bgClass; ?> section-wrapper <?php echo $paraClass; ?>">
 <?php } ?>
 <span class="arrow"></span>
 	<div class="section-inner-wrapper" >
 		<?php if(isset($content['field_title']) || isset($content['field_subtitle']) ){ ?>
 			<header class="module-header text-l <?php echo $fontSize; ?> <?php echo $textAlign; ?>">
-        <?php if (!empty($legend)) { ?>
-          <div class="legend"><span style="background: <?php echo $legendColourBoxColor; ?>"></span><?php echo $legend; ?></div>
-        <?php } ?>
-					<h3 class="headline ">
-						<?php echo $title ?>					
-					</h3>
-					<h4><?php echo $subtitle ?></h4>
-					<div class="description"><?php echo $description ?></div>		
+		        <?php if (!empty($legend)) { ?>
+		          <div class="legend"><span style="background: <?php echo $legendColourBoxColor; ?>"></span><?php echo $legend; ?></div>
+		        <?php } ?>
+				<h3 class="headline ">
+					<?php echo $title ?>					
+				</h3>
+				<h4><?php echo $subtitle ?></h4>
+				<div class="description"><?php echo $description ?></div>		
 			</header>
 		<?php } ?>
 		<div class="block-list text-m <?php echo $fontSize; ?>">
-		 						<?php foreach($column_items as $key => $item) {
-										if(is_numeric($key)) {
-											$paraItem = $item['entity']['paragraphs_item'];
-											 ?>
-											<?php echo render($paraItem); ?>	 
-									    <?php } 
-								    } ?>
-        </div>   
-            <div >
-            <?php if(isset($content['field_link'])){ ?>
-			<div > 
-				<a class="blue-btn view-products" href="<?php  echo render($content['field_link']['#items'][0]['url']); ?>"><?php  echo render($content['field_link']['#items'][0]['title']); ?><span></span></a>	
-			</div>
-			<?php } ?>
-	</div> 
-  </div>  
-</div>  
+			<?php foreach($column_items as $key => $item) {
+				if(is_numeric($key)) {
+					$paraItem = $item['entity']['paragraphs_item'];
+				?>
+					<?php echo render($paraItem); ?>	 
+				<?php } 
+			} ?>
+		</div>   
+            <div>
+				<?php if(isset($content['field_link'])){ ?>
+					<div> 
+						<a class="blue-btn view-products" href="<?php  echo render($content['field_link']['#items'][0]['url']); ?>"><?php  echo render($content['field_link']['#items'][0]['title']); ?><span></span></a>	
+					</div>
+				<?php } ?>
+			</div> 
+		</div>  
+	</div>
+</div>
