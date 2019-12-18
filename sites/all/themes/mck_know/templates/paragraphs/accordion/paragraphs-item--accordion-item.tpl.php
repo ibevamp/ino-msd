@@ -28,7 +28,7 @@
 //ddl($content);
 $bguri              = isset($content['field_acc_card_image']['#items'][0]['uri']) ? $content['field_acc_card_image']['#items'][0]['uri'] : NULL;
 $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
-$nid = $content['field_acc_more_content'][0]['#item']['target_id'];
+$nid = mck_util_get_by_paths($content, 'field_acc_more_content|0|#item|target_id', '');
 //$node_content = node_load($nid);
 
 ?>

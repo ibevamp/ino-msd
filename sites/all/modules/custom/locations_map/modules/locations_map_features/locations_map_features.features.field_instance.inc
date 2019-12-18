@@ -11,6 +11,47 @@ function locations_map_features_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'paragraphs_item-locations_map-field_locsmap_anchor'.
+  $field_instances['paragraphs_item-locations_map-field_locsmap_anchor'] = array(
+    'bundle' => 'locations_map',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_locsmap_anchor',
+    'label' => 'Anchor',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-locations_map-field_locsmap_highlight'.
   $field_instances['paragraphs_item-locations_map-field_locsmap_highlight'] = array(
     'bundle' => 'locations_map',
@@ -48,7 +89,7 @@ function locations_map_features_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -238,7 +279,94 @@ function locations_map_features_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 5,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-locations_map-field_locsmap_legends'.
+  $field_instances['paragraphs_item-locations_map-field_locsmap_legends'] = array(
+    'bundle' => 'locations_map',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Enter one legend per line. e.g.<br>
+#051c2c|Lorem ipsum dolor<br>
+#1f40e6|Sit amet consectetur<br>
+#00a9f4|Adipiscit elit lorem<br>
+#7f7f7f|Sed ut perspiciatis<br>',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_locsmap_legends',
+    'label' => 'Legends',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-locations_map-field_locsmap_maker_border_color'.
+  $field_instances['paragraphs_item-locations_map-field_locsmap_maker_border_color'] = array(
+    'bundle' => 'locations_map',
+    'default_value' => array(
+      0 => array(
+        'rgb' => '#ffffff',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'color_field',
+        'settings' => array(),
+        'type' => 'color_field_default_formatter',
+        'weight' => 10,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_locsmap_maker_border_color',
+    'label' => 'Maker Border Color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'color_field',
+      'settings' => array(),
+      'type' => 'color_field_spectrum_widget',
+      'weight' => 6,
     ),
   );
 
@@ -248,11 +376,11 @@ function locations_map_features_field_default_field_instances() {
     'bundle' => 'locations_map',
     'default_value' => array(
       0 => array(
-        'rgb' => '#2b9d11',
+        'rgb' => '#1f40e6',
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This is the default maker fill color.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -280,7 +408,7 @@ function locations_map_features_field_default_field_instances() {
       'module' => 'color_field',
       'settings' => array(),
       'type' => 'color_field_spectrum_widget',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -288,13 +416,9 @@ function locations_map_features_field_default_field_instances() {
   // 'paragraphs_item-locations_map-field_locsmap_maker_h_fill_color'.
   $field_instances['paragraphs_item-locations_map-field_locsmap_maker_h_fill_color'] = array(
     'bundle' => 'locations_map',
-    'default_value' => array(
-      0 => array(
-        'rgb' => '#2b9d11',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This is the default maker hover fill color.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -322,7 +446,7 @@ function locations_map_features_field_default_field_instances() {
       'module' => 'color_field',
       'settings' => array(),
       'type' => 'color_field_spectrum_widget',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -367,7 +491,7 @@ function locations_map_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -408,7 +532,7 @@ function locations_map_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -447,7 +571,7 @@ function locations_map_features_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 2,
+      'weight' => 5,
     ),
   );
 
@@ -488,7 +612,62 @@ function locations_map_features_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-locations_map_item-field_locsmap_item_desc_extra'.
+  $field_instances['paragraphs_item-locations_map_item-field_locsmap_item_desc_extra'] = array(
+    'bundle' => 'locations_map_item',
+    'default_value' => array(
+      0 => array(
+        'value' => '<p><strong>66%</strong></p>
+
+<p>Lorem ipsum dolor sit amet</p>
+
+<p>&nbsp;</p>
+
+<p><strong>32b</strong></p>
+
+<p>Lorem ipsum dolor sit amet</p>
+',
+        'format' => 'filtered_html',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_locsmap_item_desc_extra',
+    'label' => 'Extra Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 9,
     ),
   );
 
@@ -546,7 +725,7 @@ function locations_map_features_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -600,7 +779,7 @@ function locations_map_features_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 7,
+      'weight' => 10,
     ),
   );
 
@@ -641,7 +820,7 @@ function locations_map_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -682,7 +861,7 @@ function locations_map_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -723,7 +902,83 @@ function locations_map_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-locations_map_item-field_locsmap_item_maker_fc'.
+  $field_instances['paragraphs_item-locations_map_item-field_locsmap_item_maker_fc'] = array(
+    'bundle' => 'locations_map_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If you leave empty, it will apply the default maker fill color.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'color_field',
+        'settings' => array(),
+        'type' => 'color_field_default_formatter',
+        'weight' => 15,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_locsmap_item_maker_fc',
+    'label' => 'Maker Fill Color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'color_field',
+      'settings' => array(),
+      'type' => 'color_field_spectrum_widget',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-locations_map_item-field_locsmap_item_maker_hfc'.
+  $field_instances['paragraphs_item-locations_map_item-field_locsmap_item_maker_hfc'] = array(
+    'bundle' => 'locations_map_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If you leave empty, it will apply the default maker hover fill color.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'color_field',
+        'settings' => array(),
+        'type' => 'color_field_default_formatter',
+        'weight' => 16,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_locsmap_item_maker_hfc',
+    'label' => 'Maker Hover Fill Color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'color_field',
+      'settings' => array(),
+      'type' => 'color_field_spectrum_widget',
+      'weight' => 1,
     ),
   );
 
@@ -764,7 +1019,7 @@ function locations_map_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 3,
     ),
   );
 
@@ -805,24 +1060,37 @@ function locations_map_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 2,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Anchor');
   t('Country');
   t('Description');
   t('Download Link');
+  t('Enter one legend per line. e.g.<br>
+#051c2c|Lorem ipsum dolor<br>
+#1f40e6|Sit amet consectetur<br>
+#00a9f4|Adipiscit elit lorem<br>
+#7f7f7f|Sed ut perspiciatis<br>');
+  t('Extra Description');
   t('Highlight');
+  t('If you leave empty, it will apply the default maker fill color.');
+  t('If you leave empty, it will apply the default maker hover fill color.');
   t('Image');
   t('Latitude');
+  t('Legends');
   t('Location');
   t('Longitude');
+  t('Maker Border Color');
   t('Maker Fill Color');
   t('Maker Hover Fill Color');
   t('Maker Radius');
   t('Subtitle');
+  t('This is the default maker fill color.');
+  t('This is the default maker hover fill color.');
   t('Title');
 
   return $field_instances;

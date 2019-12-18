@@ -26,7 +26,7 @@
  * @see template_process()
  */
 
-  $description = $content['field_body'];
+$description = mck_util_get_by_paths($content, 'field_body', '');
 ?>
 <div class="item">
   <div class="image">

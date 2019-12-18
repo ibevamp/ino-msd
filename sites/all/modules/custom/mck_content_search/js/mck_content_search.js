@@ -343,7 +343,7 @@
           function mckContentSearchFilterUpdateStickyFiltersWrapper(action) {
             var action = action || 'init';
 
-            if ($(document).scrollTop() >= $contentSearch.position().top) {
+            if ($(document).scrollTop() >= $contentSearch.position().top - $('.mck-para-content-search .filters-wrapper').outerHeight()) {
               var headerHeight = 0;
               headerHeight = $('header.global-header').outerHeight();
               headerHeight = headerHeight || 0;
@@ -351,6 +351,12 @@
               var adminMenuHeight = $('#admin-menu').outerHeight();
               adminMenuHeight = adminMenuHeight || 0;
               headerHeight = headerHeight + adminMenuHeight;
+
+              if ($('.slicknav_menu').css('display') !== 'none') {
+                var slickNavMenuHeight = $('.slicknav_menu').outerHeight();
+                slickNavMenuHeight = slickNavMenuHeight || 0;
+                headerHeight = headerHeight + slickNavMenuHeight - 5;
+              }
 
               var filtersWrapperHeight = $('.filters-wrapper', $contentSearch).outerHeight();
               $('.filters-wrapper', $contentSearch).css({
@@ -365,14 +371,22 @@
               });
 
               if (action === 'update') {
-                var top = $('.filters-wrapper', $contentSearch).outerHeight();
-                $('html,body').animate({scrollTop: top}, 'slow');
+                // var top = $('.filters-wrapper', $contentSearch).outerHeight();
+                // $('html,body').animate({scrollTop: top}, 'slow');
+
+                mckUtilScrollToTop($('.tablesorter', $contentSearch), [
+                  $('.mck-para-content-search .filters-wrapper')
+                ]);
               }
 
               var offset = 0;
               offset = $('header.global-header').outerHeight();
-              if ($('body').hasClass('admin-menu')) {
+              if ($('#admin-menu').length && $('#admin-menu').css('display') !== 'none') {
+              //if ($('body').hasClass('admin-menu')) {
                 offset += 29;
+              }
+              if ($('.slicknav_menu').css('display') !== 'none') {
+                offset += $('.slicknav_menu').outerHeight() - 5;
               }
               if ($('.mck-para-content-search .filters-wrapper')) {
                 offset += $('.mck-para-content-search .filters-wrapper').outerHeight();

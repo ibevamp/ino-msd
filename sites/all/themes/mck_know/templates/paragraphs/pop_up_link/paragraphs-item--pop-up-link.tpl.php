@@ -31,7 +31,7 @@
 print_r($content);
 echo "</pre>";*/
 
-$link_items         = isset($content['field_links']) ? $content['field_links'] : '';
+$link_items = mck_util_get_by_paths($content, 'field_links', []);
 
 
 ?>

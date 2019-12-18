@@ -36,7 +36,9 @@ $bgurl         = isset($bguri) ? file_create_url($bguri) : NULL;
 $title         = isset($content['field_title']) ? render($content['field_title']) : '';
 $subtitle         = isset($content['field_subtitle']) ? render($content['field_subtitle']) : '';
 $description   = isset($content['field_description']) ? render($content['field_description']) : '';
-$bg_video      = $content['field_background_video']['0']['#markup'] ? "background-video-wrapper" : 'media-player banner banner-video active';
+
+$field_background_video = mck_util_get_by_paths($content, 'field_background_video|0|#markup', '');
+$bg_video      = !empty($field_background_video) ? "background-video-wrapper" : 'media-player banner banner-video active';
 
 if(isset( $content['field_grey_row'])){
    $textAlign     = $content['field_grey_row'][0]['#markup']? "-text-center" : "-text-left";

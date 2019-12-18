@@ -256,6 +256,7 @@ function mck_content_search_batch_import_experts_process($data, &$context) {
 
   // Text fields.
   $fields = [
+    ['field_name' => 'field_expert_no'],
     ['field_name' => 'field_expert_fullname'],
     ['field_name' => 'field_expert_contact_point'],
   ];

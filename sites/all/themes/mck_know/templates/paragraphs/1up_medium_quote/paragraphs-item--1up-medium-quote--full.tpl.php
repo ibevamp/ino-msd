@@ -25,6 +25,9 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
+
+$paraID   = $variables['elements']['#entity']->item_id;
+
 $bguri         = isset($content['field_image']['#items'][0]['uri']) ? $content['field_image']['#items'][0]['uri'] : NULL;
 $bgurl         = isset($bguri) ? file_create_url($bguri) : NULL;
 $alignment_media    = $content['field_align_right'][0]['#markup']? "one-up-align-right":"";
@@ -94,7 +97,7 @@ $blockquoteColor = isset($content['field_blockquote_color'])? $content['field_bl
                 <div class="mq-profile text-l ">
 
                       <?php if(isset($content['field_full_name'])){ ?>
-                        <a href="<?php echo $content['field_link'][0]['#element']['url'] ?>">
+                        <a href="<?php echo mck_util_get_by_paths($content, 'field_link|0|#element|url', ''); ?>">
                           <h3 class="mq-profile-item-title headline profile-name-title ">
                             <?php echo render($content['field_full_name']); ?>
                           </h3>

@@ -72,3 +72,4 @@ $fontSize = isset($content['field_list_font_size'])? render($content['field_list
     </div>
 	</div>
 </section>
+<div style="clear: both;"></div>

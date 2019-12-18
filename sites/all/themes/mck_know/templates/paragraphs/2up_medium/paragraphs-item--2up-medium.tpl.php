@@ -32,8 +32,11 @@ $logoAlign = $content['field_align_right'][0]['#markup']? "-text-center" : "-tex
 $headingAlignClass = $content['field_left_align_section_heading'][0]['#markup']? "-text-left" : "-text-center";
 $descriptionAlignClass = $content['field_center_align_content'][0]['#markup']? "-text-center" : "-text-left";
 $alignImage = $content['field_left_align_image'][0]['#markup']? "left_align_image" : "";
-$imageSize = $content['field_display_full_image'][0]['#markup']? "full-image" : "";
-$paraClasses = $content['field_para_classes'][0]['#markup'] ? $content['field_para_classes'][0]['#markup'] : '';
+
+$field_display_full_image = mck_util_get_by_paths($content, 'field_display_full_image|0|#markup', '');
+$imageSize = !empty($field_display_full_image) ? "full-image" : "";
+
+$paraClasses = mck_util_get_by_paths($content, 'field_para_classes|0|#markup', '');
 ?>
 <a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" id="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" class="anchored-link"></a>
 <section id="two-up-medium" class="up two-up two-up-medium section-wrapper <?php echo $alignImage; ?> <?php echo $paraClasses; ?>">

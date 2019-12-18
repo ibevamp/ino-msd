@@ -100,6 +100,7 @@
                           'field_expert_fullname',
                         ];
                         $textfield_fields = [
+                          'field_expert_no',
                           'field_expert_contact_point',
                           'field_expert_description',
                         ];

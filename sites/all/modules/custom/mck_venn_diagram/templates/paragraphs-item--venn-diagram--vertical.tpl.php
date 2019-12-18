@@ -43,7 +43,7 @@
                     </div>
                   <?php } ?>
 
-                  <?php if (count($item['links'] > 0)) { ?>
+                  <?php if (count($item['links']) > 0) { ?>
                     <ul class="links">
                       <?php foreach ($item['links'] as $link) { ?>
                         <li>

@@ -1,0 +1,5 @@
+name = McKinsey Webform custom functionality
+description = ''
+core = 7.x
+package = 'McKinsey & Company'
+version = 7.x-1.0

@@ -282,56 +282,61 @@ $(".accordion-module-wrapper").each(function(index){
 });
 
 
+   $(".accordion-module-wrapper .accordion-item-wrapper .acc-item-link").click(function () {
+     if ($(this).parent().hasClass('active')) {
+       $(this).parent().removeClass("active");
+       $(".accordion-module-wrapper .view-more").hide();
+       return false;
+     }
 
-$(".accordion-module-wrapper .accordion-item-wrapper .acc-item-link").click(function(){
-        var nid = $(this).data("nid");
-		var currentWrapperID = $(this).parents(".accordion-module-wrapper").attr("id");
-		var currentItemID = $(this).parent(".item").attr("id");
-		currentWrapper = $("#"+currentWrapperID);
-		currentItem = currentWrapper.find("#"+currentItemID);
-		$(".accordion-module-wrapper .item").removeClass("active");
-		currentItem.addClass("active");
-        $(".accordion-module-wrapper .view-more").css("display","none");
-        if(nid > 0)
-            {
-            $.ajax({
-                url: Drupal.settings.basePath + 'views/ajax',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    view_name: 'accordion_content',
-                    view_display_id: 'block', //your display id
-                    view_args: nid,
-                },				
-                success: function(response) {
-					 if (response[1] !== undefined) {
-                        var viewHtml = response[1].data;
-						/*$(".accordion-module-wrapper .view-more").slideDown( 3000, function() {
-							$(".accordion-module-wrapper .view-more").html( viewHtml );
-							accCardModuleHeight();
-						});*/
-						currentWrapper.find(".view-more").css("display","block");
-						currentWrapper.find(".view-more .acc-card-content-wrapper").html(viewHtml);
-						
-						var sections = currentWrapper.find(".view-more .card-module");
-						setSpeakersColHeight(sections);
-						updateCardModuleIds();
-						updateArrowPosition(currentItem);
-						window.onresize = function(){
-							setSpeakersColHeight(sections);
-							updateArrowPosition(currentItem);
-						};
-   
-   
-                    }
-			
-                },
-                error: function(data) {
-                 console.log('An error occured!');
-                }
-              });
-            }
-    });
+     var nid = $(this).data("nid");
+     var currentWrapperID = $(this).parents(".accordion-module-wrapper").attr("id");
+     var currentItemID = $(this).parent(".item").attr("id");
+     currentWrapper = $("#" + currentWrapperID);
+     currentItem = currentWrapper.find("#" + currentItemID);
+     $(".accordion-module-wrapper .item").removeClass("active");
+     currentItem.addClass("active");
+     $(".accordion-module-wrapper .view-more").css("display", "none");
+     if (nid > 0) {
+       $.ajax({
+         url: Drupal.settings.basePath + 'views/ajax',
+         type: 'POST',
+         dataType: 'json',
+         data: {
+           view_name: 'accordion_content',
+           view_display_id: 'block', //your display id
+           view_args: nid,
+         },
+         beforeSend: function () {
+           currentWrapper.find(".loading").show();
+         },
+         success: function (response) {
+           if (response[1] !== undefined) {
+             var viewHtml = response[1].data;
+             /*$(".accordion-module-wrapper .view-more").slideDown( 3000, function() {
+               $(".accordion-module-wrapper .view-more").html( viewHtml );
+               accCardModuleHeight();
+             });*/
+             currentWrapper.find(".loading").hide();
+             currentWrapper.find(".view-more").css("display", "block");
+             currentWrapper.find(".view-more .acc-card-content-wrapper").html(viewHtml);
+
+             var sections = currentWrapper.find(".view-more .card-module");
+             setSpeakersColHeight(sections);
+             updateCardModuleIds();
+             updateArrowPosition(currentItem);
+             window.onresize = function () {
+               setSpeakersColHeight(sections);
+               updateArrowPosition(currentItem);
+             };
+           }
+         },
+         error: function (data) {
+           console.log('An error occured!');
+         }
+       });
+     }
+   });
 
 
 	
@@ -541,8 +546,9 @@ function accCardModuleHeight(){
 
 
 function updateArrowPosition(activeCard){
-	var itemWidth = activeCard.width()/2 - 12 -30;
-	var dest = activeCard.offset().left + itemWidth;
+	var itemWidth = activeCard.outerWidth();
+	var arrowWidth = 50;
+	var dest = activeCard.offset().left - activeCard.parent().offset().left + itemWidth / 2 - arrowWidth / 2;
 	currentWrapper.find(".view-more #acc-card-module-0 span").css("left",dest+"px");
 }
 

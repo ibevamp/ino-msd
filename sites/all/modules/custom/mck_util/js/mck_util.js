@@ -21,26 +21,28 @@ function mckUtilElementInViewport(el, offsetHeight) {
 /**
  *
  * @param fromElement
+ * @param stickyElements
  * @param timeout
  *
  * Usages:
  * - mckUtilScrollToTop($('#section'))
  */
-function mckUtilScrollToTop(fromElement, timeout) {
+function mckUtilScrollToTop(fromElement, stickyElements, timeout) {
   if (!fromElement.position()) {
     return false;
   }
+  stickyElements = stickyElements || [];
+  stickyElements.push($('.mck-base-header'));
+  stickyElements.push($('#admin-menu'));
+  stickyElements.push($('.global-header'));
   timeout = timeout || 1000;
+
   var new_position_top = fromElement.offset().top;
 
-  if ($('.mck-base-header').css('position') === 'fixed') {
-    new_position_top = new_position_top - $('.mck-base-header').outerHeight();
-  }
-  if ($('#admin-menu').css('position') === 'fixed') {
-    new_position_top = new_position_top - $('#admin-menu').outerHeight();
-  }
-  if ($('.global-header').css('position') === 'fixed') {
-    new_position_top = new_position_top - $('.global-header').outerHeight();
+  for (var i = 0; i < stickyElements.length; i++) {
+    if (stickyElements[i].css('position') === 'fixed') {
+      new_position_top = new_position_top - stickyElements[i].outerHeight();
+    }
   }
 
   $('html, body' ).animate({

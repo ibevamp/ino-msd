@@ -40,7 +40,7 @@ $eyebrow         = isset($content['field_subtitle']) ? render($content['field_su
 $title         = isset($content['field_title']) ? render($content['field_title']) : '';
 $description   = isset($content['field_description']) ? render($content['field_description']) : '';
 
-$image_links         = isset($content['field_link']) ? $content['field_link'] : '';
+$image_links         = isset($content['field_link']) ? $content['field_link'] : [];
 $contentColor = isset($content['field_content_font_color'])? $content['field_content_font_color'][0]['#markup']: "";
 $mainHeadingColor = isset($content['field_main_heading_font_color'])? $content['field_main_heading_font_color'][0]['#markup']: "";
 

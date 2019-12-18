@@ -1,0 +1,68 @@
+<?php
+
+function mck_prop_reports_menu(){
+    $items = array();
+
+    $items['prop/reports'] = array(
+        'title' => 'Proposal Taxonomy Report',
+        'page callback' => 'page_prop_reports',
+        'access callback' => TRUE,
+        'access arguments' => array('access administration pages'),
+    );
+
+    //TODO: add admin settings page to dynmically pass VIDs to reports
+
+    $items['admin/config/prop/settings'] = array(
+        'title' => 'Proposal Taxonomy Settings',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('rc_quiz_admin_settings_form'),
+        'access arguments' => array('administer site configuration'),
+        'type' => MENU_NORMAL_ITEM,
+        'file' => 'includes/prop_settings.admin.inc',
+    );
+
+
+    return $items;
+}
+
+/**
+ * @return string
+ * @throws Exception
+ * TODO: add tooltipster to show list of NIDS
+ */
+function page_prop_reports(){
+
+    $vids = variable_get('all_vocabs');
+    $row = $vocabName = $headers = array();
+
+
+    foreach($vids as $vid){
+        $tax = taxonomy_vocabulary_load($vid);
+        $vocabName[] = $tax->name;
+        $tree = taxonomy_get_tree($vid);
+
+        foreach($tree as $tid){
+            $taxonomy = taxonomy_select_nodes($tid->tid);
+            $total = count($taxonomy);
+            if($total > 0){
+                $headers[$tax->name][$tid->name] = $total;
+            }
+        }
+    }
+
+//    $output = theme('table', array('header'=> $headers, 'rows' => $count));
+    $output = $headers;
+    drupal_add_css(drupal_get_path('module','mck_prop_reports') . '/reports.css');
+//    drupal_add_css(drupal_get_path('module','mck_prop_reports') . 'js/tooltipster/css/tooltipster.main.min.css');
+//    drupal_add_js(drupal_get_path('module','mck_prop_reports') . '/js/tooltipster/js/tooltipster.bundle.js');
+//    drupal_add_js(drupal_get_path('module','mck_prop_reports') . '/js/reports.js');
+    return theme('mck_prop_report', array('table' => $output));
+}
+
+function mck_prop_reports_theme(){
+    return array(
+        'mck_prop_report' => array(
+            'template' => 'reports_page',
+        ),
+    );
+}

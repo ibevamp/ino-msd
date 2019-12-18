@@ -26,7 +26,7 @@
  * @see template_process()
  */
 
-$description = $content['field_full_bio'];
+$description = mck_util_get_by_paths($content, 'field_full_bio', '');
 $shortDescription = $content['field_short_description'];
 $bguri              = isset($content['field_image']['#items'][0]['uri']) ? $content['field_image']['#items'][0]['uri'] : NULL;
 $bgurl              = isset($bguri) ? file_create_url($bguri) : NULL;

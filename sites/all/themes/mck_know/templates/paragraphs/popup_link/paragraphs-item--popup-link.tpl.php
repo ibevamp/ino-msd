@@ -31,12 +31,12 @@
 print_r($content);
 echo "</pre>";*/
 
-$link_items         = isset($content['field_popup_link']) ? $content['field_popup_link'] : '';
+$link_items = mck_util_get_by_paths($content, 'field_popup_link', []);
 $popupClass = $content['field_popup_type'][0]['#markup']? $content['field_popup_type'][0]['#markup'] : "mfp-iframe";
 
 ?>
-<a href="<?php echo $content['field_popup_link']['#items'][0]['url']; ?>" class="<?php echo $popupClass; ?>">
-	<?php echo $content['field_popup_link']['#items'][0]['title']; ?>
+<a href="<?php echo mck_util_get_by_paths($content, 'field_popup_link|#items|0|url', ''); ?>" class="<?php echo $popupClass; ?>">
+	<?php echo mck_util_get_by_paths($content, 'field_popup_link|#items|0|title', ''); ?>
 </a>
 
 

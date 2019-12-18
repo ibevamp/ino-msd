@@ -33,7 +33,10 @@ $link_items         = isset($content['field_links']) ? $content['field_links'] :
 $descriptionAlign = $content['field_grey_row'][0]['#markup']? "-text-center" : "";
 $sectionHeadingOverlay = $content['field_text_overlays_image'][0]['#markup'];
 $displaySignature = $content['field_align_right'][0]['#markup'];
-$textAlign = $content['field_text_align'][0]['#markup']? "-text-left" : "-text-center";
+
+$field_text_align = mck_util_get_by_paths($content, 'field_text_align|0|#markup', '');
+$textAlign = !empty($field_text_align) ? "-text-left" : "-text-center";
+
 $bgImage = isset($content['field_image']) ? "bg-image" : 'no-bg-image';
 $mainHeadingColor = isset($content['field_main_heading_font_color'])? $content['field_main_heading_font_color'][0]['#markup']: "";
 

@@ -10,6 +10,27 @@
 function locations_map_features_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_locsmap_anchor'.
+  $field_bases['field_locsmap_anchor'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_locsmap_anchor',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_locsmap_highlight'.
   $field_bases['field_locsmap_highlight'] = array(
     'active' => 1,
@@ -79,6 +100,25 @@ function locations_map_features_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_locsmap_item_desc',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_locsmap_item_desc_extra'.
+  $field_bases['field_locsmap_item_desc_extra'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_locsmap_item_desc_extra',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -205,6 +245,58 @@ function locations_map_features_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_locsmap_item_maker_fc'.
+  $field_bases['field_locsmap_item_maker_fc'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_locsmap_item_maker_fc',
+    'indexes' => array(
+      'rgb' => array(
+        0 => 'rgb',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'color_field',
+    'settings' => array(
+      'allow_empty' => 1,
+      'palette' => '',
+      'show_buttons' => 0,
+      'show_input' => 1,
+      'show_palette' => 0,
+      'show_palette_only' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'color_field_rgb',
+  );
+
+  // Exported field_base: 'field_locsmap_item_maker_hfc'.
+  $field_bases['field_locsmap_item_maker_hfc'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_locsmap_item_maker_hfc',
+    'indexes' => array(
+      'rgb' => array(
+        0 => 'rgb',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'color_field',
+    'settings' => array(
+      'allow_empty' => 1,
+      'palette' => '',
+      'show_buttons' => 0,
+      'show_input' => 1,
+      'show_palette' => 0,
+      'show_palette_only' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'color_field_rgb',
+  );
+
   // Exported field_base: 'field_locsmap_item_subtitle'.
   $field_bases['field_locsmap_item_subtitle'] = array(
     'active' => 1,
@@ -245,6 +337,51 @@ function locations_map_features_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_locsmap_legends'.
+  $field_bases['field_locsmap_legends'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_locsmap_legends',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_locsmap_maker_border_color'.
+  $field_bases['field_locsmap_maker_border_color'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_locsmap_maker_border_color',
+    'indexes' => array(
+      'rgb' => array(
+        0 => 'rgb',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'color_field',
+    'settings' => array(
+      'allow_empty' => 1,
+      'palette' => '',
+      'show_buttons' => 0,
+      'show_input' => 1,
+      'show_palette' => 0,
+      'show_palette_only' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'color_field_rgb',
   );
 
   // Exported field_base: 'field_locsmap_maker_fill_color'.
@@ -288,7 +425,7 @@ function locations_map_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'color_field',
     'settings' => array(
-      'allow_empty' => 0,
+      'allow_empty' => 1,
       'palette' => '',
       'show_buttons' => 0,
       'show_input' => 1,

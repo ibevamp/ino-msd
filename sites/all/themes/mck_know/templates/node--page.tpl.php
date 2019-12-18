@@ -81,9 +81,9 @@
  */
 
 
-
+$field_theme = mck_util_get_by_paths($node, 'field_theme|und|0|value', '');
 ?>
-<div class="page-class <?php echo $node->field_theme['und'][0]['value'];?>">
+<div class="page-class <?php echo $field_theme;?>">
 <?php echo render($content['field_anchor_paragraph']); ?>
 <?php if (!empty($field_hero_images)): ?>
 

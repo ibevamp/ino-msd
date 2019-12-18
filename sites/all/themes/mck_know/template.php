@@ -65,21 +65,26 @@ function mck_know_preprocess_html(array &$vars) {
   $custom_page_title = (isset($node->field_theme_page_title) && !empty($node->field_theme_page_title)) ? $node->field_theme_page_title['und'][0]['value'] : NULL;
 
   
- /* Start of code related to branding assets - new branding font/logo updates */  
-  
-  if(strpos($base_url,'dev-drupaldev-lx07') !== false){
-		$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-		$domainName = $_SERVER['HTTP_HOST'].'/';
-		$rooturl = $protocol.$domainName;
-		$url  =  $rooturl."/media-services/";
-    }else if(strpos($base_url,'solutions.mckinsey.com') !== false){
-        $protocol = ( (!empty($GLOBALS['base_root'])) && (strpos($GLOBALS['base_root'],'https://')==0) ) ? "https://" : "http://";		
-		$domainName = $_SERVER['HTTP_HOST'].'/';
-		$rooturl = $protocol.$domainName;
-		$url  =  $rooturl."/msd/";
-    }else{
-	   $url  =  $rooturl;
-    }
+ /* Start of code related to branding assets - new branding font/logo updates */
+
+  $rooturl = '';
+  if (strpos($base_url, 'dev-drupaldev-lx07') !== false) {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $domainName = $_SERVER['HTTP_HOST'] . '/';
+    $rooturl = $protocol . $domainName;
+    $url = $rooturl . "/media-services/";
+  } else if (strpos($base_url, 'solutions.mckinsey.com') !== false) {
+    $protocol = ((!empty($GLOBALS['base_root'])) && (strpos($GLOBALS['base_root'], 'https://') == 0)) ? "https://" : "http://";
+    $domainName = $_SERVER['HTTP_HOST'] . '/';
+    $rooturl = $protocol . $domainName;
+    $url = $rooturl . "/msd/";
+  } else {
+    $url = $rooturl;
+  }
+
+  if(strpos($base_url,'localhost') !== false){
+    $url  =  'https://solutions.mckinsey.com/msd/';
+  }
 
   drupal_add_css($url.'branding-assets/css/mck-fonts.css',  array(
         'group' => CSS_THEME,
@@ -94,21 +99,6 @@ function mck_know_preprocess_html(array &$vars) {
 		'type' => 'external'
       ));
 
-  if(strpos($base_url,'localhost') !== false){
-    $url  =  'https://solutions.mckinsey.com/msd/';
-    drupal_add_css($url.'branding-assets/css/mck-fonts.css',  array(
-      'group' => CSS_THEME,
-      'every_page' => TRUE,
-      'weight' => CSS_THEME + 100,
-      'type' => 'external'
-    ));
-    drupal_add_css($url.'branding-assets/css/base.css',array(
-      'group' => CSS_THEME,
-      'every_page' => TRUE,
-      'weight' => CSS_THEME + 110,
-      'type' => 'external'
-    ));
-  }
   /* End of code related to branding assets - new branding font/logo updates */
   
   if (!empty($custom_page_title)) {
@@ -178,4 +168,8 @@ function mck_know_preprocess_slide_menu_about(array &$vars) {
 function mck_know_paragraphs_view($variables) {
    $element = $variables['element'];
    return $element['#children'];
+}
+
+function mck_know_form_alter(&$form, &$form_state, $form_id) {
+
 }

@@ -19,6 +19,7 @@ function mck_content_search_get_content_search_data_by_entity_expert($params = [
 
     $item = [
       'item_id' => mck_util_get_by_paths($content, 'id', 0),
+      'field_expert_no' => mck_util_get_by_paths($content, 'field_expert_no|und|0|value', ''),
       'field_expert_fullname' => mck_util_get_by_paths($content, 'field_expert_fullname|und|0|value', ''),
       'field_expert_contact_point' => mck_util_get_by_paths($content, 'field_expert_contact_point|und|0|value', ''),
       'field_expert_description' => mck_util_get_by_paths($content, 'field_expert_description|und|0|value', ''),

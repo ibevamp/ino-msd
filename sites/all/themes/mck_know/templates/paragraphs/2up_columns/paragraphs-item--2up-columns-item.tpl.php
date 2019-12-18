@@ -27,7 +27,10 @@
  */
 
 $link_items         = isset($content['field_links']) ? $content['field_links'] : '';
-$imageClass = $content['field_grey_row'][0]['#markup']? "icon" : "thumbnail";
+
+$field_grey_row = mck_util_get_by_paths($content, 'field_grey_row|0|#markup', '');
+$imageClass = !empty($field_grey_row) ? "icon" : "thumbnail";
+
 $videouri       = isset($content['field_video_file']['#items'][0]['uri']) ? $content['field_video_file']['#items'][0]['uri'] : '';
 $videourl      = isset($videouri) ? file_create_url($videouri) : NULL;
 $bguri              = isset($content['field_image']['#items'][0]['uri']) ? $content['field_image']['#items'][0]['uri'] : NULL;

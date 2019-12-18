@@ -30,7 +30,7 @@ $title         = isset($content['field_title']) ? render($content['field_title']
 $description   = isset($content['field_description']) ? render($content['field_description']) : '';
 
 $items         = isset($content['field_paragraph']) ? $content['field_paragraph'] : '';
-$nav_items         = isset($content['field_carousel_nav_item']) ? $content['field_carousel_nav_item'] : '';
+$nav_items         = isset($content['field_carousel_nav_item']) ? $content['field_carousel_nav_item'] : [];
 
 
 //ddl($content);

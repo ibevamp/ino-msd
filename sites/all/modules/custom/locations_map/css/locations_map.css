@@ -1,13 +1,119 @@
-.mck-para-locations-map .chart-title {
-  text-align: center;
-  padding: 20px 0;
-  font-size: 38px;
-  color: #000;
-  font-family: 'Bower', 'Georgia', 'Times New Roman', serif!important;
+.mck-para-locations-map {
+  background: linear-gradient(to bottom, #ccc 0%, #f0f0f0 60px, #f0f0f0 100%);
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
+.mck-para-locations-map .container {
+  max-width: 1090px;
+  margin: 0 auto;
+}
+
+.mck-para-locations-map .chart-title {
+  font-family: "Bower" !important;
+  font-size: 36px;
+  font-weight: bold;
+  color: #051C2C;
+  text-align: left;
+  padding: 10px 0 10px 0;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+.mck-para-locations-map .chart-legends {
+  position: relative;
+  top: -40px;
+  right: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px 30px;
+  box-shadow: 0px 0px 30px -10px #ccc;
+}
+.mck-para-locations-map .chart-legends ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  list-style-position: inside;
+}
+.mck-para-locations-map .chart-legends ul li {
+  margin-bottom: 8px;
+  width: 50%;
+  float: left;
+  line-height: 18px;
+}
+.mck-para-locations-map .chart-legends ul li:last-child {
+  margin-bottom: 0;
+}
+.mck-para-locations-map .chart-legends a.legend {
+  display: table;
+  width: 100%;
+}
+.mck-para-locations-map .chart-legends a.legend .left {
+  display: table-cell;
+  vertical-align: top;
+  width: 16px;
+}
+.mck-para-locations-map .chart-legends a.legend .right {
+  display: table-cell;
+  vertical-align: top;
+  width: auto;
+}
+.mck-para-locations-map .chart-legends a.legend .color {
+  width: 16px;
+  height: 16px;
+  display: block;
+  border-radius: 15px;
+  transition: all ease 0.3s;
+  position: relative;
+  top: 2px;
+}
+.mck-para-locations-map .chart-legends a.legend .label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 14px;
+  font-weight: normal;
+  color: #333;
+  padding-left: 10px;
+  padding-top: 2px;
+  transition: all ease 0.3s;
+}
+.mck-para-locations-map .chart-legends a.legend:hover .label {
+  color: #000;
+}
+.mck-para-locations-map .chart-legends a.legend.active .label {
+  color: #000;
+}
+.mck-para-locations-map .chart-legends a.legend.inactive .color {
+  opacity: 0.25;
+}
+.mck-para-locations-map .chart-legends a.legend.inactive .label {
+  opacity: 0.25;
+}
+
+.mck-para-locations-map .chart-legends .filter-by {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 14px;
+  font-weight: 300;
+  color: #000;
+  margin-bottom: 15px;
+}
+.mck-para-locations-map .chart-legends .view-all {
+  margin-top: 15px;
+  opacity: 0.25;
+  transition: all ease 0.3s;
+  clear: both;
+}
+.mck-para-locations-map .chart-legends .view-all a {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1F40E6;
+  display: inline-block;
+}
+.mck-para-locations-map .chart-legends.active .view-all {
+  opacity: 1;
+}
+
 .mck-para-locations-map .chart-map {
-  height: 760px;
-  background: #f0f0f0;
+  height: 500px;
+  background: none;
   border: none;
   box-shadow: none;
 }
@@ -17,18 +123,23 @@
 }
 .mck-para-locations-map .chart-map .ampopup-curtain {
   opacity: 0;
+  z-index: 1;
 }
 .mck-para-locations-map .chart-map .ampopup-content {
-  background: #ffffffd4;
+  background: rgba(255, 255, 255, 0.95);
   border: none;
   border-radius: 0;
   box-shadow: none;
   padding: 30px;
-  width: auto;
+  width: auto !important;
   height: auto !important;
   max-width: 380px;
-  min-width: 380px;
-  border-bottom: 3px solid #1F40E6;
+  /*min-width: 380px;*/
+  border-bottom: 0 solid #1F40E6;
+  z-index: 2;
+  box-shadow: 0px 0px 30px -10px #ccc;
+  bottom: 40px !important;
+  right: 20px !important;
 }
 .mck-para-locations-map .chart-map .ampopup-content .ampopup-title {
 
@@ -52,6 +163,27 @@
   transition: all 0.3s ease;
 }
 
+
+.mck-para-locations-map .chart-map .locations-map--popup table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.mck-para-locations-map .chart-map .locations-map--popup table.head tr {
+  vertical-align: middle;
+}
+.mck-para-locations-map .chart-map .locations-map--popup table.head tr td.col-image {
+  width: 80px;
+}
+.mck-para-locations-map .chart-map .locations-map--popup table.body tr {
+  vertical-align: top;
+}
+.mck-para-locations-map .chart-map .locations-map--popup hr {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  height: 1px;
+  margin: 15px 0;
+}
+
 .mck-para-locations-map .chart-map .locations-map--popup .titles {
   margin-bottom: 10px;
 }
@@ -62,6 +194,7 @@
   color: #051C2C;
   margin-bottom: 0;
   padding-right: 35px;
+  line-height: 1;
 }
 .mck-para-locations-map .chart-map .locations-map--popup .subtitle {
   font-family: "Theinhardt Pan" !important;
@@ -69,6 +202,7 @@
   font-weight: normal;
   color: #051C2C;
   margin-bottom: 0;
+  margin-top: 5px;
 }
 .mck-para-locations-map .chart-map .locations-map--popup .desc {
   margin-bottom: 20px;
@@ -94,6 +228,7 @@
   text-align: left;
   display: inline-block;
   text-transform: none;
+  background-color: transparent
 }
 .mck-para-locations-map .chart-map .locations-map--popup .download a:hover {
   color: #1F40E6;
@@ -107,11 +242,68 @@
 }
 .mck-para-locations-map .chart-map .locations-map--popup .image {
   width: 80px;
-  padding: 5px 30px 0 0;
+  padding: 0 20px 0 0;
 }
 .mck-para-locations-map .chart-map .locations-map--popup .image img {
   border-radius: 100px;
 }
-.mck-para-locations-map .chart-map .locations-map--popup table tr {
-  vertical-align: top;
+
+.mck-para-locations-map .chart-map .locations-map--popup .col-desc-extra {
+  width: 100px;
+  text-align: center;
+  padding-left: 40px;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .col-desc-extra p strong {
+  font-family: "Bower" !important;
+  font-size: 42px;
+  font-weight: bold;
+  color: #1F40E6;
+  line-height: 1;
+  margin: 0;
+  display: block;
+}
+.mck-para-locations-map .chart-map .locations-map--popup .col-desc-extra p {
+  font-family: "Theinhardt Pan" !important;
+  font-size: 16px;
+  font-weight: 300;
+  color: #000;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media(min-width: 768px) {
+  .mck-para-locations-map .chart-map {
+    height: 760px;
+  }
+  .mck-para-locations-map .chart-legends {
+    position: absolute;
+  }
+  .mck-para-locations-map .chart-legends ul li {
+    width: 100%;
+    float: none;
+  }
+  .mck-para-locations-map .chart-map .ampopup-content {
+    bottom: auto !important;
+  }
+}
+
+@media (max-width: 767px){
+	
+	.mck-para-locations-map .container{
+		padding: 0;
+	}
+	
+	.mck-para-locations-map .container .row{
+		margin: 0
+	}
+	
+	.mck-para-locations-map .container .row .col{
+		width: auto;
+		padding: 0 20px;
+		margin: 0;	
+	}	
+	
+	.mck-para-locations-map .chart-legends{
+		top: 0
+	}
 }

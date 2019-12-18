@@ -1,5 +1,8 @@
-name = Locations Map
-description = 'Locations Map'
+name = McKinsey Locations Map Paragraph
+description = 'McKinsey Locations Map Paragraph'
 core = 7.x
 package = Paragraphs
-version = 7.x-1.0
+version = 7.x-1.2
+dependencies[] = paragraphs
+dependencies[] = color_field
+dependencies[] = country_field

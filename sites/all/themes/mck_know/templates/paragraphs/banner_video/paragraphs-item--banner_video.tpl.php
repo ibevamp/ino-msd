@@ -33,7 +33,10 @@ $bgurl         = isset($bguri) ? file_create_url($bguri) : NULL;
 
 $title         = isset($content['field_title']) ? render($content['field_title']) : '';
 $description   = isset($content['field_short_description']) ? render($content['field_short_description']) : '';
-$bg_video      = $content['field_grey_row']['0']['#markup'] ? "background-video-wrapper" : 'media-player banner  active';
+
+$field_grey_row = mck_util_get_by_paths($content, 'field_grey_row|0|#markup', '');
+$bg_video      = !empty($field_grey_row) ? "background-video-wrapper" : 'media-player banner  active';
+
 $fixedWidth     = $content['field_fixed_width']['0']['#markup'] ? "fixed-width" : '';
 $videoLink = isset($content['field_video_link'])? $content['field_video_link']['#items'][0]['url']:NULL;
 $videoLinkTitle = isset($content['field_video_link'])? $content['field_video_link']['#items'][0]['title']:NULL;

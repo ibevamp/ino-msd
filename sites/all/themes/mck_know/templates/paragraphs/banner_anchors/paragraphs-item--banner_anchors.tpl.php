@@ -51,7 +51,8 @@ if (empty($buttonBgColor)) {
   $buttonBgOpacity = '';
 }
 
-$count = count($content['field_menu_links']['#items']);
+$field_menu_links = mck_util_get_by_paths($content, 'field_menu_links|#items', []);
+$count = count($field_menu_links);
 
 $countClass = "links-count-".$count;
 

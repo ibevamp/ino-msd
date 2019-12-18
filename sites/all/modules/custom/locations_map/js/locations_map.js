@@ -1,26 +1,71 @@
 (function ($) {
 
-  $(document).ready(function () {
-    $('body').click(function (ev) {
-      var item = $(ev.target).parentsUntil('.paragraphs-item-type-locations-map-item');
+  Drupal.behaviors.locationsMapLegendFilter = {
+    attach: function () {
+      $('.mck-para-locations-map').each(function () {
+        var $para = $(this);
+        var curLocationsMapId = $para.data('locations-map-id');
 
-      $('input[name*="[field_locsmap_item_location][und][0][value]"]', item).geocomplete().bind("geocode:result", function(event, result) {
-        var city = '', country = '', country_code = '';
-        for (var i = 0; i < result.address_components.length; i++) {
-          if (result.address_components[i].types.indexOf('locality') >= 0) {
-            city = result.address_components[i].long_name;
-          }
-          if (result.address_components[i].types.indexOf('country') >= 0) {
-            country = result.address_components[i].long_name;
-            country_code = result.address_components[i].short_name;
-          }
-        }
+        $('.chart-legends a.legend', $para).click(function () {
+          $('.chart-legends', $para).addClass('active');
+          $('.chart-legends a.legend', $para).removeClass('active').addClass('inactive');
+          $(this).removeClass('inactive').addClass('active');
+          var legendColor = $(this).data('locations-map-legend-color');
 
-        $('input[name*="[field_locsmap_item_latitude][und][0][value]"]', item).val(result.geometry.location.lat);
-        $('input[name*="[field_locsmap_item_longitude][und][0][value]"]', item).val(result.geometry.location.lng);
-        $('select[name*="[field_locsmap_item_country][und]"]', item).val(country_code);
+          $.each(mckLocationsMaps, function (key, item) {
+            if (item.id === curLocationsMapId) {
+              var filteredData = [];
+              $.each(mckLocationsMaps[key].paragraphs.items, function (key, item) {
+                if (item.maker_fill_color && item.maker_fill_color.toLowerCase() === legendColor.toLowerCase()) {
+                  filteredData.push(item);
+                }
+              });
+
+              if (filteredData.length > 0) {
+                if (mckLocationsMaps[key].paragraphs.highlight === 'country') {
+                  mckLocationsMaps[key].map.polygonSeries.data = filteredData;
+                }
+                else if (mckLocationsMaps[key].paragraphs.highlight === 'city') {
+                  mckLocationsMaps[key].map.mapSeries.data = filteredData;
+                }
+              }
+              else {
+                if (mckLocationsMaps[key].paragraphs.highlight === 'country') {
+                  filteredData = []
+                  $.each(mckLocationsMaps[key].paragraphs.items, function (key, item) {
+                    var itemCopy = $.merge({}, item);
+                    if (itemCopy.maker_fill_color) {
+                      delete itemCopy['maker_fill_color'];
+                    }
+                    filteredData.push(itemCopy);
+                  });
+                  mckLocationsMaps[key].map.polygonSeries.data = filteredData;
+                }
+                else if (mckLocationsMaps[key].paragraphs.highlight === 'city') {
+                  mckLocationsMaps[key].map.mapSeries.data = filteredData;
+                }
+              }
+            }
+          });
+        });
+
+        $('.chart-legends .view-all a', $para).click(function () {
+          $('.chart-legends', $para).removeClass('active');
+          $('.chart-legends a.legend', $para).removeClass('active inactive');
+
+          $.each(mckLocationsMaps, function (key, item) {
+            if (item.id === curLocationsMapId) {
+              if (mckLocationsMaps[key].paragraphs.highlight === 'country') {
+                mckLocationsMaps[key].map.polygonSeries.data = mckLocationsMaps[key].paragraphs.items;
+              }
+              else if (mckLocationsMaps[key].paragraphs.highlight === 'city') {
+                mckLocationsMaps[key].map.mapSeries.data = mckLocationsMaps[key].paragraphs.items;
+              }
+            }
+          });
+        });
       });
-    });
-  });
+    }
+  };
 
 }(jQuery));

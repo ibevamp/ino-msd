@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function mck_webform_theme($existing, $type, $theme, $path) {
+  return [
+    'webform_confirmation__analysis' => [
+      'variables' => array(),
+      'template' => 'templates/webform-confirmation--analysis' ,
+      'base hook' => 'webform_confirmation',
+      'path' => drupal_get_path('module', 'mck_webform'),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_init().
+ */
+function mck_webform_form_alter(&$form, &$form_state, $form_id) {
+  if (strpos($form_id, 'webform_client_form') !== FALSE) {
+    $nid = mck_util_get_by_paths($form, '#node|nid', 0);
+
+    $definitions = mck_webform_get_custom_definitions();
+    foreach ($definitions as $definition) {
+      if ($nid == mck_util_get_by_paths($definition, 'nid', 0)) {
+        drupal_add_css(drupal_get_path('module', 'mck_webform') . '/css/mck-webform--group-default.css');
+
+        foreach (mck_util_get_by_paths($definition, 'classes', []) as $class) {
+          $form['#attributes']['class'][] = $class;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements HOOK_preprocess_webform_confirmation().
+ */
+function mck_webform_preprocess_webform_confirmation(&$vars) {
+  $type = mck_util_get_by_paths($vars, 'node|type', '');
+  $nid = mck_util_get_by_paths($vars, 'node|nid', 0);
+
+  switch ($type) {
+    case 'webform':
+      $definitions = mck_webform_get_custom_definitions();
+      foreach ($definitions as $definition) {
+        if ($nid == mck_util_get_by_paths($definition, 'nid', 0)) {
+          drupal_add_css(drupal_get_path('module', 'mck_webform') . '/css/mck-webform--analysis.css');
+
+          $node = node_load(arg(1));
+          module_load_include('inc', 'webform', 'includes/webform.report');
+          $analysis = webform_results_analysis($node);
+          unset($analysis['exposed_filter']);
+          unset($analysis['form']);
+          $vars['analysis'] = $analysis;
+          foreach (mck_util_get_by_paths($definition, 'suggestions|webform_confirmation', []) as $theme) {
+            $vars['theme_hook_suggestions'][] = $theme;
+          }
+        }
+      }
+      break;
+  }
+}
+
+function mck_webform_get_custom_definitions() {
+  return [
+    [
+      'nid' => 581,
+      'classes' => ['mck-webform--group-default'],
+      'suggestions' => [
+        'webform_confirmation' => ['webform_confirmation__analysis'],
+      ],
+    ]
+  ];
+}

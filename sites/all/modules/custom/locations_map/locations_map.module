@@ -1,5 +1,25 @@
 <?php
 
+if (!function_exists('drupal_get_by_paths')) {
+  function drupal_get_by_paths($array, $key, $default_value = '', $separator = '|') {
+    $return = $default_value;
+    $keys = explode($separator, $key);
+
+    if (count($keys) > 0) {
+      $array = (array)$array;
+      $v = $keys[0];
+      if (isset($array[$v])) {
+        $return = $array[$v];
+        array_shift($keys);
+        if (count($keys) > 0) {
+          return drupal_get_by_paths($return, implode($separator, $keys), $default_value, $separator);
+        }
+      }
+    }
+    return $return;
+  }
+}
+
 /**
  * Implements hook_init().
  */
@@ -34,7 +54,7 @@ function locations_map_form_alter(&$form, &$form_state, $form_id) {
   if (strpos($form_id, '_node_form') !== false) {
     $form['#attached']['js']['https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDa7ZbXB4_i6fhKUnmv0jJBZZ9x7UYrpCk'] = array('type' => 'external');
     $form['#attached']['js']['https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.6.0/jquery.geocomplete.min.js'] = array('type' => 'external');
-    $form['#attached']['js'][] = drupal_get_path('module', 'locations_map') . '/js/locations_map.js';
+    $form['#attached']['js'][] = drupal_get_path('module', 'locations_map') . '/js/locations_map_geocomplete.js';
   }
 }
 
@@ -42,88 +62,82 @@ function locations_map_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_preprocess_THEME().
  */
 function locations_map_preprocess_entity(&$variables) {
-  $entity_type = locations_map_get_by_paths($variables, 'elements|#entity_type', '');
-  $bundle = locations_map_get_by_paths($variables, 'elements|#bundle', '');
+  $entity_type = drupal_get_by_paths($variables, 'elements|#entity_type', '');
+  $bundle = drupal_get_by_paths($variables, 'elements|#bundle', '');
   if ($entity_type == 'paragraphs_item' && $bundle == 'locations_map') {
-    $entity = locations_map_get_by_paths($variables, 'elements|#entity', NULL);
+    $entity = drupal_get_by_paths($variables, 'elements|#entity', NULL);
 
     $locsmap_id = $entity->item_id;
-    $locsmap_title = locations_map_get_by_paths($entity, 'field_locsmap_title|und|0|value', '');
-    $locsmap_highlight = locations_map_get_by_paths($entity, 'field_locsmap_highlight|und|0|value', 'country');
-    $locsmap_maker_fill_color = locations_map_get_by_paths($entity, 'field_locsmap_maker_fill_color|und|0|rgb', '');
-    $locsmap_maker_hover_fill_color = locations_map_get_by_paths($entity, 'field_locsmap_maker_h_fill_color|und|0|rgb', '');
-    $locsmap_maker_radius = locations_map_get_by_paths($entity, 'field_locsmap_maker_radius|und|0|value', 5);
+    $locsmap_title = drupal_get_by_paths($entity, 'field_locsmap_title|und|0|value', '');
+    $locsmap_anchor = drupal_get_by_paths($entity, 'field_locsmap_anchor|und|0|value', '');
+    $locsmap_highlight = drupal_get_by_paths($entity, 'field_locsmap_highlight|und|0|value', 'country');
+    $locsmap_maker_fill_color = drupal_get_by_paths($entity, 'field_locsmap_maker_fill_color|und|0|rgb', '');
+    $locsmap_maker_hover_fill_color = drupal_get_by_paths($entity, 'field_locsmap_maker_h_fill_color|und|0|rgb', '');
+    $locsmap_maker_radius = drupal_get_by_paths($entity, 'field_locsmap_maker_radius|und|0|value', 5);
+    $locsmap_maker_border_color = drupal_get_by_paths($entity, 'field_locsmap_maker_border_color|und|0|rgb', '');
+    $locsmap_maker_border_width = !empty($locsmap_maker_border_color) ? 2 : 0;
+
+    $locsmap_legends = [];
+    $legends = drupal_get_by_paths($entity, 'field_locsmap_legends|und|0|value', '');
+    $legends = trim($legends);
+    $legends = explode("\n", $legends);
+    foreach ($legends as $legend) {
+      $legend = trim($legend);
+      if (!empty($legend)) {
+        $legend = explode('|', $legend);
+        if (count($legend) > 0) {
+          $locsmap_legends[] = [
+            'color' => drupal_get_by_paths($legend, '0', ''),
+            'label' => drupal_get_by_paths($legend, '1', ''),
+          ];
+        }
+      }
+    }
 
     $ids = [];
-    foreach (locations_map_get_by_paths($entity, 'field_locsmap_item|und', []) as $item) {
+    foreach (drupal_get_by_paths($entity, 'field_locsmap_item|und', []) as $item) {
       $ids[] = $item['value'];
     }
     $locsmap_items = [];
     foreach (paragraphs_item_load_multiple($ids) as $item) {
-      switch ($locsmap_highlight) {
-        case 'country':
-          $image_uri = locations_map_get_by_paths($item, 'field_locsmap_item_image|und|0|uri', '');
-          $image_url = !empty($image_uri) ? file_create_url($image_uri) : '';
+      $image_uri = drupal_get_by_paths($item, 'field_locsmap_item_image|und|0|uri', '');
+      $image_url = !empty($image_uri) ? file_create_url($image_uri) : '';
 
-          $locsmap_item = [
-            'id' => locations_map_get_by_paths($item, 'field_locsmap_item_country|und|0|value', ''),
-            'title' => locations_map_get_by_paths($item, 'field_locsmap_item_title|und|0|value', ''),
-            'subtitle' => locations_map_get_by_paths($item, 'field_locsmap_item_subtitle|und|0|value', ''),
-            'desc' => locations_map_get_by_paths($item, 'field_locsmap_item_desc|und|0|value', ''),
-            'image' => $image_url,
-            'download_link' => locations_map_get_by_paths($item, 'field_locsmap_item_download_link|und|0', []),
-            'maker_fill_color' => $locsmap_maker_fill_color,
-            'maker_hover_fill_color' => $locsmap_maker_hover_fill_color,
-          ];
-          $locsmap_item['popup'] = theme('locations_map__popup', ['popup' => $locsmap_item]);
+      $locsmap_item = [
+        'id' => drupal_get_by_paths($item, 'field_locsmap_item_country|und|0|value', ''),
+        'title' => drupal_get_by_paths($item, 'field_locsmap_item_title|und|0|value', ''),
+        'subtitle' => drupal_get_by_paths($item, 'field_locsmap_item_subtitle|und|0|value', ''),
+        'desc' => drupal_get_by_paths($item, 'field_locsmap_item_desc|und|0|value', ''),
+        'desc_extra' => drupal_get_by_paths($item, 'field_locsmap_item_desc_extra|und|0|value', ''),
+        'image' => $image_url,
+        'country' => drupal_get_by_paths($item, 'field_locsmap_item_country|und|0|value', ''),
+        'location' => drupal_get_by_paths($item, 'field_locsmap_item_location|und|0|value', ''),
+        'latitude' => (float) drupal_get_by_paths($item, 'field_locsmap_item_latitude|und|0|value', ''),
+        'longitude' => (float) drupal_get_by_paths($item, 'field_locsmap_item_longitude|und|0|value', ''),
+        'download_link' => drupal_get_by_paths($item, 'field_locsmap_item_download_link|und|0', []),
+        'maker_fill_color' => drupal_get_by_paths($item, 'field_locsmap_item_maker_fc|und|0|rgb', $locsmap_maker_fill_color),
+        'maker_hover_fill_color' => drupal_get_by_paths($item, 'field_locsmap_item_maker_hfc|und|0|rgb', $locsmap_maker_hover_fill_color),
+        'maker_border_color' => $locsmap_maker_border_color,
+        'maker_border_width' => $locsmap_maker_border_width,
+      ];
+      $locsmap_item['popup'] = theme('locations_map__popup', ['popup' => $locsmap_item]);
 
-          $locsmap_items[] = $locsmap_item;
-          break;
-
-        case 'city':
-          $image_uri = locations_map_get_by_paths($item, 'field_locsmap_item_image|und|0|uri', '');
-          $image_url = !empty($image_uri) ? file_create_url($image_uri) : '';
-
-          $locsmap_item = [
-            'title' => locations_map_get_by_paths($item, 'field_locsmap_item_title|und|0|value', ''),
-            'subtitle' => locations_map_get_by_paths($item, 'field_locsmap_item_subtitle|und|0|value', ''),
-            'desc' => locations_map_get_by_paths($item, 'field_locsmap_item_desc|und|0|value', ''),
-            'image' => $image_url,
-            'location' => locations_map_get_by_paths($item, 'field_locsmap_item_location|und|0|value', ''),
-            'latitude' => (float) locations_map_get_by_paths($item, 'field_locsmap_item_latitude|und|0|value', ''),
-            'longitude' => (float) locations_map_get_by_paths($item, 'field_locsmap_item_longitude|und|0|value', ''),
-            'download_link' => locations_map_get_by_paths($item, 'field_locsmap_item_download_link|und|0', []),
-          ];
-          $locsmap_item['popup'] = theme('locations_map__popup', ['popup' => $locsmap_item]);
-
-          $locsmap_items[] = $locsmap_item;
-          break;
-      }
+      $locsmap_items[] = $locsmap_item;
     }
 
     $variables['paragraphs']['id'] = $locsmap_id;
     $variables['paragraphs']['title'] = $locsmap_title;
+    $variables['paragraphs']['anchor'] = $locsmap_anchor;
     $variables['paragraphs']['highlight'] = $locsmap_highlight;
     $variables['paragraphs']['maker_fill_color'] = $locsmap_maker_fill_color;
+    $variables['paragraphs']['maker_hover_fill_color'] = $locsmap_maker_hover_fill_color;
     $variables['paragraphs']['maker_radius'] = (int) $locsmap_maker_radius;
+    $variables['paragraphs']['maker_border_color'] = $locsmap_maker_border_color;
+    $variables['paragraphs']['maker_border_width'] = $locsmap_maker_border_width;
+    $variables['paragraphs']['legends'] = $locsmap_legends;
     $variables['paragraphs']['items'] = drupal_json_encode($locsmap_items);
-  }
-}
 
-function locations_map_get_by_paths($array, $key, $default_value = '', $separator = '|') {
-  $return = '';
-  $keys = explode($separator, $key);
-
-  if (count($keys) > 0) {
-    $array = (array) $array;
-    $v = $keys[0];
-    if (isset($array[$v])) {
-      $return = $array[$v];
-      array_shift($keys);
-      if (count($keys) > 0) {
-        return locations_map_get_by_paths($return, implode($separator, $keys), $default_value, $separator);
-      }
-    }
+    drupal_add_css(drupal_get_path('module', 'locations_map') . '/css/locations_map.css');
+    drupal_add_js(drupal_get_path('module', 'locations_map') . '/js/locations_map.js');
   }
-  return $return;
 }

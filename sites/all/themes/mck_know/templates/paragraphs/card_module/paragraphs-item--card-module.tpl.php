@@ -170,6 +170,8 @@ $anchor_name = isset($content['field_anchor_name']['#items'][0]['value']) ? $con
 					</div>
 				<?php } ?>
 			</div> 
-		</div>  
+		</div>
+
+    <div style="clear: both;"></div>
 	</div>
 </div>

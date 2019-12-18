@@ -33,11 +33,14 @@ $paraID   = $variables['elements']['#entity']->item_id;
 $bguri         = isset($content['field_image']['#items'][0]['uri']) ? $content['field_image']['#items'][0]['uri'] : NULL;
 $bgurl         = isset($bguri) ? file_create_url($bguri) : NULL;
 $whiteCopy     = (isset($content['field_white_copy']) && !empty($content['field_white_copy'])) ? $content['field_white_copy']['#items'][0]['value'] : NULL;
-$imageSize = $content['field_display_full_image'][0]['#markup']? "full-image" : "";
+
+$field_display_full_image = mck_util_get_by_paths($content, 'field_display_full_image|0|#markup', '');
+$imageSize = !empty($field_display_full_image) ? "full-image" : "";
+
 $textQuoteColor = isset($content['field_blockquote_color'])? $content['field_blockquote_color'][0]['#markup']: "";
 $bylineColor = isset($content['field_content_font_color'])? $content['field_content_font_color'][0]['#markup']: "";
 
-$paraClasses = $content['field_para_classes'][0]['#markup'] ? $content['field_para_classes'][0]['#markup'] : '';
+$paraClasses = mck_util_get_by_paths($content, 'field_para_classes|0|#markup', '');
 
 ?>
 <style type="text/css">

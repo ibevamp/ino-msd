@@ -48,7 +48,7 @@ $subtitle              = isset($content['field_sub_title']) ? render($content['f
 $number          = isset($content['field_number']) ? render($content['field_number']) : '';
 $description        = isset($content['field_description']) ? render($content['field_description']) : '';
 
-$link_items         = isset($content['field_links']) ? $content['field_links'] : '';
+$link_items         = mck_util_get_by_paths($content,'field_links', []);
 $popuplink_items         = isset($content['field_pop_up_links']) ? $content['field_pop_up_links'] : '';
 //$slideshow         = isset($content['field_popup_slideshow']) ? $content['field_popup_slideshow'] : '';
 
@@ -184,7 +184,7 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
  										<h3 class="headline"><?php  echo $title; ?></h3>
  									</a>
 								<?php }else{ ?>
-				                    <h3 class="headline"><?php  echo $title; ?></h4>
+				                    <h3 class="headline"><?php  echo $title; ?></h3>
 								<?php }} ?>
 								
 							
@@ -209,7 +209,7 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 										if(is_numeric($key)) {
 											$paraItem = $item['#element'];
 										 ?>
-											 <a href="<?php echo $paraItem['url']; ?>" target="<?php echo $paraItem['attributes']['target']; ?>" class="blue-btn -arrow ">
+											 <a href="<?php echo $paraItem['url']; ?>" target="<?php echo mck_util_get_by_paths($paraItem, 'attributes|target', '_self'); ?>" class="blue-btn -arrow ">
 											 	<?php echo $paraItem['title']; ?>
 											 </a>
 										<?php } 

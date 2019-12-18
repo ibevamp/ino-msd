@@ -26,8 +26,11 @@
  * @see template_process()
  */
 
-$wrapperBgColor = $content['field_grey_row'][0]['#markup']?"default-wrapper-bg":"";
-$headingAlign = $content['field_left_align_section_heading'][0]['#markup']?"heading-left-align":"heading-center-align";
+$field_grey_row = mck_util_get_by_paths($content, 'field_grey_row|0|#markup', '');
+$wrapperBgColor = !empty($field_grey_row) ? "default-wrapper-bg" : "";
+
+$field_left_align_section_heading = mck_util_get_by_paths($content, 'field_left_align_section_heading|0|#markup', '');
+$headingAlign = !empty($field_left_align_section_heading) ? "heading-left-align" : "heading-center-align";
 
 ?>
 

@@ -26,8 +26,11 @@
  * @see template_process()
  */
 
-$wrapperBgColor = $content['field_grey_row'][0]['#markup']?"default-wrapper-bg":"";
-$headingAlign = $content['field_left_align_section_heading'][0]['#markup']?"heading-left-align":"heading-center-align";
+$field_grey_row = mck_util_get_by_paths($content, 'field_grey_row|0|#markup', '');
+$wrapperBgColor = !empty($field_grey_row) ? "default-wrapper-bg" : "";
+
+$field_left_align_section_heading = mck_util_get_by_paths($content, 'field_left_align_section_heading|0|#markup', '');
+$headingAlign = !empty($field_left_align_section_heading) ? "heading-left-align" : "heading-center-align";
 
 $paraID   = $variables['elements']['#entity']->item_id;
 $bgColor = isset($content['field_acc_bg_color'])? $content['field_acc_bg_color'][0]['#markup']: "";
@@ -36,6 +39,8 @@ $accordionLayoutClass         = isset($content['field_accordion_card_layout']) ?
 $headingAlignClass         = isset($content['field_heading_subtitle_alignment']) ? render($content['field_heading_subtitle_alignment']) : '';
 
 $count = count($content['field_acc_card_item']['#items']);
+
+$anchorName = mck_util_get_by_paths($content, 'field_anchor_name|#items|0|value', '');
 
 if($count == 2){
 	$column_item_class = "two-up two-up-small -imgs-large";
@@ -79,7 +84,9 @@ if($count == 2){
 </style>
 <div class="accordion-module-wrapper ">
   <div class="section-wrapper accordion-inner-wrapper card-module <?php echo $headingAlignClass; ?> <?php echo $accordionLayoutClass; ?> <?php echo $wrapperBgColor; ?> para-<?php echo $paraID; ?> <?php echo $column_item_class; ?>">
-  <a name="<?php echo ($content['field_anchor_name']['#items'][0]['value']) ?>" ></a>
+  <?php if (!empty($anchorName)) { ?>
+    <a name="<?php echo $anchorName; ?>"></a>
+  <?php } ?>
   <section class=" section-inner-wrapper">
   <?php if(isset($content['field_acc_main_heading']) || isset($content['field_acc_main_description'])){ ?>
       <div class=" universal-header-wrapper text-lg">
@@ -100,10 +107,12 @@ if($count == 2){
     </div>	
   </section>
   </div>
+  <div class="loading" style="display: none; width: 100%; margin: 20px auto; text-align: center;">Loading...</div>
   <div class="view-more">
-               <div class="section-wrapper">
+    <div class="section-wrapper">
+
 					<div class="section-inner-wrapper acc-card-content-wrapper">
-						<?php                 
+						<?php
 							$viewName = 'accordion_content';
 							print views_embed_view($viewName,'block');                    
 						?>

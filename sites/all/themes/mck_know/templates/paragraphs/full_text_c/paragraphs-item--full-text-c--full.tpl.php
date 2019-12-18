@@ -26,30 +26,43 @@
  * @see template_process()
  */
 
-$textAlign = $content['field_center_align_content'][0]['#markup']? "-text-left" : "-text-center";
+$textAlign = $content['field_center_align_content'][0]['#markup'] ? "-text-left" : "-text-center";
+
+$fieldHeadingContent = render($content['field_heading']);
+$fieldHeadingContent = trim($fieldHeadingContent);
+$fieldDescriptionContent = render($content['field_description']);
+$fieldDescriptionContent = trim($fieldDescriptionContent);
+$fieldTextLeftContent = render($content['field_text_left']);
+$fieldTextLeftContent = trim($fieldTextLeftContent);
+$fieldTextRightContent = render($content['field_text_right']);
+$fieldTextRightContent = trim($fieldTextRightContent);
 
 $hasContent = FALSE;
-if (!empty($content['field_heading']) || !empty($content['field_description']) || !empty($content['field_text_left']) || !empty($content['field_text_right'])) {
+if (!empty($fieldHeadingContent) || !empty($fieldDescriptionContent) || !empty($fieldTextLeftContent) || !empty($fieldTextRightContent)) {
   $hasContent = TRUE;
 }
 ?>
 
 <?php if ($hasContent) { ?>
   <div class="section-wrapper">
-  <a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" id="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>"></a>
+    <a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>"
+       id="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>"></a>
     <section class="up full-text-section careers section-inner-wrapper">
-       <?php if (isset($content['field_heading'])): ?>
+      <?php if (!empty($fieldHeadingContent)): ?>
       <header class="text-l space">
         <h3 class="headline <?php echo $textAlign; ?>">
-            <?php echo render($content['field_heading']); ?>
+          <?php echo $fieldHeadingContent; ?>
         </h3>
         <?php endif ?>
       </header>
-      <?php if(isset($content['field_description'])){ ?>
-      <div class="description section-description">
-        <?php echo render($content['field_description']); ?>
-      </div>
+
+      <?php if (isset($content['field_description'])) { ?>
+        <div class="description section-description">
+          <?php echo render($content['field_description']); ?>
+        </div>
       <?php } ?>
+
+      <?php if (!empty($fieldTextLeftContent) || !empty($fieldTextRightContent)) { ?>
       <div class="block-list">
         <div class="two-column text-l">
           <div class="left-column text-longform">
@@ -62,10 +75,11 @@ if (!empty($content['field_heading']) || !empty($content['field_description']) |
             <div>
               <?php echo render($content['field_text_right']); ?>
             </div>
-
           </div>
         </div>
       </div>
+      <?php } ?>
+
     </section>
   </div>
 <?php } ?>

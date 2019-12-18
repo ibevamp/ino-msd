@@ -1,0 +1,233 @@
+.mck-webform--group-default.webform-client-form {
+  width: calc(100% - 40px);
+  margin: 80px 20px;
+  padding: 0;
+  text-align: left;
+}
+
+.mck-webform--group-default.webform-client-form fieldset {
+  margin: 0 0 40px 0;
+  padding: 0;
+  border: 1px solid #ccc;
+}
+.mck-webform--group-default.webform-client-form fieldset:last-child {
+  margin-bottom: 0;
+}
+.mck-webform--group-default.webform-client-form fieldset legend {
+  display: block;
+  width: calc(100% - 40px);
+  background: #f0f0f0;
+  margin: 0;
+  padding: 20px 20px;
+  border: 1px solid #ccc;
+  position: relative;
+  left: -1px;
+  color: #000;
+}
+.mck-webform--group-default.webform-client-form fieldset legend .fieldset-legend {
+  font-size: 36px;
+  margin: 0;
+  display: block;
+  font-weight: bold;
+  font-family: bower;
+}
+.mck-webform--group-default.webform-client-form fieldset .fieldset-wrapper {
+  padding: 40px 20px;
+}
+
+.mck-webform--group-default.webform-client-form .webform-progressbar {
+  margin-bottom: 60px;
+}
+/*
+.mck-webform--group-default.webform-client-form .webform-progressbar {
+  text-align: left;
+  margin: 0 0 40px 0;
+}
+.mck-webform--group-default.webform-client-form .webform-progressbar .webform-progressbar-page {
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: 500;
+  background: #ccc;
+  color: #fff;
+}
+.mck-webform--group-default.webform-client-form .webform-progressbar .webform-progressbar-page.completed {
+  background: #1F40E6;
+  color: #fff;
+}
+.mck-webform--group-default.webform-client-form .webform-progressbar .webform-progressbar-page.current {
+  background: #1F40E6;
+  color: #fff;
+}
+*/
+
+.mck-webform--group-default.webform-client-form > div > .form-item {
+  position: relative;
+  padding: 40px 0;
+  margin: 0;
+}
+
+.mck-webform--group-default.webform-client-form > div > .form-item:nth-child(even) {
+
+}
+.mck-webform--group-default.webform-client-form > div > .form-item:nth-child(even) > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mck-webform--group-default.webform-client-form .form-item > label {
+  font-family: Bower !important;
+  font-size: 24px;
+  font-weight: bold;
+  color: #051C2C;
+  display: block;
+  text-transform: none;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+.mck-webform--group-default.webform-client-form .form-item > .description {
+  clear: left;
+  letter-spacing: -.02em;
+  display: inline-block;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.mck-webform--group-default.webform-client-form .form-item > .description a {
+  color: #1F40E6 !important;
+}
+
+.mck-webform--group-default.webform-client-form .form-item textarea {
+  width: calc(100% - 2px);
+  border: 1px solid #999999;
+}
+
+.mck-webform--group-default.webform-client-form .form-checkboxes {
+  width: 100%;
+}
+.mck-webform--group-default.webform-client-form .form-checkboxes:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.mck-webform--group-default.webform-client-form .form-checkboxes .form-type-checkbox {
+  width: 100%;
+  float: left;
+  clear: unset;
+  display: table;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.mck-webform--group-default.webform-client-form .form-checkboxes .form-type-checkbox > input {
+  width: 25px;
+  border: 1px solid #ccc;
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  top: 0;
+  margin: 0;
+  padding: 0;
+}
+.mck-webform--group-default.webform-client-form .form-checkboxes .form-type-checkbox > label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 20px;
+  font-weight: 300;
+  color: #051C2C;
+  width: 100% !important;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  padding-right: 40px;
+  line-height: 1.25;
+}
+
+.mck-webform--group-default.webform-client-form .form-radios {
+  width: 100%;
+}
+.mck-webform--group-default.webform-client-form .form-radios:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.mck-webform--group-default.webform-client-form .form-radios .form-type-radio {
+  width: 100%;
+  clear: unset;
+  display: block;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.mck-webform--group-default.webform-client-form .form-radios .form-type-radio:last-child {
+  margin-bottom: 0;
+}
+.mck-webform--group-default.webform-client-form .form-radios .form-type-radio > input {
+  width: 20px;
+  border: 1px solid #ccc;
+  display: inline;
+  position: relative;
+  top: -2px;
+  padding: 0;
+  margin: 0 5px 0 0;
+}
+.mck-webform--group-default.webform-client-form .form-radios .form-type-radio > label {
+  font-family: "McKinsey Theinhardt" !important;
+  font-size: 20px;
+  font-weight: 300;
+  color: #051C2C;
+  width: 100% !important;
+  display: inline;
+  text-align: left;
+  line-height: 1.25;
+}
+.mck-webform--group-default.webform-client-form .form-actions {
+  text-align: center;
+}
+.mck-webform--group-default.webform-client-form .form-actions input.form-submit {
+  width: auto !important;
+  font-family: "McKinsey Theinhardt";
+  font-size: 18px! important;
+  font-weight: 500;
+  background-color: #1F40E6 !important;
+  color: #fff !important;
+  padding: 12px 20px 10px 20px !important;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  border-radius: 0;
+  border: 2px solid #1F40E6 !important;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1;
+  margin: 40px 10px 0 10px;
+}
+.mck-webform--group-default.webform-client-form .form-actions input.form-submit:hover {
+  background-color: #fff !important;
+  color: #1F40E6 !important;
+}
+
+@media (min-width: 768px) {
+  .mck-webform--group-default.webform-client-form {
+    margin: 80px 20px;
+  }
+
+  .mck-webform--group-default.webform-client-form .form-checkboxes .form-type-checkbox {
+    width: 50%;
+  }
+
+  .mck-webform--group-default.webform-client-form .form-radios .form-type-radio {
+    width: auto;
+    display: inline-block;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 1220px) {
+  .mck-webform--group-default.webform-client-form {
+    width: 1220px;
+    margin: 80px auto;
+    padding: 0;
+    text-align: left;
+  }
+}
