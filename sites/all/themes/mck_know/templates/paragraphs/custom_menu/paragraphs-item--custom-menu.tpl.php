@@ -59,45 +59,45 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
 
      <?php if(isset($content['field_link_font_color'])) { ?>
             .para-<?php echo $paraID ?>.global-header .nav-item a,
-			.para-<?php echo $paraID ?> .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a
+      .para-<?php echo $paraID ?> .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a
             {
                 color:<?php echo $linkColor ?>!important ;
-            }			
+            }     
     <?php } ?>
-	
-	 <?php if(($content['field_white_mck_logo'][0]['#markup']==1)) { ?>
+  
+   <?php if(($content['field_white_mck_logo'][0]['#markup']==1)) { ?>
              .para-<?php echo $paraID ?>.navigation-r3.default-logo-header .logo-container a.cpny-logo::before
             {
                 color:#fff!important ;
-            }		
-			
+            }   
+      
     <?php } ?>
-	
-	
-	 <?php if(isset($content['field_hamburger_menu_color'])) { ?>
+  
+  
+   <?php if(isset($content['field_hamburger_menu_color'])) { ?>
              .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger,
-			 .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger:after,
-			 .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger:before
+       .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger:after,
+       .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger:before
             {
                 background-color:<?php echo $hamburgerMenuColor ?>!important ;
-            }	
+            } 
 
              .para-<?php echo $paraID ?>.navigation-r3._menu-open .menu-toggle .menu-hamburger{
-				 background-color: unset!important;
-			 }			
-			
+         background-color: unset!important;
+       }      
+      
     <?php } ?>
-	
+  
      <?php if(isset($content['field_header_bg_color'])) { ?>
             .para-<?php echo $paraID ?>.global-header,
             .para-<?php echo $paraID ?>.navigation-r3 .menu-toggle,
             .para-<?php echo $paraID ?>.navigation-r3._menu-open .hamburger-nav,
-			.para-<?php echo $paraID ?>.navigation-r3._menu-open .menu-toggle{
+      .para-<?php echo $paraID ?>.navigation-r3._menu-open .menu-toggle{
                 background-color: <?php echo $headerBgColor ?>!important;
-            }				
+            }       
     <?php } ?>
-	
-	
+  
+  
     <?php if(isset($content['field_main_heading_font_color'])) { ?>
              .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover,
              .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a
@@ -105,11 +105,11 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
                 color:<?php echo $linkHoverColor ?>!important ;
             }
 
-			 .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover:after,
+       .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover:after,
              .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a:after
             {
                 background-color: <?php echo $linkHoverBgColor ?>;
-            }	
+            } 
     <?php } ?>
 
 
@@ -155,9 +155,15 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
     <nav class="main-nav" data-level="-menu-level0" role="menu">
       <ul class="nav-list nav-group-left">
           <?php echo $links;  ?>  
+          <?php global $user; ?>
+        <?php /*
+          <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" >
+        <a href="<?php echo $base_url; ?>/user/<?php echo $user->uid;?>/edit">My Account</a>
+       </li>
+        */ ?>
               <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" >
-				<a href="<?php echo $base_url; ?>/user/logout">Log Out</a>
-		   </li>			  
+        <a href="<?php echo $base_url; ?>/user/logout">Log Out</a>
+       </li>        
     </ul>
     </nav>
   </div>
@@ -166,19 +172,24 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
 <div class="hamburger-curtain"></div>
 
 
-	<div class="top-bar-inner">
-	  <div class="global-primary-nav-r3 show-nav" data-module="PrimaryNavigation" role="banner">
-		  <nav class="primary-navigation" role="navigation">
+  <div class="top-bar-inner">
+    <div class="global-primary-nav-r3 show-nav" data-module="PrimaryNavigation" role="banner">
+      <nav class="primary-navigation" role="navigation">
         <ul class="nav-list nav-group-left">
             <?php echo $links;  ?>
-			    <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" >
-					<a href="<?php echo $base_url; ?>/user/logout">Log Out</a>
-				</li>	
+          <?php /*
+            <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" >
+              <a href="<?php echo $base_url; ?>/user/<?php echo $user->uid;?>/edit">My Account</a>
+            </li>
+          <?php */ ?>
+          <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" >
+          <a href="<?php echo $base_url; ?>/user/logout">Log Out</a>
+        </li> 
         </ul>
-		  </nav>
-	</div>
+      </nav>
+  </div>
 
-	</div>
+  </div>
   <div class="logo-container">
      <?php if(isset($content["field_full_image"])){ ?>
     <a class="names cpny-logo alone" href="<?php echo $logolink ?>" style="background-image: url('<?php echo $bgurl ?>');" ><span class="visually-hidden">McKinsey &amp; Company Home</span></a>

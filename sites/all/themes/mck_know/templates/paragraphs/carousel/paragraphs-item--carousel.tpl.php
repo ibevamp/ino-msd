@@ -27,6 +27,7 @@
  */
 $paraID   = $variables['elements']['#entity']->item_id;
 $title         = isset($content['field_title']) ? render($content['field_title']) : '';
+$subheading         = isset($content['field_subtitle']) ? render($content['field_subtitle']) : '';
 $description   = isset($content['field_description']) ? render($content['field_description']) : '';
 
 $items         = isset($content['field_paragraph']) ? $content['field_paragraph'] : '';
@@ -37,8 +38,22 @@ $nav_items         = isset($content['field_carousel_nav_item']) ? $content['fiel
 
 $carouselItemBgColor = isset($content['field_carousel_item_bg_color'])? $content['field_carousel_item_bg_color'][0]['#markup']: "";
 $carouselHeadingFont = isset($content['field_carousel_item_heading_font'])? $content['field_carousel_item_heading_font'][0]['#markup']: "";
+$carouselMainHeadingFont = isset($content['field_carousel_heading_font'])? $content['field_carousel_heading_font'][0]['#markup']: "";
 $carouselDescColor = isset($content['field_carousel_desc_color'])? $content['field_carousel_desc_color'][0]['#markup']: "";
 $carouselNavItemBgColor = isset($content['field_carousel_nav_item_bg_color'])? $content['field_carousel_nav_item_bg_color'][0]['#markup']: "";
+
+if(($content['field_carousel_header_left'][0]['#markup'])){
+	$textAlign = "-text-left";
+}else{
+	$textAlign = "-text-center";
+}
+
+
+if(($content['field_carousel_heading_size'][0]['#markup'])){
+	$headingFont = "heading-3";
+}else{
+	$headingFont = "";
+}
 
 
 
@@ -57,6 +72,15 @@ $carouselNavItemBgColor = isset($content['field_carousel_nav_item_bg_color'])? $
 			
     <?php } ?>
 	
+	<?php if(isset($content['field_carousel_heading_font'])) { ?>
+            .para-<?php echo $paraID ?>.carousel-module header .headline,
+			.para-<?php echo $paraID ?>.carousel-module header .headline.sub-heading
+            {
+                color:<?php echo $carouselMainHeadingFont ?>!important ;
+            }	
+			
+    <?php } ?>
+	
 	<?php if(isset($content['field_carousel_item_heading_font'])) { ?>
             .para-<?php echo $paraID ?>.carousel-module .carousel-content h3
             {
@@ -66,7 +90,9 @@ $carouselNavItemBgColor = isset($content['field_carousel_nav_item_bg_color'])? $
     <?php } ?>
 	
 	<?php if(isset($content['field_carousel_desc_color'])) { ?>            ,
-			.para-<?php echo $paraID ?>.carousel-module .carousel-content .card-text .description p
+			.para-<?php echo $paraID ?>.carousel-module .carousel-content .card-text .description p,
+			.para-<?php echo $paraID ?>.carousel-module .carousel-content .card-text .description ul li,
+			.para-<?php echo $paraID ?>.carousel-module .carousel-content .card-text .slide-number
             {
                 color:<?php echo $carouselDescColor ?>!important ;
             }	
@@ -98,9 +124,12 @@ $carouselNavItemBgColor = isset($content['field_carousel_nav_item_bg_color'])? $
 <a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" id="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" class="anchored-link"></a>
 
 <div class="wrapper img-slider carousel-module  para-<?php echo $paraID ?>">
-		 <header class="universal-header" data-module="UniversalHeader" >
+		 <header class="universal-header <?php echo $textAlign; ?>" data-module="UniversalHeader" >
               <div class="text-wrapper">
-                       <h2 class="headline"><?php echo $title ?></h2>
+                       <h2 class="headline <?php echo $headingFont ?>"><?php echo $title ?></h2>
+					    <?php if(isset($content['field_subtitle'])){ ?>
+							<h4 class="headline sub-heading"><?php echo $subheading ?></h2>
+						 <?php } ?>
                        <div class="description"><?php echo $description ?></div>
                </div>
          </header>
@@ -153,6 +182,10 @@ $carouselNavItemBgColor = isset($content['field_carousel_nav_item_bg_color'])? $
 										    <?php } 
 							} ?>
 	                    </ol>
+						<div class="arrows">
+							<span class="next"></span>
+							<span class="previous"></span>
+						</div>
 						<div class="fade-in gradient"></div>
 						<div class="fade-out gradient"></div>
         			</div>

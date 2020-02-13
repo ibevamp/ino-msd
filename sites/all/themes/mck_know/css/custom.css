@@ -109,7 +109,7 @@ figure.full {
   color: #fff;
 }
 /* homepage*/
-section.up.three-up.speakers.span-full-width div.item {
+section.up.three-up.speakers.span-full-width .item {
   min-height: 418px;
   background-color: #fff;
 }
@@ -2284,6 +2284,11 @@ font-size: 36px;
   margin: unset;
 }
 
+
+.three-up.speakers .item.hide-divider hr{
+	display: none;
+}
+
 .three-up.speakers .wrapper{
   width: 85%;
   margin: 0 auto;
@@ -2295,7 +2300,7 @@ font-size: 36px;
   font-size: 20px;
 }
 
-section.up.three-up.speakers.span-full-width div.item{
+section.up.three-up.speakers.span-full-width .item{
   transition: box-shadow .4s ease-in-out;
   margin-right: 1%;
   min-height: 300px;
@@ -4868,6 +4873,15 @@ body{
 	color: #1F40E6;
 }
     
+.card-module .description ol{
+	list-style-type: decimal;
+    display: block;
+}
+
+.card-module .description ol li{
+    display: list-item;
+	list-style-type: decimal;
+}
 
 /* larger font size for description and links */
 
@@ -5062,10 +5076,15 @@ body{
 }
 
 .partnership-mark-enhanced-hero .medium-hero .text-wrapper h2,
-.partnership-mark-enhanced-hero .medium-hero .text-wrapper h4
+.partnership-mark-enhanced-hero .medium-hero .text-wrapper h4,
+.partnership-mark-enhanced-hero .medium-hero .text-wrapper .banner-client-details
 {
    	color: #fff!important;
 	text-align: left;
+}
+
+.partnership-mark-enhanced-hero .medium-hero .partnership-mark .text-wrapper .banner-client-details{
+	margin-top: 20px;
 }
 
 .partnership-mark-enhanced-hero .medium-hero .text-wrapper .description{
@@ -5085,7 +5104,8 @@ body{
 }
 
 .partnership-mark-enhanced-hero .medium-hero .partnership-mark.grey .text-wrapper h2,
-.partnership-mark-enhanced-hero .medium-hero .partnership-mark.grey .text-wrapper h4
+.partnership-mark-enhanced-hero .medium-hero .partnership-mark.grey .text-wrapper h4,
+.partnership-mark-enhanced-hero .medium-hero .partnership-mark.grey .text-wrapper .banner-client-details
 {
    	color: #000!important
 }
@@ -5195,15 +5215,24 @@ body{
     padding-bottom: 20px;
 }
 
-.partnership-mark-enhanced-hero .medium-hero .client-details  .client-logo{
+.partnership-mark-enhanced-hero .medium-hero .client-details  .client-logo,
+.partnership-mark-enhanced-hero .medium-hero .banner-client-details .client-logo{
 	background-size: contain;
 	background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: left bottom;
     width: 100px;
     height: 60px;
 	margin: 0 auto;
 }
 
+.partnership-mark-enhanced-hero.larger-logo .medium-hero .banner-client-details .client-logo{
+	width: 200px;
+    height: 100px;
+}
+
+.partnership-mark-enhanced-hero .medium-hero .text-wrapper .banner-client-details .client-logo{
+	margin: 0;
+}
 
 .partnership-mark-enhanced-hero .medium-hero .signature-logo{
 	background-size: contain;
@@ -5324,7 +5353,7 @@ div#console.clearfix{
 }
 
 .banner-anchors.fixed-width.links-count-4 .links{
-	width: 8%;
+	width: 80%;
 }
 
 
@@ -5712,6 +5741,29 @@ div#console.clearfix{
 	margin-top: 10px;
 }
 
+
+.three-up.speakers .description ul,
+.three-up.speakers .description ol{
+	display: block;
+    text-align: left;
+	padding-left: 20px;
+}
+
+
+.three-up.speakers .description  ul li,
+.three-up.speakers .description ol li {
+    font-size: 18px;
+    line-height: 1.67em;
+	padding-left: 10px;
+}
+
+.three-up.speakers .item .description ul li,
+.three-up.speakers .item .description ol li {
+    font-size: 16px;
+    line-height: 1.67em;
+}
+
+
 .three-up-list.three-up.three-up-split .profile-item h4.headline{
 	padding-right: 30px;
 	font-size: 24px;
@@ -5851,4 +5903,11 @@ div#console.clearfix{
 }
 .card-module.align-links-bottom .section-inner-wrapper .block-list .item .card-content .description p:last-child {
   margin-bottom: 0;
+}
+
+.card-module .item .-text-center .description ul,
+.card-module .item .-text-center .description ol{
+	display: inline-block;
+	width: auto;
+	clear: both;
 }

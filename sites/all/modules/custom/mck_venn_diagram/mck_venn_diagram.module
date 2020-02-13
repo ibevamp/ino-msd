@@ -25,6 +25,15 @@ function mck_venn_diagram_theme() {
       'template' => 'paragraphs-item--venn-diagram--horizontal',
       'path' => $module_path . '/templates',
     ],
+    'mck_venn_diagram__magnific_popup' => [
+      'template' => 'mck-venn-diagram--magnific-popup',
+      'path' => $module_path . '/templates',
+      'variables' => array(
+        'files' => [],
+        'link_text' => t('Click here'),
+        'show_num_items' => 'true'
+      ),
+    ],
   ];
 }
 
@@ -103,9 +112,16 @@ function mck_venn_diagram_preprocess_entity(&$variables) {
         $point_show_links = mck_util_get_by_paths($item_point, 'field_vd_item_point_show_links|und|0|value', 'no');
         $point_links = mck_util_get_by_paths($item_point, 'field_vd_item_point_links|und', []);
         $point_show_popup = mck_util_get_by_paths($item_point, 'field_vd_item_point_show_popup|und|0|value', 'no');
+        $point_show_num = mck_util_get_by_paths($item_point, 'field_vd_item_point_show_num|und|0|value', 'true');
         $point_popup_link_text = mck_util_get_by_paths($item_point, 'field_vd_item_point_popup_lt|und|0|value', 'Know more');
         $point_popup_image_uri = mck_util_get_by_paths($item_point, 'field_vd_item_point_popup_image|und|0|uri', '');
         $point_popup_image_url = !empty($point_popup_image_uri) ? file_create_url($point_popup_image_uri) : '';
+
+        $point_popup_slideshow = '';
+        //if (empty($point_popup_image_url)) {
+          $files = mck_util_get_by_paths($item_point, 'field_vd_item_point_popup_ss|und', []);
+          $point_popup_slideshow = theme('mck_venn_diagram__magnific_popup', ['files' => $files, 'link_text' => $point_popup_link_text, 'show_num_items' => $point_show_num]);
+        //}
 
         $points[] = [
           'title' => $point_title,
@@ -121,6 +137,7 @@ function mck_venn_diagram_preprocess_entity(&$variables) {
           'show_popup' => $point_show_popup,
           'popup_link_text' => $point_popup_link_text,
           'popup_image_url' => $point_popup_image_url,
+          'popup_slideshow' => $point_popup_slideshow,
         ];
       }
 
@@ -166,6 +183,9 @@ function mck_venn_diagram_preprocess_entity(&$variables) {
         drupal_add_css(drupal_get_path('module', 'mck_venn_diagram') . '/css/mck_venn_diagram_vertical.css');
         break;
     }
+    drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js', ['external' => TRUE]);
+    drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css', ['external' => TRUE]);
+    drupal_add_js(drupal_get_path('module', 'mck_venn_diagram') . '/js/mck_venn_diagram_magnific_popup.js');
 
   }
 }

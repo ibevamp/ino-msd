@@ -29,8 +29,15 @@
 $caption         = isset($content['field_subtitle']) ? render($content['field_subtitle']) : '';
 $title         = isset($content['field_title']) ? render($content['field_title']) : '';
 
+$bguri              = isset($content['field_carousel_nav_bg']['#items'][0]['uri']) ? $content['field_carousel_nav_bg']['#items'][0]['uri'] : NULL;
+$bgurl              = isset($bguri) ? file_create_url($bguri) : NULL;
+
+
+$imageLayout         = isset($content['field_carousel_image_layt']) ? ($content['field_carousel_image_layt']["#items"][0]["value"]) : '';
 ?>
-
-
-<div class="nav-caption"><?php echo $caption ?></div>
-<div class="nav-title"><?php echo $title ?></div>
+<?php if(isset($content['field_carousel_nav_bg'])){ ?>
+	<div class="bg <?php echo $imageLayout;  ?>" style="background-image: url(<?php echo $bgurl; ?>)"></div>
+<?php }else{ ?>
+	<div class="nav-caption"><?php echo $caption ?></div>
+	<div class="nav-title"><?php echo $title ?></div>
+<?php } ?>

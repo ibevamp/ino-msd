@@ -101,6 +101,15 @@
                           </div>
                         <?php } ?>
 
+                        <?php if ($point['show_popup'] == 'yes' && !empty($point['popup_slideshow'])) { ?>
+                          <div class="links-wrapper">
+                            <div
+                              style="text-align: <?php echo $point['text_align']; ?>; font-family: 'McKinsey Theinhardt' !important; font-weight: 300; font-size: <?php echo $point['text_size']; ?>; color: <?php echo $point['text_color']; ?>">
+                              <?php echo $point['popup_slideshow']; ?>
+                            </div>
+                          </div>
+                        <?php } ?>
+
                         <?php if ($point['show_links'] == 'yes' && count($point['links']) > 0) { ?>
                           <div style="margin-top: 10px; text-align: <?php echo $point['text_align']; ?>; font-family: 'McKinsey Theinhardt' !important; font-weight: 300; font-size: <?php echo $point['text_size']; ?>; color: <?php echo $point['text_color']; ?>">
                             <a href="<?php echo mck_util_get_by_paths($point, 'links|0|url', '#'); ?>"

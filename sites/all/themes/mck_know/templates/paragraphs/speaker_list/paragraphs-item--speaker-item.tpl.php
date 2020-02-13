@@ -27,30 +27,26 @@
  */
 
 $description = mck_util_get_by_paths($content, 'field_body', '');
+
+$dividerClass = $content['field_hide_divider']['#items'][0]['value'];
+$dividerClass = ($dividerClass) ? "hide-divider" : "";
+
+
 ?>
-<div class="item">
+
+	<?php if(isset($description) && !empty($description)) { ?>
+		<a href="#" class="inline-popup item-title-link  item <?php echo $dividerClass; ?>">
+	<?php } else { ?>
+		<div class="item <?php echo $dividerClass; ?>">
+	<?php } ?>
   <div class="image">
- 		<?php if(isset($description) && !empty($description)) { ?>
-            <a href="#" class="inline-popup">
-                 <?php echo render($content['field_image']) ?>
-            </a>
-        <?php } else { ?>
             <?php echo render($content['field_image']) ?>
-        <?php } ?>
       </div>
     <div class="text-wrapper">
       <div class="-text-center">
-		<?php if(isset($description) && !empty($description)) { ?>
-            <a href="#" class="inline-popup item-title-link">
-                <h3 id="main_0_universal_1_ctl10_headline" class="headline ">
-                    <?php echo render($content['field_title']) ?>
-                </h3>
-            </a>
-        <?php } else { ?>
             <h3 id="main_0_universal_1_ctl10_headline" class="headline ">
                 <?php echo render($content['field_title']) ?>
             </h3>
-        <?php } ?>
           <?php if(isset($content['field_subtitle'])){ ?>
             <div class="sub-title"><?php echo render($content['field_subtitle']) ?></div>
         <?php } ?>
@@ -80,4 +76,9 @@ $description = mck_util_get_by_paths($content, 'field_body', '');
             <?php echo render($description) ?>
         </div>
     </div>
-</div>
+
+	<?php if(isset($description) && !empty($description)) { ?>
+		</a>
+	<?php } else { ?>
+		</div>
+	<?php } ?>

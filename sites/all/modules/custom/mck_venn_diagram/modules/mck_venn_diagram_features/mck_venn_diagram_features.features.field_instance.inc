@@ -1404,7 +1404,7 @@ function mck_venn_diagram_features_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -1449,7 +1449,7 @@ function mck_venn_diagram_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -1494,7 +1494,7 @@ function mck_venn_diagram_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -1603,7 +1603,7 @@ function mck_venn_diagram_features_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -1648,7 +1648,50 @@ function mck_venn_diagram_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-venn_diagram_item_point-field_vd_item_point_popup_ss'.
+  $field_instances['paragraphs_item-venn_diagram_item_point-field_vd_item_point_popup_ss'] = array(
+    'bundle' => 'venn_diagram_item_point',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 18,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_vd_item_point_popup_ss',
+    'label' => 'Popup slideshow',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'venn_diagram/point_popup_ss',
+      'file_extensions' => 'png gif jpg jpeg mp4',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 8,
     ),
   );
 
@@ -1687,6 +1730,48 @@ function mck_venn_diagram_features_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-venn_diagram_item_point-field_vd_item_point_show_num'.
+  $field_instances['paragraphs_item-venn_diagram_item_point-field_vd_item_point_show_num'] = array(
+    'bundle' => 'venn_diagram_item_point',
+    'default_value' => array(
+      0 => array(
+        'value' => 'true',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 19,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_vd_item_point_show_num',
+    'label' => 'Show Number of Slides',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 5,
     ),
   );
 
@@ -1762,7 +1847,7 @@ function mck_venn_diagram_features_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -1804,7 +1889,7 @@ function mck_venn_diagram_features_field_default_field_instances() {
       'module' => 'color_field',
       'settings' => array(),
       'type' => 'color_field_spectrum_widget',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -1849,7 +1934,7 @@ function mck_venn_diagram_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 14,
     ),
   );
 
@@ -1916,6 +2001,8 @@ function mck_venn_diagram_features_field_default_field_instances() {
   t('Points per row');
   t('Popup image');
   t('Popup link text');
+  t('Popup slideshow');
+  t('Show Number of Slides');
   t('Show links');
   t('Show popup');
   t('Subtitle');

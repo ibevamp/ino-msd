@@ -31,24 +31,39 @@ $title         = isset($content['field_title']) ? render($content['field_title']
 $description   = isset($content['field_description']) ? render($content['field_description']) : '';
 $bguri              = isset($content['field_image']['#items'][0]['uri']) ? $content['field_image']['#items'][0]['uri'] : NULL;
 $bgurl              = isset($bguri) ? file_create_url($bguri) : NULL;
+
+if(isset($content['field_carousel_video'])){
+	$videouri      = isset($content['field_carousel_video']['#items'][0]['uri']) ? $content['field_carousel_video']['#items'][0]['uri'] : '';
+	$videourl      = isset($videouri) ? file_create_url($videouri) : NULL;
+}
+
+if(!$content['field_align_right'][0]['#markup']){
+	$alignClass = "media-left";
+}else{
+	$alignClass = "media-right";
+}
+
+$imageWidth         = isset($content['field_image_width']) ? ($content['field_image_width']["#items"][0]["value"]) : '';
+$imageHeight         = isset($content['field_image_height']) ? ($content['field_image_height']["#items"][0]["value"]) : '';
+$imageLayout         = isset($content['field_carousel_image_layt']) ? render($content['field_carousel_image_layt']) : '';
 ?>
 
-<div class="carousel-content">		
-		<?php if(!$content['field_align_right'][0]['#markup']){ ?>
-		<div class="image">
-			<div class="thumbnail" style="background-image: url(<?php echo $bgurl; ?>)"></div>
-		</div>
-		<?php } ?>
+<div class="carousel-content <?php echo $alignClass ?> <?php echo $imageWidth ?> <?php echo $imageHeight ?>">	
+         <?php  if(isset($content['field_carousel_video'])){ ?>
+				 <div class="image">
+					<video class="video-js vjs-fluid <?php print ($imageLayout); ?>" controls poster="<?php echo $bgurl ?>" data-setup="{}" src="<?php echo $videourl;  ?>"></video>
+				 </div>
+				<?php } else if(isset($content['field_image'])){ ?>
+				<div class="image">
+					<div class="thumbnail <?php print ($imageLayout); ?>" style="background-image: url(<?php echo $bgurl; ?>)"></div>
+				</div>
+			<?php } ?>
 		<div class="text-wrapper">
 			<h3><?php echo $title; ?></h3>
 			<div class="card-text">
 				<div class="description"><?php echo $description ?></div>
+				<div class="slide-number"></div>
 			</div>
 		</div>
-		<?php if($content['field_align_right'][0]['#markup']){ ?>
-		<div class="image">
-			<div class="thumbnail" style="background-image: url(<?php echo $bgurl; ?>)"></div>
-		</div>
-		<?php } ?>
 </div>
 

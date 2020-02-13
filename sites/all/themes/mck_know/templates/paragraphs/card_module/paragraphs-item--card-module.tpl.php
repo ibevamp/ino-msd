@@ -143,7 +143,7 @@ $anchor_name = isset($content['field_anchor_name']['#items'][0]['value']) ? $con
 <?php } ?>
 <span class="arrow"></span>
 	<div class="section-inner-wrapper" >
-		<?php if(isset($content['field_title']) || isset($content['field_subtitle']) ){ ?>
+		<?php if(isset($content['field_title']) || isset($content['field_subtitle']) || isset($content['field_description']) ){ ?>
 			<header class="module-header text-l <?php echo $fontSize; ?> <?php echo $textAlign; ?>">
 		        <?php if (!empty($legend)) { ?>
 		          <div class="legend"><span style="background: <?php echo $legendColourBoxColor; ?>"></span><?php echo $legend; ?></div>

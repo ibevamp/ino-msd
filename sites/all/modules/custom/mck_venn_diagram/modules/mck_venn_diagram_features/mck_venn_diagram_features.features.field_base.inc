@@ -493,6 +493,29 @@ function mck_venn_diagram_features_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_vd_item_point_popup_ss'.
+  $field_bases['field_vd_item_point_popup_ss'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vd_item_point_popup_ss',
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'file',
+    'settings' => array(
+      'display_default' => 0,
+      'display_field' => 0,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'file',
+  );
+
   // Exported field_base: 'field_vd_item_point_show_links'.
   $field_bases['field_vd_item_point_show_links'] = array(
     'active' => 1,
@@ -511,6 +534,31 @@ function mck_venn_diagram_features_field_default_field_bases() {
       'allowed_values' => array(
         'yes' => 'Yes',
         'no' => 'No',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_vd_item_point_show_num'.
+  $field_bases['field_vd_item_point_show_num'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vd_item_point_show_num',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'true' => 'Yes',
+        'false' => 'No',
       ),
       'allowed_values_function' => '',
     ),
