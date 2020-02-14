@@ -5911,3 +5911,29 @@ div#console.clearfix{
 	width: auto;
 	clear: both;
 }
+
+.page-node-649 .oneup-image .rteleft {
+	font-weight: bold;
+	text-align: center;
+}
+
+.page-node-633 .custom-menu .login-details {
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.page-node-649 .global-header,
+.page-node-641 .global-header,
+.page-node-642 .global-header{
+	display: block;
+}
+
+.page-node-649 #user-login-form{
+	margin: 0;
+}
+
+.page-node-649 #user-login-form .form-item{
+	text-align: left
+}
+
+

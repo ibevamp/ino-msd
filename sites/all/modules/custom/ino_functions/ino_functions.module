@@ -1,0 +1,8 @@
+<?php
+
+function ino_functions_user_login(&$edit, $account){
+	if(in_array("Sirius Learning Portal", $account->roles)){		
+		$_GET['destination'] = "sirius-learning-portaltraining-material";
+	}
+
+}
