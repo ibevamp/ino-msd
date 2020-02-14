@@ -132,7 +132,7 @@
     
 
     <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-login" tabindex="-1">Learning Portal</a>
+      <a href="https://solutions.mckinsey.com/msd/ino/ino/sirius-learning-portaltraining-material" tabindex="-1">Learning Portal</a>
           </li>
 
     
@@ -168,7 +168,7 @@
     
 
     <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-login">Learning Portal</a>
+      <a href="https://solutions.mckinsey.com/msd/ino/ino/sirius-learning-portaltraining-material">Learning Portal</a>
           </li>
 
     
