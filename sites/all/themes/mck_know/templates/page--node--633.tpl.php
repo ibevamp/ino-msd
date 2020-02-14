@@ -73,424 +73,278 @@
  */
 ?>
 <div class="page-class default  fixed-header">
-
-  
-<style type="text/css">
-
-       
-     
-  
-     
-       
-  
-                 .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover,
-             .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a
-            {
-                color:#e5910d!important ;
-            }
-
-       .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover:after,
-             .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a:after
-            {
-                background-color: #e5910d;
-            } 
-    
-
-
-     
-          .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item .sub-nav a.sub-menu-item:hover {
-       color: #e5910d !important;
-       border-bottom: 4px solid #e5910d;
-     }
-     
-     </style>
-
-
-
-<a name="top"></a>
-<header class="global-header global-header-r3 navigation-r3 custom-menu fixed-header new-logo-header para-14888" role="banner">
-  <a aria-hidden="false" aria-label="Toggle Menu" class="skip-main" href="#0" tabindex="0">Skip to main content</a>
- <button class="menu-toggle" role="button" type="button">
-  <div class="menu-hamburger">
-    <span class="visually-hidden">Toggle Menu</span>
-  </div>
-</button>
-<section class="hamburger-nav" data-module="HamburgerNav">
-  <div class="main-nav-inner">
-    <a class="mck-logo-icon" href="#" tabindex="-1">
-      <span class="visually-hidden">McKinsey &amp; Company Home</span>
-    </a>
-    <nav class="main-nav" data-level="-menu-levelundefined" role="menu">
-      <ul class="nav-list nav-group-left">
-          
-  
-
-    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew" tabindex="-1">Home</a>
-          </li>
-
-    
-
-    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/ino/sirius-learning-portaltraining-material" tabindex="-1">Learning Portal</a>
-          </li>
-
-    
-
-    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us" tabindex="-1">Contact us</a>
-          </li>
-
-    
-                                <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" tabindex="-1">
-        <a href="https://solutions.mckinsey.com/msd/ino/user/logout" tabindex="-1">Log Out</a>
-       </li>  
-
-    </ul>
-    </nav>
-  </div>
-</section>
-
-<div class="hamburger-curtain"></div>
-
-
-  <div class="top-bar-inner">
-    <div class="global-primary-nav-r3 show-nav" data-module="PrimaryNavigation" role="banner">
-      <nav class="primary-navigation" role="navigation">
-        <ul class="nav-list nav-group-left" style="padding-left: 318px;">
-            
-  
-
-    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew">Home</a>
-          </li>
-
-    
-
-    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/ino/sirius-learning-portaltraining-material">Learning Portal</a>
-          </li>
-
-    
-
-    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us">Contact us</a>
-          </li>
-
-                      <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" tabindex="-1">
-          <a href="https://solutions.mckinsey.com/msd/ino/user/logout">Log Out</a>
-        </li> 
-			   <li style="float:right; padding-right: 30px; font-weight: 500; margin-top: 10px;" class="login-details">
-	     <?php global $user;
-// Only for logged in users.
-if ($user->uid) {
-  print '<span>Welcome</span> ' . theme('username', array('account' => $user));
-}?>
-</li>
-        </ul>
-      </nav>
-  </div>
-
-  </div>
-  <div class="logo-container">
-         <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('https://solutions.mckinsey.com/msd/ino/system/files/Star_Television_logo_2.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
-      </div><!--END NAVIGATION MENU-->
-</header>
-
-
-
-
-
-
-
-<ul class="links inline"><li class="statistics_counter first last"><span>215 reads</span></li>
-</ul>
   <style type="text/css">
-          .para-14898.banner-anchors .links ul li
-      {
-          background-color:#fffffff2 !important ;
-      }
-      .para-14898.banner-anchors .links ul li:hover
-      {
-        background-color:#ffffff !important ;
-      }
-    	
-	              .para-14898.banner-anchors .links ul li a
-            {
-                color:#000000!important ;
-            }	
-			
-    	
-</style>
-<div class="enhanced-hero-section enhanced-hero-no-parallax banner-anchors  medium-font  para-14898 links-count-4 fixed-width mck-mt-0 mck-mb-0" style="height: 400px">
- <div class="hero hero-featured enhanced-hero -light -over-image-true hero-featured hotel">
-         <div class="hero-container hero-main_0_universal_header_2" style=" background-image: url(https://solutions.mckinsey.com/msd/ino/system/files/Team_3.jpg">
-		 <div class="wrapper">
-			<div class="featured-copy text-hero-m content -center">
-			<h1 class="headline">
-  Learning Portal</h1>
-				<div class="links">
-					<ul>
-					
-  
+    .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover, .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a {
+      color:#e5910d!important ;
+    }
+    .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover:after, .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a:after {
+      background-color: #e5910d;
+    } 
+    .para-14888.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item .sub-nav a.sub-menu-item:hover {
+      color: #e5910d !important;
+      border-bottom: 4px solid #e5910d;
+    }
+  </style>
 
-                <li class="nav-item active" aria-hidden="true" tabindex="-1">
-               		 <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portaltraining-material">Training material</a>
+  <a name="top"></a>
+  <header class="global-header global-header-r3 navigation-r3 custom-menu fixed-header new-logo-header para-14888" role="banner">
+    <a aria-hidden="false" aria-label="Toggle Menu" class="skip-main" href="#0" tabindex="0">Skip to main content</a>
+    <button class="menu-toggle" role="button" type="button">
+      <div class="menu-hamburger">
+        <span class="visually-hidden">Toggle Menu</span>
+      </div>
+    </button>
+    <section class="hamburger-nav" data-module="HamburgerNav">
+      <div class="main-nav-inner">
+        <a class="mck-logo-icon" href="#" tabindex="-1">
+          <span class="visually-hidden">McKinsey &amp; Company Home</span>
+        </a>
+        <nav class="main-nav" data-level="-menu-levelundefined" role="menu">
+          <ul class="nav-list nav-group-left">
+            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
+              <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew" tabindex="-1">Home</a>
+            </li>
+            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
+              <a href="https://solutions.mckinsey.com/msd/ino/ino/sirius-learning-portaltraining-material" tabindex="-1">Learning Portal</a>
+            </li>
+            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
+              <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us" tabindex="-1">Contact us</a>
+            </li>
+            <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" tabindex="-1">
+              <a href="https://solutions.mckinsey.com/msd/ino/user/logout" tabindex="-1">Log Out</a>
+            </li>  
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <div class="hamburger-curtain"></div>
+    <div class="top-bar-inner">
+      <div class="global-primary-nav-r3 show-nav" data-module="PrimaryNavigation" role="banner">
+        <nav class="primary-navigation" role="navigation">
+          <ul class="nav-list nav-group-left" style="padding-left: 318px;">
+            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
+              <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew">Home</a>
+            </li>
+            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
+            </li>
+            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
+              <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us">Contact us</a>
+            </li>
+            <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" tabindex="-1">
+              <a href="https://solutions.mckinsey.com/msd/ino/user/logout">Log Out</a>
+            </li>
+            <style>
+              .nav-item.user-menu > a {
+                height: auto !important;
+                line-height: normal !important;
+                padding: 0 !important;
+                display: inline-block;
+              }
+              .nav-item.user-menu > .sub-nav {
+                padding: 0px 15px !important;
+                width: auto !important;
+              }
+            </style>
+            <li class="nav-item user-menu " style="float:right; padding: 10px; font-weight: 500; margin: 0px 20px 0 0;" class="login-details">
+              <?php global $user;
+              // Only for logged in users.
+              if ($user->uid) {
+                print theme('username', array('account' => $user));
+              }?>
+              <ul class="sub-nav">
+                <li class="nav-item " aria-hidden="true" tabindex="-1">
+                  <a class="sub-menu-item" href="/user/logout">Logout</a>
                 </li>
-              
-
-                <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-                	<a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portalassessment">Assessment</a>
-                </li>
-				 
-              
-
-                <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-                	<a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-client-ref-material">Client referenceable material</a>
-                </li>
-				 
-              
-
-                <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-                	<a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-client-share-material">Client shareable material</a>
-                </li>
-				 
-            					</ul>
-				</div>
-			</div>
-	  </div>
+              </ul>
+            </li>
+            <span style="float:right; margin: 10px 0">Welcome </span>
+          </ul>
+        </nav>
       </div>
     </div>
+    <div class="logo-container">
+      <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('https://solutions.mckinsey.com/msd/ino/system/files/Star_Television_logo_2.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
+    </div><!--END NAVIGATION MENU-->
+  </header>
+  <ul class="links inline"><li class="statistics_counter first last"><span>215 reads</span></li></ul>
+  <style type="text/css">
+    .para-14898.banner-anchors .links ul li {
+      background-color:#fffffff2 !important ;
+    }
+    .para-14898.banner-anchors .links ul li:hover {
+      background-color:#ffffff !important ;
+    }
+    .para-14898.banner-anchors .links ul li a {
+      color:#000000!important ;
+    }	
+  </style>
+  <div class="enhanced-hero-section enhanced-hero-no-parallax banner-anchors  medium-font  para-14898 links-count-4 fixed-width mck-mt-0 mck-mb-0" style="height: 400px">
+    <div class="hero hero-featured enhanced-hero -light -over-image-true hero-featured hotel">
+      <div class="hero-container hero-main_0_universal_header_2" style=" background-image: url(https://solutions.mckinsey.com/msd/ino/system/files/Team_3.jpg">
+        <div class="wrapper">
+          <div class="featured-copy text-hero-m content -center">
+            <h1 class="headline">Learning Portal</h1>
+            <div class="links">
+              <ul>
+                <li class="nav-item active" aria-hidden="true" tabindex="-1">
+                  <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portaltraining-material">Training material</a>
+                </li>
+                <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
+                  <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portalassessment">Assessment</a>
+                </li>
+                <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
+                  <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-client-ref-material">Client referenceable material</a>
+                </li>
+                <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
+                  <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-client-share-material">Client shareable material</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-
-
-
-
-
-
-
-  
   <div class="section-wrapper">
     <a name="" id=""></a>
     <section class="up full-text-section careers section-inner-wrapper">
-            <header class="text-l space">
-        <h3 class="headline -text-left">
-          Training material        </h3>
-              </header>
-
-      
-      
+      <header class="text-l space">
+        <h3 class="headline -text-left">Training material</h3>
+      </header>
     </section>
   </div>
+
   <div class="section-wrapper">
-<a name=""></a>
-	<section class="up two-up two-up-small 	 up-left  -display-mode-standard section-inner-wrapper">
-		<div class="text-s">
-			
-  <div class="item">
-	<div class="image">
- 		<a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf">
-			<picture>
-				<img srcset="https://solutions.mckinsey.com/msd/ino/system/files/Sirius%20Induction.png">
-			</picture>
-		</a>
+    <a name=""></a>
+    <section class="up two-up two-up-small 	 up-left  -display-mode-standard section-inner-wrapper">
+      <div class="text-s">
 
-	</div>
-	<div class="text-wrapper">
-		<span class="eyebrow"></span>
-		<a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" class="item-title-link">
-			<h3 class="-arrow headline">Sirius Induction</h3>
-		</a>
-		<div class="description">
-			<p>Workshop supplementary material</p>
+        <div class="item">
+          <div class="image">
+            <a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf">
+              <picture>
+                <img srcset="https://solutions.mckinsey.com/msd/ino/system/files/Sirius%20Induction.png">
+              </picture>
+            </a>
+          </div>
+          <div class="text-wrapper">
+            <span class="eyebrow"></span>
+            <a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" class="item-title-link">
+              <h3 class="-arrow headline">Sirius Induction</h3>
+            </a>
+            <div class="description">
+              <p>Workshop supplementary material</p>
+              <p><span style="font-family:arial"><span style="font-size:18px"><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">Launch</a></span></span></p><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank"></a>
+            </div>
+            <a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank"></a>
+          </div>
+          <a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank"></a>
+        </div>
+        <a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank"></a>
+      </div>
+      <a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank"></a>
+    </section>
+    <a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank"></a>
+  </div>
+  <a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank"> </a>
+  <div class="section-wrapper">
+    <a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank"></a>
+    <a name=""></a>
+    <section class="up two-up two-up-small up-left -display-mode-standard section-inner-wrapper">
+      <div class="text-s">
+        <div class="item">
+          <div class="image">
+            <a href="#">
+              <picture>
+                <img srcset="https://solutions.mckinsey.com/msd/ino/system/files/Sirius%20Capability.png">
+              </picture>
+            </a>
+          </div>
+          <div class="text-wrapper">
+            <span class="eyebrow"></span>
+            <a href="#" class="item-title-link">
+              <h3 class="-arrow headline">Sirius Sales Capability Building</h3>
+            </a>
+            <div class="description">
+              <p>Workshop supplementary material</p>
 
-<p><span style="font-family:arial"><span style="font-size:18px"><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">Launch</a></span></span></p><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">
-	</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">
-</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">
-	</a></section><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">
-</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">  </a><div class="section-wrapper"><a href="https://solutions.mckinsey.com/msd/ino/system/files/202002_Sirius%20Onboarding_vF.pdf" target="_blank">
-</a><a name=""></a>
-	<section class="up two-up two-up-small 	 up-left  -display-mode-standard section-inner-wrapper">
-		<div class="text-s">
-			
-  <div class="item">
-	<div class="image">
- 		<a href="#">
-			<picture>
-				<img srcset="https://solutions.mckinsey.com/msd/ino/system/files/Sirius%20Capability.png">
-			</picture>
-		</a>
+              <p><span style="font-family:arial"><span style="font-size:18px"><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">Launch</a></span></span></p><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
+              </a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
+              </a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
+              </a></section><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
+              </a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">  </a><div class="section-wrapper"><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
+              </a><a name=""></a>
+              <section class="up two-up two-up-small 	 up-left  -display-mode-standard section-inner-wrapper">
+                <div class="text-s">
+                  <div class="item">
+                    <div class="image">
+                      <a href="#">
+                        <picture>
+                          <img srcset="https://solutions.mckinsey.com/msd/ino/system/files/Basic%20of%20TV%20%26%20Digital.png">
+                        </picture>
+                      </a>
+                    </div>
+                    <div class="text-wrapper">
+                      <span class="eyebrow"></span>
+                      <a href="#" class="item-title-link">
+                        <h3 class="-arrow headline">Basics of TV and Digital Selling</h3>
+                      </a>
+                      <div class="description">
+                        <p>A primer on ad buying in TV and digital inventory</p>
 
-	</div>
-	<div class="text-wrapper">
-		<span class="eyebrow"></span>
-		<a href="#" class="item-title-link">
-			<h3 class="-arrow headline">Sirius Sales Capability Building</h3>
-		</a>
-		<div class="description">
-			<p>Workshop supplementary material</p>
-
-<p><span style="font-family:arial"><span style="font-size:18px"><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">Launch</a></span></span></p><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
-	</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
-</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
-	</a></section><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
-</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">  </a><div class="section-wrapper"><a href="https://solutions.mckinsey.com/msd/ino/system/files/202001_Sirius%20capability%20material%20v34.pdf" target="_blank">
-</a><a name=""></a>
-	<section class="up two-up two-up-small 	 up-left  -display-mode-standard section-inner-wrapper">
-		<div class="text-s">
-			
-  <div class="item">
-	<div class="image">
- 		<a href="#">
-			<picture>
-				<img srcset="https://solutions.mckinsey.com/msd/ino/system/files/Basic%20of%20TV%20%26%20Digital.png">
-			</picture>
-		</a>
-
-	</div>
-	<div class="text-wrapper">
-		<span class="eyebrow"></span>
-		<a href="#" class="item-title-link">
-			<h3 class="-arrow headline">Basics of TV and Digital Selling</h3>
-		</a>
-		<div class="description">
-			<p>A primer on ad buying in TV and digital inventory</p>
-
-<p><span style="font-family:arial"><span style="font-size:18px"><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">Launch</a></span></span></p><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">
-	</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">
-</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">
-	</a></section><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">
-</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">  
-<style type="text/css">
-			.para-14882.card-module {
-			background-color:#ffffff!important ;
-		}
-		.accordion-module-wrapper .view-more .para-14882#acc-card-module-0 span {
-			border-bottom-color: #ffffff!important;
-		}			
-	
-		
-	
-	
-	
-	</style>
-
-</a><div style="clear: both;"><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">
-  </a><a name="contact" id="contact" class="anchored-link"></a>
-</div>
-
-	<div class="para-14882 card-module    darker-heading three-up    bg-image section-wrapper mck-mt-0 mck-mb-0">
-<span class="arrow"></span>
-	<div class="section-inner-wrapper">
-				<div class="block-list text-m ">
-			<div class="item para-14878" style="height: 46px;">
-				                
-						<div class="  -text-left  item-wrapper ">
-																
-						
-													
-												
-												
-												<div class="card-content">
-						
-
-														
-							
-							
-								
-								
-															
-							
-								  								
-								
-								
-																	<div class="description">
-									<p>
-  </p><p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-home">Home</a><br></span></span></p><p></p>
-									</div>
-								
-
-								
-						</div><!-- end of card -->
-       		</div><!--end of col for card content -->
-			</div>
-
-
-  
-<div class="item para-14879" style="height: 46px;">
-				                
-						<div class="  -text-left  item-wrapper ">
-																
-						
-													
-												
-												
-												<div class="card-content">
-						
-
-														
-							
-							
-								
-								
-															
-							
-								  								
-								
-								
-																	<div class="description">
-									<p>
-  </p><p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-success-stories">Learning Portal</a><br></span></span></p><p></p>
-									</div>
-								
-
-								
-						</div><!-- end of card -->
-       		</div><!--end of col for card content -->
-			</div>
-
-
-  
-<div class="item para-15590" style="height: 46px;">
-				                
-						<div class="  -text-left  item-wrapper ">
-																
-						
-													
-												
-												
-												<div class="card-content">
-						
-
-														
-							
-							
-								
-								
-															
-							
-								  								
-								
-								
-																	<div class="description">
-									<p>
-  </p><p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-success-stories">Contact Us</a><br></span></span></p><p></p>
-									</div>
-								
-
-								
-						</div><!-- end of card -->
-       		</div><!--end of col for card content -->
-			</div>
-
-
-  
-		</div>   
-            <div>
-							</div> 
-		</div>
-
-    <div style="clear: both;"></div>
-	</div>
-</div>
+                        <p><span style="font-family:arial"><span style="font-size:18px"><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">Launch</a></span></span></p><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">
+                        </a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">
+                        </a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">		</a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">
+                        </a></section><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">
+                        </a></div><a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank">  
+                        <style type="text/css">
+                          .para-14882.card-module {
+                            background-color:#ffffff!important ;
+                          }
+                          .accordion-module-wrapper .view-more .para-14882#acc-card-module-0 span {
+                            border-bottom-color: #ffffff!important;
+                          }			
+                        </style>
+                        </a>
+                        <div style="clear: both;">
+                          <a href="https://solutions.mckinsey.com/msd/ino/system/files/Basics%20of%20TV%20and%20digital%20selling.pdf" target="_blank"></a>
+                          <a name="contact" id="contact" class="anchored-link"></a>
+                        </div>
+                        <div class="para-14882 card-module darker-heading three-up bg-image section-wrapper mck-mt-0 mck-mb-0">
+                          <span class="arrow"></span>
+                          <div class="section-inner-wrapper">
+                            <div class="block-list text-m ">
+                              <div class="item para-14878" style="height: 46px;">
+                                <div class="  -text-left  item-wrapper ">
+                                  <div class="card-content">
+                                    <div class="description">
+                                      <p></p><p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-home">Home</a><br></span></span></p><p></p>
+                                    </div>
+                                  </div><!-- end of card -->
+                                </div><!--end of col for card content -->
+                              </div>
+                              <div class="item para-14879" style="height: 46px;">
+                                <div class="  -text-left  item-wrapper ">
+                                  <div class="card-content">
+                                    <div class="description">
+                                      <p></p><p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-success-stories">Learning Portal</a><br></span></span></p><p></p>
+                                    </div>
+                                  </div><!-- end of card -->
+                                </div><!--end of col for card content -->
+                              </div>
+                              <div class="item para-15590" style="height: 46px;">
+                                <div class="  -text-left  item-wrapper ">
+                                  <div class="card-content">
+                                    <div class="description">
+                                      <p></p><p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-success-stories">Contact Us</a><br></span></span></p><p></p>
+                                    </div>
+                                  </div><!-- end of card -->
+                                </div><!--end of col for card content -->
+                              </div>
+                            </div>   
+                          <div></div> 
+                        </div>
+                      <div style="clear: both;"></div>
+                    </div>
+                  </div>
