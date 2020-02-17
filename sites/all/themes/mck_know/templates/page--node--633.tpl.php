@@ -191,7 +191,7 @@
               }?>
               <ul class="sub-nav">
                 <li class="nav-item " aria-hidden="true" tabindex="-1">
-                  <a class="sub-menu-item" href="/user/logout">Logout</a>
+                  <a class="sub-menu-item" href="/msd/ino/user/logout">Logout</a>
                 </li>
               </ul>
             </li>
