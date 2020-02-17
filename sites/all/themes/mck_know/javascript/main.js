@@ -17,12 +17,12 @@
 
   //animating();
 
-	if($("body").hasClass("page-node-641") || $("body").hasClass("page-node-642") ){
+	if($("body").hasClass("page-node-641") || $("body").hasClass("page-node-642") || $("body").hasClass("page-node-649")){
 		if($("body").hasClass("not-logged-in")){
-			$('.nav-list .nav-item:nth-child(2)').find("a").attr("href","https://solutions.mckinsey.com/msd/ino/sirius-login");
+			$('.nav-list>.nav-item:nth-child(2)').find("a").attr("href","https://solutions.mckinsey.com/msd/ino/sirius-login");
+		}else{
+		$('.nav-list>.nav-item:nth-child(2)').find("a").attr("href","https://solutions.mckinsey.com/msd/ino/sirius-learning-portaltraining-material");
 		}		
-	}else{
-		$('.nav-list .nav-item:nth-child(2)').find("a").attr("href","https://solutions.mckinsey.com/msd/ino/sirius-learning-portaltraining-material");
 	}
 	
   heroSetHeight();

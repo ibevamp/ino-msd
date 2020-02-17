@@ -5936,4 +5936,14 @@ div#console.clearfix{
 	text-align: left
 }
 
+.page-node-625 .full-text-section{
+	padding-top: 0px!important;
+    padding-bottom: 70px!important;
+}
 
+.page-node-633 .content-wrapper .global-header,
+.page-node-650 .content-wrapper .global-header,
+.page-node-637 .content-wrapper .global-header,
+.page-node-615 .content-wrapper .global-header{
+	display: none;
+}

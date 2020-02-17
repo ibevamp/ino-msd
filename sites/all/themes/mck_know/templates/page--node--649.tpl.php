@@ -140,11 +140,7 @@
     <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-homenew" tabindex="-1">
       <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us" tabindex="-1">Contact Us</a>
           </li>
-
-    
-                                <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" tabindex="-1">
-        <a href="https://solutions.mckinsey.com/msd/ino/user/logout" tabindex="-1">Log Out</a>
-       </li>        
+       
     </ul>
     </nav>
   </div>
@@ -175,10 +171,7 @@
     <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-homenew" tabindex="-1">
       <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us">Contact Us</a>
           </li>
-
-                      <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" tabindex="-1">
-          <a href="https://solutions.mckinsey.com/msd/ino/user/logout">Log Out</a>
-        </li> 
+ 
         </ul>
       </nav>
   </div>

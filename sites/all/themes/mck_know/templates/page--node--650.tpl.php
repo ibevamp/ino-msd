@@ -87,23 +87,26 @@
   </style>
 
   <a name="top"></a>
-  <header class="global-header global-header-r3 navigation-r3 custom-menu fixed-header new-logo-header para-14888" role="banner">
-    <a aria-hidden="false" aria-label="Toggle Menu" class="skip-main" href="#0" tabindex="0">Skip to main content</a>
-    <button class="menu-toggle" role="button" type="button">
-      <div class="menu-hamburger">
-        <span class="visually-hidden">Toggle Menu</span>
-      </div>
-    </button>
-    <section class="hamburger-nav" data-module="HamburgerNav">
-      <div class="main-nav-inner">
-        <a class="mck-logo-icon" href="#" tabindex="-1">
-          <span class="visually-hidden">McKinsey &amp; Company Home</span>
-        </a>
-        <nav class="main-nav" data-level="-menu-levelundefined" role="menu">
-          <ul class="nav-list nav-group-left">
-            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-              <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew" tabindex="-1">Home</a>
-			 <ul class="sub-nav">
+ <header class="global-header global-header-r3 navigation-r3 custom-menu fixed-header new-logo-header  hide-logout para-15615" role="banner">
+  <a aria-hidden="false" aria-label="Toggle Menu" class="skip-main" href="#0" tabindex="0">Skip to main content</a>
+ <button class="menu-toggle" role="button" type="button">
+  <div class="menu-hamburger">
+    <span class="visually-hidden">Toggle Menu</span>
+  </div>
+</button>
+<section class="hamburger-nav" data-module="HamburgerNav">
+  <div class="main-nav-inner">
+    <a class="mck-logo-icon" href="#" tabindex="-1">
+      <span class="visually-hidden">McKinsey &amp; Company Home</span>
+    </a>
+    <nav class="main-nav" data-level="-menu-levelundefined" role="menu">
+      <ul class="nav-list nav-group-left">
+          
+  
+
+    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portal-client-share-material" tabindex="-1">
+      <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew" tabindex="-1">Home</a>
+	  <ul class="sub-nav">
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
 						<a class="sub-menu-item" href="sirius-learning-portaltraining-material#about">About Sirius  </a>
 					</li>
@@ -124,25 +127,36 @@
 						Team  </a>
 					</li>
 				</ul>
-            </li>
-            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-              <a href="https://solutions.mckinsey.com/msd/ino/ino/sirius-learning-portaltraining-material" tabindex="-1">Learning Portal</a>
-            </li>
-            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-              <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us" tabindex="-1">Contact us</a>
-            </li> 
-          </ul>
-        </nav>
-      </div>
-    </section>
-    <div class="hamburger-curtain"></div>
-    <div class="top-bar-inner">
-      <div class="global-primary-nav-r3 show-nav" data-module="PrimaryNavigation" role="banner">
-        <nav class="primary-navigation" role="navigation">
-          <ul class="nav-list nav-group-left" style="padding-left: 318px;">
-            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-              <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew">Home</a>
-			  	<ul class="sub-nav">
+    </li>
+    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portal-client-share-material" tabindex="-1">
+      <a href="https://solutions.mckinsey.com/msd/ino/sirius-login" tabindex="-1">Learning Portal</a>
+    </li>
+
+    
+
+    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portal-client-share-material" tabindex="-1">
+      <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us" tabindex="-1">Contact Us</a>
+          </li>
+
+    
+                                <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" tabindex="-1">
+        <a href="https://solutions.mckinsey.com/msd/ino/user/logout" tabindex="-1">Log Out</a>
+       </li>        
+    </ul>
+    </nav>
+  </div>
+</section>
+
+<div class="hamburger-curtain"></div>
+
+
+  <div class="top-bar-inner">
+    <div class="global-primary-nav-r3 show-nav" data-module="PrimaryNavigation" role="banner">
+      <nav class="primary-navigation" role="navigation">
+        <ul class="nav-list nav-group-left" style="padding-left: 318px;">     
+		<li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portal-client-share-material" tabindex="-1">
+				<a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew">Home</a>
+			<ul class="sub-nav">
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
 						<a class="sub-menu-item" href="sirius-learning-portaltraining-material#about">About Sirius  </a>
 					</li>
@@ -163,48 +177,25 @@
 						Team  </a>
 					</li>
 				</ul>
-            </li>
-            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-			
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portaltraining-material">Learning Portal</a>
-            </li>
-            <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-              <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us">Contact us</a>
-            </li>
-            <style>
-              .nav-item.user-menu > a {
-                height: auto !important;
-                line-height: normal !important;
-                padding: 0 !important;
-                display: inline-block;
-              }
-              .nav-item.user-menu > .sub-nav {
-                padding: 0px 15px !important;
-                width: auto !important;
-              }
-            </style>
-            <li class="nav-item user-menu " style="float:right; padding: 10px; font-weight: 500; margin: 0px 20px 0 0;" class="login-details">
-              <?php global $user;
-              // Only for logged in users.
-              if ($user->uid) {
-                print theme('username', array('account' => $user));
-              }?>
-              <ul class="sub-nav">
-                <li class="nav-item " aria-hidden="true" tabindex="-1">
-                  <a class="sub-menu-item" href="/user/logout">Logout</a>
-                </li>
-              </ul>
-            </li>
-            <span style="float:right; margin: 10px 0">Welcome </span>
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <div class="logo-container">
-      <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('https://solutions.mckinsey.com/msd/ino/system/files/Star_Television_logo_2.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
-    </div><!--END NAVIGATION MENU-->
-  </header>
- <div class="content-wrapper">
+        </li>
+		<li class="nav-item" aria-hidden="true" data-url="/msd/ino/sirius-learning-portal-client-share-material" tabindex="-1">
+				<a href="https://solutions.mckinsey.com/msd/ino/sirius-login">Learning Portal</a>
+    </li>
+    <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portal-client-share-material" tabindex="-1">
+      <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us">Contact Us</a>
+    </li>
+    <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" tabindex="-1">
+          <a href="https://solutions.mckinsey.com/msd/ino/user/logout">Log Out</a>
+    </li> 
+        </ul>
+      </nav>
+  </div>
+
+  </div>
+  <div class="logo-container">
+         <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('https://solutions.mckinsey.com/msd/ino/system/files/Star_Television_logo_2.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
+      </div><!--END NAVIGATION MENU-->
+</header> <div class="content-wrapper">
  <?php echo render($page['content']) ?>
  </div>
  

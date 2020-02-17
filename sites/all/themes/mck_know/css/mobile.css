@@ -228,6 +228,12 @@
    .top-bar-inner .nav-list {
        padding-left: 320px!important;
    }
+   
+   
+	.page-node-626 .card-module .item .description .heading {
+		min-height: 127px;
+	}
+
 }
 
 @media (min-width: 1250px) {
@@ -250,6 +256,11 @@
       background-image: -moz-linear-gradient(-78deg, #0065BD 15%, rgba(199, 26, 26, 0) 15%), url(../images/blurred-1.jpg);
       background-image: linear-gradient(-78deg, #0065BD 15%, rgba(199, 26, 26, 0) 15%), url(../images/blurred-1.jpg);
   }
+  
+  .page-node-626 .card-module .item .description .heading {
+		min-height: 100px;
+   }
+	
 }
 @media screen and (min-width: 1350px){
 	.primary-navigation ul{
@@ -610,6 +621,10 @@ color: #00306e;}
 .three-up-list h4{
 	font-size: 24px;
 }
+
+ .page-node-626 .card-module .item .description .heading {
+		min-height: unset;
+   }
 
 }
 @media (max-width: 480px) {

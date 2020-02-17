@@ -103,7 +103,7 @@
           <ul class="nav-list nav-group-left">
             <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
               <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew" tabindex="-1">Home</a>
-			 <ul class="sub-nav">
+			  	<ul class="sub-nav">
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
 						<a class="sub-menu-item" href="sirius-learning-portaltraining-material#about">About Sirius  </a>
 					</li>
@@ -191,7 +191,7 @@
               }?>
               <ul class="sub-nav">
                 <li class="nav-item " aria-hidden="true" tabindex="-1">
-                  <a class="sub-menu-item" href="/user/logout">Logout</a>
+                  <a class="sub-menu-item" href="user/logout">Logout</a>
                 </li>
               </ul>
             </li>
