@@ -111,17 +111,18 @@
                         <?php } ?>
 
                         <?php if ($point['show_links'] == 'yes' && count($point['links']) > 0) { ?>
-                          <div style="margin-top: 10px; text-align: <?php echo $point['text_align']; ?>; font-family: 'McKinsey Theinhardt' !important; font-weight: 300; font-size: <?php echo $point['text_size']; ?>; color: <?php echo $point['text_color']; ?>">
-                            <a href="<?php echo mck_util_get_by_paths($point, 'links|0|url', '#'); ?>"
-                               target="<?php echo mck_util_get_by_paths($point, 'links|0|attributes|target', '_self'); ?>"
-                               class="mck-arrow -arrow"
-                               style="text-align: <?php echo $point['text_align']; ?>; font-family: 'McKinsey Theinhardt' !important; font-weight: 300; font-size: <?php echo $point['text_size']; ?>; color: <?php echo $point['text_color']; ?>"
-                            >
-                              <?php echo mck_util_get_by_paths($point, 'links|0|title', 'Know more'); ?>
-                            </a>
-                          </div>
+                          <?php foreach ($point['links'] as $link) { ?>
+                            <div style="margin-top: 10px; text-align: <?php echo $point['text_align']; ?>; font-family: 'McKinsey Theinhardt' !important; font-weight: 300; font-size: <?php echo $point['text_size']; ?>; color: <?php echo $point['text_color']; ?>">
+                              <a href="<?php echo mck_util_get_by_paths($link, 'url', '#'); ?>"
+                                 target="<?php echo mck_util_get_by_paths($link, 'attributes|target', '_self'); ?>"
+                                 class="mck-arrow -arrow"
+                                 style="text-align: <?php echo $point['text_align']; ?>; font-family: 'McKinsey Theinhardt' !important; font-weight: 300; font-size: <?php echo $point['text_size']; ?>; color: <?php echo $point['text_color']; ?>"
+                              >
+                                <?php echo mck_util_get_by_paths($link, 'title', 'Know more'); ?>
+                              </a>
+                            </div>
+                            <?php } ?>
                         <?php } ?>
-
                       </div>
                     <?php } ?>
                   </div>

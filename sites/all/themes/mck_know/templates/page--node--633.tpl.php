@@ -105,28 +105,28 @@
               <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew" tabindex="-1">Home</a>
 			 <ul class="sub-nav">
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-						<a class="sub-menu-item" href="sirius-learning-portaltraining-material#about">About Sirius  </a>
+						<a class="sub-menu-item" href="sirius-homenew#about">About Sirius  </a>
 					</li>
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-					  <a class="sub-menu-item" href="sirius-learning-portaltraining-material#solutions">
+					  <a class="sub-menu-item" href="sirius-homenew#solutions">
 						Solutions  </a>
 					</li>
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-					  <a class="sub-menu-item" href="sirius-learning-portaltraining-material#impact">
+					  <a class="sub-menu-item" href="sirius-homenew#impact">
 						Impact Stories  </a>
 					</li>
 					<li class="nav-item" aria-hidden="true" tabindex="-1">
-					  <a class="sub-menu-item" href="sirius-learning-portaltraining-material#media">
+					  <a class="sub-menu-item" href="sirius-homenew#media">
 						Media Coverage  </a>
 					</li>
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-					  <a class="sub-menu-item" href="sirius-learning-portaltraining-material#team">
+					  <a class="sub-menu-item" href="sirius-homenew#team">
 						Team  </a>
 					</li>
 				</ul>
             </li>
             <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
-              <a href="https://solutions.mckinsey.com/msd/ino/ino/sirius-learning-portaltraining-material" tabindex="-1">Learning Portal</a>
+              <a href="https://solutions.mckinsey.com/msd/ino/ino/sirius-learning-portal-get-trained" tabindex="-1">Learning Portal</a>
             </li>
             <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
               <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us" tabindex="-1">Contact us</a>
@@ -144,29 +144,29 @@
               <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew">Home</a>
 			  	<ul class="sub-nav">
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-						<a class="sub-menu-item" href="sirius-learning-portaltraining-material#about">About Sirius  </a>
+						<a class="sub-menu-item" href="sirius-homenew#about">About Sirius  </a>
 					</li>
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-					  <a class="sub-menu-item" href="sirius-learning-portaltraining-material#solutions">
+					  <a class="sub-menu-item" href="sirius-homenew#solutions">
 						Solutions  </a>
 					</li>
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-					  <a class="sub-menu-item" href="sirius-learning-portaltraining-material#impact">
+					  <a class="sub-menu-item" href="sirius-homenew#impact">
 						Impact Stories  </a>
 					</li>
 					<li class="nav-item" aria-hidden="true" tabindex="-1">
-					  <a class="sub-menu-item" href="sirius-learning-portaltraining-material#media">
+					  <a class="sub-menu-item" href="sirius-homenew#media">
 						Media Coverage  </a>
 					</li>
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-					  <a class="sub-menu-item" href="sirius-learning-portaltraining-material#team">
+					  <a class="sub-menu-item" href="sirius-homenew#team">
 						Team  </a>
 					</li>
 				</ul>
             </li>
             <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
 			
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portaltraining-material">Learning Portal</a>
+      <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-get-trained">Learning Portal</a>
             </li>
             <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">
               <a href="https://solutions.mckinsey.com/msd/ino/sirius-contact-us">Contact us</a>
@@ -201,7 +201,7 @@
       </div>
     </div>
     <div class="logo-container">
-      <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('https://solutions.mckinsey.com/msd/ino/system/files/Star_Television_logo_2.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
+      <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('https://solutions.mckinsey.com/msd/ino/sites/all/themes/mck_know/images/final-sirius-logo.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
     </div><!--END NAVIGATION MENU-->
   </header>
  <div class="content-wrapper">

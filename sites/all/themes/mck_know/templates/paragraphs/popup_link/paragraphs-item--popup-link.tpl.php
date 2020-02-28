@@ -35,9 +35,18 @@ $link_items = mck_util_get_by_paths($content, 'field_popup_link', []);
 $popupClass = $content['field_popup_type'][0]['#markup']? $content['field_popup_type'][0]['#markup'] : "mfp-iframe";
 
 ?>
+<?php if(trim($popupClass) == "mfp-pdf"){ ?>
+<a href="#pdf-iframe" class="<?php echo $popupClass; ?> mfp-inline">
+	<?php echo mck_util_get_by_paths($content, 'field_popup_link|#items|0|title', ''); ?>
+</a>
+<div class="mfp-hide " id="pdf-iframe">
+	<embed src="<?php echo mck_util_get_by_paths($content, 'field_popup_link|#items|0|url', ''); ?>" style="width:600px; height:500px;">
+</div>
+<?php } else{ ?>
 <a href="<?php echo mck_util_get_by_paths($content, 'field_popup_link|#items|0|url', ''); ?>" class="<?php echo $popupClass; ?>">
 	<?php echo mck_util_get_by_paths($content, 'field_popup_link|#items|0|title', ''); ?>
 </a>
+<?php } ?>
 
 
 

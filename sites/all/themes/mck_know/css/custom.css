@@ -5452,14 +5452,78 @@ div#console.clearfix{
 	margin-bottom: 0!important;
 }
 
+.accordion-module-wrapper .section-wrapper.card-bg .item .headline,
+.accordion-module-wrapper .section-wrapper.card-bg .item .subtitle,
+.accordion-module-wrapper .section-wrapper.card-bg .item .description,
+.accordion-module-wrapper .section-wrapper.card-bg .item .icon{
+	padding: 0 20px;
+	width:calc(100% - 40px)
+}
+
+.accordion-module-wrapper .section-wrapper .item .icon{
+	width: 120px!important;
+	height: 150px;
+	background-size: contain;
+}
+
+.accordion-module-wrapper .section-wrapper .item .icon{
+	margin-top: 20px;
+}
+
+.accordion-module-wrapper .section-wrapper.left-content .item .icon{
+	background-position: left center;
+	margin: 0;
+}
+
+.accordion-module-wrapper .section-wrapper.left-content.card-bg .item .icon{
+	margin: 20px
+}
+
+.accordion-module-wrapper .section-wrapper.right-content .item .icon{
+	background-position: right center;
+	margin: 0;
+}
+
+.accordion-module-wrapper .section-wrapper.center-content .item .icon{
+	margin: 20px auto;
+}
+
+.accordion-module-wrapper .section-wrapper.center-content .accordion-item-wrapper .heading-link{
+	display: block;
+	width: 100%
+}
+
+.accordion-module-wrapper .section-wrapper.center-content .accordion-item-wrapper .headline, 
+.accordion-module-wrapper .section-wrapper.center-content .accordion-item-wrapper .description,
+.accordion-module-wrapper .section-wrapper.center-content .accordion-item-wrapper h4{
+	 text-align: center;
+ }
+ 
+ .accordion-module-wrapper .section-wrapper.right-content .accordion-item-wrapper .headline, 
+.accordion-module-wrapper .section-wrapper.right-content .accordion-item-wrapper .description,
+.accordion-module-wrapper .section-wrapper.right-content .accordion-item-wrapper h4{
+	 text-align: right;
+ }
+
+
 .accordion-module-wrapper .view-more .section-wrapper{
 	padding-bottom: 40px!important;
 }
 
 
+
+.accordion-module-wrapper .accordion-item-wrapper .accordion-item-more-content{
+	display: none;
+}
+
+
+
 .acc-card-content-wrapper{
 	padding-top: 0!important;
 }
+
+
+
 
 .accordion-module-wrapper .view-more{
 	display: none;
@@ -5947,3 +6011,45 @@ div#console.clearfix{
 .page-node-615 .content-wrapper .global-header{
 	display: none;
 }
+
+.navigation-r3 .primary-navigation>.nav-list>.nav-item.user-menu a::after,
+.navigation-r3 .primary-navigation>.nav-list>.nav-item.user-menu .sub-nav a::after{
+	content: unset;
+}
+
+.navigation-r3 .primary-navigation>.nav-list>.nav-item.user-menu .sub-nav{	
+    left: -20px;
+    margin-top: -1px;
+    margin-right: 12px;
+}
+
+.page-node-641.not-logged-in header,
+.page-node-641.not-logged-in .global-footer{
+	display: block;
+}
+
+
+#outerContainer #mainContainer div.toolbar {
+  display: none !important; /* hide PDF viewer toolbar */
+}
+#outerContainer #mainContainer #viewerContainer {
+  top: 0 !important; /* move doc up into empty bar space */
+}
+
+
+.slideshow-popup-card .card-gallery{
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -209,6 +209,12 @@
 .mck-para-venn-diagram--tpl-horizontal .content .points .point-desc {
   margin-top: 10px;
 }
+.mck-para-venn-diagram--tpl-horizontal .content .points .point-desc p {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
 
 .mck-para-venn-diagram--tpl-horizontal .content .links-wrapper {
   margin-top: 10px;

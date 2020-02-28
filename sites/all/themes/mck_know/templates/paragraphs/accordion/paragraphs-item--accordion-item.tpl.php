@@ -31,10 +31,16 @@ $bgurl           = isset($bguri) ? file_create_url($bguri) : NULL;
 $nid = mck_util_get_by_paths($content, 'field_acc_more_content|0|#item|target_id', '');
 //$node_content = node_load($nid);
 
+if($content['field_acc_icon'][0]["#markup"] == 1){
+	$imageClass= "icon";
+}else{
+	$imageClass="thumbnail";
+}
+
 ?>
-<div class="item accordion-item-wrapper">
+<div class="item accordion-item-wrapper "  data-nid="<?php echo $nid; ?>">
    <?php if(isset($content['field_acc_card_image'])){ ?>
-        <a href="javascript: void(0);" data-nid="<?php echo $nid; ?>" style="background-image: url(<?php echo $bgurl; ?>)" class="acc-item-link thumbnail" ></a>
+        <a href="javascript: void(0);" data-nid="<?php echo $nid; ?>" style="background-image: url(<?php echo $bgurl; ?>)" class="acc-item-link  <?php echo $imageClass; ?>" ></a>
    <?php } ?>
   
    <?php if(isset($content['field_acc_card_title'])){ ?>
@@ -57,6 +63,12 @@ $nid = mck_util_get_by_paths($content, 'field_acc_more_content|0|#item|target_id
 	</div>
   <?php } ?>  	
 
+   <div class="accordion-item-more-content">
+		    <?php
+                    $secondViewName = 'accordion_content';
+                    print views_embed_view($secondViewName,'block', $nid);
+            ?>
+   </div>
 </div>
 
 

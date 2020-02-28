@@ -21,7 +21,7 @@
 		if($("body").hasClass("not-logged-in")){
 			$('.nav-list>.nav-item:nth-child(2)').find("a").attr("href","https://solutions.mckinsey.com/msd/ino/sirius-login");
 		}else{
-		$('.nav-list>.nav-item:nth-child(2)').find("a").attr("href","https://solutions.mckinsey.com/msd/ino/sirius-learning-portaltraining-material");
+		$('.nav-list>.nav-item:nth-child(2)').find("a").attr("href","https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-get-trained");
 		}		
 	}
 	
@@ -96,8 +96,25 @@ if(anchor_id != "") {
   }
 }
 
+$(".custom-menu .anchor-link a").each(function(){
+	$(this).on("click", function(e){
+	   e.preventDefault();
+	   var anchor_id = $(this).data('href').substring(1);
+	   var new_position = $('a[name='+anchor_id+']').offset();
+	   if($('#admin-menu')){
+		   new_position_top = new_position.top - $('#admin-menu').height();
+	   }
+	   if($('.global-header').hasClass("fixed-header")){
+		   new_position_top = new_position.top - $('.global-header').height() -20;
+	   }else{
+		   new_position_top = new_position.top - 10;
+	   }
+	   
+	  $('html, body').animate({ scrollTop: new_position_top }, 800);
+      
+    });   
+});
 
-  
 // Our People popup
     $('.inline-popup').on('click', function () {
 		if($(this).hasClass("item")){
@@ -112,6 +129,8 @@ if(anchor_id != "") {
             type: 'inline'
         });
     });
+	
+	$("#mfp-iframe").contents().find(".toolbar").hide();
 
 
     /* Set speakers item height */
@@ -308,7 +327,25 @@ $(".accordion-module-wrapper").each(function(index){
      $(".accordion-module-wrapper .item").removeClass("active");
      currentItem.addClass("active");
      $(".accordion-module-wrapper .view-more").css("display", "none");
-     if (nid > 0) {
+	 
+	  if(nid > 0){
+			 var viewHtml = currentItem.find(".accordion-item-more-content").html();
+             currentWrapper.find(".loading").hide();
+             currentWrapper.find(".view-more").css("display", "block");
+             currentWrapper.find(".view-more .acc-card-content-wrapper").html(viewHtml);
+
+             var sections = currentWrapper.find(".view-more .card-module");
+             setSpeakersColHeight(sections);
+             updateCardModuleIds();
+             updateArrowPosition(currentItem);
+             window.onresize = function () {
+               setSpeakersColHeight(sections);
+               updateArrowPosition(currentItem);
+             };
+		 }	 
+		 
+		 
+    /* if (nid > 0) {
        $.ajax({
          url: Drupal.settings.basePath + 'views/ajax',
          type: 'POST',
@@ -324,10 +361,7 @@ $(".accordion-module-wrapper").each(function(index){
          success: function (response) {
            if (response[1] !== undefined) {
              var viewHtml = response[1].data;
-             /*$(".accordion-module-wrapper .view-more").slideDown( 3000, function() {
-               $(".accordion-module-wrapper .view-more").html( viewHtml );
-               accCardModuleHeight();
-             });*/
+      
              currentWrapper.find(".loading").hide();
              currentWrapper.find(".view-more").css("display", "block");
              currentWrapper.find(".view-more .acc-card-content-wrapper").html(viewHtml);
@@ -346,7 +380,7 @@ $(".accordion-module-wrapper").each(function(index){
            console.log('An error occured!');
          }
        });
-     }
+     }*/
    });
 
 
@@ -430,7 +464,37 @@ $('.popup-link-slideshow').on('click', function(event) {
         type: 'image',
         gallery:{enabled:true, navigateByImgClick: true,}
     });
-});   
+}); 
+
+
+
+$(".card-module .item").each(function(){
+		
+		var currentCardItem = $(this);
+		if(currentCardItem.find('.item-wrapper .description').find('.slideshow-popup-card')){
+			var popupSlideshow = [];
+				currentCardItem.find('.card-gallery a').each(function(){
+					
+					var itemSrc = $(this).attr('href');
+					var itemType = $(this).data('type');
+					popupSlideshow.push({
+						src: itemSrc,
+						type: itemType
+					});
+					console.log(popupSlideshow);
+					currentCardItem.find('.mfp-slideshow').magnificPopup({
+						items: popupSlideshow,
+						gallery: {
+							enabled: true
+						},
+						type: 'image' // this is default type
+						});
+				});	
+
+		}
+		
+	
+	});  
 
 
 

@@ -132,7 +132,7 @@
     
 
     <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-homenew" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portaltraining-material" tabindex="-1">Learning Portal</a>
+      <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-get-trained" tabindex="-1">Learning Portal</a>
           </li>
 
     
@@ -163,7 +163,7 @@
     
 
     <li class="nav-item " aria-hidden="true" data-url="/msd/ino/sirius-homenew" tabindex="-1">
-      <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portaltraining-material">Learning Portal</a>
+      <a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-get-trained">Learning Portal</a>
           </li>
 
     
@@ -178,7 +178,7 @@
 
   </div>
   <div class="logo-container">
-         <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('https://solutions.mckinsey.com/msd/ino/system/files/Star_Television_logo_2.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
+         <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('sites/all/themes/mck_know/images/final-sirius-logo.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
       </div><!--END NAVIGATION MENU-->
 </header>
 
@@ -206,7 +206,7 @@
 </style>
 <div class="enhanced-hero-section enhanced-hero-no-parallax banner-anchors  medium-font  para-15575 links-count-0 fixed-width mck-mt-0 mck-mb-0" style="height: 400px">
  <div class="hero hero-featured enhanced-hero -light -over-image-true hero-featured hotel">
-         <div class="hero-container hero-main_0_universal_header_2" style=" background-image: url(https://solutions.mckinsey.com/msd/ino/system/files/Team_3.jpg">
+         <div class="hero-container hero-main_0_universal_header_2" style="  background-image: url(https://solutions.mckinsey.com/msd/ino/system/files/Banner%20Learn_2b_6.jpg">
 		 <div class="wrapper">
 			<div class="featured-copy text-hero-m content -center">
 			<h1 class="headline">
@@ -316,7 +316,14 @@
 								
 																	<div class="description">
 									<p>
-  </p><p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew">Home</a><br></span></span></p><p></p>
+  </p>
+<p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew">Home</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#about">About Sirius</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#solutions">Solutions</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#impact">Impact Stories</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#media">Media Stories</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#team">Team</a><p>
+
 									</div>
 								
 
@@ -350,7 +357,12 @@
 								
 																	<div class="description">
 									<p>
-  </p><p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-success-stories">Learning Portal</a><br></span></span></p><p></p>
+  </p><p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-get-trained">Learning Portal</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-get-trained">Get trained</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-get-tested">Get tested</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-prepare-pitch">Prepare for pitch</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-learning-portal-share-client">Share with client</a><p>
+
 									</div>
 								
 

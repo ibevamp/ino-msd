@@ -34,13 +34,16 @@ $headingAlign = !empty($field_left_align_section_heading) ? "heading-left-align"
 
 $paraID   = $variables['elements']['#entity']->item_id;
 $bgColor = isset($content['field_acc_bg_color'])? $content['field_acc_bg_color'][0]['#markup']: "";
+$cardBgColor = isset($content['field_acc_card_bg_color'])? $content['field_acc_card_bg_color'][0]['#markup']: "";
+$contentColor = isset($content['field_acc_font_color'])? $content['field_acc_font_color'][0]['#markup']: "";
+$cardBgClass = isset($content['field_acc_card_bg_color'])? "card-bg": "";
 $cardHeadingColor = isset($content['field_card_heading_font_color'])? $content['field_card_heading_font_color'][0]['#markup']: "";
 $accordionLayoutClass         = isset($content['field_accordion_card_layout']) ? render($content['field_accordion_card_layout']) : '';
 $headingAlignClass         = isset($content['field_heading_subtitle_alignment']) ? render($content['field_heading_subtitle_alignment']) : '';
 
 $count = count($content['field_acc_card_item']['#items']);
 
-$anchorName = mck_util_get_by_paths($content, 'field_anchor_name|#items|0|value', '');
+$anchorName = mck_util_get_by_paths($content, 'field_acc_anchor_link|#items|0|value', '');
 
 if($count == 2){
 	$column_item_class = "two-up two-up-small -imgs-large";
@@ -72,18 +75,37 @@ if($count == 2){
     <?php } ?>
 
 	<?php if(isset($content['field_card_heading_font_color'])) { ?>
-            .para-<?php echo $paraID ?>.accordion-inner-wrapper.card-module .item .heading-link .headline,
-			.para-<?php echo $paraID ?>.accordion-inner-wrapper.card-module.subtitle-over-image .item .subtitle
+            .para-<?php echo $paraID ?>.accordion-module-wrapper .accordion-inner-wrapper.card-module .item .heading-link .headline,
+			.para-<?php echo $paraID ?>.accordion-module-wrapper .accordion-inner-wrapper.card-module .item .subtitle
             {
                 color:<?php echo $cardHeadingColor ?>!important ;
             }	
 			
     <?php } ?>
+	
+	
+	<?php if(isset($content['field_acc_card_bg_color'])) { ?>
+            .para-<?php echo $paraID ?>.accordion-module-wrapper .accordion-inner-wrapper.card-module .item 
+            {
+                background-color:<?php echo $cardBgColor ?>!important ;
+            }	
+			
+    <?php } ?>
+	
+	<?php if(isset($content['field_acc_font_color'])) { ?>
+            .para-<?php echo $paraID ?>.accordion-module-wrapper .accordion-inner-wrapper.card-module .item .description,
+			.para-<?php echo $paraID ?>.accordion-module-wrapper .accordion-inner-wrapper.card-module .item .description p
+            {
+                color:<?php echo $contentColor ?>!important ;
+            }	
+			
+    <?php } ?>
+  
   
 
 </style>
-<div class="accordion-module-wrapper ">
-  <div class="section-wrapper accordion-inner-wrapper card-module <?php echo $headingAlignClass; ?> <?php echo $accordionLayoutClass; ?> <?php echo $wrapperBgColor; ?> para-<?php echo $paraID; ?> <?php echo $column_item_class; ?>">
+<div class="accordion-module-wrapper para-<?php echo $paraID; ?>">
+  <div class="section-wrapper accordion-inner-wrapper card-module <?php echo $headingAlignClass; ?> <?php echo $accordionLayoutClass; ?> <?php echo $wrapperBgColor; ?>  <?php echo $column_item_class; ?> <?php echo $cardBgClass; ?>">
   <?php if (!empty($anchorName)) { ?>
     <a name="<?php echo $anchorName; ?>"></a>
   <?php } ?>

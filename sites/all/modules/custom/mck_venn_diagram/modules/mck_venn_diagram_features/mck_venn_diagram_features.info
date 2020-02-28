@@ -1,7 +1,7 @@
 name = McKinsey Venn Diagram Paragraph Features
 core = 7.x
 package = Paragraphs
-version = 7.x-2.8
+version = 7.x-2.9
 dependencies[] = color_field
 dependencies[] = features
 dependencies[] = file

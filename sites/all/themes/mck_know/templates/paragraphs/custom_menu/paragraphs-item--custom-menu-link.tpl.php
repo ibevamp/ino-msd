@@ -40,8 +40,8 @@ $subMenulinks = isset($content['field_sub_menu_links']) ? render($content['field
 
 
 <?php if ($anchor) { ?>
-  <li role="menuitem" class="nav-item nav-link-item" aria-hidden="true">
-    <?php echo l($content['field_link']['#items'][0]['title'], '', array('fragment' => str_replace("#", "", $content['field_link']['#items'][0]['url']), 'external' => TRUE)); ?>
+  <li role="menuitem" class="nav-item nav-link-item anchor-link" aria-hidden="true">
+    <a class="custom-anchor-link" data-href="<?php echo $content['field_link']['#items'][0]['url']; ?>" href="javascript: void(0);"><?php echo $content['field_link']['#items'][0]['title']; ?></a>
     <?php if (isset($content['field_sub_menu_links'])) { ?>
       <ul class="sub-nav">
         <?php print $subMenulinks; ?>

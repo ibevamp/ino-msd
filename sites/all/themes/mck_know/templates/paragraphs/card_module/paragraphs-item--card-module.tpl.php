@@ -148,11 +148,17 @@ $anchor_name = isset($content['field_anchor_name']['#items'][0]['value']) ? $con
 		        <?php if (!empty($legend)) { ?>
 		          <div class="legend"><span style="background: <?php echo $legendColourBoxColor; ?>"></span><?php echo $legend; ?></div>
 		        <?php } ?>
+				<?php if (isset($content['field_title'])) { ?>
 				<h3 class="headline ">
 					<?php echo $title ?>					
 				</h3>
+				<?php } ?>
+				<?php if (isset($content['field_subtitle'])) { ?>
 				<h4><?php echo $subtitle ?></h4>
-				<div class="description"><?php echo $description ?></div>		
+				<?php } ?>
+				<?php if (isset($content['field_description'])) { ?>
+				<div class="description"><?php echo $description ?></div>
+				<?php } ?>				
 			</header>
 		<?php } ?>
 		<div class="block-list text-m <?php echo $fontSize; ?>">
@@ -173,5 +179,5 @@ $anchor_name = isset($content['field_anchor_name']['#items'][0]['value']) ? $con
 		</div>
 
     <div style="clear: both;"></div>
-	</div>
+	
 </div>
