@@ -1,3 +1,13 @@
+7.x-1.4 2019-12-15
+-----------------------
+- Fixed 'mckUtilScrollToTop' function for the sticky hidden element.
+
+7.x-1.3 2019-10-17
+-----------------------
+- Added 'mck_util_hex_to_rgb' function.
+- Added 'mck_util_rgb_to_hex' function.
+- Added 'mck_util_generate_partnership_mark' function.
+
 7.x-1.2 2019-09-24
 -----------------------
 - Added 'mckUtilScrollToTop' JavaScript function.

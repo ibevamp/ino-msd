@@ -24,7 +24,7 @@
               $data_attrs = implode(' ' , $data_attrs);
               ?>
 
-              <tr class="content-search-list-item content-search-list-item-<?php echo $item['item_id']; ?>" <?php echo $data_attrs; ?>
+              <tr class="content-search-list-item content-search-list-item-<?php echo $item['item_id']; ?> <?php echo count($paragraphs['bio_columns']) > 0 ? 'expandable' : ''; ?>" <?php echo $data_attrs; ?>
                   data-content-search-list-item-row-id="<?php echo $key; ?>">
                 <?php foreach ($paragraphs['columns'] as $col_key => $col_item) { ?>
 
@@ -36,6 +36,21 @@
                     'field_expert_designation',
                     'field_expert_primary_at',
                     'field_expert_primary_vt',
+
+                    'field_expert_position',
+                    'field_expert_office',
+                    'field_industrial_expertise',
+                    'field_functional_expertise',
+
+                    'field_ideal_themes',
+                    'field_ideal_verticals',
+                    'field_ideal_hotspots',
+                    'field_ideal_hq_country',
+                    'field_ideal_hq_region',
+                    'field_estimated_revenue',
+                    'field_ideal_financing_status',
+                    'field_ideal_attractiveness_ratin',
+                    'field_ideal_investment_likelihoo',
                   ];
                   $name_fields = [
                     'field_expert_fullname',
@@ -100,9 +115,21 @@
                           'field_expert_fullname',
                         ];
                         $textfield_fields = [
-                          'field_expert_no',
+                          'field_field_sr_no',
                           'field_expert_contact_point',
                           'field_expert_description',
+
+                          'field_ideal_company_id',
+                          'field_ideal_company_name',
+                          'field_ideal_year_founded',
+                          'field_ideal_employees',
+                          'field_ideal_description',
+                          'field_ideal_ceo_co_founder',
+                          'field_ideal_valuation',
+                          'field_ideal_existing_investors',
+                          'field_ideal_last_financing_date',
+                          'field_ideal_last_financing_size',
+                          'field_ideal_last_financing_type',
                         ];
                         $taxonomy_fields = [
                           ['field_name' => 'field_expert_affiliation', 'field_label' => 'Affiliation', 'taxonomy_name' => 'expert_affiliation'],
@@ -111,6 +138,21 @@
                           ['field_name' => 'field_expert_joined_ideation', 'field_label' => 'Joined ideation', 'taxonomy_name' => 'expert_joined_ideation'],
                           ['field_name' => 'field_expert_primary_at', 'field_label' => 'Primary account tag', 'taxonomy_name' => 'expert_primary_at'],
                           ['field_name' => 'field_expert_primary_vt', 'field_label' => 'Primary vertical tag', 'taxonomy_name' => 'expert_primary_vt'],
+
+                          ['field_name' => 'field_expert_position', 'field_label' => 'Position', 'taxonomy_name' => 'css_position'],
+                          ['field_name' => 'field_expert_office', 'field_label' => 'Office', 'taxonomy_name' => 'office'],
+                          ['field_name' => 'field_industrial_expertise', 'field_label' => 'Industrial expertise', 'taxonomy_name' => 'industry_segment'],
+                          ['field_name' => 'field_functional_expertise', 'field_label' => 'Functional expertise', 'taxonomy_name' => 'business_function'],
+
+                          ['field_name' => 'field_ideal_themes', 'field_label' => 'Themes', 'taxonomy_name' => 'ideal_themes'],
+                          ['field_name' => 'field_ideal_verticals', 'field_label' => 'Verticals', 'taxonomy_name' => 'ideal_verticals'],
+                          ['field_name' => 'field_ideal_hotspots', 'field_label' => 'Hotspots', 'taxonomy_name' => 'ideal_hotspots'],
+                          ['field_name' => 'field_ideal_hq_country', 'field_label' => 'HQ Country', 'taxonomy_name' => 'ideal_hq_region'],
+                          ['field_name' => 'field_ideal_hq_region', 'field_label' => 'HQ region', 'taxonomy_name' => 'ideal_hq_country'],
+                          ['field_name' => 'field_estimated_revenue', 'field_label' => 'Estimated Revenue', 'taxonomy_name' => 'ideal_estimated_revenue'],
+                          ['field_name' => 'field_ideal_financing_status', 'field_label' => 'Financing Status', 'taxonomy_name' => 'ideal_financing_status'],
+                          ['field_name' => 'field_ideal_attractiveness_ratin', 'field_label' => 'Attractiveness Rating', 'taxonomy_name' => 'ideal_attractiveness_rating'],
+                          ['field_name' => 'field_ideal_investment_likelihoo', 'field_label' => 'Investment Likelihood', 'taxonomy_name' => 'ideal_investment_likelihood'],
                         ];
                         ?>
 

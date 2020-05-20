@@ -21,30 +21,27 @@ function mckUtilElementInViewport(el, offsetHeight) {
 /**
  *
  * @param fromElement
- * @param stickyElements
  * @param timeout
  *
  * Usages:
  * - mckUtilScrollToTop($('#section'))
  */
-function mckUtilScrollToTop(fromElement, stickyElements, timeout) {
+function mckUtilScrollToTop(fromElement, timeout) {
   if (!fromElement.position()) {
     return false;
   }
-  stickyElements = stickyElements || [];
-  stickyElements.push($('.mck-base-header'));
-  stickyElements.push($('#admin-menu'));
-  stickyElements.push($('.global-header'));
   timeout = timeout || 1000;
-
   var new_position_top = fromElement.offset().top;
 
-  for (var i = 0; i < stickyElements.length; i++) {
-    if (stickyElements[i].css('position') === 'fixed') {
-      new_position_top = new_position_top - stickyElements[i].outerHeight();
-    }
+  if ($('.mck-base-header').css('position') === 'fixed' && !$('.mck-base-header').is(":hidden")) {
+    new_position_top = new_position_top - $('.mck-base-header').outerHeight();
   }
-
+  if ($('#admin-menu').css('position') === 'fixed' && !$('#admin-menu').is(":hidden")) {
+    new_position_top = new_position_top - $('#admin-menu').outerHeight();
+  }
+  if ($('.global-header').css('position') === 'fixed' && !$('.global-header').is(":hidden")) {
+    new_position_top = new_position_top - $('.global-header').outerHeight();
+  }
   $('html, body' ).animate({
     scrollTop: new_position_top
   }, timeout);

@@ -25,7 +25,7 @@
             $data_attrs = implode(' ' , $data_attrs);
             ?>
 
-            <tr class="content-search-list-item content-search-list-item-<?php echo $item['item_id']; ?>" <?php echo $data_attrs; ?>
+            <tr class="content-search-list-item content-search-list-item-<?php echo $item['item_id']; ?> <?php echo count($paragraphs['bio_columns']) > 0 ? 'expandable' : ''; ?>" <?php echo $data_attrs; ?>
                 data-content-search-list-item-row-id="<?php echo $key; ?>">
               <?php foreach ($paragraphs['columns'] as $col_key => $col_item) { ?>
 

@@ -1,8 +1,23 @@
 <?php
 
+/**
+ * Implements hook_user_login().
+ */
 function ino_functions_user_login(&$edit, $account){
-	if(in_array("Sirius Learning Portal", $account->roles)){		
-		$_GET['destination'] = "sirius-learning-portaltraining-material";
+	if(in_array("Sirius Learning Portal", $account->roles)){
+		$_GET['destination'] = "sirius-homenew";
 	}
+}
 
+/**
+ * Implements hook_openid_connect_post_authorize().
+ */
+function ino_functions_openid_connect_post_authorize($tokens, $account, $userinfo, $client_name, $is_new) {
+  // Assign the 'Firm User' role to an user who is logged in via OpenID Connect.
+  global $user;
+  $uid = $user->uid;
+  $account = user_load($uid);
+  $role = user_role_load_by_name('Firm User');
+  $account->roles = $account->roles + array($role->rid => $role->name);
+  user_save($account);
 }

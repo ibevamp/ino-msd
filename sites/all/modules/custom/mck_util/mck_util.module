@@ -145,13 +145,16 @@ function mck_util_taxonomy_tree_to_nested_array($tree) {
   // in a temporary _children array
   $terms = array();
   foreach ($tree as $term) {
-    $terms[$term->tid] = array(
-      'tid' => $term->tid,
-      'name' => $term->name,
-      'parents' => $term->parents,
-      'children' => array(),
-      '_children' => array(),
-    );
+    $terms[$term->tid] = (array) taxonomy_term_load($term->tid);
+    $terms[$term->tid]['children'] = array();
+    $terms[$term->tid]['_children'] = array();
+//    $terms[$term->tid] = array(
+//      'tid' => $term->tid,
+//      'name' => $term->name,
+//      'parents' => $term->parents,
+//      'children' => array(),
+//      '_children' => array(),
+//    );
     foreach ($term->parents as $tid) {
       // Check for empty parent
       if (!empty($tid)) {
@@ -200,4 +203,112 @@ function mck_util_taxonomy_tree_to_nested_array($tree) {
 
   // Re-key the array to remove the term ID based indexes from the top level
   return array_values($terms);
+}
+
+function mck_util_taxonomy_get_tree_with_nodes_by_voc_name($voc_name = '') {
+  $items = [];
+  $voc = taxonomy_vocabulary_machine_name_load($voc_name);
+  if ($voc->vid) {
+    $tree = taxonomy_get_tree($voc->vid);
+    $terms = mck_util_taxonomy_tree_to_nested_array($tree);
+
+    foreach ($terms as $k => $term) {
+      $items[$k] = (array) $term;
+      $nids = taxonomy_select_nodes($term['tid']);
+      $nodes = node_load_multiple($nids);
+      $items[$k]['nodes'] = $nodes;
+    }
+    return $items;
+  }
+  return $items;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Other util functions.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function mck_util_hex_to_rgb($hex = '') {
+  list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+  return ['r' => $r, 'g' => $g, 'b' => $b];
+}
+
+function mck_util_rgb_to_hex($r = '', $g = '', $b = '') {
+  return sprintf("#%02x%02x%02x", $r, $g, $b);
+}
+
+function mck_util_generate_partnership_mark($params = []) {
+  $default_params = [
+    'direction' => 'right',
+    'lines' => 40,
+    'line_width' => 1,
+    'line_color_from' => '#1e40e6',
+    'line_color_to' => '#00a9f4',
+    'top_x' => 0.55,
+    'bottom_x' => 0.45,
+    'top_gap' => 15,
+    'bottom_gap' => 1.5
+  ];
+  $params = array_merge($default_params, $params);
+
+  $line_color_from_rgb = mck_util_hex_to_rgb($params['line_color_from']);
+  $line_color_to_rgb = mck_util_hex_to_rgb($params['line_color_to']);
+  $svg_width = 1200;
+  $svg_height = 800;
+  $space_1 = 0;
+  $space_2 = 0;
+  $ratio1 = 0;
+  $ratio2 = 0;
+
+  $lines = [];
+  for ($i = 0; $i < $params['lines']; $i++) {
+    if ($line_color_from_rgb['r'] > $line_color_to_rgb['r']) {
+      $r = $line_color_from_rgb['r'] - abs($line_color_from_rgb['r'] - $line_color_to_rgb['r']) / ($params['lines'] - 1) * ($i);
+    }
+    else {
+      $r = $line_color_from_rgb['r'] + abs($line_color_from_rgb['r'] - $line_color_to_rgb['r']) / ($params['lines'] - 1) * ($i);
+    }
+
+    if ($line_color_from_rgb['g'] > $line_color_to_rgb['g']) {
+      $g = $line_color_from_rgb['g'] - abs($line_color_from_rgb['g'] - $line_color_to_rgb['g']) / ($params['lines'] - 1) * ($i);
+    }
+    else {
+      $g = $line_color_from_rgb['g'] + abs($line_color_from_rgb['g'] - $line_color_to_rgb['g']) / ($params['lines'] - 1) * ($i);
+    }
+
+    if ($line_color_from_rgb['b'] > $line_color_to_rgb['b']) {
+      $b = $line_color_from_rgb['b'] - abs($line_color_from_rgb['b'] - $line_color_to_rgb['b']) / ($params['lines'] - 1) * ($i);
+    }
+    else {
+      $b = $line_color_from_rgb['b'] + abs($line_color_from_rgb['b'] - $line_color_to_rgb['b']) / ($params['lines'] - 1) * ($i);
+    }
+
+    $space1 = $space_1 * (100 - $ratio1) / 100;
+    $space2 = $space_2 * (100 + $ratio2) / 100;
+    $space_1 = $space_1 + $params['top_gap'];
+    $space_2 = $space_2 + $params['bottom_gap'];
+    $ratio1 = $ratio1 + 0.05;
+    $ratio2 = $ratio2 + 10;
+
+    if ($params['direction'] == 'left') {
+      $x_top = ($svg_width * $params['top_x']) - $space1;
+      $x_bottom = ($svg_width * $params['bottom_x']) + $space2;
+    }
+    else {
+      $x_top = ($svg_width * $params['top_x']) + $space1;
+      $x_bottom = ($svg_width * $params['bottom_x']) - $space2;
+    }
+
+    //$lines[] = '<line x1="' . $x_top . '" y1="0" x2="' . $x_bottom . '" y2="800" style="stroke: rgba(' . $r . ', ' . $g . ', ' . $b . ', ' . '1' . '); stroke-width: ' . $params['line_width'] . '" />';
+    $lines[] = '<path d="M' . $x_top . ', 0, ' . $x_bottom . ', 800" stroke="' . mck_util_rgb_to_hex($r, $g, $b) . '" stroke-width="' . $params['line_width'] . '"></path>';
+  }
+
+  $svg = [];
+  if (count($lines) > 0) {
+    $svg[] = '<svg width="100%" height="100%" viewBox="0 0 ' . $svg_width . ' ' . $svg_height . '" preserveAspectRatio="none">';
+    foreach ($lines as $line) {
+      $svg[] = $line;
+    }
+    $svg[] = '</svg>';
+  }
+  return implode("\n", $svg);
 }

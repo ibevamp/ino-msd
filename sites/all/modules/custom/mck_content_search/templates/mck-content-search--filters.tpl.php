@@ -8,7 +8,7 @@
           <div class="filter-by">
             <?php foreach ($paragraphs['filters'] as $filter_name => $filter) { ?>
               <div class="filter" rel="<?php echo $filter_name; ?>">
-                <div class="filter-name"><?php echo $filter['name']; ?> <span class="add">+</span></div>
+                <div class="filter-name gradient"><?php echo $filter['name']; ?> <span class="add">+</span></div>
                 <div class="filter-items">
                   <div class="inner">
                     <?php foreach ($filter['items'] as $item) { ?>

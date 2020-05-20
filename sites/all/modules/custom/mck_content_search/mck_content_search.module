@@ -91,6 +91,7 @@ function mck_content_search_preprocess_entity(&$variables) {
   if ($entity_type == 'paragraphs_item' && $bundle == 'content_search') {
     $entity = mck_util_get_by_paths($variables, 'elements|#entity', NULL);
     $content_search_id = $entity->item_id;
+    $content_search_anchor = mck_util_get_by_paths($entity, 'field_cs_anchor|und|0|value', '');
     $content_search_entity_type = mck_util_get_by_paths($entity, 'field_cs_entity_type|und|0|value', '');
     $content_search_display_all = mck_util_get_by_paths($entity, 'field_cs_display_all|und|0|value', 'no');
 
@@ -101,6 +102,7 @@ function mck_content_search_preprocess_entity(&$variables) {
       $content_search_contents = entity_load_multiple_by_name($content_search_entity_type);
     }
     else {
+      $entities = [];
       if ($content_search_entity_type == 'expert') {
         $entities = mck_util_get_by_paths($entity, 'field_cs_contents|und', []);
       }
@@ -108,8 +110,8 @@ function mck_content_search_preprocess_entity(&$variables) {
         $entities = mck_util_get_by_paths($entity, 'field_cs_contents_opportunity|und', []);
       }
 
-      foreach ($entities as $entity) {
-        $content_search_contents[] = mck_util_get_by_paths($entity, 'entity');
+      foreach ($entities as $item) {
+        $content_search_contents[] = mck_util_get_by_paths($item, 'entity');
       }
     }
 
@@ -212,6 +214,7 @@ function mck_content_search_preprocess_entity(&$variables) {
 
 
     $variables['paragraphs']['id'] = $content_search_id;
+    $variables['paragraphs']['anchor'] = $content_search_anchor;
     $variables['paragraphs']['entity_type'] = $content_search_entity_type;
     $variables['paragraphs']['columns'] = $selected_columns;
     $variables['paragraphs']['bio_columns'] = $selected_bio_columns;
