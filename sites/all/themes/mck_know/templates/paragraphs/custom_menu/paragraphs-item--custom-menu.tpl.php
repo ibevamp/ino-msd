@@ -51,65 +51,68 @@ $logOutClass = $content['field_hide_logout_link'][0]['#markup']? "hide-logout" :
 
 $menuClass = $content['field_menu_desktop'][0]['#markup']? "menu-desktop" : "";
 
+if($content['field_sentence_case_off'][0]['#markup'] == 1){
+	$menuClass = $menuClass." menu-text-normal";
+}
+
 $logoColor = isset($content['field_default_mck_logo_color'])? $content['field_default_mck_logo_color'][0]['#markup']: "";
 $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['field_hamburger_menu_color'][0]['#markup']: "";
+
+$submenuLinkColor = isset($content['field_sm_link_font_color'])? $content['field_sm_link_font_color'][0]['#markup']: "";
+$submenuBgColor = isset($content['field_sm_bg_color'])? $content['field_sm_bg_color'][0]['#markup']: "";
+
 ?>
 
 <style type="text/css">
 
      <?php if(isset($content['field_link_font_color'])) { ?>
-            .para-<?php echo $paraID ?>.global-header .nav-item a,
-      .para-<?php echo $paraID ?> .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a
-            {
-                color:<?php echo $linkColor ?>!important ;
-            }     
+     .para-<?php echo $paraID ?>.global-header .nav-item a,
+     .para-<?php echo $paraID ?> .global-primary-nav-r3 .primary-navigation > .nav-list > .nav-item > a {
+       color: <?php echo $linkColor ?> !important ;
+     }
     <?php } ?>
-  
+
    <?php if(($content['field_white_mck_logo'][0]['#markup']==1)) { ?>
-             .para-<?php echo $paraID ?>.navigation-r3.default-logo-header .logo-container a.cpny-logo::before
-            {
-                color:#fff!important ;
-            }   
-      
+     .para-<?php echo $paraID ?>.navigation-r3.default-logo-header .logo-container a.cpny-logo::before {
+       color: #fff !important;
+     }
     <?php } ?>
-  
-  
+
+
    <?php if(isset($content['field_hamburger_menu_color'])) { ?>
-             .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger,
-       .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger:after,
-       .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger:before
-            {
-                background-color:<?php echo $hamburgerMenuColor ?>!important ;
-            } 
-
-             .para-<?php echo $paraID ?>.navigation-r3._menu-open .menu-toggle .menu-hamburger{
-         background-color: unset!important;
-       }      
-      
+     .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger,
+     .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger:after,
+     .para-<?php echo $paraID ?>.navigation-r3 .menu-hamburger:before {
+       background-color: <?php echo $hamburgerMenuColor ?> !important ;
+     }
+     .para-<?php echo $paraID ?>.navigation-r3._menu-open .menu-toggle .menu-hamburger {
+       background-color: unset !important;
+     }
     <?php } ?>
-  
+
      <?php if(isset($content['field_header_bg_color'])) { ?>
-            .para-<?php echo $paraID ?>.global-header,
-            .para-<?php echo $paraID ?>.navigation-r3 .menu-toggle,
-            .para-<?php echo $paraID ?>.navigation-r3._menu-open .hamburger-nav,
-      .para-<?php echo $paraID ?>.navigation-r3._menu-open .menu-toggle{
-                background-color: <?php echo $headerBgColor ?>!important;
-            }       
-    <?php } ?>
-  
-  
-    <?php if(isset($content['field_main_heading_font_color'])) { ?>
-             .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover,
-             .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a
-            {
-                color:<?php echo $linkHoverColor ?>!important ;
-            }
+     .para-<?php echo $paraID ?>.global-header,
+     .para-<?php echo $paraID ?>.navigation-r3 .menu-toggle,
+     .para-<?php echo $paraID ?>.navigation-r3._menu-open .hamburger-nav,
+     .para-<?php echo $paraID ?>.navigation-r3._menu-open .menu-toggle {
+       background-color: <?php echo $headerBgColor ?> !important;
+     }
+     <?php } ?>
+     <?php if(isset($content['field_header_bg_color']) && $content['field_header_bg_color'] != '#ffffff') { ?>
+     .para-<?php echo $paraID ?>.global-header {
+       border-bottom: none !important;
+     }
+     <?php } ?>
 
-       .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item>a:hover:after,
-             .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item.active>a:after
-            {
-                background-color: <?php echo $linkHoverBgColor ?>;
-            } 
+    <?php if(isset($content['field_main_heading_font_color'])) { ?>
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation > .nav-list > .nav-item > a:hover,
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation > .nav-list > .nav-item.active > a {
+       color: <?php echo $linkHoverColor ?> !important ;
+     }
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation > .nav-list > .nav-item > a:hover:after,
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation > .nav-list > .nav-item.active > a:after {
+       background-color: <?php echo $linkHoverBgColor ?>;
+     }
     <?php } ?>
 
 
@@ -135,6 +138,24 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
        border-bottom: 4px solid <?php echo $linkActiveColor; ?>;
      }
      <?php } ?>
+
+
+     <?php if (!empty($submenuLinkColor)) { ?>
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item .sub-nav a.sub-menu-item {
+       color: <?php echo $submenuLinkColor; ?> !important;
+       border-bottom: 4px solid transparent;
+     }
+     .para-<?php echo $paraID ?>.navigation-r3 .global-primary-nav-r3 .primary-navigation>.nav-list>.nav-item .sub-nav a.sub-menu-item:hover {
+       color: <?php echo $submenuLinkColor; ?> !important;
+       border-bottom: 4px solid <?php echo $submenuLinkColor; ?>;
+     }
+     <?php } ?>
+
+     <?php if (!empty($submenuBgColor)) { ?>
+     .para-<?php echo $paraID ?>.navigation-r3 .primary-navigation>.nav-list>.nav-item ul.sub-nav {
+        background: <?php echo $submenuBgColor; ?> !important;
+     }
+     <?php } ?>
 </style>
 
 
@@ -154,7 +175,7 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
     </a>
     <nav class="main-nav" data-level="-menu-level0" role="menu">
       <ul class="nav-list nav-group-left">
-          <?php echo $links;  ?>  
+          <?php echo $links;  ?>
           <?php global $user; ?>
         <?php /*
           <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" >
@@ -163,7 +184,7 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
         */ ?>
               <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" >
         <a href="<?php echo $base_url; ?>/user/logout">Log Out</a>
-       </li>        
+       </li>
     </ul>
     </nav>
   </div>
@@ -184,7 +205,7 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
           <?php */ ?>
           <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" >
           <a href="<?php echo $base_url; ?>/user/logout">Log Out</a>
-        </li> 
+        </li>
         </ul>
       </nav>
   </div>
@@ -193,7 +214,7 @@ $hamburgerMenuColor = isset($content['field_hamburger_menu_color'])? $content['f
   <div class="logo-container">
      <?php if(isset($content["field_full_image"])){ ?>
     <a class="names cpny-logo alone" href="<?php echo $logolink ?>" style="background-image: url('<?php echo $bgurl ?>');" ><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
-    <?php }else{ 
+    <?php }else{
 
 $logolink  = isset($content['field_logo_link']) ? render($content['field_logo_link'][0]['#element']['url']) : "http://mckinsey.com";
       ?>

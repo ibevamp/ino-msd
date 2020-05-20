@@ -31,9 +31,11 @@
 <a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" id="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>" class="anchored-link"></a>
 <div class="wrapper case-study-accordion">
 	<div class="up full-text-section">
+	<?php if(isset($content['field_title'])){ ?>
 		<h2 class="section-header  section-header--centered">
 			<?php echo render($content['field_title']); ?>
 		</h2>
+	<?php } ?>
 		<?php print render($content['field_paragraph']); ?>
 	</div>
 </div>

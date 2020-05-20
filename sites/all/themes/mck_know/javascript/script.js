@@ -3,7 +3,6 @@
   "use strict";
 
   $(document).ready(function () {
-
     $('.primary-navigation li').hoverIntent(function () {
       $(this).addClass('hover');
     }, function () {

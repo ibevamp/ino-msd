@@ -32,6 +32,15 @@ $contentColor = isset($content['field_list_font_color'])? $content['field_list_f
 $headingColor = isset($content['field_list_heading_color'])? $content['field_list_heading_color'][0]['#markup']: "";
 
 $fontSize = isset($content['field_list_font_size'])? render($content['field_list_font_size'][0]['#markup']): "";
+
+
+if (isset($content['field_show_more'])) {
+  if($content['field_show_more'][0]['#markup'] == 1){
+	  $teamLayout = "view-more-enabled";
+  }
+}
+
+
 ?>
 
 <style type="text/css">
@@ -56,7 +65,7 @@ $fontSize = isset($content['field_list_font_size'])? render($content['field_list
 <?php if(isset($content['field_anchor_name'])){ ?>
 <a name="<?php echo ($content['field_anchor_name']['#items'][0]['value']) ?>" id="<?php echo ($content['field_anchor_name']['#items'][0]['value']) ?>" ></a>
 <?php } ?>
-<section class="up three-up three-up-list section-wrapper three-up-split -to-two up-left-display-mode-standard para-<?php echo $paraID ?> <?php echo $fontSize; ?> <?php echo $paraClass; ?>">
+<section class="up three-up three-up-list section-wrapper three-up-split -to-two up-left-display-mode-standard para-<?php echo $paraID ?> <?php echo $fontSize; ?> <?php echo $paraClass; ?>  <?php echo $teamLayout; ?> ">
     <div class="section-inner-wrapper">
 	<header class="module-header text-l text-l">
        <?php if(isset($content['field_title'])){ ?>
@@ -70,6 +79,12 @@ $fontSize = isset($content['field_list_font_size'])? render($content['field_list
     <div class="text-s">  
          <?php echo render($content['field_paragraph']) ?>
     </div>
+	<?php if($content['field_show_more'][0]['#markup'] == 1){ ?>
+		<div class="view-more">
+				<a href="javascript: void(0);" class="speakers-view-more btn">View More</a>
+				<a href="javascript: void(0);" class="speakers-view-less btn">View Less</a>
+		</div>	
+	<?php } ?>
 	</div>
 </section>
 <div style="clear: both;"></div>

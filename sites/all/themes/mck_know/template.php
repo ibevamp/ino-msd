@@ -53,6 +53,7 @@ function mck_know_path() {
 }
 
 function mck_know_preprocess_html(array &$vars) {
+  //drupal_add_js(array('autologout' => array('redirect_url' => url('http://www.google.com', array('absolute' => TRUE)))), 'setting');
   global $base_url;
   
   $key = (isset($vars['page']['content']['system_main']['nodes']) && !empty($vars['page']['content']['system_main']['nodes'])) ? array_keys($vars['page']['content']['system_main']['nodes']) : NULL;
@@ -107,7 +108,13 @@ function mck_know_preprocess_html(array &$vars) {
 }
 
 function mck_know_preprocess_page(array &$vars) {
-
+		if(isset($vars['node'])){
+			if (!user_is_logged_in()) {
+				if (in_array($vars['node']->nid, [641, 642, 637, 633, 615, 650])) {
+					drupal_goto('sirius-login');
+				}
+			}
+		}		
 }
 
 function mck_know_preprocess_node(array &$vars) {

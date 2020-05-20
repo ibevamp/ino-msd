@@ -91,30 +91,31 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
             .card-module .item.para-<?php echo $paraID ?> h2,
             .card-module .item.para-<?php echo $paraID ?> h3,
             .card-module .item.para-<?php echo $paraID ?> h4,
-            .card-module .item.para-<?php echo $paraID ?> h5 {
+            .card-module .item.para-<?php echo $paraID ?> h5,
+            .card-module .item.para-<?php echo $paraID ?> .links a {
               color: <?php echo $cardFontColor; ?> !important;
             }
           <?php } ?>
-							
+
 							.card-module .item.para-<?php echo $paraID ?> .item-wrapper
 							{
 								margin: 10px;
 							}
-							
+
 					<?php } ?>
-					
-					
-					
-						
+
+
+
+
 				</style>
-				<?php } ?>                
+				<?php } ?>
 						<div class="  <?php echo $textAlign; ?> <?php // echo $slideshowClass ?> item-wrapper ">
 						<?php if( isset($content['field_file']) || isset($content['field_url']) ){ ?>
 						  <div  class="image">
 							<video class="video-js vjs-fluid" controls poster="<?php echo $bgurl ?>" data-setup="{}" src="<?php echo $videourl;  ?>"></video>
 						</div>
-						<?php }else{ ?>										
-						
+						<?php }else{ ?>
+
 							<?php if((isset($content['field_poster']) )){
 								/* if(isset($content['field_popup_slideshow'])){ ?>
 								<a class="<?php echo $imageClass; ?> mfp-slideshow" style="background-image: url('<?php echo $bgurl ?>');" href="#"></a>
@@ -126,10 +127,10 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 								<a class="<?php echo $imageClass; ?> " style="background-image: url('<?php echo $bgurl ?>');" href="<?php echo $cardLink ?>"></a>
 								<?php }else{?>
 								<div class="<?php echo $imageClass; ?>" style="background-image: url('<?php echo $bgurl ?>');" ></div>
-								<?php  } }?>						
+								<?php  } }?>
 						<?php } ?>
-						
-												
+
+
 						<?php /* if(isset($content['field_popup_slideshow'])){ ?>
 							<div class="card-gallery mfp-hide white-popup" id="card-gallery">
 								<?php if(isset($content['field_popup_slideshow'])){ ?>
@@ -142,19 +143,19 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 												<?php } else { ?>
 												    <a src="<?php echo $paraUrl; ?>" data-type="image"></a>
 												<?php }?>
-										<?php } 
+										<?php }
 										} ?>
 								<?php } ?>
 							</div>
 							<div class="gallery-items"></div>
 						<?php } */ ?>
 						<div class="card-content">
-						
+
 
 							<?php if(isset($content['field_subtitle'])){ ?>
 										<p class="caption"><?php  echo $caption; ?></p>
 							<?php } ?>
-							
+
 							<?php /* if(isset($content['field_popup_slideshow'])){ ?>
 									<p><a href="#" class="mfp-slideshow -arrow">
  										View Slideshow
@@ -167,8 +168,8 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 								</div>
 							<?php } ?>
 
-								
-								
+
+
 							<?php  if(isset($content['field_title'])){?>
 								<?php /* if(isset($content['field_popup_slideshow'])){ ?>
 								<a href="#>" class="mfp-slideshow">
@@ -186,16 +187,16 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 								<?php }else{ ?>
 				                    <h3 class="headline"><?php  echo $title; ?></h3>
 								<?php }} ?>
-								
-							
+
+
 								  <?php if(isset($content['field_sub_title'])){ ?>
 									<div class="sub-title">
 										<p><?php  echo $subtitle; ?></p>
 									</div>
 								<?php } ?>
-								
-								
-								
+
+
+
 								<?php if(isset($content['field_description'])){ ?>
 									<div class="description">
 									<p><?php  echo $description; ?></p>
@@ -212,10 +213,10 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 											 <a href="<?php echo $paraItem['url']; ?>" target="<?php echo mck_util_get_by_paths($paraItem, 'attributes|target', '_self'); ?>" class="blue-btn -arrow ">
 											 	<?php echo $paraItem['title']; ?>
 											 </a>
-										<?php } 
+										<?php }
 										} ?>
 										<?php print render($popuplink_items); ?>
-									    
+
 									</div>
 								<?php } ?>
 
@@ -224,4 +225,4 @@ $cardLink = isset($content['field_link_1'])? $content['field_link_1']['#items'][
 			</div>
 
 
-  
+

@@ -25,7 +25,7 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-
+$paraID = $variables['elements']['#entity']->item_id;
 $videouri      = isset($content['field_video_file']['#items'][0]['uri']) ? $content['field_video_file']['#items'][0]['uri'] : '';
 $videourl      = isset($videouri) ? file_create_url($videouri) : NULL;
 $bguri         = isset($content['field_poster']['#items'][0]['uri']) ? $content['field_poster']['#items'][0]['uri'] : NULL;
@@ -41,9 +41,23 @@ $fixedWidth     = $content['field_fixed_width']['0']['#markup'] ? "fixed-width" 
 $videoLink = isset($content['field_video_link'])? $content['field_video_link']['#items'][0]['url']:NULL;
 $videoLinkTitle = isset($content['field_video_link'])? $content['field_video_link']['#items'][0]['title']:NULL;
 
+$fontColor = isset($content['field_card_font_color'])? $content['field_card_font_color'][0]['#markup']: "#fff";
+
 //echo "<pre>"; var_dump($content); echo "</pre>";
 ?>
-<div class="banner-video-wrapper">
+
+<style type="text/css">
+	
+	<?php if(isset($content['field_card_font_color'])) { ?>
+        .para-<?php echo $paraID ?>.banner-video-wrapper .banner-video-overlay .videojs-hero .text-render h1,
+		.para-<?php echo $paraID ?>.banner-video-wrapper .banner-video-overlay .videojs-hero .text-render .description,
+		.para-<?php echo $paraID ?>.banner-video-wrapper .banner-video-overlay .videojs-hero .text-render .description p{
+            color:<?php echo $fontColor ?>!important ;
+        }
+    <?php } ?>
+</style>
+
+<div class="banner-video-wrapper para-<?php echo $paraID ?>">
 	<div class="banner-video section-wrapper banner-video-default <?php echo $fixedWidth; ?>">
 	   <div class="bg-tint"></div>
 	   <div class="section-inner-wrapper">

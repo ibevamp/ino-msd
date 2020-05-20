@@ -39,7 +39,7 @@
 
         <div class="promo-links">
 
-          <a href="<?php echo render($content['field_link']); ?>" class="link-button mck-email-icon">
+          <a href="<?php echo render($content['field_link']); ?>" class="link-button ">
             <?php echo render($content['field_heading']); ?>
           </a>
         </div>

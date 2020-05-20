@@ -178,7 +178,7 @@
 
   </div>
   <div class="logo-container">
-         <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('sites/all/themes/mck_know/images/final-sirius-logo.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
+         <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('sites/all/themes/mck_know/images/aperture-logo.jpg');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
       </div><!--END NAVIGATION MENU-->
 </header>
 
@@ -206,11 +206,11 @@
 </style>
 <div class="enhanced-hero-section enhanced-hero-no-parallax banner-anchors  medium-font  para-15575 links-count-0 fixed-width mck-mt-0 mck-mb-0" style="height: 400px">
  <div class="hero hero-featured enhanced-hero -light -over-image-true hero-featured hotel">
-         <div class="hero-container hero-main_0_universal_header_2" style="  background-image: url(https://solutions.mckinsey.com/msd/ino/system/files/Banner%20Learn_2b_6.jpg">
+         <div class="hero-container hero-main_0_universal_header_2" style="background-image: url(https://solutions.mckinsey.com/msd/ino/sites/default/files/sirius-banner.jpg)">
 		 <div class="wrapper">
 			<div class="featured-copy text-hero-m content -center">
 			<h1 class="headline">
-  Welcome to the Sirius Learning Portal</h1>
+  Welcome to the Aperture Learning Portal</h1>
 				<div class="links">
 					<ul>
 										</ul>
@@ -289,7 +289,7 @@
   <a name="contact" id="contact" class="anchored-link"></a>
 </div>
 
-	<div class="para-15581 card-module    darker-heading three-up    bg-image section-wrapper mck-mt-0 mck-mb-0">
+	<div class="para-15581 card-module  footer-links  darker-heading three-up    bg-image section-wrapper mck-mt-0 mck-mb-0">
 <span class="arrow"></span>
 	<div class="section-inner-wrapper">
 				<div class="block-list text-m ">
@@ -318,7 +318,7 @@
 									<p>
   </p>
 <p><span style="font-family:arial"><span style="font-size:20px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew">Home</a><p>
-<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#about">About Sirius</a><p>
+<p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#about">About Aperture</a><p>
 <p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#solutions">Solutions</a><p>
 <p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#impact">Impact Stories</a><p>
 <p><span style="font-family:arial"><span style="font-size:16px"><a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew#media">Media Stories</a><p>

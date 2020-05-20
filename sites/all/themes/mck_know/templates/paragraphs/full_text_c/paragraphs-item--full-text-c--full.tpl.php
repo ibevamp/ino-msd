@@ -48,14 +48,14 @@ if (!empty($fieldHeadingContent) || !empty($fieldDescriptionContent) || !empty($
     <a name="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>"
        id="<?php echo render($content['field_anchor_name']['#items'][0]['value']) ?>"></a>
     <section class="up full-text-section careers section-inner-wrapper">
-      <?php if (!empty($fieldHeadingContent)): ?>
+      <?php if (isset($content['field_heading'])): ?>
       <header class="text-l space">
         <h3 class="headline <?php echo $textAlign; ?>">
           <?php echo $fieldHeadingContent; ?>
         </h3>
-        <?php endif ?>
+       
       </header>
-
+ <?php endif ?>
       <?php if (isset($content['field_description'])) { ?>
         <div class="description section-description">
           <?php echo render($content['field_description']); ?>

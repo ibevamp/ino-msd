@@ -45,6 +45,9 @@
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex">
+
+
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -54,7 +57,8 @@
   <?php if((isset($theme_header_title_color) && !empty($theme_header_title_color)) || (isset($theme_font_color) && !empty($theme_font_color)) || (isset($theme_bg_color) && !empty($theme_bg_color))) { ?>
     <style type="text/css">
       <?php if(isset($theme_font_color) && !empty($theme_font_color)) { ?>
-        h1, h2, h3, blockquote {
+        h1, h2, h3, blockquote,
+		h1 p, h2 p, h3 p{
           color: <?php echo $theme_font_color; ?> !important;;
         }
         .theme-fc {
@@ -62,7 +66,7 @@
         }
       <?php } ?>
       <?php if(isset($theme_header_title_color) && !empty($theme_header_title_color)) { ?>
-        .theme-hfc .headline, .theme-hfc h1, .theme-hfc blockquote {
+        .theme-hfc .headline, .theme-hfc h1, .theme-hfc blockquote , .theme-hfc .headline p, .theme-hfc h1 p {
           color: <?php echo $theme_header_title_color; ?> !important;
         }
       <?php } ?>

@@ -110,8 +110,6 @@ $logoSize    = $content['field_pm_larger_logo'][0]['#markup']? "larger-logo" : "
 			 <?php } ?>				
 				<?php if(isset($content['field_pm_description'])){ ?>		   
 					<div class="description">
-							<p>Welcome</p>
-							<p>Dear <?php echo $client_name; ?></p>
 							<?php echo render($description) ?>
 							<?php if(isset($content['field_pm_partner_name'])){ ?>
 								<p>Kind Regards,</p>	

@@ -36,6 +36,7 @@ $curr_path = current_path();
 $frontpage = drupal_get_normal_path(variable_get('site_frontpage', 'node'));
 
 $subMenulinks = isset($content['field_sub_menu_links']) ? render($content['field_sub_menu_links']) : '';
+$target = isset($content['field_link'])?$content['field_link']['#items'][0]['attributes']['target']:"";
 ?>
 
 
@@ -62,7 +63,7 @@ $subMenulinks = isset($content['field_sub_menu_links']) ? render($content['field
   <?php } else { ?>
     <li class="nav-item " aria-hidden="true" data-url="<?php echo url($curr_path) ?>">
       <a
-        href="<?php echo $content['field_link']['#items'][0]['url']; ?>"><?php echo $content['field_link']['#items'][0]['title']; ?></a>
+        href="<?php echo $content['field_link']['#items'][0]['url']; ?>" target="<?php echo $target; ?>"><?php echo $content['field_link']['#items'][0]['title']; ?></a>
       <?php if (isset($content['field_sub_menu_links'])) { ?>
         <ul class="sub-nav">
           <?php print $subMenulinks; ?>

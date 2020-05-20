@@ -11,6 +11,7 @@ stylesheets[all][] = css/animate.css
 stylesheets[all][] = css/custom.css
 stylesheets[all][] = css/custom-carousel.css
 stylesheets[all][] = css/mobile.css
+stylesheets[all][] = css/pages/pages.css
 
 stylesheets[all][] = system.base.css
 stylesheets[all][] = system.menus.css

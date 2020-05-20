@@ -293,12 +293,12 @@
 
 	.global-header{
 	  position: fixed;
-	  margin-top: -56px;
+	  margin-top: -83px;
 	  width: 100%;
 	}
 
 	.page-class.fixed-header{
-	  margin-top: 100px;
+	  margin-top: 83px;
 	}
 
 
@@ -603,30 +603,118 @@ color: #00306e;}
   	padding: 0;
   }
   
-  .three-up.three-up-split.three-up-list .item .text-wrapper{
-	width: 100%;
-	display: block;
-	float: none;
-}
+	.three-up.three-up-split.three-up-list .item .text-wrapper{
+		width: 100%;
+		display: block;
+		float: none;
+	}
 
-.three-up.three-up-split.three-up-list .item .thumbnail{
-	margin: 0 auto 20px;
-}
+	.three-up.three-up-split.three-up-list .item .thumbnail{
+		margin: 0 auto 20px;
+	}
 
-.three-up-list .headline{
-	font-size: 32px;
-}
+	.three-up-list .headline{
+		font-size: 32px;
+	}
 
 
-.three-up-list h4{
-	font-size: 24px;
-}
+	.three-up-list h4{
+		font-size: 24px;
+	}
 
- .page-node-626 .card-module .item .description .heading {
+	.page-node-626 .card-module .item .description .heading {
 		min-height: unset;
-   }
+	}
+	
+	.banner-video .video-js .vjs-big-play-button{
+		width: 40px;
+		height: 40px;
+	}
+	
+	.banner-video .video-js .vjs-big-play-button:before{
+		margin-top: -3px;
+	}
+	
+	.banner-video .video-js .vjs-big-play-button{
+		top: calc(83% - 30px);
+	}
+	
+	.banner-video .video-js{
+		min-height: 400px;
+	}
+	
+	.banner-video-wrapper .banner-video-overlay .videojs-hero .text-render{
+		top: 35%
+	}
+	
+	.banner-video-wrapper .banner-video-default.fixed-width .video-js{
+		min-height: unset;
+	}
+	
+	.banner-video-wrapper .banner-video-default.fixed-width .video-js .vjs-big-play-button:before{
+		margin-top: 4px;
+	}
+	
+	.banner-video-wrapper .banner-video-default.fixed-width .video-js .vjs-big-play-button{
+		top: calc(81% - 50px) !important;
+		left: calc(50% - 50px) !important;
+		width: 60px!important;
+		height: 60px!important;
+	}
+	
+	.banner-video-wrapper .banner-video.fixed-width .banner-video-overlay .videojs-hero{
+		max-width: 300px;
+	}
 
+	.homepage-banner.banner-video-autoplay .videojs-hero-overlay .videojs-hero h1{
+		font-size: 42px;
+		line-height: 1.4em;
+	}
+	
+	.homepage-banner.banner-video-autoplay .video-js{
+		min-height: 400px
+	}
+	
+	.homepage-banner.banner-video-autoplay .videojs-hero{
+		top: 20px;
+	}
+	
+	.homepage-banner.banner-video-autoplay .videojs-hero-overlay{
+		width: calc(100% - 50px);
+		left: 20px;
+	}
+	
+	.homepage-banner.banner-video-autoplay .video-js .vjs-tech{
+		object-fit: cover;
+	}
+	
+	.three-col-accordion .item .image,
+	.three-col-accordion .item .text-wrapper,
+	.three-col-accordion.media-right .item .image,
+	.three-col-accordion.media-right .item .text-wrapper{
+		width: 100%;
+		float: none;
+	}
+	
+	.three-col-accordion{
+		padding: 40px 0;
+	}
+	
+	.case-study-accordion .up.full-text-section{
+			width: auto;
+			padding: 0 20px;
+	}
+	
+	
+	
 }
+@media (max-width: 580px) {
+	.homepage-banner.banner-video-autoplay .video-js{
+		min-height: 500px
+	}
+	
+}
+
 @media (max-width: 480px) {
 	/*login*/
 	.page-toboggan form{
@@ -659,5 +747,10 @@ color: #00306e;}
 	.mfp-iframe-holder .mfp-content{
 	  width: 320px!important;
 	  height: 180px!important;
+	}
+	
+	.homepage-banner.banner-video-autoplay .videojs-hero-overlay .videojs-hero h1{
+		font-size: 36px;
+		line-height: 1.2em;
 	}
 }

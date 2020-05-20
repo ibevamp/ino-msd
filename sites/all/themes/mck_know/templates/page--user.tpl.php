@@ -73,17 +73,19 @@
  */
 
 //ddl($page);
-
-
-
+global $user;
 ?>
-
+<?php if (in_array('Firm User', $user->roles)) {
+	header("Location: asogempractice");
+	exit;
+} else{ ?>
 <div class="container access-denied-page">
-	<h3>Login to access this page</h3>
+  <?php if (!$user->uid) { ?>
+	  <h3>Login to access this page</h3>
+  <?php } ?>
 	<?php echo render($page['content']) ?>
 </div>
-
-<?php //print render($messages) ?>
+<?php } ?>
 
 
 <div style="clear: both;"></div>

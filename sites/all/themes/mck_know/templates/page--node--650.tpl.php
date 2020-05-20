@@ -108,11 +108,15 @@
               <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew" tabindex="-1">Home</a>
 			 <ul class="sub-nav">
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-						<a class="sub-menu-item" href="sirius-homenew#about">About Sirius  </a>
+						<a class="sub-menu-item" href="sirius-homenew#about">About Aperture  </a>
 					</li>
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
 					  <a class="sub-menu-item" href="sirius-homenew#solutions">
 						Solutions  </a>
+					</li>
+					<li class="nav-item " aria-hidden="true" tabindex="-1">
+					  <a class="sub-menu-item" href="sirius-homenew#selling">
+						Solution Selling </a>
 					</li>
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
 					  <a class="sub-menu-item" href="sirius-homenew#impact">
@@ -140,7 +144,7 @@
 
     
                                 <li role="menuitem" class="nav-item nav-link-item custom-anchor-link logout-link" aria-hidden="true" tabindex="-1">
-        <a href="https://solutions.mckinsey.com/msd/ino/user/logout" tabindex="-1">Log Out</a>
+        <a href="/msd/ino/user/logout?destination=sirius-homenew" tabindex="-1">Log Out</a>
        </li>        
     </ul>
     </nav>
@@ -158,11 +162,15 @@
               <a href="https://solutions.mckinsey.com/msd/ino/sirius-homenew" tabindex="-1">Home</a>
 			 <ul class="sub-nav">
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
-						<a class="sub-menu-item" href="sirius-homenew#about">About Sirius  </a>
+						<a class="sub-menu-item" href="sirius-homenew#about">About Aperture  </a>
 					</li>
 					<li class="nav-item " aria-hidden="true" tabindex="-1">
 					  <a class="sub-menu-item" href="sirius-homenew#solutions">
 						Solutions  </a>
+					</li>
+					<li class="nav-item " aria-hidden="true" tabindex="-1">
+					  <a class="sub-menu-item" href="sirius-homenew#selling">
+						Solution Selling </a>
 					</li>
 							<li class="nav-item " aria-hidden="true" tabindex="-1">
 					  <a class="sub-menu-item" href="sirius-homenew#impact">
@@ -207,7 +215,7 @@
               }?>
               <ul class="sub-nav">
                 <li class="nav-item " aria-hidden="true" tabindex="-1">
-                  <a class="sub-menu-item" href="user/logout">Logout</a>
+                  <a class="sub-menu-item" href="user/logout?destination=sirius-homenew">Logout</a>
                 </li>
               </ul>
             </li>
@@ -218,7 +226,7 @@
 
   </div>
   <div class="logo-container">
-         <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('https://solutions.mckinsey.com/msd/ino/sites/all/themes/mck_know/images/final-sirius-logo.png');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
+         <a class="names cpny-logo alone" href="/msd/ino/" style="background-image: url('https://solutions.mckinsey.com/msd/ino/sites/all/themes/mck_know/images/aperture-logo.jpg');"><span class="visually-hidden">McKinsey &amp; Company Home</span></a>
       </div><!--END NAVIGATION MENU-->
 </header> <div class="content-wrapper">
  <?php echo render($page['content']) ?>

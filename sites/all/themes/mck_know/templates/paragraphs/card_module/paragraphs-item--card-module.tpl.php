@@ -46,6 +46,9 @@ if (isset($content['field_card_layout'])) {
 }
 
 $gridClass = isset($content['field_column_layout']) ? $content['field_column_layout']['#items'][0]['value'] : '';
+$titleFont = isset($content['field_title_font_size']) ? $content['field_title_font_size']['#items'][0]['value'] : '';
+$subtitleFont = isset($content['field_subtitle_font_size']) ? $content['field_subtitle_font_size']['#items'][0]['value'] : '';
+
 $textAlign = $content['field_left_align_text'][0]['#markup']? "-text-left" : "-text-center";
 $linksAlign = $content['field_align_link_bottom'][0]['#markup']? "align-links-bottom" : "";
 $count = isset($content['field_paragraph']['#items']) ? count($content['field_paragraph']['#items']) : 0;
@@ -59,7 +62,7 @@ $cardHeadingColor = isset($content['field_card_heading_font_color'])? $content['
 
 $bgClass = isset($content['field_background_color']) || isset($content['field_image']) ? "bg-image" : '';
 
-if(isset($content['field_column_layout'])){	
+if(isset($content['field_column_layout'])){
 	if($gridClass == "two-up"){
 		$column_item_class = "two-up two-up-small -imgs-large";
 	}else{
@@ -93,42 +96,46 @@ $anchor_name = isset($content['field_anchor_name']['#items'][0]['value']) ? $con
 		}
 		.accordion-module-wrapper .view-more .para-<?php echo $paraID ?>#acc-card-module-0 span {
 			border-bottom-color: <?php echo $bgColor ?>!important;
-		}			
+		}
 	<?php } ?>
 
 	<?php if(isset($content['field_card_module_font_color'])) { ?>
         .para-<?php echo $paraID ?>.card-module header .headline,
+		.para-<?php echo $paraID ?>.card-module header .headline p,
 		.para-<?php echo $paraID ?>.card-module header h4,
+		.para-<?php echo $paraID ?>.card-module header h4 p,
 		.para-<?php echo $paraID ?>.card-module header .description{
             color:<?php echo $cardModuleColor ?>!important ;
-        }	
-    <?php } ?>
-	
-	<?php if(isset($content['field_card_text_color'])) { ?>
-        .para-<?php echo $paraID ?>.card-module .headline,
-		.para-<?php echo $paraID ?>.card-module .description,
-		.para-<?php echo $paraID ?>.card-module .description p,
-		.para-<?php echo $paraID ?>.card-module h4 {
-            color:<?php echo $cardTextColor ?>!important ;
         }
     <?php } ?>
+
+  <?php if(isset($content['field_card_text_color'])) { ?>
+  .para-<?php echo $paraID ?>.card-module .headline,
+  .para-<?php echo $paraID ?>.card-module .description,
+  .para-<?php echo $paraID ?>.card-module .description p,
+  .para-<?php echo $paraID ?>.card-module h4,
+  .para-<?php echo $paraID ?>.card-module .links a {
+    color: <?php echo $cardTextColor ?> !important ;
+  }
+
+  <?php } ?>
 
 	<?php if(isset($content['field_card_heading_font_color'])) { ?>
 		.para-<?php echo $paraID ?>.card-module .item .card-content .headline {
 			color:<?php echo $cardHeadingColor ?>!important ;
-		}		
+		}
     <?php } ?>
 
 	<?php if($content['field_grey_row'][0]['#markup']) { ?>
 		.para-<?php echo $paraID ?>.card-module .headline {
 			color:#000!important ;
-		}	
+		}
 	<?php } ?>
 
 	<?php if(isset($content['field_field_link_text_color'][0]['#markup'])) { ?>
 		.para-<?php echo $paraID ?>.card-module .item .links a {
 			color:<?php echo $linkTextColor; ?>!important ;
-		}	
+		}
 	<?php } ?>
 </style>
 
@@ -149,16 +156,20 @@ $anchor_name = isset($content['field_anchor_name']['#items'][0]['value']) ? $con
 		          <div class="legend"><span style="background: <?php echo $legendColourBoxColor; ?>"></span><?php echo $legend; ?></div>
 		        <?php } ?>
 				<?php if (isset($content['field_title'])) { ?>
-				<h3 class="headline ">
-					<?php echo $title ?>					
-				</h3>
+					<h3 class="headline <?php echo $titleFont; ?> ">
+						<?php echo $title ?>
+					</h3>
 				<?php } ?>
 				<?php if (isset($content['field_subtitle'])) { ?>
-				<h4><?php echo $subtitle ?></h4>
+					<h4  class="<?php echo $subtitleFont; ?> subtitle">
+						<?php echo $subtitle ?>
+					</h4>
 				<?php } ?>
 				<?php if (isset($content['field_description'])) { ?>
-				<div class="description"><?php echo $description ?></div>
-				<?php } ?>				
+					<div class="description">
+						<?php echo $description ?>
+					</div>
+				<?php } ?>
 			</header>
 		<?php } ?>
 		<div class="block-list text-m <?php echo $fontSize; ?>">
@@ -166,18 +177,18 @@ $anchor_name = isset($content['field_anchor_name']['#items'][0]['value']) ? $con
 				if(is_numeric($key)) {
 					$paraItem = $item['entity']['paragraphs_item'];
 					echo render($paraItem);
-				} 
+				}
 			} ?>
-		</div>   
+		</div>
             <div>
 				<?php if(isset($content['field_link'])){ ?>
-					<div> 
-						<a class="blue-btn view-products" href="<?php  echo render($content['field_link']['#items'][0]['url']); ?>"><?php  echo render($content['field_link']['#items'][0]['title']); ?><span></span></a>	
+					<div>
+						<a class="blue-btn view-products" href="<?php  echo render($content['field_link']['#items'][0]['url']); ?>"><?php  echo render($content['field_link']['#items'][0]['title']); ?><span></span></a>
 					</div>
 				<?php } ?>
-			</div> 
+			</div>
 		</div>
 
     <div style="clear: both;"></div>
-	
+
 </div>
